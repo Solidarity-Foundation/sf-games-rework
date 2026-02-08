@@ -55,6 +55,9 @@ const AnalyticsDashboard = () => {
 	const [recentSessions, setRecentSessions] = useState<SessionRecord[]>([]);
 	const [levelCounts, setLevelCounts] = useState<Record<string, Record<string, number>>>({});
 
+	// Get today's date in YYYY-MM-DD format for max date restriction
+	const today = new Date().toISOString().split('T')[0];
+
 	useEffect(() => {
 		let cancelled = false;
 		setLoading(true);
@@ -207,6 +210,7 @@ const AnalyticsDashboard = () => {
 								type="date"
 								value={fromDate}
 								onChange={(e) => setFromDate(e.target.value)}
+								max={today}
 								className="w-[108px] px-2 py-1.5 rounded-md bg-white border border-gray-200 text-xs text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
 							/>
 							<span className="text-xs text-gray-600 font-medium">To:</span>
@@ -214,6 +218,7 @@ const AnalyticsDashboard = () => {
 								type="date"
 								value={toDate}
 								onChange={(e) => setToDate(e.target.value)}
+								max={today}
 								className="w-[108px] px-2 py-1.5 rounded-md bg-white border border-gray-200 text-xs text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
 							/>
 							{(fromDate || toDate) && (
