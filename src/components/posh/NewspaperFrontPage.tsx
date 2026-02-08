@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import { Home } from "lucide-react";
 import coverImage from "@/assets/posh-coverimage.jpg";
+import stopHarassmentImage from "@/assets/stop-sexual-harassment.jpg";
 
 const NewspaperFrontPage = () => {
   const navigate = useNavigate();
@@ -12,7 +14,17 @@ const NewspaperFrontPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center py-8 px-4">
+    <div className="min-h-screen bg-background flex flex-col">
+      <header className="sticky top-0 z-10 flex items-center px-4 py-3 bg-background border-b border-foreground/20">
+        <button
+          onClick={() => navigate("/")}
+          className="p-1 hover:opacity-70 rounded"
+          aria-label="Home"
+        >
+          <Home size={20} className="text-foreground" />
+        </button>
+      </header>
+    <div className="flex-1 flex items-center justify-center py-8 px-4">
       <div className="w-full max-w-4xl bg-background shadow-2xl">
         {/* Outer border */}
         <div className="border-2 border-foreground p-1">
@@ -93,11 +105,13 @@ const NewspaperFrontPage = () => {
                       Take your time, think through each scenario, and remember that in real situations, when in doubt, always err on the side of safety and follow proper reporting procedures.
                     </p>
 
-                    {/* Blank image box */}
-                    <div className="border border-foreground bg-newspaper-aged w-full aspect-[4/3] flex items-center justify-center">
-                      <span className="text-xs text-muted-foreground italic tracking-wide">
-                        — Image —
-                      </span>
+                    {/* Stop Sexual Harassment image */}
+                    <div className="border border-foreground w-full overflow-hidden">
+                      <img
+                        src={stopHarassmentImage}
+                        alt="Stop Sexual Harassment awareness"
+                        className="w-full h-auto object-cover"
+                      />
                     </div>
                   </div>
 
@@ -127,7 +141,7 @@ const NewspaperFrontPage = () => {
               {/* Start Game Button */}
               <div className="flex justify-center pb-4">
                 <button
-                  onClick={() => navigate("/game")}
+                  onClick={() => navigate("/posh/page-1")}
                   className="newspaper-headline text-lg sm:text-xl font-bold tracking-wider uppercase px-10 py-3 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200"
                 >
                   Start Game
@@ -144,6 +158,7 @@ const NewspaperFrontPage = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
