@@ -1,30 +1,29 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Home } from "lucide-react";
-import question1Image from "@/assets/question1-posh.jpg";
 import solidarityLogo from "@/assets/solidarity-logo-only.png";
 import gameData from "@/components/posh/gamedata.json";
 
 type Lang = "en" | "kan";
 
-interface NewspaperGamePageProps {
+interface NewspaperGamePage3Props {
   currentPage?: number;
   totalQuestions?: number;
   score?: number;
   questionsAttempted?: number;
 }
 
-const NewspaperGamePage = ({
-  currentPage = 1,
+const NewspaperGamePage3 = ({
+  currentPage = 3,
   totalQuestions = 9,
   score = 10,
   questionsAttempted = 0,
-}: NewspaperGamePageProps) => {
+}: NewspaperGamePage3Props) => {
   const navigate = useNavigate();
   const questionsPerPage = 3;
   const totalPages = Math.ceil(totalQuestions / questionsPerPage);
 
-  const questions = gameData.questions.slice(0, 3);
+  const questions = gameData.questions.slice(7, 10);
 
   const [lang, setLang] = useState<Lang>(() => {
     try {
@@ -41,7 +40,7 @@ const NewspaperGamePage = ({
 
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>(() => {
     try {
-      const stored = localStorage.getItem("posh-page-1-answers");
+      const stored = localStorage.getItem("posh-page-3-answers");
       return stored ? JSON.parse(stored) : {};
     } catch {
       return {};
@@ -49,7 +48,7 @@ const NewspaperGamePage = ({
   });
 
   useEffect(() => {
-    localStorage.setItem("posh-page-1-answers", JSON.stringify(selectedAnswers));
+    localStorage.setItem("posh-page-3-answers", JSON.stringify(selectedAnswers));
   }, [selectedAnswers]);
 
   const handleSelect = (questionId: number, optionIndex: number) => {
@@ -110,12 +109,11 @@ const NewspaperGamePage = ({
 
               {/* Questions area */}
               <div className="px-4 py-4">
-                {/* Questions 1 & 2 — side by side on top row */}
+                {/* Questions 8 & 9 — side by side on top row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                   <div className="md:newspaper-column-rule md:pr-5">
                     <QuestionArticleSmall
                       question={questions[0]}
-                      image={question1Image}
                       lang={lang}
                       selectedAnswer={selectedAnswers[questions[0].id] ?? null}
                       isAnswered={selectedAnswers[questions[0].id] !== undefined}
@@ -136,7 +134,7 @@ const NewspaperGamePage = ({
                 {/* Divider */}
                 <div className="border-t border-foreground my-4" />
 
-                {/* Question 3 — full-width below */}
+                {/* Question 10 — full-width below */}
                 <QuestionArticleLarge
                   question={questions[2]}
                   lang={lang}
@@ -186,7 +184,7 @@ const NewspaperGamePage = ({
                 {/* Navigation Buttons */}
                 <div className="border-t border-foreground pt-4 pb-2 flex justify-between items-center">
                   <button
-                    onClick={() => navigate("/posh")}
+                    onClick={() => navigate("/posh/page-2")}
                     className="newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200"
                   >
                     Previous Page
@@ -197,10 +195,10 @@ const NewspaperGamePage = ({
                   </p>
 
                   <button
-                    onClick={() => navigate("/posh/page-2")}
+                    onClick={() => navigate("/posh/results")}
                     className="newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200"
                   >
-                    Next Page
+                    See Results
                   </button>
                 </div>
 
@@ -374,4 +372,4 @@ const QuestionArticleSmall = ({ question, image, lang, selectedAnswer, isAnswere
   </div>
 );
 
-export default NewspaperGamePage;
+export default NewspaperGamePage3;

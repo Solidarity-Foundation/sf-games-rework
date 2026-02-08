@@ -20,6 +20,7 @@ A multi-game educational platform from Solidarity Foundation with 4 distinct edu
 ### Core Structure
 
 **Home Screen** (`/`)
+
 - 2×2 grid of game cards with distinctive colors and labels
 - Each card links to its respective game landing page
 - Analytics Dashboard card at the bottom
@@ -50,6 +51,7 @@ A multi-game educational platform from Solidarity Foundation with 4 distinct edu
    - Light blue card color on home screen
 
 **Analytics Dashboard** (`/analytics`)
+
 - Comprehensive statistics across all games
 - Shows aggregated player performance and game metrics
 - Placeholder for future implementation
@@ -119,20 +121,20 @@ src/
 ### Component Patterns
 
 **Page files** are thin wrappers that render components:
+
 ```tsx
 // pages/posh/PoshGame.tsx
-import NewspaperGamePage from "@/components/posh/NewspaperGamePage";
+import NewspaperGamePage from '@/components/posh/NewspaperGamePage';
 const PoshGame = () => <NewspaperGamePage />;
 export default PoshGame;
 ```
 
 **Coming Soon pages** use a reusable `ComingSoon` component:
+
 ```tsx
 // pages/inclusiondiversity/InclusionDiversity.tsx
-import ComingSoon from "@/components/ComingSoon";
-const InclusionDiversity = () => (
-  <ComingSoon title="Inclusion & Diversity" color="bg-[#e8dcf5]" />
-);
+import ComingSoon from '@/components/ComingSoon';
+const InclusionDiversity = () => <ComingSoon title="Inclusion & Diversity" color="bg-[#e8dcf5]" />;
 export default InclusionDiversity;
 ```
 
@@ -140,7 +142,7 @@ export default InclusionDiversity;
 
 - **Framework:** Tailwind CSS 3.4.17
 - **Custom theme:** Newspaper aesthetic with serif fonts
-  - Masthead: `UnifrakturMaguntia` (decorative)
+  - Masthead: `Pirata One` (decorative)
   - Headlines: `Playfair Display` (elegant serif)
   - Body: `Lora` (readable serif)
 - **Color palette:**
@@ -180,6 +182,7 @@ export default InclusionDiversity;
 ```
 @ → src/
 ```
+
 Configured in `vite.config.ts` and `tsconfig.app.json`.
 
 ### Testing

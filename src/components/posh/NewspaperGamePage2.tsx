@@ -1,5 +1,10 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Home } from "lucide-react";
+import solidarityLogo from "@/assets/solidarity-logo-only.png";
+import gameData from "@/components/posh/gamedata.json";
+
+type Lang = "en" | "kan";
 
 interface NewspaperGamePage2Props {
   currentPage?: number;
@@ -17,13 +22,48 @@ const NewspaperGamePage2 = ({
   const navigate = useNavigate();
   const questionsPerPage = 4;
   const totalPages = Math.ceil(totalQuestions / questionsPerPage);
-  const questionsLeft = totalQuestions - questionsAttempted;
-  const startQ = (currentPage - 1) * questionsPerPage;
 
-  const questions = Array.from({ length: questionsPerPage }, (_, i) => ({
-    id: startQ + i + 1,
-    title: `Game Question Title ${startQ + i + 1}`,
-  }));
+  const questions = gameData.questions.slice(3, 7);
+
+  const [lang, setLang] = useState<Lang>(() => {
+    try {
+      const stored = localStorage.getItem("posh-lang");
+      return (stored === "kan" ? "kan" : "en") as Lang;
+    } catch {
+      return "en";
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("posh-lang", lang);
+  }, [lang]);
+
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>(() => {
+    try {
+      const stored = localStorage.getItem("posh-page-2-answers");
+      return stored ? JSON.parse(stored) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("posh-page-2-answers", JSON.stringify(selectedAnswers));
+  }, [selectedAnswers]);
+
+  const handleSelect = (questionId: number, optionIndex: number) => {
+    if (selectedAnswers[questionId] !== undefined) return;
+    setSelectedAnswers((prev) => ({ ...prev, [questionId]: optionIndex }));
+  };
+
+  const pageScore = questions.reduce((sum, q) => {
+    const sel = selectedAnswers[q.id];
+    return sel !== undefined ? sum + q.options[sel].poshPoints : sum;
+  }, 0);
+  const pageAttempted = Object.keys(selectedAnswers).length;
+  const totalAttempted = questionsAttempted + pageAttempted;
+  const currentScore = score + pageScore;
+  const remaining = totalQuestions - totalAttempted;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -41,34 +81,73 @@ const NewspaperGamePage2 = ({
           <div className="border-2 border-foreground p-1">
             <div className="border border-foreground">
               {/* Masthead */}
-              <div className="text-center border-b border-foreground mx-4 pt-4 pb-2">
+              <div className="relative flex items-center justify-center border-b border-foreground mx-4 pt-4 pb-2">
+                <img src={solidarityLogo} alt="Solidarity Foundation" className="absolute left-0 h-12 sm:h-14 w-auto" />
                 <h1 className="newspaper-masthead text-5xl sm:text-6xl md:text-7xl tracking-wide leading-none text-foreground">
-                  PoSH Awareness
+                  {lang === "kan" ? "ಪೋಶ್ ಪ್ರಗ್ನೆ" : "PoSH Awareness"}
                 </h1>
+                <div className="absolute right-0 flex gap-1 newspaper-body text-xs">
+                  <button
+                    onClick={() => setLang("en")}
+                    className={`px-2 py-1 border border-foreground transition-colors ${lang === "en" ? "bg-foreground text-background" : "bg-background text-foreground hover:bg-foreground/10"}`}
+                  >
+                    English
+                  </button>
+                  <button
+                    onClick={() => setLang("kan")}
+                    className={`px-2 py-1 border border-foreground transition-colors ${lang === "kan" ? "bg-foreground text-background" : "bg-background text-foreground hover:bg-foreground/10"}`}
+                  >
+                    ಕನ್ನಡ
+                  </button>
+                </div>
               </div>
               <div className="mx-4 border-t-4 border-foreground" />
               <div className="mx-4 border-t border-foreground mt-0.5" />
 
               <div className="px-4 py-4">
-                {/* Top row: Q1 (text then image) | Q2 (image then text) */}
+                {/* Top row: Q4 | Q5 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                   <div className="md:newspaper-column-rule md:pr-5">
-                    <QuestionTextFirst question={questions[0]} />
+                    <QuestionArticle
+                      question={questions[0]}
+                      lang={lang}
+                      selectedAnswer={selectedAnswers[questions[0].id] ?? null}
+                      isAnswered={selectedAnswers[questions[0].id] !== undefined}
+                      onSelect={(i) => handleSelect(questions[0].id, i)}
+                    />
                   </div>
                   <div className="md:pl-5 mt-6 md:mt-0">
-                    <QuestionImageFirst question={questions[1]} />
+                    <QuestionArticle
+                      question={questions[1]}
+                      lang={lang}
+                      selectedAnswer={selectedAnswers[questions[1].id] ?? null}
+                      isAnswered={selectedAnswers[questions[1].id] !== undefined}
+                      onSelect={(i) => handleSelect(questions[1].id, i)}
+                    />
                   </div>
                 </div>
 
                 <div className="border-t border-foreground my-4" />
 
-                {/* Bottom row: Q3 (image then text) | Q4 (text then image) — opposite of top */}
+                {/* Bottom row: Q6 | Q7 */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
                   <div className="md:newspaper-column-rule md:pr-5">
-                    <QuestionImageFirst question={questions[2]} />
+                    <QuestionArticle
+                      question={questions[2]}
+                      lang={lang}
+                      selectedAnswer={selectedAnswers[questions[2].id] ?? null}
+                      isAnswered={selectedAnswers[questions[2].id] !== undefined}
+                      onSelect={(i) => handleSelect(questions[2].id, i)}
+                    />
                   </div>
                   <div className="md:pl-5 mt-6 md:mt-0">
-                    <QuestionTextFirst question={questions[3]} />
+                    <QuestionArticle
+                      question={questions[3]}
+                      lang={lang}
+                      selectedAnswer={selectedAnswers[questions[3].id] ?? null}
+                      isAnswered={selectedAnswers[questions[3].id] !== undefined}
+                      onSelect={(i) => handleSelect(questions[3].id, i)}
+                    />
                   </div>
                 </div>
 
@@ -88,7 +167,7 @@ const NewspaperGamePage2 = ({
                         Current Score
                       </p>
                       <p className="newspaper-headline text-3xl font-bold text-foreground">
-                        {score}
+                        {currentScore}
                       </p>
                     </div>
                     <div>
@@ -96,7 +175,7 @@ const NewspaperGamePage2 = ({
                         Attempted
                       </p>
                       <p className="newspaper-headline text-3xl font-bold text-foreground">
-                        {questionsAttempted}
+                        {totalAttempted}
                       </p>
                     </div>
                     <div>
@@ -104,7 +183,7 @@ const NewspaperGamePage2 = ({
                         Remaining
                       </p>
                       <p className="newspaper-headline text-3xl font-bold text-foreground">
-                        {questionsLeft}
+                        {remaining}
                       </p>
                     </div>
                   </div>
@@ -124,6 +203,7 @@ const NewspaperGamePage2 = ({
                   </p>
 
                   <button
+                    onClick={() => navigate("/posh/page-3")}
                     className="newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200"
                   >
                     Next Page
@@ -147,63 +227,107 @@ const NewspaperGamePage2 = ({
 
 /* --- Sub-components --- */
 
-interface QuestionProps {
-  question: { id: number; title: string };
+interface QuestionOption {
+  text: string;
+  text_kan: string;
+  feedback: string;
+  feedback_kan: string;
+  poshPoints: number;
 }
 
-const ImagePlaceholder = () => (
-  <div className="border border-foreground bg-newspaper-aged w-full aspect-[4/3] flex items-center justify-center">
-    <span className="text-xs text-muted-foreground italic tracking-wide">
-      — Image —
-    </span>
-  </div>
-);
+interface QuestionData {
+  id: number;
+  title: string;
+  title_kan: string;
+  description: string;
+  description_kan: string;
+  question: string;
+  question_kan: string;
+  options: QuestionOption[];
+}
 
-const LoremBody = () => (
-  <div className="columns-2 gap-4 text-xs leading-relaxed text-justify-newspaper text-muted-foreground">
-    <p className="mb-2 indent-4">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </p>
-    <p className="mb-2 indent-4">
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-  </div>
-);
+interface QuestionProps {
+  question: QuestionData;
+  lang: Lang;
+  selectedAnswer: number | null;
+  isAnswered: boolean;
+  onSelect: (optionIndex: number) => void;
+}
 
-/** Title → Text → Image */
-const QuestionTextFirst = ({ question }: QuestionProps) => (
+const OptionList = ({
+  options,
+  lang,
+  selectedAnswer,
+  isAnswered,
+  onSelect,
+}: {
+  options: QuestionOption[];
+  lang: Lang;
+  selectedAnswer: number | null;
+  isAnswered: boolean;
+  onSelect: (i: number) => void;
+}) => {
+  const selected = selectedAnswer !== null ? options[selectedAnswer] : null;
+  return (
+    <div className="mt-3 space-y-1.5">
+      {options.map((option, i) => (
+        <button
+          key={i}
+          disabled={isAnswered}
+          onClick={() => onSelect(i)}
+          className={`w-full text-left text-sm px-3 py-2 border newspaper-body leading-snug transition-colors duration-150 ${
+            selectedAnswer === i
+              ? "bg-foreground text-background border-foreground"
+              : isAnswered
+              ? "bg-background text-muted-foreground border-foreground/30 opacity-50 cursor-not-allowed"
+              : "bg-background border-foreground hover:bg-foreground/10"
+          }`}
+        >
+          <span className="font-bold mr-1">{String.fromCharCode(65 + i)}.</span>
+          {lang === "kan" ? option.text_kan : option.text}
+        </button>
+      ))}
+      {selected && (
+        <div className={`mt-2 border px-3 py-2 newspaper-body text-sm ${selected.poshPoints > 0 ? "bg-green-50 border-green-300" : "bg-red-50 border-red-300"}`}>
+          <p className="text-foreground leading-snug">
+            {lang === "kan" ? selected.feedback_kan : selected.feedback}
+          </p>
+          <p className={`mt-1 font-bold text-base ${selected.poshPoints > 0 ? "text-green-600" : "text-red-600"}`}>
+            {selected.poshPoints > 0 ? `+${selected.poshPoints} point` : `${selected.poshPoints} point`}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const QuestionArticle = ({ question, lang, selectedAnswer, isAnswered, onSelect }: QuestionProps) => (
   <div>
     <h3 className="newspaper-headline text-xl sm:text-2xl font-bold leading-tight text-foreground mb-2">
-      {question.title}
+      {lang === "kan" ? question.title_kan : question.title}
     </h3>
     <div className="border-t border-foreground mb-3" />
-    <LoremBody />
-    <div className="mt-3">
-      <ImagePlaceholder />
-    </div>
-    <div className="mt-3">
-      <LoremBody />
-    </div>
-  </div>
-);
 
-/** Title → Image → Text */
-const QuestionImageFirst = ({ question }: QuestionProps) => (
-  <div>
-    <h3 className="newspaper-headline text-xl sm:text-2xl font-bold leading-tight text-foreground mb-2">
-      {question.title}
-    </h3>
-    <div className="border-t border-foreground mb-3" />
-    <LoremBody />
-    <div className="my-3">
-      <ImagePlaceholder />
+    <div className="border border-foreground bg-newspaper-aged w-full aspect-[16/9] flex items-center justify-center mb-3">
+      <span className="text-xs text-muted-foreground italic tracking-wide">— Image —</span>
     </div>
-    <LoremBody />
+
+    <div className="text-sm leading-relaxed text-justify-newspaper text-muted-foreground">
+      <p className="mb-2">{lang === "kan" ? question.description_kan : question.description}</p>
+      {question.question && (
+        <p className="font-semibold text-foreground">
+          {lang === "kan" ? question.question_kan : question.question}
+        </p>
+      )}
+    </div>
+
+    <OptionList
+      options={question.options}
+      lang={lang}
+      selectedAnswer={selectedAnswer}
+      isAnswered={isAnswered}
+      onSelect={onSelect}
+    />
   </div>
 );
 

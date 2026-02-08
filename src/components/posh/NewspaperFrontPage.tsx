@@ -141,7 +141,12 @@ const NewspaperFrontPage = () => {
               {/* Start Game Button */}
               <div className="flex justify-center pb-4">
                 <button
-                  onClick={() => navigate("/posh/page-1")}
+                  onClick={() => {
+                    localStorage.removeItem("posh-page-1-answers");
+                    localStorage.removeItem("posh-page-2-answers");
+                    localStorage.removeItem("posh-page-3-answers");
+                    navigate("/posh/page-1");
+                  }}
                   className="newspaper-headline text-lg sm:text-xl font-bold tracking-wider uppercase px-10 py-3 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200"
                 >
                   Start Game

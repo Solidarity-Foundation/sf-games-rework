@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import PoshLanding from "./pages/posh/PoshLanding";
 import PoshGame from "./pages/posh/PoshGame";
 import PoshGame2 from "./pages/posh/PoshGame2";
+import PoshGame3 from "./pages/posh/PoshGame3";
+import PoshResults from "./pages/posh/PoshResults";
 import Analytics from "./pages/analytics/Analytics";
 import InclusionDiversity from "./pages/inclusiondiversity/InclusionDiversity";
 import FinancialLiteracy from "./pages/financiallit/FinancialLiteracy";
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/posh" element={<PoshLanding />} />
           <Route path="/posh/page-1" element={<PoshGame />} />
           <Route path="/posh/page-2" element={<PoshGame2 />} />
+          <Route path="/posh/page-3" element={<PoshGame3 />} />
+          <Route path="/posh/results" element={<PoshResults />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/inclusion-diversity" element={<InclusionDiversity />} />
           <Route path="/financial-literacy" element={<FinancialLiteracy />} />
