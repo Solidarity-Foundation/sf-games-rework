@@ -64,12 +64,12 @@ const AnalyticsDashboard = () => {
 			since: getSince(selectedRange),
 		};
 
-		Promise.all([queryAllGameStats(filters), querySessions(filters), querySessions()])
-			.then(([stats, filteredSessions, allSessions]) => {
+		Promise.all([queryAllGameStats(filters), querySessions(filters), querySessions(filters)])
+			.then(([stats, filteredSessions, recentSessionsData]) => {
 				if (!cancelled) {
 					setGameStats(stats);
 					setSessions(filteredSessions);
-					setRecentSessions(allSessions.slice(-10).reverse());
+					setRecentSessions(recentSessionsData.slice(-10).reverse());
 
 					// Count levels per game
 					const levelsByGame: Record<string, Record<string, number>> = {};
