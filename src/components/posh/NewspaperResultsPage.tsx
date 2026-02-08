@@ -28,7 +28,9 @@ const NewspaperResultsPage = () => {
 			try {
 				const stored = localStorage.getItem(key);
 				if (stored) Object.assign(combined, JSON.parse(stored));
-			} catch {}
+			} catch {
+				// Ignore parsing errors
+			}
 		});
 		return combined;
 	})();
@@ -67,11 +69,11 @@ const NewspaperResultsPage = () => {
 								<h1 className="newspaper-masthead text-5xl sm:text-6xl md:text-7xl tracking-wide leading-none text-foreground">
 									{lang === 'kan' ? 'ಪೋಶ್ ಪ್ರಗ್ನೆ' : 'PoSH Awareness'}
 								</h1>
-								<div className="absolute right-0 flex gap-1 newspaper-body text-xs">
+								<div className="absolute right-0 flex flex-col sm:flex-row gap-1 newspaper-body text-xs">
 									<button
 										onClick={() => setLang('en')}
 										className={`px-2 py-1 border border-foreground transition-colors ${lang === 'en' ? 'bg-foreground text-background' : 'bg-background text-foreground hover:bg-foreground/10'}`}>
-										English
+										<span className="sm:hidden">ENG</span><span className="hidden sm:inline">English</span>
 									</button>
 									<button
 										onClick={() => setLang('kan')}
@@ -103,24 +105,13 @@ const NewspaperResultsPage = () => {
 									<p className="newspaper-body text-sm sm:text-base leading-relaxed text-muted-foreground max-w-lg mx-auto">
 										{lang === 'kan' ? level.message_kan : level.message}
 									</p>
-									<div className="grid grid-cols-2 gap-4 mt-4 max-w-xs mx-auto text-center">
-										<div>
-											<p className="newspaper-body text-xs text-muted-foreground uppercase tracking-widest mb-1">
-												{lang === 'kan' ? 'ಉತ್ತರಿಸಿದ' : 'Answered'}
-											</p>
-											<p className="newspaper-headline text-2xl font-bold text-foreground">
-												{totalAnswered} / {gameData.questions.length}
-											</p>
-										</div>
-										<div>
-											<p className="newspaper-body text-xs text-muted-foreground uppercase tracking-widest mb-1">
-												{lang === 'kan' ? 'ಗಳಿಸಿದ' : 'Earned'}
-											</p>
-											<p
-												className={`newspaper-headline text-2xl font-bold ${totalEarned >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-												{totalEarned >= 0 ? `+${totalEarned}` : totalEarned}
-											</p>
-										</div>
+									<div className="mt-4 text-center">
+										<p className="newspaper-body text-xs text-muted-foreground uppercase tracking-widest mb-1">
+											{lang === 'kan' ? 'ಉತ್ತರಿಸಿದ' : 'Answered'}
+										</p>
+										<p className="newspaper-headline text-2xl font-bold text-foreground">
+											{totalAnswered} / {gameData.questions.length}
+										</p>
 									</div>
 								</div>
 
