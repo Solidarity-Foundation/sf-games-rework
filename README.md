@@ -10,7 +10,7 @@ SF Games provides engaging, interactive educational experiences designed to prom
 - **Financial Literacy**
 - **Workplace Etiquette**
 
-Each game includes its own gameplay mechanics, scoring system, and visual design. All player progress and analytics are tracked in SQLite for performance insights.
+Each game includes its own gameplay mechanics, scoring system, and visual design. All player progress and analytics are tracked in **Appwrite cloud database**, enabling cross-device sync and persistent storage for workshop facilitators.
 
 ## Quick Start
 
@@ -31,6 +31,10 @@ pnpm install
 # or
 npm install
 
+# Set up environment variables
+cp .env.example .env
+# Edit .env and add your Appwrite credentials
+
 # Start the development server
 pnpm dev
 # or
@@ -38,6 +42,20 @@ npm run dev
 ```
 
 The app will be available at **http://localhost:8080**
+
+### Environment Setup
+
+Create a `.env` file in the root directory with your Appwrite credentials:
+
+```env
+VITE_APPWRITE_ENDPOINT=https://sgp.cloud.appwrite.io/v1
+VITE_APPWRITE_PROJECT_ID=your-project-id
+VITE_DATABASE_ID=your-database-id
+VITE_GAME_SESSIONS_COLLECTION_ID=game_sessions
+VITE_GAME_ANSWERS_COLLECTION_ID=game_answers
+```
+
+See `.env.example` for reference.
 
 ## How to Play
 
@@ -50,23 +68,36 @@ When you launch the app, you'll see a grid of game cards:
 
 **Game Structure:**
 1. **Landing Page** — Introduction with game rules and objectives
-2. **Page 1** — First set of awareness questions with game statistics
-3. **Page 2** — Additional questions and scoring
+2. **Page 1** — Questions 1-3 with live score tracking
+3. **Page 2** — Questions 4-7 with live score tracking
+4. **Page 3** — Questions 8-10 with live score tracking
+5. **Results Page** — Final score, achievement level, and question review
+
+**Features:**
+- **Bilingual:** Switch between English and Kannada (ಕನ್ನಡ)
+- **Achievement Levels:** Champion, Leader, Learner, Beginner based on final score
+- **Newspaper Theme:** Classic newspaper layout with serif fonts
+- **Progress Tracking:** Must answer all questions on a page to advance
+- **Cloud Sync:** Results automatically saved to Appwrite
 
 **Gameplay:**
-- Read each question and scenario carefully
-- Answer based on your understanding of harassment prevention
-- Your score updates with each response
-- Navigate between pages to progress through the game
+- Read each scenario and question carefully
+- Select your answer (only one choice per question)
+- Immediate feedback shows points earned/lost
+- Track your current score, questions attempted, and remaining questions
+- Must complete all questions on current page before advancing
 
 **Scoring:**
 - Start with **10 points**
-- Correct answer: **+1 point**
-- Wrong answer: **-1 point**
+- Answer choices award different points (+2, +1, -1, -2)
+- Final score determines your achievement level
 
 **Navigation:**
-- Use the **home button** (top-left) to return to the game selection screen
-- Use **Previous/Next buttons** to navigate between game pages
+- **Home button** (top-left) returns to game selection
+- **Previous button** navigates back through pages
+- **Next button** advances (enabled only after answering all questions)
+- **See Results button** (Page 3) saves to database and shows results
+- **Play Again** (Results page) resets and starts over
 
 ### Coming Soon Games
 - **Inclusion & Diversity** — Build awareness of diversity and inclusion in the workplace
@@ -92,7 +123,8 @@ pnpm preview      # Preview production build locally
 - **UI Components:** shadcn/ui (Radix UI-based)
 - **Routing:** React Router 6
 - **State Management:** TanStack React Query
-- **Database:** SQLite (via sql.js for browser)
+- **Backend:** Appwrite (cloud database, Singapore region)
+- **Icons:** Lucide React
 - **Testing:** Vitest + React Testing Library
 
 ## Project Structure
@@ -112,11 +144,37 @@ See **CLAUDE.md** for detailed architecture documentation.
 
 ## Game Analytics
 
-All game sessions are tracked locally using SQLite (sql.js). Future versions will include:
-- Player score history
-- Completion rates per game
-- Time-based analytics
-- Performance insights
+The **Analytics Dashboard** provides comprehensive insights powered by Appwrite cloud database:
+
+### Features
+- **Overall Statistics**
+  - Total attempts across all games
+  - Most played game by attempts
+
+- **Per-Game Insights**
+  - Expandable accordion cards for each game
+  - Level distribution (Champion, Leader, Learner, Beginner counts)
+  - Correct answer rate and progress visualization
+
+- **Question-by-Question Breakdown**
+  - Compact grid showing Q1-Q10
+  - Answer distribution (A, B, C, D counts)
+  - Correct answer highlighted with green background
+  - Question titles from game data
+
+- **Recent Sessions**
+  - Table of last 10 completed sessions
+  - Shows game type, score, and completion timestamp
+
+- **Filters**
+  - Game selector (All Games or specific game)
+  - Time range (Last 24h, 7d, 30d, 6m, 1y)
+
+### Benefits for Facilitators
+- ✅ **Cross-device sync** — View analytics from any device
+- ✅ **Persistent storage** — Data never lost
+- ✅ **Real-time updates** — See latest session data immediately
+- ✅ **Anonymous tracking** — Only timestamps recorded, no personal data
 
 ## Browser Compatibility
 
@@ -143,13 +201,15 @@ See **CLAUDE.md** for detailed architectural guidelines.
 
 ## Future Roadmap
 
+- [x] Cloud-synced analytics dashboard (Appwrite) ✅
+- [x] PoSH game with 10 questions and achievement levels ✅
 - [ ] Complete Inclusion & Diversity game
 - [ ] Complete Financial Literacy game
 - [ ] Complete Workplace Etiquette game
-- [ ] Backend analytics dashboard
 - [ ] User authentication and profiles
-- [ ] Leaderboards and achievements
+- [ ] Leaderboards and competitive features
 - [ ] Mobile app version
+- [ ] Export analytics to PDF/Excel
 
 ## License
 

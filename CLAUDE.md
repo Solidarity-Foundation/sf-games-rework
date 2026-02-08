@@ -15,7 +15,7 @@ pnpm preview      # Preview production build
 
 ## Architecture Overview
 
-A multi-game educational platform from Solidarity Foundation with 4 distinct educational games, each with its own gameplay, scoring system, and visual style. All game analytics are stored in SQLite (`sql.js`). The app has a shared home screen for game selection and a comprehensive analytics dashboard.
+A multi-game educational platform from Solidarity Foundation with 4 distinct educational games, each with its own gameplay, scoring system, and visual style. All game analytics are stored in **Appwrite** cloud database, enabling cross-device sync and persistent data storage for workshop facilitators. The app has a shared home screen for game selection and a comprehensive analytics dashboard.
 
 ### Core Structure
 
@@ -31,9 +31,10 @@ A multi-game educational platform from Solidarity Foundation with 4 distinct edu
 
 1. **PoSH (Prevention of Sexual Harassment)** — Newspaper-themed awareness game
    - Landing page: `/posh` → newspaper masthead intro with game rules
-   - Gameplay pages: `/posh/page-1`, `/posh/page-2` → multi-page newspaper layout
+   - Gameplay pages: `/posh/page-1`, `/posh/page-2`, `/posh/page-3` → 10 questions across 3 pages
+   - Results page: `/posh/results` → score, level, question review
    - Pink/salmon card color on home screen
-   - Features: stop harassment awareness image in sidebar, game statistics tracking
+   - Features: bilingual (English/Kannada), 4 achievement levels, localStorage persistence across pages
 
 2. **Inclusion & Diversity** — Coming Soon
    - Path: `/inclusion-diversity`
@@ -52,9 +53,12 @@ A multi-game educational platform from Solidarity Foundation with 4 distinct edu
 
 **Analytics Dashboard** (`/analytics`)
 
-- Comprehensive statistics across all games
-- Shows aggregated player performance and game metrics
-- Placeholder for future implementation
+- Cloud-synced analytics from Appwrite database
+- Overall stats: Total attempts, Most played game
+- Per-game accordion cards with level distribution
+- Question-by-question breakdown with correct answer highlighting
+- Recent completed sessions table
+- Filters: Game selector, Time range (24h, 7d, 30d, 6m, 1y)
 - Light teal/sage card color on home screen
 
 ### Routing Map
@@ -62,9 +66,11 @@ A multi-game educational platform from Solidarity Foundation with 4 distinct edu
 ```
 /                              → Home screen (game selection)
 /posh                          → PoSH game landing/intro
-/posh/page-1                   → PoSH game page 1
-/posh/page-2                   → PoSH game page 2
-/analytics                     → Analytics dashboard
+/posh/page-1                   → PoSH game page 1 (Q1-3)
+/posh/page-2                   → PoSH game page 2 (Q4-7)
+/posh/page-3                   → PoSH game page 3 (Q8-10)
+/posh/results                  → PoSH results with level and review
+/analytics                     → Analytics dashboard (Appwrite-powered)
 /inclusion-diversity           → Inclusion & Diversity (coming soon)
 /financial-literacy            → Financial Literacy (coming soon)
 /workplace-etiquette           → Workplace Etiquette (coming soon)
@@ -80,8 +86,10 @@ src/
 │   ├── NotFound.tsx                       # 404 page
 │   ├── posh/
 │   │   ├── PoshLanding.tsx               # Renders NewspaperFrontPage
-│   │   ├── PoshGame.tsx                  # Renders NewspaperGamePage
-│   │   └── PoshGame2.tsx                 # Renders NewspaperGamePage2
+│   │   ├── PoshGame.tsx                  # Renders NewspaperGamePage (Q1-3)
+│   │   ├── PoshGame2.tsx                 # Renders NewspaperGamePage2 (Q4-7)
+│   │   ├── PoshGame3.tsx                 # Renders NewspaperGamePage3 (Q8-10)
+│   │   └── PoshResults.tsx               # Renders NewspaperResultsPage
 │   ├── analytics/
 │   │   └── Analytics.tsx                 # Renders AnalyticsDashboard
 │   ├── inclusiondiversity/
@@ -98,13 +106,19 @@ src/
 │   ├── NavLink.tsx
 │   ├── posh/
 │   │   ├── NewspaperFrontPage.tsx        # PoSH intro (newspaper style with rules, aim, image)
-│   │   ├── NewspaperGamePage.tsx         # PoSH page 1 (3 questions in newspaper layout)
-│   │   └── NewspaperGamePage2.tsx        # PoSH page 2 (4 questions in alternating layout)
+│   │   ├── NewspaperGamePage.tsx         # PoSH page 1 (Q1-3)
+│   │   ├── NewspaperGamePage2.tsx        # PoSH page 2 (Q4-7)
+│   │   ├── NewspaperGamePage3.tsx        # PoSH page 3 (Q8-10)
+│   │   ├── NewspaperResultsPage.tsx      # Results with score, level, review
+│   │   ├── gamedata.json                 # Question data, options, points
+│   │   └── resultlevels.ts               # Level calculation logic
 │   └── ui/                               # shadcn/ui components (40+)
 ├── hooks/
 │   └── use-toast.ts
 │   └── use-mobile.tsx
 ├── lib/
+│   ├── appwrite.ts                       # Appwrite client configuration
+│   ├── db.ts                             # Database functions (Appwrite queries)
 │   └── utils.ts                          # cn() utility for class merging
 ├── assets/
 │   ├── posh-coverimage.jpg              # PoSH front cover image
@@ -164,18 +178,29 @@ export default InclusionDiversity;
 
 - **Sticky header:** All pages have a sticky header with home button (`sticky top-0 z-10`)
 - **Auto-scroll:** `ScrollToTop` component automatically scrolls to top on route change
-- **Game flow:**
-  1. Start Game → `/posh/page-1`
-  2. Page 1 → Next → `/posh/page-2`
-  3. Page 1 → Previous → `/posh` (landing)
-  4. Page 2 → Previous → `/posh/page-1`
+- **Game flow (PoSH):**
+  1. Landing → Start Game → `/posh/page-1`
+  2. Page 1 (Q1-3) → Next → `/posh/page-2` (only after answering all questions)
+  3. Page 2 (Q4-7) → Next → `/posh/page-3`
+  4. Page 3 (Q8-10) → See Results → `/posh/results` (saves to Appwrite)
+  5. Results → Play Again → `/posh` (clears localStorage)
+  6. Previous buttons allow navigation back through pages
 
 ### Database & Analytics
 
-- **SQLite:** `sql.js` (browser-compatible SQLite compiled to WebAssembly)
-- **Installed:** `sql.js` package ready for analytics implementation
-- **Tables:** Not yet created; structure TBD based on game data needs
-- **Future:** Each game will track scores, attempts, timestamps, user progress per session
+- **Backend:** Appwrite cloud database (Singapore region)
+- **Collections:**
+  - `game_sessions` - stores session metadata (game_id, played_at, score, level, etc.)
+  - `game_answers` - stores individual answer data (session_id, question_id, answer_index, points_earned)
+- **Features:**
+  - Cross-device sync (all sessions available on any device)
+  - Persistent storage (data never lost)
+  - Real-time analytics for workshop facilitators
+  - Anonymous players (only timestamp tracked)
+- **Configuration:** Requires `.env` file with Appwrite credentials (see `.env.example`)
+- **State Management:**
+  - Active gameplay: localStorage for cross-page state
+  - Analytics: Appwrite queries with client-side aggregation
 
 ### Path Aliasing
 
@@ -197,10 +222,10 @@ Configured in `vite.config.ts` and `tsconfig.app.json`.
 - **Vite 5.4.19** (with SWC for faster builds)
 - **React Router 6.30.1** (client-side routing)
 - **TanStack React Query 5.83.0** (server state)
+- **Appwrite 16.0.2** (cloud database & backend)
 - **shadcn/ui** (40+ Radix UI-based components)
 - **Tailwind CSS 3.4.17** (styling)
-- **sql.js** (SQLite in WebAssembly)
-- **Recharts 2.15.4** (charts for future analytics)
+- **Lucide React** (icons)
 
 ### Development Notes
 

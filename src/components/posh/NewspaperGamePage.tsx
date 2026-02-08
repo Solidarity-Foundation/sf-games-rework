@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import question1Image from '@/assets/question1-posh.jpg';
+import question2Image from '@/assets/question2-posh.png';
 import solidarityLogo from '@/assets/solidarity-logo-only.png';
 import gameData from '@/components/posh/gamedata.json';
 
@@ -12,10 +13,7 @@ interface NewspaperGamePageProps {
 	totalQuestions?: number;
 }
 
-const NewspaperGamePage = ({
-	currentPage = 1,
-	totalQuestions = 9,
-}: NewspaperGamePageProps) => {
+const NewspaperGamePage = ({ currentPage = 1, totalQuestions = 9 }: NewspaperGamePageProps) => {
 	const navigate = useNavigate();
 	const questionsPerPage = 3;
 	const totalPages = Math.ceil(totalQuestions / questionsPerPage);
@@ -59,7 +57,9 @@ const NewspaperGamePage = ({
 			try {
 				const stored = localStorage.getItem(key);
 				if (stored) Object.assign(combined, JSON.parse(stored));
-			} catch { /* ignore */ }
+			} catch {
+				/* ignore */
+			}
 		});
 		return combined;
 	})();
@@ -127,6 +127,7 @@ const NewspaperGamePage = ({
 									<div className="md:pl-5 mt-6 md:mt-0">
 										<QuestionArticleSmall
 											question={questions[1]}
+											image={question2Image}
 											lang={lang}
 											selectedAnswer={selectedAnswers[questions[1].id] ?? null}
 											isAnswered={selectedAnswers[questions[1].id] !== undefined}
