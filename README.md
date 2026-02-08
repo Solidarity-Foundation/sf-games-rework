@@ -1,73 +1,164 @@
-# Welcome to your Lovable project
+# SF Games 2026
 
-## Project info
+An interactive educational gaming platform by **Solidarity Foundation** featuring multiple awareness and skill-building games for workplace safety, inclusion, and financial literacy.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## About This Project
 
-## How can I edit this code?
+SF Games provides engaging, interactive educational experiences designed to promote awareness and build critical workplace skills. Currently featuring a comprehensive **PoSH (Prevention of Sexual Harassment)** awareness game, with upcoming modules for:
 
-There are several ways of editing your application.
+- **Inclusion & Diversity**
+- **Financial Literacy**
+- **Workplace Etiquette**
 
-**Use Lovable**
+Each game includes its own gameplay mechanics, scoring system, and visual design. All player progress and analytics are tracked in SQLite for performance insights.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Quick Start
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- **Node.js** 16+ and **npm** or **pnpm**
+- Git (for cloning the repository)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+# Clone the repository
+git clone https://github.com/Solidarity-Foundation/sf-games-rework.git
+cd sf-games-rework
 
-Follow these steps:
+# Install dependencies
+pnpm install
+# or
+npm install
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
+pnpm dev
+# or
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at **http://localhost:8080**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## How to Play
 
-**Use GitHub Codespaces**
+### Home Screen
+When you launch the app, you'll see a grid of game cards:
+- Click any game card to start playing
+- Click **Analytics Dashboard** to view game statistics
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### PoSH (Prevention of Sexual Harassment) Game
 
-## What technologies are used for this project?
+**Game Structure:**
+1. **Landing Page** — Introduction with game rules and objectives
+2. **Page 1** — First set of awareness questions with game statistics
+3. **Page 2** — Additional questions and scoring
 
-This project is built with:
+**Gameplay:**
+- Read each question and scenario carefully
+- Answer based on your understanding of harassment prevention
+- Your score updates with each response
+- Navigate between pages to progress through the game
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+**Scoring:**
+- Start with **10 points**
+- Correct answer: **+1 point**
+- Wrong answer: **-1 point**
 
-## How can I deploy this project?
+**Navigation:**
+- Use the **home button** (top-left) to return to the game selection screen
+- Use **Previous/Next buttons** to navigate between game pages
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Coming Soon Games
+- **Inclusion & Diversity** — Build awareness of diversity and inclusion in the workplace
+- **Financial Literacy** — Learn essential financial skills and money management
+- **Workplace Etiquette** — Master professional workplace behaviors and communication
 
-## Can I connect a custom domain to my Lovable project?
+## Available Commands
 
-Yes, you can!
+```bash
+pnpm dev          # Start development server (auto-reload)
+pnpm build        # Create production build
+pnpm lint         # Run ESLint
+pnpm test         # Run tests
+pnpm test:watch   # Run tests in watch mode
+pnpm preview      # Preview production build locally
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Technology Stack
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **Frontend:** React 18 + TypeScript
+- **Build Tool:** Vite 5
+- **Styling:** Tailwind CSS 3
+- **UI Components:** shadcn/ui (Radix UI-based)
+- **Routing:** React Router 6
+- **State Management:** TanStack React Query
+- **Database:** SQLite (via sql.js for browser)
+- **Testing:** Vitest + React Testing Library
+
+## Project Structure
+
+```
+src/
+├── pages/              # Page components for each game & section
+├── components/         # Reusable UI components
+│   ├── posh/          # PoSH game components
+│   └── ui/            # shadcn/ui components
+├── assets/            # Images and static files
+├── App.tsx            # Main app with routing
+└── index.css          # Global styles
+```
+
+See **CLAUDE.md** for detailed architecture documentation.
+
+## Game Analytics
+
+All game sessions are tracked locally using SQLite (sql.js). Future versions will include:
+- Player score history
+- Completion rates per game
+- Time-based analytics
+- Performance insights
+
+## Browser Compatibility
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+
+## Development Notes
+
+- **Auto-scroll:** Pages automatically scroll to the top when navigating
+- **Sticky headers:** Home button is always visible when scrolling
+- **Responsive:** Optimized for desktop and tablet screens
+- **Type-safe:** Full TypeScript coverage for better development experience
+
+## Contributing
+
+To add new games or features:
+1. Create a new folder in `src/pages/` for the game
+2. Create game components in `src/components/`
+3. Add routes in `src/App.tsx`
+4. Update the home screen with the new game card
+
+See **CLAUDE.md** for detailed architectural guidelines.
+
+## Future Roadmap
+
+- [ ] Complete Inclusion & Diversity game
+- [ ] Complete Financial Literacy game
+- [ ] Complete Workplace Etiquette game
+- [ ] Backend analytics dashboard
+- [ ] User authentication and profiles
+- [ ] Leaderboards and achievements
+- [ ] Mobile app version
+
+## License
+
+This project is created by **Solidarity Foundation**.
+
+## Support
+
+For questions, issues, or suggestions, please open an issue on GitHub or contact the Solidarity Foundation team.
+
+---
+
+**Get Started:** Run `pnpm dev` and visit http://localhost:8080 to launch the games!
