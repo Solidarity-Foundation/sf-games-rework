@@ -70,6 +70,7 @@ const NewspaperGamePage2 = ({
 	const totalAttempted = Object.keys(allAnswers).length;
 	const currentScore = 10 + totalEarned;
 	const remaining = gameData.questions.length - totalAttempted;
+	const allAnswered = questions.every((q) => selectedAnswers[q.id] !== undefined);
 
 	return (
 		<div className="min-h-screen bg-background flex flex-col">
@@ -197,8 +198,9 @@ const NewspaperGamePage2 = ({
 									</p>
 
 									<button
+										disabled={!allAnswered}
 										onClick={() => navigate('/posh/page-3')}
-										className="newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200">
+										className={`newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground transition-colors duration-200 ${allAnswered ? 'bg-foreground text-primary-foreground hover:bg-background hover:text-foreground' : 'bg-foreground/40 text-primary-foreground cursor-not-allowed'}`}>
 										{lang === 'kan' ? 'ಮುಂದಿನ ಪುಟ' : 'Next Page'}
 									</button>
 								</div>

@@ -41,7 +41,6 @@ const NewspaperResultsPage = () => {
 	}, 0);
 
 	const totalScore = STARTING_SCORE + totalEarned;
-	const totalAnswered = Object.keys(allAnswers).length;
 	const level = calculatePoshLevelWithConfig(totalScore);
 
 	const handlePlayAgain = () => {
@@ -105,14 +104,7 @@ const NewspaperResultsPage = () => {
 									<p className="newspaper-body text-sm sm:text-base leading-relaxed text-muted-foreground max-w-lg mx-auto">
 										{lang === 'kan' ? level.message_kan : level.message}
 									</p>
-									<div className="mt-4 text-center">
-										<p className="newspaper-body text-xs text-muted-foreground uppercase tracking-widest mb-1">
-											{lang === 'kan' ? 'ಉತ್ತರಿಸಿದ' : 'Answered'}
-										</p>
-										<p className="newspaper-headline text-2xl font-bold text-foreground">
-											{totalAnswered} / {gameData.questions.length}
-										</p>
-									</div>
+
 								</div>
 
 								<div className="border-t-2 border-foreground mb-2" />

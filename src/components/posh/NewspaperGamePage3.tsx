@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import solidarityLogo from '@/assets/solidarity-logo-only.png';
 import gameData from '@/components/posh/gamedata.json';
+import { calculatePoshLevelWithConfig } from '@/components/posh/resultlevels';
+import { saveGameSession } from '@/lib/db';
 
 type Lang = 'en' | 'kan';
 
@@ -70,6 +72,7 @@ const NewspaperGamePage3 = ({
 	const totalAttempted = Object.keys(allAnswers).length;
 	const currentScore = 10 + totalEarned;
 	const remaining = gameData.questions.length - totalAttempted;
+	const allAnswered = questions.every((q) => selectedAnswers[q.id] !== undefined);
 
 	return (
 		<div className="min-h-screen bg-background flex flex-col">
@@ -189,8 +192,27 @@ const NewspaperGamePage3 = ({
 									</p>
 
 									<button
-										onClick={() => navigate('/posh/results')}
-										className="newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200">
+										disabled={!allAnswered}
+										onClick={() => {
+											const level = calculatePoshLevelWithConfig(currentScore);
+											saveGameSession({
+												gameId: 'posh',
+												totalQuestions: gameData.questions.length,
+												questionsAnswered: totalAttempted,
+												score: currentScore,
+												level: level.level,
+												answers: Object.entries(allAnswers).map(([qId, ansIdx]) => {
+													const q = gameData.questions.find((q) => q.id === Number(qId))!;
+													return {
+														questionId: Number(qId),
+														answerIndex: ansIdx,
+														pointsEarned: q.options[ansIdx].poshPoints,
+													};
+												}),
+											});
+											navigate('/posh/results');
+										}}
+										className={`newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground transition-colors duration-200 ${allAnswered ? 'bg-foreground text-primary-foreground hover:bg-background hover:text-foreground' : 'bg-foreground/40 text-primary-foreground cursor-not-allowed'}`}>
 										{lang === 'kan' ? 'ಫಲಿತಾಂಶಗಳನ್ನು ನೋಡಿ' : 'See Results'}
 									</button>
 								</div>
