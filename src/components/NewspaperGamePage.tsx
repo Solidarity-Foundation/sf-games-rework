@@ -140,57 +140,43 @@ interface QuestionProps {
 }
 
 const QuestionArticleLarge = ({ question }: QuestionProps) => (
-  <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
-    {/* Left: title + image + body text */}
-    <div className="md:col-span-7 md:newspaper-column-rule md:pr-5">
-      <h2 className="newspaper-headline text-2xl sm:text-3xl font-bold leading-tight text-foreground mb-3">
-        {question.title}
-      </h2>
-      <div className="border-t border-foreground mb-3" />
+  <div>
+    <h2 className="newspaper-headline text-2xl sm:text-3xl font-bold leading-tight text-foreground mb-3">
+      {question.title}
+    </h2>
+    <div className="border-t border-foreground mb-3" />
 
-      {/* Image placeholder */}
-      <div className="border border-foreground bg-newspaper-aged w-full aspect-[4/3] flex items-center justify-center mb-3">
-        <span className="text-xs text-muted-foreground italic tracking-wide">
-          — Image —
-        </span>
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
+      {/* Left: image only */}
+      <div className="md:col-span-5 md:newspaper-column-rule md:pr-5">
+        <div className="border border-foreground bg-newspaper-aged w-full aspect-[4/3] flex items-center justify-center">
+          <span className="text-xs text-muted-foreground italic tracking-wide">
+            — Image —
+          </span>
+        </div>
       </div>
 
-      {/* Article body in columns */}
-      <div className="columns-2 gap-5 text-xs leading-relaxed text-justify-newspaper text-muted-foreground">
-        <p className="mb-2 indent-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat.
-        </p>
-        <p className="mb-2 indent-4">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-      </div>
-    </div>
-
-    {/* Right: secondary text block */}
-    <div className="md:col-span-5 md:pl-5 mt-6 md:mt-0">
-      <div className="border-t-2 border-foreground mb-2 md:mt-0" />
-      <div className="text-xs leading-relaxed text-justify-newspaper text-muted-foreground">
-        <p className="mb-2 indent-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris.
-        </p>
-        <p className="mb-2 indent-4">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia.
-        </p>
-        <p className="mb-2 indent-4">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
-          illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-          explicabo.
-        </p>
+      {/* Right: text columns */}
+      <div className="md:col-span-7 md:pl-5 mt-4 md:mt-0">
+        <div className="columns-2 gap-5 text-xs leading-relaxed text-justify-newspaper text-muted-foreground">
+          <p className="mb-2 indent-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.
+          </p>
+          <p className="mb-2 indent-4">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <p className="mb-2 indent-4">
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
+            illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+            explicabo.
+          </p>
+        </div>
       </div>
     </div>
   </div>
