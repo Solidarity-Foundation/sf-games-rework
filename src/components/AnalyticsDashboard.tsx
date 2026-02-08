@@ -45,6 +45,8 @@ const AnalyticsDashboard = () => {
 	const navigate = useNavigate();
 	const [selectedGame, setSelectedGame] = useState('all');
 	const [selectedRange, setSelectedRange] = useState('7d');
+	const [fromDate, setFromDate] = useState('');
+	const [toDate, setToDate] = useState('');
 	const [gameStats, setGameStats] = useState<GameStat[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [expandedGames, setExpandedGames] = useState<Set<string>>(new Set());
@@ -59,21 +61,38 @@ const AnalyticsDashboard = () => {
 		setAnswerCounts({});
 		setExpandedGames(new Set());
 
+		// Use custom date range if both dates are provided, otherwise use predefined range
+		let sinceTimestamp: number;
+		if (fromDate && toDate) {
+			sinceTimestamp = new Date(fromDate).getTime();
+		} else {
+			sinceTimestamp = getSince(selectedRange);
+		}
+
 		const filters = {
 			gameId: selectedGame === 'all' ? undefined : selectedGame,
-			since: getSince(selectedRange),
+			since: sinceTimestamp,
 		};
 
 		Promise.all([queryAllGameStats(filters), querySessions(filters), querySessions(filters)])
 			.then(([stats, filteredSessions, recentSessionsData]) => {
 				if (!cancelled) {
+					// Apply toDate filter if custom date range is specified
+					const toDateTimestamp = toDate ? new Date(toDate).setHours(23, 59, 59, 999) : Infinity;
+
+					const filterByDateRange = (sessions: SessionRecord[]) =>
+						sessions.filter((s) => s.played_at <= toDateTimestamp);
+
+					const dateFilteredSessions = filterByDateRange(filteredSessions);
+					const dateFilteredRecent = filterByDateRange(recentSessionsData);
+
 					setGameStats(stats);
-					setSessions(filteredSessions);
-					setRecentSessions(recentSessionsData.slice(-10).reverse());
+					setSessions(dateFilteredSessions);
+					setRecentSessions(dateFilteredRecent.slice(-10).reverse());
 
 					// Count levels per game
 					const levelsByGame: Record<string, Record<string, number>> = {};
-					filteredSessions.forEach((session) => {
+					dateFilteredSessions.forEach((session) => {
 						if (!session.level) return;
 						if (!levelsByGame[session.game_id]) levelsByGame[session.game_id] = {};
 						const level = session.level;
@@ -91,7 +110,7 @@ const AnalyticsDashboard = () => {
 		return () => {
 			cancelled = true;
 		};
-	}, [selectedGame, selectedRange]);
+	}, [selectedGame, selectedRange, fromDate, toDate]);
 
 	const handleToggle = (gameId: string) => {
 		if (expandedGames.has(gameId)) {
@@ -102,7 +121,9 @@ const AnalyticsDashboard = () => {
 			});
 		} else {
 			setExpandedGames((prev) => new Set(prev).add(gameId));
-			queryAnswerCounts(gameId, { since: getSince(selectedRange) })
+			// Use custom date range if both dates are provided
+			const since = fromDate && toDate ? new Date(fromDate).getTime() : getSince(selectedRange);
+			queryAnswerCounts(gameId, { since })
 				.then((counts) => setAnswerCounts((prev) => ({ ...prev, [gameId]: counts })))
 				.catch(() => {});
 		}
@@ -131,7 +152,7 @@ const AnalyticsDashboard = () => {
 			</header>
 
 			<main className="flex-1 px-4 py-6 max-w-5xl mx-auto w-full">
-				{/* Stats cards and dropdowns on same row */}
+				{/* Stats cards and filters on same row */}
 				<div className="flex flex-wrap items-start justify-between gap-4 mb-6">
 					{/* Left side: stat cards */}
 					<div className="flex flex-wrap gap-3">
@@ -146,33 +167,65 @@ const AnalyticsDashboard = () => {
 						/>
 					</div>
 
-					{/* Right side: dropdowns */}
-					<div className="flex flex-wrap gap-4">
-						<div className="flex flex-col gap-1">
-							<label className="text-xs text-gray-500 uppercase tracking-wide">Game</label>
-							<select
-								value={selectedGame}
-								onChange={(e) => setSelectedGame(e.target.value)}
-								className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300">
-								{GAMES.map((g) => (
-									<option key={g.id} value={g.id}>
-										{g.label}
-									</option>
-								))}
-							</select>
+					{/* Right side: filters in 2-row layout */}
+					<div className="flex flex-col gap-2">
+						{/* Row 1: Game and Time Range */}
+						<div className="flex gap-2">
+							<div className="flex flex-col gap-0.5">
+								<label className="text-[10px] text-gray-500 uppercase tracking-wide">Game</label>
+								<select
+									value={selectedGame}
+									onChange={(e) => setSelectedGame(e.target.value)}
+									className="w-[140px] px-2 py-1.5 rounded-md bg-white border border-gray-200 text-xs text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300">
+									{GAMES.map((g) => (
+										<option key={g.id} value={g.id}>
+											{g.label}
+										</option>
+									))}
+								</select>
+							</div>
+							<div className="flex flex-col gap-0.5">
+								<label className="text-[10px] text-gray-500 uppercase tracking-wide">Time Range</label>
+								<select
+									value={selectedRange}
+									onChange={(e) => setSelectedRange(e.target.value)}
+									className="w-[140px] px-2 py-1.5 rounded-md bg-white border border-gray-200 text-xs text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+									disabled={fromDate !== '' && toDate !== ''}>
+									{TIME_RANGES.map((r) => (
+										<option key={r.id} value={r.id}>
+											{r.label}
+										</option>
+									))}
+								</select>
+							</div>
 						</div>
-						<div className="flex flex-col gap-1">
-							<label className="text-xs text-gray-500 uppercase tracking-wide">Time Range</label>
-							<select
-								value={selectedRange}
-								onChange={(e) => setSelectedRange(e.target.value)}
-								className="px-3 py-2 rounded-lg bg-white border border-gray-200 text-sm text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300">
-								{TIME_RANGES.map((r) => (
-									<option key={r.id} value={r.id}>
-										{r.label}
-									</option>
-								))}
-							</select>
+
+						{/* Row 2: From Date, To Date, and Clear button */}
+						<div className="flex gap-2 items-center">
+							<span className="text-xs text-gray-600 font-medium">From:</span>
+							<input
+								type="date"
+								value={fromDate}
+								onChange={(e) => setFromDate(e.target.value)}
+								className="w-[108px] px-2 py-1.5 rounded-md bg-white border border-gray-200 text-xs text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+							/>
+							<span className="text-xs text-gray-600 font-medium">To:</span>
+							<input
+								type="date"
+								value={toDate}
+								onChange={(e) => setToDate(e.target.value)}
+								className="w-[108px] px-2 py-1.5 rounded-md bg-white border border-gray-200 text-xs text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+							/>
+							{(fromDate || toDate) && (
+								<button
+									onClick={() => {
+										setFromDate('');
+										setToDate('');
+									}}
+									className="px-2 py-1.5 rounded-md bg-gray-600 text-white text-xs shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 whitespace-nowrap">
+									Clear
+								</button>
+							)}
 						</div>
 					</div>
 				</div>
