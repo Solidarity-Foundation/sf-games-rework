@@ -43,21 +43,21 @@ const NewspaperGamePage = ({
 
             {/* Questions area */}
             <div className="px-4 py-4">
-              {/* Question 1 — large, two-column layout with image */}
-              <QuestionArticleLarge question={questions[0]} />
+              {/* Questions 1 & 2 — side by side on top row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div className="md:newspaper-column-rule md:pr-5">
+                  <QuestionArticleSmall question={questions[0]} />
+                </div>
+                <div className="md:pl-5 mt-6 md:mt-0">
+                  <QuestionArticleSmall question={questions[1]} />
+                </div>
+              </div>
 
               {/* Divider */}
               <div className="border-t border-foreground my-4" />
 
-              {/* Questions 2 & 3 — side by side */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-                <div className="md:newspaper-column-rule md:pr-5">
-                  <QuestionArticleSmall question={questions[1]} />
-                </div>
-                <div className="md:pl-5 mt-6 md:mt-0">
-                  <QuestionArticleSmall question={questions[2]} />
-                </div>
-              </div>
+              {/* Question 3 — full-width below */}
+              <QuestionArticleLarge question={questions[2]} />
 
               {/* Bottom rule */}
               <div className="border-t border-foreground mt-6 mb-4" />
