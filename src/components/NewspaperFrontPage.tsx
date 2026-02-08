@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import coverImage from "@/assets/posh-coverimage.jpg";
 
 const NewspaperFrontPage = () => {
+  const navigate = useNavigate();
   const today = new Date();
   const dateStr = today.toLocaleDateString("en-US", {
     weekday: "long",
@@ -124,7 +126,10 @@ const NewspaperFrontPage = () => {
 
               {/* Start Game Button */}
               <div className="flex justify-center pb-4">
-                <button className="newspaper-headline text-lg sm:text-xl font-bold tracking-wider uppercase px-10 py-3 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200">
+                <button
+                  onClick={() => navigate("/game")}
+                  className="newspaper-headline text-lg sm:text-xl font-bold tracking-wider uppercase px-10 py-3 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200"
+                >
                   Start Game
                 </button>
               </div>
