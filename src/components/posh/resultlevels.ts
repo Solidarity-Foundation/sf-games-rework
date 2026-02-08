@@ -47,11 +47,11 @@ export function calculatePoshLevelWithConfig(total: number, config: PoshLevelCon
 		},
 	};
 
-	if (total > thresholds.champion) {
+	if (total >= thresholds.champion) {
 		return levels.champion;
 	} else if (total >= thresholds.leader) {
 		return levels.leader;
-	} else if (total > thresholds.learner) {
+	} else if (total >= thresholds.learner) {
 		return levels.learner;
 	} else {
 		return levels.beginner;
