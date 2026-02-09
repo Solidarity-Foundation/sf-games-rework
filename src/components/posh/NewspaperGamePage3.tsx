@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import solidarityLogo from '@/assets/solidarity-logo-only.png';
+import question8Image from '@/assets/question8-posh.webp';
+import question9Image from '@/assets/question9-posh.webp';
+import question10Image from '@/assets/question10-posh.webp';
 import gameData from '@/components/posh/gamedata.json';
 import { calculatePoshLevelWithConfig } from '@/components/posh/resultlevels';
 import { saveGameSession } from '@/lib/db';
@@ -13,10 +16,7 @@ interface NewspaperGamePage3Props {
 	totalQuestions?: number;
 }
 
-const NewspaperGamePage3 = ({
-	currentPage = 3,
-	totalQuestions = 9,
-}: NewspaperGamePage3Props) => {
+const NewspaperGamePage3 = ({ currentPage = 3, totalQuestions = 9 }: NewspaperGamePage3Props) => {
 	const navigate = useNavigate();
 	const questionsPerPage = 3;
 	const totalPages = Math.ceil(totalQuestions / questionsPerPage);
@@ -60,7 +60,9 @@ const NewspaperGamePage3 = ({
 			try {
 				const stored = localStorage.getItem(key);
 				if (stored) Object.assign(combined, JSON.parse(stored));
-			} catch { /* ignore */ }
+			} catch {
+				/* ignore */
+			}
 		});
 		return combined;
 	})();
@@ -88,7 +90,11 @@ const NewspaperGamePage3 = ({
 						<div className="border border-foreground">
 							{/* Masthead */}
 							<div className="flex items-center justify-between gap-2 border-b border-foreground mx-4 pt-4 pb-2">
-								<img src={solidarityLogo} alt="Solidarity Foundation" className="h-10 sm:h-12 md:h-14 w-auto flex-shrink-0" />
+								<img
+									src={solidarityLogo}
+									alt="Solidarity Foundation"
+									className="h-10 sm:h-12 md:h-14 w-auto flex-shrink-0"
+								/>
 								<h1 className="newspaper-masthead text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-wide leading-none text-foreground text-center flex-1">
 									{lang === 'kan' ? 'ಪೋಶ್ ಪ್ರಗ್ನೆ' : 'PoSH Awareness'}
 								</h1>
@@ -118,6 +124,7 @@ const NewspaperGamePage3 = ({
 									<div className="md:newspaper-column-rule md:pr-5">
 										<QuestionArticleSmall
 											question={questions[0]}
+											image={question8Image}
 											lang={lang}
 											selectedAnswer={selectedAnswers[questions[0].id] ?? null}
 											isAnswered={selectedAnswers[questions[0].id] !== undefined}
@@ -127,6 +134,7 @@ const NewspaperGamePage3 = ({
 									<div className="md:pl-5 mt-6 md:mt-0">
 										<QuestionArticleSmall
 											question={questions[1]}
+											image={question9Image}
 											lang={lang}
 											selectedAnswer={selectedAnswers[questions[1].id] ?? null}
 											isAnswered={selectedAnswers[questions[1].id] !== undefined}
@@ -141,6 +149,7 @@ const NewspaperGamePage3 = ({
 								{/* Question 10 — full-width below */}
 								<QuestionArticleLarge
 									question={questions[2]}
+									image={question10Image}
 									lang={lang}
 									selectedAnswer={selectedAnswers[questions[2].id] ?? null}
 									isAnswered={selectedAnswers[questions[2].id] !== undefined}
@@ -309,7 +318,7 @@ const OptionList = ({
 	);
 };
 
-const QuestionArticleLarge = ({ question, lang, selectedAnswer, isAnswered, onSelect }: QuestionProps) => (
+const QuestionArticleLarge = ({ question, image, lang, selectedAnswer, isAnswered, onSelect }: QuestionProps) => (
 	<div>
 		<h2 className="newspaper-headline text-2xl sm:text-3xl font-bold leading-tight text-foreground mb-3">
 			{lang === 'kan' ? question.title_kan : question.title}
@@ -319,9 +328,13 @@ const QuestionArticleLarge = ({ question, lang, selectedAnswer, isAnswered, onSe
 		<div className="grid grid-cols-1 md:grid-cols-12 gap-0">
 			{/* Left: image only */}
 			<div className="md:col-span-5 md:newspaper-column-rule md:pr-5">
-				<div className="border border-foreground bg-newspaper-aged w-full aspect-[16/9] flex items-center justify-center">
-					<span className="text-xs text-muted-foreground italic tracking-wide">— Image —</span>
-				</div>
+				{image ? (
+					<img src={image} alt="" className="w-full aspect-[16/9] object-cover border border-black" />
+				) : (
+					<div className="border border-foreground bg-newspaper-aged w-full aspect-[16/9] flex items-center justify-center">
+						<span className="text-xs text-muted-foreground italic tracking-wide">— Image —</span>
+					</div>
+				)}
 			</div>
 
 			{/* Right: description + question + options */}

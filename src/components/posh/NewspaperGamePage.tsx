@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
-import question1Image from '@/assets/question1-posh.jpg';
-import question2Image from '@/assets/question2-posh.png';
+import question1Image from '@/assets/question1-posh.webp';
+import question2Image from '@/assets/question2-posh.webp';
+import question3Image from '@/assets/question3-posh.webp';
 import solidarityLogo from '@/assets/solidarity-logo-only.png';
 import gameData from '@/components/posh/gamedata.json';
 
@@ -87,7 +88,11 @@ const NewspaperGamePage = ({ currentPage = 1, totalQuestions = 9 }: NewspaperGam
 						<div className="border border-foreground">
 							{/* Masthead */}
 							<div className="flex items-center justify-between gap-2 border-b border-foreground mx-4 pt-4 pb-2">
-								<img src={solidarityLogo} alt="Solidarity Foundation" className="h-10 sm:h-12 md:h-14 w-auto flex-shrink-0" />
+								<img
+									src={solidarityLogo}
+									alt="Solidarity Foundation"
+									className="h-10 sm:h-12 md:h-14 w-auto flex-shrink-0"
+								/>
 								<h1 className="newspaper-masthead text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-wide leading-none text-foreground text-center flex-1">
 									{lang === 'kan' ? 'ಪೋಶ್ ಪ್ರಗ್ನೆ' : 'PoSH Awareness'}
 								</h1>
@@ -142,6 +147,7 @@ const NewspaperGamePage = ({ currentPage = 1, totalQuestions = 9 }: NewspaperGam
 								{/* Question 3 — full-width below */}
 								<QuestionArticleLarge
 									question={questions[2]}
+									image={question3Image}
 									lang={lang}
 									selectedAnswer={selectedAnswers[questions[2].id] ?? null}
 									isAnswered={selectedAnswers[questions[2].id] !== undefined}
@@ -292,7 +298,7 @@ const OptionList = ({
 	);
 };
 
-const QuestionArticleLarge = ({ question, lang, selectedAnswer, isAnswered, onSelect }: QuestionProps) => (
+const QuestionArticleLarge = ({ question, image, lang, selectedAnswer, isAnswered, onSelect }: QuestionProps) => (
 	<div>
 		<h2 className="newspaper-headline text-2xl sm:text-3xl font-bold leading-tight text-foreground mb-3">
 			{lang === 'kan' ? question.title_kan : question.title}
@@ -302,9 +308,13 @@ const QuestionArticleLarge = ({ question, lang, selectedAnswer, isAnswered, onSe
 		<div className="grid grid-cols-1 md:grid-cols-12 gap-0">
 			{/* Left: image only */}
 			<div className="md:col-span-5 md:newspaper-column-rule md:pr-5">
-				<div className="border border-foreground bg-newspaper-aged w-full aspect-[16/9] flex items-center justify-center">
-					<span className="text-xs text-muted-foreground italic tracking-wide">— Image —</span>
-				</div>
+				{image ? (
+					<img src={image} alt="" className="w-full aspect-[16/9] object-cover border border-black" />
+				) : (
+					<div className="border border-foreground bg-newspaper-aged w-full aspect-[16/9] flex items-center justify-center">
+						<span className="text-xs text-muted-foreground italic tracking-wide">— Image —</span>
+					</div>
+				)}
 			</div>
 
 			{/* Right: description + question + options */}

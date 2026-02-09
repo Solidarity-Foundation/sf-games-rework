@@ -123,7 +123,7 @@ const NewspaperFrontPage = () => {
 											<p className="mb-2 indent-4">
 												{lang === 'kan'
 													? 'ಲೈಂಗಿಕ ಕಿರುಕುಳ ತಡೆ (PoSH) ಕಾಯ್ದೆ, 2013, ಭಾರತದಲ್ಲಿ ಮಹಿಳೆಯರಿಗೆ ಸುರಕ್ಷಿತ ಕೆಲಸದ ವಾತಾವರಣವನ್ನು ಒದಗಿಸುವ ಗುರಿಯನ್ನು ಹೊಂದಿರುವ ಒಂದು ಹೆಗ್ಗುರುತು ಶಾಸನವಾಗಿದೆ. 10 ಅಥವಾ ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು ಉದ್ಯೋಗಿಗಳನ್ನು ಹೊಂದಿರುವ ಪ್ರತಿಯೊಂದು ಸಂಸ್ಥೆಯು ಆಂತರಿಕ ದೂರು ಸಮಿತಿಯನ್ನು ರಚಿಸುವುದು ಕಡ್ಡಾಯವಾಗಿದೆ.'
-													: 'The Prevention of Sexual Harassment (PoSH) Act, 2013, is a landmark legislation in India that aims to provide a safe working environment for women. Every organization with 10 or more employees is required to constitute an Internal Complaints Committee'}
+													: 'The Prevention of Sexual Harassment (PoSH) Act, 2013, is a landmark legislation in India that aims to provide a safe working environment for women. Every organization with 10 or more employees is required to constitute an Internal Complaints Committee.'}
 											</p>
 											<p className="mb-2 indent-4">
 												{lang === 'kan'

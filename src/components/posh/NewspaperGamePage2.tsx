@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import solidarityLogo from '@/assets/solidarity-logo-only.png';
+import question4Image from '@/assets/question4-posh.webp';
+import question5Image from '@/assets/question5-posh.webp';
+import question6Image from '@/assets/question6-posh.webp';
+import question7Image from '@/assets/question7-posh.webp';
 import gameData from '@/components/posh/gamedata.json';
 
 type Lang = 'en' | 'kan';
@@ -11,10 +15,7 @@ interface NewspaperGamePage2Props {
 	totalQuestions?: number;
 }
 
-const NewspaperGamePage2 = ({
-	currentPage = 2,
-	totalQuestions = 10,
-}: NewspaperGamePage2Props) => {
+const NewspaperGamePage2 = ({ currentPage = 2, totalQuestions = 10 }: NewspaperGamePage2Props) => {
 	const navigate = useNavigate();
 	const questionsPerPage = 4;
 	const totalPages = Math.ceil(totalQuestions / questionsPerPage);
@@ -58,7 +59,9 @@ const NewspaperGamePage2 = ({
 			try {
 				const stored = localStorage.getItem(key);
 				if (stored) Object.assign(combined, JSON.parse(stored));
-			} catch { /* ignore */ }
+			} catch {
+				/* ignore */
+			}
 		});
 		return combined;
 	})();
@@ -85,7 +88,11 @@ const NewspaperGamePage2 = ({
 						<div className="border border-foreground">
 							{/* Masthead */}
 							<div className="flex items-center justify-between gap-2 border-b border-foreground mx-4 pt-4 pb-2">
-								<img src={solidarityLogo} alt="Solidarity Foundation" className="h-10 sm:h-12 md:h-14 w-auto flex-shrink-0" />
+								<img
+									src={solidarityLogo}
+									alt="Solidarity Foundation"
+									className="h-10 sm:h-12 md:h-14 w-auto flex-shrink-0"
+								/>
 								<h1 className="newspaper-masthead text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-wide leading-none text-foreground text-center flex-1">
 									{lang === 'kan' ? 'ಪೋಶ್ ಪ್ರಗ್ನೆ' : 'PoSH Awareness'}
 								</h1>
@@ -112,6 +119,7 @@ const NewspaperGamePage2 = ({
 									<div className="md:newspaper-column-rule md:pr-5">
 										<QuestionArticle
 											question={questions[0]}
+											image={question4Image}
 											lang={lang}
 											selectedAnswer={selectedAnswers[questions[0].id] ?? null}
 											isAnswered={selectedAnswers[questions[0].id] !== undefined}
@@ -121,6 +129,7 @@ const NewspaperGamePage2 = ({
 									<div className="md:pl-5 mt-6 md:mt-0">
 										<QuestionArticle
 											question={questions[1]}
+											image={question5Image}
 											lang={lang}
 											selectedAnswer={selectedAnswers[questions[1].id] ?? null}
 											isAnswered={selectedAnswers[questions[1].id] !== undefined}
@@ -136,6 +145,7 @@ const NewspaperGamePage2 = ({
 									<div className="md:newspaper-column-rule md:pr-5">
 										<QuestionArticle
 											question={questions[2]}
+											image={question6Image}
 											lang={lang}
 											selectedAnswer={selectedAnswers[questions[2].id] ?? null}
 											isAnswered={selectedAnswers[questions[2].id] !== undefined}
@@ -145,6 +155,7 @@ const NewspaperGamePage2 = ({
 									<div className="md:pl-5 mt-6 md:mt-0">
 										<QuestionArticle
 											question={questions[3]}
+											image={question7Image}
 											lang={lang}
 											selectedAnswer={selectedAnswers[questions[3].id] ?? null}
 											isAnswered={selectedAnswers[questions[3].id] !== undefined}
@@ -245,6 +256,7 @@ interface QuestionData {
 
 interface QuestionProps {
 	question: QuestionData;
+	image?: string;
 	lang: Lang;
 	selectedAnswer: number | null;
 	isAnswered: boolean;
@@ -296,16 +308,20 @@ const OptionList = ({
 	);
 };
 
-const QuestionArticle = ({ question, lang, selectedAnswer, isAnswered, onSelect }: QuestionProps) => (
+const QuestionArticle = ({ question, image, lang, selectedAnswer, isAnswered, onSelect }: QuestionProps) => (
 	<div>
 		<h3 className="newspaper-headline text-xl sm:text-2xl font-bold leading-tight text-foreground mb-2">
 			{lang === 'kan' ? question.title_kan : question.title}
 		</h3>
 		<div className="border-t border-foreground mb-3" />
 
-		<div className="border border-foreground bg-newspaper-aged w-full aspect-[16/9] flex items-center justify-center mb-3">
-			<span className="text-xs text-muted-foreground italic tracking-wide">— Image —</span>
-		</div>
+		{image ? (
+			<img src={image} alt="" className="w-full aspect-[16/9] object-cover mb-3 border border-black" />
+		) : (
+			<div className="border border-foreground bg-newspaper-aged w-full aspect-[16/9] flex items-center justify-center mb-3">
+				<span className="text-xs text-muted-foreground italic tracking-wide">— Image —</span>
+			</div>
+		)}
 
 		<div className="text-sm leading-relaxed text-justify-newspaper text-muted-foreground">
 			<p className="mb-2">{lang === 'kan' ? question.description_kan : question.description}</p>
