@@ -65,7 +65,7 @@ const NewspaperResultsPage = () => {
 							{/* Masthead */}
 							<div className="relative flex items-center justify-center border-b border-foreground mx-4 pt-4 pb-2">
 								<img src={solidarityLogo} alt="Solidarity Foundation" className="absolute left-0 h-12 sm:h-14 w-auto" />
-								<h1 className="newspaper-masthead text-5xl sm:text-6xl md:text-7xl tracking-wide leading-none text-foreground">
+								<h1 className="newspaper-masthead text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-wide leading-none text-foreground">
 									{lang === 'kan' ? 'ಪೋಶ್ ಪ್ರಗ್ನೆ' : 'PoSH Awareness'}
 								</h1>
 								<div className="absolute right-0 flex flex-col sm:flex-row gap-1 newspaper-body text-xs">
