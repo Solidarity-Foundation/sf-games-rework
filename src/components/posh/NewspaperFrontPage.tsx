@@ -52,16 +52,16 @@ const NewspaperFrontPage = () => {
 
 							{/* Masthead */}
 							<div className="border-t-2 border-b border-foreground mx-4 pt-3 pb-2">
-								<div className="relative flex items-center justify-center">
+								<div className="flex items-center justify-between gap-2">
 									<img
 										src={solidarityLogo}
 										alt="Solidarity Foundation"
-										className="absolute left-0 h-12 sm:h-14 w-auto"
+										className="h-10 sm:h-12 md:h-14 w-auto flex-shrink-0"
 									/>
-									<h1 className="newspaper-masthead text-5xl sm:text-6xl md:text-7xl tracking-wide leading-none text-foreground">
+									<h1 className="newspaper-masthead text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide leading-none text-foreground text-center flex-1">
 										{lang === 'kan' ? 'ಪೋಶ್ ಪ್ರಗ್ನೆ' : 'PoSH Awareness'}
 									</h1>
-									<div className="absolute right-0 flex flex-col sm:flex-row gap-1 newspaper-body text-xs">
+									<div className="flex flex-col sm:flex-row gap-1 newspaper-body text-xs flex-shrink-0">
 										<button
 											onClick={() => setLang('en')}
 											className={`px-2 py-1 border border-foreground transition-colors ${lang === 'en' ? 'bg-foreground text-background' : 'bg-background text-foreground hover:bg-foreground/10'}`}>
@@ -119,7 +119,7 @@ const NewspaperFrontPage = () => {
 										</div>
 
 										{/* Decorative filler text styled as newspaper columns */}
-										<div className="columns-2 gap-5 text-xs leading-relaxed text-justify-newspaper text-muted-foreground mt-2">
+										<div className="columns-2 gap-5 text-sm sm:text-base leading-relaxed text-justify-newspaper text-foreground mt-2">
 											<p className="mb-2 indent-4">
 												{lang === 'kan'
 													? 'ಲೈಂಗಿಕ ಕಿರುಕುಳ ತಡೆ (PoSH) ಕಾಯ್ದೆ, 2013, ಭಾರತದಲ್ಲಿ ಮಹಿಳೆಯರಿಗೆ ಸುರಕ್ಷಿತ ಕೆಲಸದ ವಾತಾವರಣವನ್ನು ಒದಗಿಸುವ ಗುರಿಯನ್ನು ಹೊಂದಿರುವ ಒಂದು ಹೆಗ್ಗುರುತು ಶಾಸನವಾಗಿದೆ. 10 ಅಥವಾ ಅದಕ್ಕಿಂತ ಹೆಚ್ಚು ಉದ್ಯೋಗಿಗಳನ್ನು ಹೊಂದಿರುವ ಪ್ರತಿಯೊಂದು ಸಂಸ್ಥೆಯು ಆಂತರಿಕ ದೂರು ಸಮಿತಿಯನ್ನು ರಚಿಸುವುದು ಕಡ್ಡಾಯವಾಗಿದೆ.'
@@ -142,12 +142,12 @@ const NewspaperFrontPage = () => {
 												{lang === 'kan' ? 'ಆಟದ ಗುರಿ' : 'Aim of the Game'}
 											</h3>
 											<div className="border-t border-foreground mb-2" />
-											<p className="newspaper-body text-xs sm:text-sm leading-relaxed text-justify-newspaper text-foreground mb-3">
+											<p className="newspaper-body text-sm sm:text-base leading-relaxed text-justify-newspaper text-foreground mb-3">
 												{lang === 'kan'
 													? 'ಈ ತತ್ವಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು ನಿಮ್ಮನ್ನು ಮಾತ್ರವಲ್ಲದೆ ನಿಮ್ಮ ಸಹೋದ್ಯೋಗಿಗಳನ್ನು ಸಹ ರಕ್ಷಿಸಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ ಮತ್ತು ಪ್ರತಿಯೊಬ್ಬರೂ ಸುರಕ್ಷಿತ, ಗೌರವಾನ್ವಿತ ಮತ್ತು ಮೌಲ್ಯಯುತವೆಂದು ಭಾವಿಸುವ ಕೆಲಸದ ಸ್ಥಳವನ್ನು ನಿರ್ಮಿಸಲು ಕೊಡುಗೆ ನೀಡುತ್ತದೆ.'
 													: 'Understanding these principles helps protect not only yourself but also your colleagues, and contributes to building a workplace where everyone can feel safe, respected, and valued.'}
 											</p>
-											<p className="newspaper-body text-xs sm:text-sm leading-relaxed text-justify-newspaper text-foreground mb-3">
+											<p className="newspaper-body text-sm sm:text-base leading-relaxed text-justify-newspaper text-foreground mb-3">
 												{lang === 'kan'
 													? 'ನಿಮ್ಮ ಸಮಯ ತೆಗೆದುಕೊಳ್ಳಿ, ಪ್ರತಿಯೊಂದು ಸನ್ನಿವೇಶದ ಮೂಲಕ ಯೋಚಿಸಿ, ಮತ್ತು ನೈಜ ಸಂದರ್ಭಗಳಲ್ಲಿ, ಸಂದೇಹವಿದ್ದಾಗ, ಯಾವಾಗಲೂ ಸುರಕ್ಷತೆಯ ಬದಿಯಲ್ಲಿ ತಪ್ಪು ಮಾಡಿ ಮತ್ತು ಸರಿಯಾದ ವರದಿ ಮಾಡುವ ವಿಧಾನಗಳನ್ನು ಅನುಸರಿಸಿ ಎಂಬುದನ್ನು ನೆನಪಿಡಿ.'
 													: 'Take your time, think through each scenario, and remember that in real situations, when in doubt, always err on the side of safety and follow proper reporting procedures.'}
@@ -170,13 +170,13 @@ const NewspaperFrontPage = () => {
 												{lang === 'kan' ? 'ಆಟದ ನಿಯಮಗಳು' : 'Rules of the Game'}
 											</h3>
 											<div className="border-t border-foreground mb-2" />
-											<p className="newspaper-body text-xs sm:text-sm leading-relaxed text-foreground mb-1">
+											<p className="newspaper-body text-sm sm:text-base leading-relaxed text-foreground mb-1">
 												{lang === 'kan' ? 'ನೀವು 10 ಅಂಕಗಳೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸಿಸುತ್ತೀರಿ.' : 'You start with 10 points.'}
 											</p>
-											<p className="newspaper-body text-xs sm:text-sm leading-relaxed text-foreground mb-1">
+											<p className="newspaper-body text-sm sm:text-base leading-relaxed text-foreground mb-1">
 												{lang === 'kan' ? 'ಸರಿಯಾದ ಉತ್ತರ : +1 ಅಂಕ.' : 'Correct answer: +1 point.'}
 											</p>
-											<p className="newspaper-body text-xs sm:text-sm leading-relaxed text-foreground">
+											<p className="newspaper-body text-sm sm:text-base leading-relaxed text-foreground">
 												{lang === 'kan' ? 'ತಪ್ಪಾದ ಉತ್ತರ : −1 ಅಂಕ.' : 'Wrong answer: −1 point.'}
 											</p>
 										</div>

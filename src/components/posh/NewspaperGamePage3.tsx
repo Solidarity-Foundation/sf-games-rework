@@ -87,12 +87,12 @@ const NewspaperGamePage3 = ({
 					<div className="border-2 border-foreground p-1">
 						<div className="border border-foreground">
 							{/* Masthead */}
-							<div className="relative flex items-center justify-center border-b border-foreground mx-4 pt-4 pb-2">
-								<img src={solidarityLogo} alt="Solidarity Foundation" className="absolute left-0 h-12 sm:h-14 w-auto" />
-								<h1 className="newspaper-masthead text-5xl sm:text-6xl md:text-7xl tracking-wide leading-none text-foreground">
+							<div className="flex items-center justify-between gap-2 border-b border-foreground mx-4 pt-4 pb-2">
+								<img src={solidarityLogo} alt="Solidarity Foundation" className="h-10 sm:h-12 md:h-14 w-auto flex-shrink-0" />
+								<h1 className="newspaper-masthead text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-wide leading-none text-foreground text-center flex-1">
 									{lang === 'kan' ? 'ಪೋಶ್ ಪ್ರಗ್ನೆ' : 'PoSH Awareness'}
 								</h1>
-								<div className="absolute right-0 flex flex-col sm:flex-row gap-1 newspaper-body text-xs">
+								<div className="flex flex-col sm:flex-row gap-1 newspaper-body text-xs flex-shrink-0">
 									<button
 										onClick={() => setLang('en')}
 										className={`px-2 py-1 border border-foreground transition-colors ${lang === 'en' ? 'bg-foreground text-background' : 'bg-background text-foreground hover:bg-foreground/10'}`}>
@@ -180,14 +180,14 @@ const NewspaperGamePage3 = ({
 								</div>
 
 								{/* Navigation Buttons */}
-								<div className="border-t border-foreground pt-4 pb-2 flex justify-between items-center">
+								<div className="border-t border-foreground pt-4 pb-2 flex justify-between items-center gap-2">
 									<button
 										onClick={() => navigate('/posh/page-2')}
-										className="newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200">
+										className="newspaper-headline text-xs sm:text-sm font-bold tracking-wider uppercase px-3 sm:px-6 py-2 border-2 border-foreground bg-foreground text-primary-foreground hover:bg-background hover:text-foreground transition-colors duration-200">
 										{lang === 'kan' ? 'ಹಿಂದಿನ ಪುಟ' : 'Previous Page'}
 									</button>
 
-									<p className="newspaper-body text-xs text-muted-foreground tracking-widest uppercase">
+									<p className="newspaper-body text-xs text-muted-foreground tracking-widest uppercase text-center flex-shrink-0">
 										Page {currentPage} of {totalPages}
 									</p>
 
@@ -212,7 +212,7 @@ const NewspaperGamePage3 = ({
 											});
 											navigate('/posh/results');
 										}}
-										className={`newspaper-headline text-sm sm:text-base font-bold tracking-wider uppercase px-6 py-2 border-2 border-foreground transition-colors duration-200 ${allAnswered ? 'bg-foreground text-primary-foreground hover:bg-background hover:text-foreground' : 'bg-foreground/40 text-primary-foreground cursor-not-allowed'}`}>
+										className={`newspaper-headline text-xs sm:text-sm font-bold tracking-wider uppercase px-3 sm:px-6 py-2 border-2 border-foreground transition-colors duration-200 ${allAnswered ? 'bg-foreground text-primary-foreground hover:bg-background hover:text-foreground' : 'bg-foreground/40 text-primary-foreground cursor-not-allowed'}`}>
 										{lang === 'kan' ? 'ಫಲಿತಾಂಶಗಳನ್ನು ನೋಡಿ' : 'See Results'}
 									</button>
 								</div>
