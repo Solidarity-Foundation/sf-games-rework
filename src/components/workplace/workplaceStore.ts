@@ -48,7 +48,7 @@ export const useWorkplaceStore = create<WorkplaceGameState>((set) => ({
     set((state) => ({
       completedRooms: [...state.completedRooms, roomId],
       answers: { ...state.answers, [questionId]: answerIndex },
-      score: state.score + points,
+      score: state.score + (points > 0 ? 1 : -1),
       currentRoomIndex: state.currentRoomIndex + 1,
     })),
 }));

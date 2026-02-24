@@ -4,6 +4,70 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes shake {
+	0%, 100% { transform: translateX(0); }
+	15%       { transform: translateX(-8px); }
+	30%       { transform: translateX(8px); }
+	45%       { transform: translateX(-6px); }
+	60%       { transform: translateX(6px); }
+	75%       { transform: translateX(-3px); }
+	90%       { transform: translateX(3px); }
+}
+.animate-shake {
+	animation: shake 0.5s ease-in-out;
+}
+
+@keyframes fade-in-up {
+	0%   { opacity: 0; transform: translateY(10px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+	animation: fade-in-up 0.4s ease-out;
+}
+
+@keyframes image-reveal {
+	0%   { opacity: 0; transform: scale(1.04); }
+	100% { opacity: 1; transform: scale(1); }
+}
+.animate-image-reveal {
+	animation: image-reveal 0.45s ease-out;
+}
+
+@keyframes shake-loop {
+	0%, 100% { transform: translateX(0); }
+	20%      { transform: translateX(-5px); }
+	40%      { transform: translateX(5px); }
+	60%      { transform: translateX(-3px); }
+	80%      { transform: translateX(3px); }
+}
+.animate-shake-loop {
+	animation: shake-loop 0.55s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-green {
+	0%, 100% { transform: scale(1); }
+	50%      { transform: scale(1.018); }
+}
+.animate-pulse-glow-green {
+	animation: pulse-glow-green 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-scale {
+	0%,
+	100% {
+		opacity: 0.5;
+		transform: scale(0.9);
+	}
+	50% {
+		opacity: 0.85;
+		transform: scale(1.01);
+	}
+}
+.animate-pulse-scale {
+	animation: pulse-scale 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	transform-origin: center;
+}
+
 @layer base {
 	:root {
 		--background: 39 32% 95%;

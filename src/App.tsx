@@ -15,6 +15,9 @@ import InclusionDiversity from "./pages/inclusiondiversity/InclusionDiversity";
 import FinancialLiteracy from "./pages/financiallit/FinancialLiteracy";
 import WorkplaceEtiquette from "./pages/workplaceetiquette/WorkplaceEtiquette";
 import WorkplaceGame from "./pages/workplaceetiquette/WorkplaceGame";
+import WorkplaceQuestion from "./components/workplace/WorkplaceQuestion";
+import WorkplaceResultsPage from "./pages/workplaceetiquette/WorkplaceResults";
+import WorkplaceReviewPage from "./pages/workplaceetiquette/WorkplaceReview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,9 @@ const App = () => (
           <Route path="/financial-literacy" element={<FinancialLiteracy />} />
           <Route path="/workplace-etiquette" element={<WorkplaceEtiquette />} />
           <Route path="/workplace-etiquette/game" element={<WorkplaceGame />} />
+          <Route path="/workplace-etiquette/question/:roomId" element={<WorkplaceQuestion />} />
+          <Route path="/workplace-etiquette/results" element={<WorkplaceResultsPage />} />
+          <Route path="/workplace-etiquette/review" element={<WorkplaceReviewPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

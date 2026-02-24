@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import poshImage from '@/assets/stop-sexual-harassment.jpg';
+import workplaceImage from '@/assets/tbf-logo.png';
 
 interface GameCard {
 	id: string;
@@ -30,8 +31,9 @@ const games: GameCard[] = [
 		id: 'workplace-etiquette',
 		title: 'Workplace Etiquette',
 		path: '/workplace-etiquette',
-		labelColor: 'bg-[#d4bfee]',
-		imageBg: 'bg-gradient-to-br from-blue-100 via-sky-100 to-purple-200',
+		labelColor: 'bg-[#fbd0b8]',
+		imageBg: 'bg-gradient-to-br from-orange-100 via-amber-50 to-orange-200',
+		image: workplaceImage,
 	},
 	{
 		id: 'posh',

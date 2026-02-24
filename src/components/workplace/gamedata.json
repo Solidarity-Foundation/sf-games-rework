@@ -2,6 +2,12 @@
 	"questions": [
 		{
 			"id": 1,
+			"dialogue": "Raj: Yaake guru, nan office-ge barthini antha helthe ...",
+			"dialogue_kan": "ಯಾಕೆ ಗುರು, ನಾನ್ ಆಫೀಸ್-ಗೆ ಬರ್ತೀನಿ ಅಂತ ಹೇಳ್ತೆ ...",
+			"reaction_correct": "Raj: Thank you for asking!\nMohan: That is interesting! Let me learn.",
+			"reaction_correct_kan": "ರಾಜ್: ಕೇಳಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದ!\nಮೋಹನ್: ಅದು ಆಸಕ್ತಿದಾಯಕ! ನಾನು ಕಲಿಯುತ್ತೇನೆ.",
+			"reaction_wrong": "Raj is thinking: Why won't they listen?\nMohan is thinking: Maybe I should just ignore him.",
+			"reaction_wrong_kan": "ರಾಜ್ ಯೋಚಿಸುತ್ತಿದ್ದಾರೆ: ಅವರು ಯಾಕೆ ಕೇಳಲ್ಲ?\nಮೋಹನ್ ಯೋಚಿಸುತ್ತಿದ್ದಾರೆ: ನಾನು ಅವರನ್ನು ನಿರ್ಲಕ್ಷಿಸಬೇಕೇ?",
 			"title": "Multicultural Communication and Language Barriers",
 			"title_kan": "ಬಹುಸಂಸ್ಕೃತಿ ಸಂವಹನ ಮತ್ತು ಭಾಷಾ ಅಡೆತಡೆಗಳು",
 			"description": "Raj is in a multicultural team and uses certain local slang words in unofficial conversations that others don’t understand.",
@@ -41,6 +47,12 @@
 		},
 		{
 			"id": 2,
+			"dialogue": "Sheila is sharing key project updates with the team. Prakash has his arms crossed and is looking away.",
+			"dialogue_kan": "ಶೀಲಾ ತಂಡದೊಂದಿಗೆ ಪ್ರಮುಖ ಪ್ರಾಜೆಕ್ಟ್ ಅಪ್‌ಡೇಟ್‌ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತಿದ್ದಾರೆ. ಪ್ರಕಾಶ್ ತಮ್ಮ ತೋಳುಗಳನ್ನು ಮಡಚಿ ಬೇರೆಡೆ ನೋಡುತ್ತಿದ್ದಾರೆ.",
+			"reaction_correct": "Sheila: Prakash, I'd love to hear your perspective. Is there something you'd like to add or discuss?\n(Acknowledging a disengaged team member and inviting them to contribute helps re-engage them respectfully.)",
+			"reaction_correct_kan": "ಶೀಲಾ: ಪ್ರಕಾಶ್, ನಿಮ್ಮ ಅಭಿಪ್ರಾಯ ಕೇಳಲು ನನಗೆ ಇಷ್ಟ. ನೀವು ಸೇರಿಸಲು ಅಥವಾ ಚರ್ಚಿಸಲು ಏನಾದರೂ ಇದೆಯೇ?\n(ನಿರಾಸಕ್ತ ತಂಡದ ಸದಸ್ಯರನ್ನು ಗುರುತಿಸಿ ಕೊಡುಗೆ ನೀಡಲು ಆಹ್ವಾನಿಸುವುದು ಅವರನ್ನು ಗೌರವಯುತವಾಗಿ ಮರು-ತೊಡಗಿಸಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.)",
+			"reaction_wrong": "Sheila continues the meeting without addressing Prakash.\n(Misreading or ignoring body language can leave team members feeling unheard and further disengaged.)",
+			"reaction_wrong_kan": "ಶೀಲಾ ಪ್ರಕಾಶ್‌ರನ್ನು ಗಮನಿಸದೆ ಸಭೆ ಮುಂದುವರಿಸುತ್ತಾರೆ.\n(ದೇಹ ಭಾಷೆಯನ್ನು ತಪ್ಪಾಗಿ ಅರ್ಥೈಸುವುದು ಅಥವಾ ನಿರ್ಲಕ್ಷಿಸುವುದು ತಂಡದ ಸದಸ್ಯರಿಗೆ ಕೇಳಿಸಿಕೊಳ್ಳದ ಭಾವನೆ ಮೂಡಿಸಬಹುದು.)",
 			"title": "Reading Body Language Signals",
 			"title_kan": "ದೇಹ ಭಾಷಾ ಸಂಕೇತಗಳನ್ನು ಓದುವುದು",
 			"description": "During a conversation, someone keeps their arms folded and avoids eye contact.",
@@ -80,6 +92,12 @@
 		},
 		{
 			"id": 3,
+			"dialogue": "Meena: (stands up) Hi Arjun, I'm Meena. Welcome to the team!",
+			"dialogue_kan": "ಮೀನಾ: (ಎದ್ದು ನಿಲ್ಲುತ್ತಾರೆ) ಹಾಯ್ ಅರ್ಜುನ್, ನಾನು ಮೀನಾ. ತಂಡಕ್ಕೆ ಸ್ವಾಗತ!",
+			"reaction_correct": "Arjun: Thank you, Meena! It's great to be here.\n(Standing up and offering a handshake creates an immediate sense of warmth and professionalism, making the new colleague feel valued.)",
+			"reaction_correct_kan": "ಅರ್ಜುನ್: ಧನ್ಯವಾದ, ಮೀನಾ! ಇಲ್ಲಿರಲು ತುಂಬಾ ಸಂತೋಷ.\n(ಎದ್ದು ನಿಂತು ಕೈ ಕುಲುಕುವ ಸರಳ ಸನ್ನೆ ತಕ್ಷಣದ ಬೆಚ್ಚಗಿನ ಮತ್ತು ವೃತ್ತಿಪರ ಭಾವನೆಯನ್ನು ಮೂಡಿಸುತ್ತದೆ, ಹೊಸ ಸಹೋದ್ಯೋಗಿಗೆ ಮೌಲ್ಯಯುತ ಎನಿಸುತ್ತದೆ.)",
+			"reaction_wrong": "Arjun thinks: Nobody even looked up. This is going to be a long first day.\n(Failing to greet a new colleague respectfully can create a cold and unwelcoming first impression.)",
+			"reaction_wrong_kan": "ಅರ್ಜುನ್ ಯೋಚಿಸುತ್ತಾರೆ: ಯಾರೂ ತಲೆ ಎತ್ತಲಿಲ್ಲ. ಮೊದಲ ದಿನವೇ ಕಷ್ಟವಾಗಲಿದೆ.\n(ಹೊಸ ಸಹೋದ್ಯೋಗಿಯನ್ನು ಗೌರವಯುತವಾಗಿ ಸ್ವಾಗತಿಸದಿರುವುದು ತಣ್ಣನೆಯ ಮತ್ತು ಅಸ್ವಾಗತಕರ ಮೊದಲ ಅನಿಸಿಕೆ ಮೂಡಿಸಬಹುದು.)",
 			"title": "Professional Greetings and Introductions",
 			"title_kan": "ವೃತ್ತಿಪರ ಶುಭಾಶಯಗಳು ಮತ್ತು ಪರಿಚಯಗಳು",
 			"description": "Meena always greets new colleagues with a handshake and stands up when introduced.",
@@ -119,6 +137,12 @@
 		},
 		{
 			"id": 4,
+			"dialogue": "Celia: This miscommunication with the client is completely your fault. You should have been more careful!",
+			"dialogue_kan": "ಸೆಲಿಯಾ: ಕ್ಲೈಂಟ್‌ನೊಂದಿಗಿನ ಈ ತಪ್ಪು ಸಂವಹನ ಸಂಪೂರ್ಣವಾಗಿ ನಿಮ್ಮ ತಪ್ಪು. ನೀವು ಹೆಚ್ಚು ಎಚ್ಚರಿಕೆಯಿಂದ ಇರಬೇಕಿತ್ತು!",
+			"reaction_correct": "Celia: I owe you an apology. I realised the wrong information came from me. I'm sorry for blaming you unfairly.\n(Taking accountability, even as a superior, builds trust and respect within the team.)",
+			"reaction_correct_kan": "ಸೆಲಿಯಾ: ನಾನು ನಿಮ್ಮಲ್ಲಿ ಕ್ಷಮೆ ಕೇಳಬೇಕು. ತಪ್ಪು ಮಾಹಿತಿ ನನ್ನಿಂದಲೇ ಬಂದಿದೆ ಎಂದು ಅರಿತುಕೊಂಡೆ. ಅನ್ಯಾಯವಾಗಿ ದೂಷಿಸಿದ್ದಕ್ಕೆ ಕ್ಷಮಿಸಿ.\n(ಮೇಲಧಿಕಾರಿಯಾಗಿದ್ದರೂ ಹೊಣೆಗಾರಿಕೆ ತೆಗೆದುಕೊಳ್ಳುವುದು ತಂಡದಲ್ಲಿ ನಂಬಿಕೆ ಮತ್ತು ಗೌರವವನ್ನು ಬೆಳೆಸುತ್ತದೆ.)",
+			"reaction_wrong": "Subordinate thinks: I did nothing wrong, but she won't even acknowledge it.\n(Avoiding accountability damages trust and can make team members feel undervalued and demotivated.)",
+			"reaction_wrong_kan": "ಅಧೀನ ಅಧಿಕಾರಿ ಯೋಚಿಸುತ್ತಾರೆ: ನಾನು ತಪ್ಪು ಮಾಡಿಲ್ಲ, ಆದರೆ ಅವಳು ಒಪ್ಪಿಕೊಳ್ಳಲು ಸಿದ್ಧರಿಲ್ಲ.\n(ಹೊಣೆಗಾರಿಕೆಯಿಂದ ದೂರ ಓಡುವುದು ನಂಬಿಕೆಯನ್ನು ಹಾಳುಮಾಡುತ್ತದೆ ಮತ್ತು ತಂಡದ ಸದಸ್ಯರಿಗೆ ಕಡಿಮೆ ಮೌಲ್ಯದ ಭಾವನೆ ಮೂಡಿಸುತ್ತದೆ.)",
 			"title": "Taking Accountability for Mistakes",
 			"title_kan": "ತಪ್ಪುಗಳಿಗೆ ಹೊಣೆಗಾರಿಕೆಯನ್ನು ತೆಗೆದುಕೊಳ್ಳುವುದು",
 			"description": "Celia falsely accused one of her subordinates of miscommunicating with clients, she later realised that she was initially at fault for the miscommunication and passed the wrong information to her subordinate.",
@@ -158,6 +182,12 @@
 		},
 		{
 			"id": 5,
+			"dialogue": "Priya is presenting the quarterly update. Vikram has a point to add but she hasn't finished speaking yet.",
+			"dialogue_kan": "ಪ್ರಿಯಾ ತ್ರೈಮಾಸಿಕ ಅಪ್‌ಡೇಟ್ ಮಂಡಿಸುತ್ತಿದ್ದಾರೆ. ವಿಕ್ರಮ್‌ಗೆ ಒಂದು ಅಂಶ ಸೇರಿಸಬೇಕಿದೆ ಆದರೆ ಅವಳು ಇನ್ನೂ ಮಾತು ಮುಗಿಸಿಲ್ಲ.",
+			"reaction_correct": "Vikram: Excuse me, may I add something here?\nPriya: Of course, go ahead!\n(Politely signalling that you want to speak shows respect for the current speaker and keeps the meeting productive.)",
+			"reaction_correct_kan": "ವಿಕ್ರಮ್: ಕ್ಷಮಿಸಿ, ನಾನು ಇಲ್ಲಿ ಏನನ್ನಾದರೂ ಸೇರಿಸಬಹುದೇ?\nಪ್ರಿಯಾ: ಖಂಡಿತ, ಮುಂದುವರಿಸಿ!\n(ಮಾತನಾಡಲು ಬಯಸುತ್ತೀರಿ ಎಂದು ಸಭ್ಯವಾಗಿ ಸೂಚಿಸುವುದು ಪ್ರಸ್ತುತ ಮಾತನಾಡುವವರಿಗೆ ಗೌರವ ತೋರಿಸುತ್ತದೆ ಮತ್ತು ಸಭೆಯನ್ನು ಉತ್ಪಾದಕವಾಗಿ ಇಡುತ್ತದೆ.)",
+			"reaction_wrong": "Vikram talks over Priya mid-sentence. She stops, visibly frustrated.\n(Interrupting someone while they are speaking is disrespectful and disrupts the flow of the meeting for everyone.)",
+			"reaction_wrong_kan": "ವಿಕ್ರಮ್ ಪ್ರಿಯಾ ಮಾತು ಮುಗಿಯುವ ಮೊದಲೇ ಅವರ ಮೇಲೆ ಮಾತನಾಡುತ್ತಾರೆ. ಅವಳು ನಿಲ್ಲುತ್ತಾಳೆ, ಸ್ಪಷ್ಟವಾಗಿ ಕೋಪಗೊಂಡಿದ್ದಾಳೆ.\n(ಯಾರಾದರೂ ಮಾತನಾಡುತ್ತಿರುವಾಗ ಅಡ್ಡಿಪಡಿಸುವುದು ಅಗೌರವ ಮತ್ತು ಎಲ್ಲರಿಗೂ ಸಭೆಯ ಹರಿವನ್ನು ಅಡ್ಡಿಪಡಿಸುತ್ತದೆ.)",
 			"title": "Meeting Interruption Etiquette",
 			"title_kan": "ಸಭೆಯಲ್ಲಿ ಅಡ್ಡಿಪಡಿಸಲು ಸರಿಯಾದ ವಿಧಾನ",
 			"description": "You are in a meeting and want to add a point while someone else is speaking.",
@@ -197,6 +227,12 @@
 		},
 		{
 			"id": 6,
+			"dialogue": "Manager: Rajesh, the project was due yesterday. Where is it?\nRajesh thinks: I should have said something sooner.",
+			"dialogue_kan": "ಮ್ಯಾನೇಜರ್: ರಾಜೇಶ್, ಯೋಜನೆ ನಿನ್ನೆ ಸಲ್ಲಿಸಬೇಕಿತ್ತು. ಅದು ಎಲ್ಲಿದೆ?\nರಾಜೇಶ್ ಯೋಚಿಸುತ್ತಾರೆ: ನಾನು ಮೊದಲೇ ಹೇಳಬೇಕಿತ್ತು.",
+			"reaction_correct": "Rajesh: I owe you an explanation. The delay is on me — and I have a plan to fix it.\n(Owning a mistake early and coming with a solution is always better than hoping no one notices.)",
+			"reaction_correct_kan": "ರಾಜೇಶ್: ನಾನು ನಿಮಗೆ ವಿವರಣೆ ನೀಡಬೇಕು. ವಿಳಂಬ ನನ್ನ ತಪ್ಪು — ಮತ್ತು ಅದನ್ನು ಸರಿಪಡಿಸಲು ನನ್ನಲ್ಲಿ ಯೋಜನೆ ಇದೆ.\n(ತಪ್ಪನ್ನು ಮೊದಲೇ ಒಪ್ಪಿಕೊಂಡು ಪರಿಹಾರದೊಂದಿಗೆ ಬರುವುದು ಯಾರೂ ಗಮನಿಸುವುದಿಲ್ಲ ಎಂದು ಭಾವಿಸುವುದಕ್ಕಿಂತ ಯಾವಾಗಲೂ ಉತ್ತಮ.)",
+			"reaction_wrong": "Manager: (opening the incomplete report) What exactly am I looking at here, Rajesh?\n(Avoiding accountability only delays the problem — and makes it worse.)",
+			"reaction_wrong_kan": "ಮ್ಯಾನೇಜರ್: (ಅಪೂರ್ಣ ವರದಿಯನ್ನು ತೆರೆಯುತ್ತಾ) ಇದರಲ್ಲಿ ನಾನು ನಿಖರವಾಗಿ ಏನನ್ನು ನೋಡುತ್ತಿದ್ದೇನೆ, ರಾಜೇಶ್?\n(ಹೊಣೆಗಾರಿಕೆಯನ್ನು ತಪ್ಪಿಸುವುದು ಸಮಸ್ಯೆಯನ್ನು ಮಾತ್ರ ವಿಳಂಬಗೊಳಿಸುತ್ತದೆ — ಮತ್ತು ಅದನ್ನು ಇನ್ನಷ್ಟು ಹದಗೆಡಿಸುತ್ತದೆ.)",
 			"title": "Handling Missed Deadlines",
 			"title_kan": "ತಪ್ಪಿದ ಗಡುವನ್ನು ಹೇಗೆ ನಿರ್ವಹಿಸುವುದು",
 			"description": "Rajesh missed his deadline for a very important project.",
@@ -205,6 +241,20 @@
 			"question_kan": "ನಿಭಾಯಿಸಲು ಅವನಿಗೆ ಉತ್ತಮ ಮಾರ್ಗ ಯಾವುದು?",
 			"options": [
 				{
+					"text": "Blame his teammates for the delay.",
+					"text_kan": "ವಿಳಂಬಕ್ಕೆ ತನ್ನ ತಂಡದ ಸದಸ್ಯರನ್ನು ದೂಷಿಸಿ.",
+					"feedback": "Incorrect. Shifting blame onto teammates is unfair and erodes trust within the team. It leads to conflict and a toxic work environment.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ತಂಡದ ಸದಸ್ಯರ ಮೇಲೆ ದೂಷಣೆ ಹಾಕುವುದು ಅನ್ಯಾಯ ಮತ್ತು ತಂಡದೊಳಗಿನ ನಂಬಿಕೆಯನ್ನು ಹಾಳು ಮಾಡುತ್ತದೆ. ಇದು ಕೆಲಸದ ವಾತಾವರಣದಲ್ಲಿ ಸಂಘರ್ಷ ಮತ್ತು ವಿಷತ್ವಕ್ಕೆ ಕಾರಣವಾಗುತ್ತದೆ.",
+					"workplacePoints": -1
+				},
+				{
+					"text": "Submit the incomplete work without mentioning the delay.",
+					"text_kan": "ವಿಳಂಬವನ್ನು ಉಲ್ಲೇಖಿಸದೆ ಅಪೂರ್ಣ ಕೆಲಸವನ್ನು ಸಲ್ಲಿಸಿ.",
+					"feedback": "Incorrect. Submitting incomplete work without explanation is dishonest and may cause further issues for the project and the team. It shows a lack of accountability and respect for the standards expected in the workplace.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ವಿವರಣೆಯಿಲ್ಲದೆ ಅಪೂರ್ಣ ಕೆಲಸವನ್ನು ಸಲ್ಲಿಸುವುದು ಅಪ್ರಾಮಾಣಿಕವಾಗಿದೆ ಮತ್ತು ಯೋಜನೆ ಮತ್ತು ತಂಡಕ್ಕೆ ಮತ್ತಷ್ಟು ಸಮಸ್ಯೆಗಳನ್ನು ಉಂಟುಮಾಡಬಹುದು.",
+					"workplacePoints": -1
+				},
+				{
 					"text": "Take responsibility, inform his supervisor, explain the reason for the delay, and propose a plan to complete the project as soon as possible.",
 					"text_kan": "ಜವಾಬ್ದಾರಿಯನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ, ತನ್ನ ಮೇಲ್ವಿಚಾರಕರಿಗೆ ತಿಳಿಸಿ, ವಿಳಂಬಕ್ಕೆ ಕಾರಣವನ್ನು ವಿವರಿಸಿ ಮತ್ತು ಯೋಜನೆಯನ್ನು ಸಾಧ್ಯವಾದಷ್ಟು ಬೇಗ ಪೂರ್ಣಗೊಳಿಸಲು ಯೋಜನೆಯನ್ನು ಪ್ರಸ್ತಾಪಿಸಿ.",
 					"feedback": "Correct.",
@@ -212,108 +262,112 @@
 					"workplacePoints": 1
 				},
 				{
-					"text": "Blame his teammates for the delay.",
-					"text_kan": "ವಿಳಂಬಕ್ಕೆ ತನ್ನ ತಂಡದ ಸದಸ್ಯರನ್ನು ದೂಷಿಸಿ.",
-					"feedback": "Incorrect. The missed deadline will likely be noticed, which can damage Rajesh’s credibility and trust with his team and supervisor.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ತಪ್ಪಿದ ಗಡುವು ಗಮನಕ್ಕೆ ಬರುವ ಸಾಧ್ಯತೆಯಿದೆ, ಇದು ರಾಜೇಶ್ ಅವರ ವಿಶ್ವಾಸಾರ್ಹತೆ ಮತ್ತು ಅವರ ತಂಡ ಮತ್ತು ಮೇಲ್ವಿಚಾರಕರ ಮೇಲಿನ ನಂಬಿಕೆಯನ್ನು ಹಾನಿಗೊಳಿಸುತ್ತದೆ.",
-					"workplacePoints": -1
-				},
-				{
 					"text": "Ignore the missed deadline and hope no one notices.",
 					"text_kan": "ತಪ್ಪಿದ ಗಡುವನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ ಮತ್ತು ಯಾರೂ ಗಮನಿಸುವುದಿಲ್ಲ ಎಂದು ಭಾವಿಸಿ.",
-					"feedback": "Incorrect. Shifting blame to others is unfair and erodes trust within the team. It leads to conflict and toxicity in the work environment.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಇತರರ ಮೇಲೆ ದೂಷಣೆ ಮಾಡುವುದು ಅನ್ಯಾಯ ಮತ್ತು ತಂಡದೊಳಗಿನ ನಂಬಿಕೆಯನ್ನು ಹಾಳು ಮಾಡುತ್ತದೆ. ಇದು ಕೆಲಸದ ವಾತಾವರಣದಲ್ಲಿ ಸಂಘರ್ಷ ಮತ್ತು ವಿಷತ್ವಕ್ಕೆ ಕಾರಣವಾಗುತ್ತದೆ.",
-					"workplacePoints": -1
-				},
-				{
-					"text": "Submit the incomplete work without mentioning the delay.",
-					"text_kan": "ವಿಳಂಬವನ್ನು ಉಲ್ಲೇಖಿಸದೆ ಅಪೂರ್ಣ ಕೆಲಸವನ್ನು ಸಲ್ಲಿಸಿ.",
-					"feedback": "Incorrect. Submitting incomplete work without explanation is dishonest and may cause further issues for the project and the team. It shows a lack of accountability and respect for the standards expected in the workplace.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ವಿವರಣೆಯಿಲ್ಲದೆ ಅಪೂರ್ಣ ಕೆಲಸವನ್ನು ಸಲ್ಲಿಸುವುದು ಅಪ್ರಾಮಾಣಿಕವಾಗಿದೆ ಮತ್ತು ಯೋಜನೆ ಮತ್ತು ತಂಡಕ್ಕೆ ಮತ್ತಷ್ಟು ಸಮಸ್ಯೆಗಳನ್ನು ಉಂಟುಮಾಡಬಹುದು. ಇದು ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ನಿರೀಕ್ಷಿತ ಮಾನದಂಡಗಳಿಗೆ ಹೊಣೆಗಾರಿಕೆ ಮತ್ತು ಗೌರವದ ಕೊರತೆಯನ್ನು ತೋರಿಸುತ್ತದೆ.",
+					"feedback": "Incorrect. The missed deadline will likely be noticed, which can damage Rajesh's credibility and trust with his team and supervisor.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ತಪ್ಪಿದ ಗಡುವು ಗಮನಕ್ಕೆ ಬರುವ ಸಾಧ್ಯತೆಯಿದೆ, ಇದು ರಾಜೇಶ್ ಅವರ ವಿಶ್ವಾಸಾರ್ಹತೆ ಮತ್ತು ತಂಡ ಮತ್ತು ಮೇಲ್ವಿಚಾರಕರ ಮೇಲಿನ ನಂಬಿಕೆಯನ್ನು ಹಾನಿಗೊಳಿಸುತ್ತದೆ.",
 					"workplacePoints": -1
 				}
 			]
 		},
 		{
 			"id": 7,
-			"title": "Inappropriate Meeting Behavior",
-			"title_kan": "ಅನುಚಿತ ಸಭೆಯ ನಡವಳಿಕೆ",
-			"description": "During a team meeting, Anil falls asleep, and another is on their phone.",
-			"description_kan": "ತಂಡದ ಸಭೆಯ ಸಮಯದಲ್ಲಿ, ಅನಿಲ್ ನಿದ್ರಿಸುತ್ತಾನೆ, ಮತ್ತು ಇನ್ನೊಬ್ಬರು ಅವರ ಫೋನ್‌ನಲ್ಲಿದ್ದಾರೆ.",
-			"question": "What does this behavior indicate?",
-			"question_kan": "ಈ ನಡವಳಿಕೆ ಏನನ್ನು ಸೂಚಿಸುತ್ತದೆ?",
+			"dialogue": "Anil: (laughing loudly on phone) Arre yaar, you should have seen his face!\n(Four visitors stand at the reception desk, waiting to be attended to.)",
+			"dialogue_kan": "ಅನಿಲ್: (ಫೋನ್‌ನಲ್ಲಿ ಜೋರಾಗಿ ನಗುತ್ತಾ) ಅರೇ ಯಾರ್, ಅವನ ಮುಖ ನೋಡಬೇಕಿತ್ತು!\n(ಮೂವರು ಸಂದರ್ಶಕರು ರಿಸೆಪ್ಷನ್ ಡೆಸ್ಕ್‌ನಲ್ಲಿ ನಿಂತು ಕಾಯುತ್ತಿದ್ದಾರೆ.)",
+			"reaction_correct": "Manager: (firmly) Anil, please end your call. There are visitors waiting.\n(A receptionist's behaviour is the first impression visitors have of the entire company.)",
+			"reaction_correct_kan": "ಮ್ಯಾನೇಜರ್: (ದೃಢವಾಗಿ) ಅನಿಲ್, ದಯವಿಟ್ಟು ನಿಮ್ಮ ಕರೆ ಮುಗಿಸಿ. ಸಂದರ್ಶಕರು ಕಾಯುತ್ತಿದ್ದಾರೆ.\n(ರಿಸೆಪ್ಷನಿಸ್ಟ್‌ನ ನಡವಳಿಕೆಯು ಸಂದರ್ಶಕರಿಗೆ ಇಡೀ ಕಂಪನಿಯ ಮೊದಲ ಅನಿಸಿಕೆಯಾಗಿದೆ.)",
+			"reaction_wrong": "Visitor thinks: I've been standing here for 30 minutes. This is ridiculous.\n(One visitor gives up and walks away. Unprofessional behaviour at reception can cost the company trust, clients, and reputation.)",
+			"reaction_wrong_kan": "ಸಂದರ್ಶಕರು ಯೋಚಿಸುತ್ತಾರೆ: ನಾನು ಇಲ್ಲಿ 30 ನಿಮಿಷದಿಂದ ನಿಂತಿದ್ದೇನೆ. ಇದು ಅಸಹ್ಯ.\n(ಒಬ್ಬ ಸಂದರ್ಶಕರು ತ್ಯಜಿಸಿ ಹೊರಟುಹೋಗುತ್ತಾರೆ. ರಿಸೆಪ್ಷನ್‌ನಲ್ಲಿ ವೃತ್ತಿಪರವಲ್ಲದ ನಡವಳಿಕೆಯು ಕಂಪನಿಯ ನಂಬಿಕೆ, ಕ್ಲೈಂಟ್‌ಗಳು ಮತ್ತು ಖ್ಯಾತಿಯನ್ನು ಕಳೆದುಕೊಳ್ಳಲು ಕಾರಣವಾಗಬಹುದು.)",
+			"title": "Unprofessional Conduct in the Workplace",
+			"title_kan": "ಕಾರ್ಯಸ್ಥಳದಲ್ಲಿ ವೃತ್ತಿಪರವಲ್ಲದ ನಡವಳಿಕೆ",
+			"description": "Anil is the receptionist at Tasty Bites. He is on his mobile, chatting and laughing loudly with a friend, while a queue of visitors wait at the reception desk feeling frustrated and ignored.",
+			"description_kan": "ಅನಿಲ್ ಟೇಸ್ಟಿ ಬೈಟ್ಸ್‌ನಲ್ಲಿ ರಿಸೆಪ್ಷನಿಸ್ಟ್ ಆಗಿದ್ದಾರೆ. ಅವರು ಮೊಬೈಲ್‌ನಲ್ಲಿ ಗೆಳೆಯರೊಂದಿಗೆ ಜೋರಾಗಿ ಮಾತನಾಡುತ್ತಾ ನಗುತ್ತಿದ್ದಾರೆ, ಆದರೆ ರಿಸೆಪ್ಷನ್ ಡೆಸ್ಕ್‌ನಲ್ಲಿ ಸರತಿ ಸಾಲಿನಲ್ಲಿ ನಿಂತ ಸಂದರ್ಶಕರು ಕಾಯುತ್ತಾ ನಿರಾಶರಾಗಿದ್ದಾರೆ.",
+			"question": "What does Anil's behaviour indicate?",
+			"question_kan": "ಅನಿಲ್ ಅವರ ನಡವಳಿಕೆ ಏನನ್ನು ಸೂಚಿಸುತ್ತದೆ?",
 			"options": [
 				{
-					"text": "High engagement.",
-					"text_kan": "ಹೆಚ್ಚಿನ ನಿಶ್ಚಿತಾರ್ಥ.",
-					"feedback": "Incorrect. Falling asleep and using a phone during a meeting are clear signs of disengagement, not engagement. If they were engaged, they would participate actively.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಸಭೆಯ ಸಮಯದಲ್ಲಿ ನಿದ್ರಿಸುವುದು ಮತ್ತು ಫೋನ್ ಬಳಸುವುದು ನಿಶ್ಚಿತಾರ್ಥದ ಸ್ಪಷ್ಟ ಚಿಹ್ನೆಗಳು, ನಿಶ್ಚಿತಾರ್ಥವಲ್ಲ. ಅವರು ನಿಶ್ಚಿತಾರ್ಥದಲ್ಲಿದ್ದರೆ, ಅವರು ಸಕ್ರಿಯವಾಗಿ ಭಾಗವಹಿಸುತ್ತಾರೆ.",
+					"text": "He is multitasking efficiently.",
+					"text_kan": "ಅವರು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಬಹು ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದಾರೆ.",
+					"feedback": "Incorrect. Taking a personal call while visitors wait is not multitasking — it is prioritising personal matters over professional responsibilities.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಸಂದರ್ಶಕರು ಕಾಯುತ್ತಿರುವಾಗ ವ್ಯಕ್ತಿಗತ ಕರೆ ತೆಗೆದುಕೊಳ್ಳುವುದು ಬಹು ಕೆಲಸ ಮಾಡುವುದಲ್ಲ — ಇದು ವೃತ್ತಿಪರ ಜವಾಬ್ದಾರಿಗಳಿಗಿಂತ ವ್ಯಕ್ತಿಗತ ವಿಷಯಗಳಿಗೆ ಆದ್ಯತೆ ನೀಡುವುದಾಗಿದೆ.",
 					"workplacePoints": -1
 				},
 				{
-					"text": "Unacceptable meeting etiquette.",
-					"text_kan": "ಸ್ವೀಕಾರಾರ್ಹವಲ್ಲದ ಸಭೆಯ ಶಿಷ್ಟಾಚಾರ.",
-					"feedback": "Correct.",
-					"feedback_kan": "ಸರಿ.",
+					"text": "It is acceptable since the visitors can wait.",
+					"text_kan": "ಸಂದರ್ಶಕರು ಕಾಯಬಹುದಾದ್ದರಿಂದ ಇದು ಸ್ವೀಕಾರಾರ್ಹ.",
+					"feedback": "Incorrect. Visitors' time is valuable. Keeping them waiting without acknowledgement is disrespectful and unprofessional.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಸಂದರ್ಶಕರ ಸಮಯ ಅಮೂಲ್ಯ. ಗುರುತಿಸದೆ ಅವರನ್ನು ಕಾಯಿಸುವುದು ಅಗೌರವ ಮತ್ತು ವೃತ್ತಿಪರವಲ್ಲದ.",
+					"workplacePoints": -1
+				},
+				{
+					"text": "Unprofessional conduct that reflects poorly on the company.",
+					"text_kan": "ಕಂಪನಿಯ ಮೇಲೆ ಕೆಟ್ಟ ಪ್ರಭಾವ ಬೀರುವ ವೃತ್ತಿಪರವಲ್ಲದ ನಡವಳಿಕೆ.",
+					"feedback": "Correct. A receptionist is the first point of contact for visitors. Being on a personal call while people wait is unprofessional and creates a poor impression of the company.",
+					"feedback_kan": "ಸರಿ. ರಿಸೆಪ್ಷನಿಸ್ಟ್ ಸಂದರ್ಶಕರಿಗೆ ಮೊದಲ ಸಂಪರ್ಕ ಬಿಂದು. ಜನರು ಕಾಯುತ್ತಿರುವಾಗ ವ್ಯಕ್ತಿಗತ ಕರೆಯಲ್ಲಿ ಇರುವುದು ವೃತ್ತಿಪರವಲ್ಲ ಮತ್ತು ಕಂಪನಿಯ ಬಗ್ಗೆ ಕೆಟ್ಟ ಅನಿಸಿಕೆ ಮೂಡಿಸುತ್ತದೆ.",
 					"workplacePoints": 1
 				},
 				{
-					"text": "Effective participation.",
-					"text_kan": "ಪರಿಣಾಮಕಾರಿ ಭಾಗವಹಿಸುವಿಕೆ.",
-					"feedback": "Incorrect. Effective participation involves actively listening, contributing to the conversation, and being present, which is not shown by Anil’s behaviour.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಪರಿಣಾಮಕಾರಿ ಭಾಗವಹಿಸುವಿಕೆಯು ಸಕ್ರಿಯವಾಗಿ ಆಲಿಸುವುದು, ಸಂಭಾಷಣೆಗೆ ಕೊಡುಗೆ ನೀಡುವುದು ಮತ್ತು ಹಾಜರಿರುವುದನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ, ಇದು ಅನಿಲ್ ಅವರ ನಡವಳಿಕೆಯಿಂದ ತೋರಿಸಲ್ಪಡುವುದಿಲ್ಲ.",
-					"workplacePoints": -1
-				},
-				{
-					"text": "Respect for the speaker.",
-					"text_kan": "ಭಾಷಣಕಾರರಿಗೆ ಗೌರವ.",
-					"feedback": "Incorrect. Sleeping or being on a phone is disrespectful and signals that the speaker’s message is not valued.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಮಲಗುವುದು ಅಥವಾ ಫೋನ್‌ನಲ್ಲಿರುವುದು ಅಗೌರವ ಮತ್ತು ಭಾಷಣಕಾರರ ಸಂದೇಶಕ್ಕೆ ಬೆಲೆ ಇಲ್ಲ ಎಂದು ಸೂಚಿಸುತ್ತದೆ.",
+					"text": "He is building good relationships with visitors.",
+					"text_kan": "ಅವರು ಸಂದರ್ಶಕರೊಂದಿಗೆ ಉತ್ತಮ ಸಂಬಂಧ ಬೆಳೆಸುತ್ತಿದ್ದಾರೆ.",
+					"feedback": "Incorrect. Ignoring visitors in favour of a personal call does not build relationships — it damages them.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ವ್ಯಕ್ತಿಗತ ಕರೆಗಾಗಿ ಸಂದರ್ಶಕರನ್ನು ನಿರ್ಲಕ್ಷಿಸುವುದು ಸಂಬಂಧಗಳನ್ನು ಬೆಳೆಸುವುದಿಲ್ಲ — ಅದು ಅವುಗಳನ್ನು ಹಾಳು ಮಾಡುತ್ತದೆ.",
 					"workplacePoints": -1
 				}
 			]
 		},
 		{
 			"id": 8,
-			"title": "Addressing Workplace Harassment",
-			"title_kan": "ಕಾರ್ಯಸ್ಥಳದ ಕಿರುಕುಳವನ್ನು ತಿಳಿಸುವುದು",
-			"description": "Priya experiences a coworker yelling at her during meetings.",
-			"description_kan": "ಸಭೆಗಳ ಸಮಯದಲ್ಲಿ ಪ್ರಿಯಾ ತನ್ನ ಸಹೋದ್ಯೋಗಿಯ ಮೇಲೆ ರೇಗುತ್ತಿರುವುದನ್ನು ಅನುಭವಿಸುತ್ತಾಳೆ.",
-			"question": "What is an appropriate way to address this?",
-			"question_kan": "ಇಇದನ್ನು ಪರಿಹರಿಸಲು ಸೂಕ್ತವಾದ ಮಾರ್ಗವೇನು?",
+			"dialogue": "Ramesh raises his voice at the visitor seated in the waiting area.\nColleague thinks: This doesn't feel right — should I say something?",
+			"dialogue_kan": "ರಮೇಶ್ ಕಾಯುವ ಪ್ರದೇಶದಲ್ಲಿ ಕುಳಿತಿರುವ ಸಂದರ್ಶಕರ ಮೇಲೆ ಧ್ವನಿ ಎತ್ತುತ್ತಾರೆ.\nಸಹೋದ್ಯೋಗಿ ಯೋಚಿಸುತ್ತಾರೆ: ಇದು ಸರಿಯಲ್ಲ ಎನ್ನಿಸುತ್ತಿದೆ — ನಾನು ಏನಾದರೂ ಹೇಳಬೇಕೇ?",
+			"reaction_correct": "Colleague: Ramesh, every visitor deserves to be treated with respect.\n(Standing up against bias — even when it feels uncomfortable — is what makes a workplace truly inclusive.)",
+			"reaction_correct_kan": "ಸಹೋದ್ಯೋಗಿ: ರಮೇಶ್, ಪ್ರತಿಯೊಬ್ಬ ಸಂದರ್ಶಕರನ್ನೂ ಗೌರವದಿಂದ ನಡೆಸಿಕೊಳ್ಳಬೇಕು.\n(ಅಸ್ವಸ್ಥತೆ ಅನಿಸಿದರೂ ಪೂರ್ವಗ್ರಹದ ವಿರುದ್ಧ ನಿಲ್ಲುವುದೇ ಕಾರ್ಯಸ್ಥಳವನ್ನು ನಿಜವಾಗಿಯೂ ಸಮಾವೇಶಿಯಾಗಿ ಮಾಡುತ್ತದೆ.)",
+			"reaction_wrong": "Visitor thinks: I'll never come back to this place.\n(A single moment of bias can damage trust in a company far more than any business mistake.)",
+			"reaction_wrong_kan": "ಸಂದರ್ಶಕರು ಯೋಚಿಸುತ್ತಾರೆ: ನಾನು ಈ ಸ್ಥಳಕ್ಕೆ ಮತ್ತೆ ಬರುವುದಿಲ್ಲ.\n(ಪೂರ್ವಗ್ರಹದ ಒಂದು ಕ್ಷಣ ಯಾವುದೇ ವ್ಯಾಪಾರದ ತಪ್ಪಿಗಿಂತ ಹೆಚ್ಚು ಕಂಪನಿಯ ವಿಶ್ವಾಸವನ್ನು ಹಾನಿ ಮಾಡಬಹುದು.)",
+			"title": "Bias and Respectful Treatment at Work",
+			"title_kan": "ಕಾರ್ಯಸ್ಥಳದಲ್ಲಿ ಪೂರ್ವಗ್ರಹ ಮತ್ತು ಗೌರವಾನ್ವಿತ ನಡವಳಿಕೆ",
+			"description": "Ramesh, a security guard at Tasty Bites, notices a visitor in the waiting area who is not well dressed. Assuming they do not belong in a modern office, he begins yelling at them to leave.",
+			"description_kan": "ಟೇಸ್ಟಿ ಬೈಟ್ಸ್‌ನ ಭದ್ರತಾ ಸಿಬ್ಬಂದಿ ರಮೇಶ್, ಕಾಯುವ ಪ್ರದೇಶದಲ್ಲಿ ಒಬ್ಬ ಸಂದರ್ಶಕರನ್ನು ಗಮನಿಸುತ್ತಾರೆ, ಅವರು ಚೆನ್ನಾಗಿ ಉಡುಪು ತೊಟ್ಟಿಲ್ಲ. ಅವರು ಆಧುನಿಕ ಕಚೇರಿಗೆ ಸೇರಿದವರಲ್ಲ ಎಂದು ಭಾವಿಸಿ, ಅವರನ್ನು ಹೊರ ಹೋಗಲು ಹೇಳಿ ಕೂಗಲು ಆರಂಭಿಸುತ್ತಾರೆ.",
+			"question": "A colleague witnesses this. What is the right thing to do?",
+			"question_kan": "ಒಬ್ಬ ಸಹೋದ್ಯೋಗಿ ಇದನ್ನು ನೋಡುತ್ತಾರೆ. ಮಾಡಬೇಕಾದ ಸರಿಯಾದ ಕಾರ್ಯ ಯಾವುದು?",
 			"options": [
 				{
-					"text": "Ignore it because it’s normal.",
-					"text_kan": "ಇದು ಸಾಮಾನ್ಯವಾದ ಕಾರಣ ಅದನ್ನು ನಿರ್ಲಕ್ಷಿಸಿ.",
-					"feedback": "Incorrect. Ignoring inappropriate behavior allows it to continue and signals that such conduct is acceptable.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಅನುಚಿತ ನಡವಳಿಕೆಯನ್ನು ನಿರ್ಲಕ್ಷಿಸುವುದರಿಂದ ಅದು ಮುಂದುವರಿಯಲು ಅನುವು ಮಾಡಿಕೊಡುತ್ತದೆ ಮತ್ತು ಅಂತಹ ನಡವಳಿಕೆ ಸ್ವೀಕಾರಾರ್ಹ ಎಂದು ಸೂಚಿಸುತ್ತದೆ.",
+					"text": "Ignore it — it is Ramesh's job to manage the waiting area.",
+					"text_kan": "ನಿರ್ಲಕ್ಷಿಸಿ — ಕಾಯುವ ಪ್ರದೇಶವನ್ನು ನಿರ್ವಹಿಸುವುದು ರಮೇಶ್‌ನ ಕೆಲಸ.",
+					"feedback": "Incorrect. Standing by while someone is treated disrespectfully makes you a bystander to bias. Speaking up is everyone's responsibility.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಯಾರಾದರೂ ಅಗೌರವದಿಂದ ನಡೆಸಿಕೊಳ್ಳಲ್ಪಡುವಾಗ ಸುಮ್ಮನೆ ನಿಲ್ಲುವುದು ನಿಮ್ಮನ್ನು ಪೂರ್ವಗ್ರಹದ ಸಾಕ್ಷಿಯಾಗಿ ಮಾಡುತ್ತದೆ. ಧ್ವನಿ ಎತ್ತುವುದು ಎಲ್ಲರ ಜವಾಬ್ದಾರಿ.",
 					"workplacePoints": -1
 				},
 				{
-					"text": "Recognize it as unacceptable and seek support or report it.",
-					"text_kan": "ಅದನ್ನು ಸ್ವೀಕಾರಾರ್ಹವಲ್ಲವೆಂದು ಗುರುತಿಸಿ ಮತ್ತು ಬೆಂಬಲವನ್ನು ಪಡೆಯಿರಿ ಅಥವಾ ವರದಿ ಮಾಡಿ.",
-					"feedback": "Correct.",
-					"feedback_kan": "ಸರಿ.",
+					"text": "Agree with Ramesh since the visitor does look out of place.",
+					"text_kan": "ಸಂದರ್ಶಕರು ಅಸಾಮಾನ್ಯವಾಗಿ ಕಾಣುತ್ತಾರೆ ಎಂದು ರಮೇಶ್‌ನೊಂದಿಗೆ ಒಪ್ಪಿಕೊಳ್ಳಿ.",
+					"feedback": "Incorrect. Judging someone by their appearance is a form of bias. Everyone who enters the office deserves to be treated with basic courtesy.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಯಾರನ್ನಾದರೂ ಅವರ ನೋಟದ ಆಧಾರದ ಮೇಲೆ ತೀರ್ಪು ಮಾಡುವುದು ಪೂರ್ವಗ್ರಹದ ಒಂದು ರೂಪ. ಕಚೇರಿಗೆ ಪ್ರವೇಶಿಸುವ ಪ್ರತಿಯೊಬ್ಬರಿಗೂ ಮೂಲ ಸೌಜನ್ಯದಿಂದ ನಡೆಸಿಕೊಳ್ಳಬೇಕು.",
+					"workplacePoints": -1
+				},
+				{
+					"text": "Ask the visitor to leave quietly to avoid further conflict.",
+					"text_kan": "ಮತ್ತಷ್ಟು ಸಂಘರ್ಷವನ್ನು ತಪ್ಪಿಸಲು ಸಂದರ್ಶಕರನ್ನು ಶಾಂತವಾಗಿ ಹೊರ ಹೋಗಲು ಕೇಳಿ.",
+					"feedback": "Incorrect. Asking the visitor to leave places the burden on the wrong person. The behaviour that needs to be addressed is Ramesh's, not the visitor's.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಸಂದರ್ಶಕರನ್ನು ಹೊರ ಹೋಗಲು ಕೇಳುವುದು ತಪ್ಪಾದ ವ್ಯಕ್ತಿಯ ಮೇಲೆ ಹೊರೆ ಹಾಕುತ್ತದೆ. ಪರಿಹರಿಸಬೇಕಾದ ನಡವಳಿಕೆ ರಮೇಶ್‌ನದ್ದು, ಸಂದರ್ಶಕರದ್ದಲ್ಲ.",
+					"workplacePoints": -1
+				},
+				{
+					"text": "Intervene calmly, tell Ramesh that all visitors deserve respect regardless of appearance, and apologise to the visitor.",
+					"text_kan": "ಶಾಂತವಾಗಿ ಮಧ್ಯಪ್ರವೇಶಿಸಿ, ಉಡುಪಿನ ಆಧಾರದಲ್ಲಿ ಸಂದರ್ಶಕರಿಗೆ ಅಗೌರವ ತೋರಿಸಬಾರದೆಂದು ರಮೇಶ್‌ಗೆ ತಿಳಿಸಿ ಮತ್ತು ಸಂದರ್ಶಕರಲ್ಲಿ ಕ್ಷಮೆ ಕೇಳಿ.",
+					"feedback": "Correct. Every visitor deserves to be treated with dignity. Stepping in calmly and apologising shows professionalism and respect for all people.",
+					"feedback_kan": "ಸರಿ. ಪ್ರತಿಯೊಬ್ಬ ಸಂದರ್ಶಕರೂ ಗೌರವದಿಂದ ನಡೆಸಿಕೊಳ್ಳಲ್ಪಡಬೇಕು. ಶಾಂತವಾಗಿ ಮಧ್ಯಪ್ರವೇಶಿಸಿ ಕ್ಷಮೆ ಕೇಳುವುದು ವೃತ್ತಿಪರತೆ ಮತ್ತು ಎಲ್ಲರ ಬಗ್ಗೆ ಗೌರವವನ್ನು ತೋರಿಸುತ್ತದೆ.",
 					"workplacePoints": 1
-				},
-				{
-					"text": "Yell back.",
-					"text_kan": "ಮತ್ತೆ ಕೂಗಿ.",
-					"feedback": "Incorrect. Two wrongs do not make a right; it’s better to address the situation calmly and constructively.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಎರಡು ತಪ್ಪುಗಳು ಸರಿ ಮಾಡುವುದಿಲ್ಲ; ಪರಿಸ್ಥಿತಿಯನ್ನು ಶಾಂತವಾಗಿ ಮತ್ತು ರಚನಾತ್ಮಕವಾಗಿ ಪರಿಹರಿಸುವುದು ಉತ್ತಮ.",
-					"workplacePoints": -1
-				},
-				{
-					"text": "Leave the meeting without saying anything.",
-					"text_kan": "ಏನನ್ನೂ ಹೇಳದೆ ಸಭೆಯನ್ನು ಬಿಟ್ಟುಬಿಡಿ.",
-					"feedback": "Incorrect. It can make Priya appear disengaged or unprofessional, and the inappropriate behavior may persist.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಇದು ಪ್ರಿಯಾಳನ್ನು ನಿಷ್ಪಕ್ಷಪಾತ ಅಥವಾ ವೃತ್ತಿಪರರಲ್ಲದವರನ್ನಾಗಿ ಮಾಡಬಹುದು ಮತ್ತು ಅನುಚಿತ ನಡವಳಿಕೆ ಮುಂದುವರಿಯಬಹುದು.",
-					"workplacePoints": -1
 				}
 			]
 		},
 		{
 			"id": 9,
+			"dialogue": "The meeting was scheduled for 10am. It's 10:15 and the chairperson has just walked in with no agenda prepared.",
+			"dialogue_kan": "ಸಭೆಯನ್ನು ಬೆಳಿಗ್ಗೆ 10 ಗಂಟೆಗೆ ನಿಗದಿಪಡಿಸಲಾಗಿತ್ತು. 10:15 ಆಗಿದೆ ಮತ್ತು ಅಧ್ಯಕ್ಷರು ಯಾವುದೇ ಕಾರ್ಯಸೂಚಿ ತಯಾರಿಸದೆ ಇದ್ದಾರೆ.",
+			"reaction_correct": "Attendee whispers: What are we even here to discuss?\n(Without a clear agenda and punctual start, meetings lose focus and waste everyone's time.)",
+			"reaction_correct_kan": "ಭಾಗವಹಿಸುವವರು ಪಿಸುಗುಟ್ಟುತ್ತಾರೆ: ನಾವು ಇಲ್ಲಿ ಏನನ್ನು ಚರ್ಚಿಸಲು ಬಂದಿದ್ದೇವೆ?\n(ಸ್ಪಷ್ಟ ಕಾರ್ಯಸೂಚಿ ಮತ್ತು ಸಮಯಕ್ಕೆ ಸರಿಯಾಗಿ ಪ್ರಾರಂಭಿಸದಿದ್ದರೆ, ಸಭೆಗಳು ಗಮನ ಕಳೆದುಕೊಳ್ಳುತ್ತವೆ ಮತ್ತು ಎಲ್ಲರ ಸಮಯ ವ್ಯರ್ಥವಾಗುತ್ತದೆ.)",
+			"reaction_wrong": "Attendee thinks: This is going well — we started on time and everyone knows what to discuss.\n(This is the opposite of what actually happens when a meeting starts late with no agenda.)",
+			"reaction_wrong_kan": "ಭಾಗವಹಿಸುವವರು ಯೋಚಿಸುತ್ತಾರೆ: ಇದು ಚೆನ್ನಾಗಿ ನಡೆಯುತ್ತಿದೆ — ನಾವು ಸಮಯಕ್ಕೆ ಪ್ರಾರಂಭಿಸಿದ್ದೇವೆ ಮತ್ತು ಎಲ್ಲರಿಗೂ ಏನನ್ನು ಚರ್ಚಿಸಬೇಕೆಂದು ತಿಳಿದಿದೆ.\n(ಸಭೆ ತಡವಾಗಿ ಪ್ರಾರಂಭವಾದಾಗ ಮತ್ತು ಕಾರ್ಯಸೂಚಿ ಇಲ್ಲದಿದ್ದಾಗ ನಿಜವಾಗಿ ಆಗುವುದು ಇದಕ್ಕೆ ವಿರುದ್ಧವಾದುದು.)",
 			"title": "Meeting Leadership and Structure",
 			"title_kan": "ಸಭೆಯನ್ನು ಮುನ್ನಡೆಸಲು ಸರಿಯಾದ ವಿಧಾನ",
 			"description": "During a business meeting, the chairperson starts late and skips the agenda.",
@@ -353,39 +407,45 @@
 		},
 		{
 			"id": 10,
-			"title": "Basic Courtesy and Teamwork",
-			"title_kan": "ನಿಮ್ಮ ವಸ್ತುಗಳು ಕುಟುಂಬಕ್ಕೆ ಸೇರುವಂತೆ ನೋಡಿಕೊಳ್ಳುವುದು",
-			"description": "Ravi notices his colleague never says “thank you” or “please” and often refuses to help with team projects",
-			"description_kan": "ತನ್ನ ಸಹೋದ್ಯೋಗಿ ಎಂದಿಗೂ 'ಧನ್ಯವಾದಗಳು' ಅಥವಾ 'ದಯವಿಟ್ಟು' ಎಂದು ಹೇಳುವುದಿಲ್ಲ ಮತ್ತು ತಂಡದ ಯೋಜನೆಗಳಿಗೆ ಸಹಾಯ ಮಾಡಲು ನಿರಾಕರಿಸುವುದನ್ನು ರವಿ ಗಮನಿಸುತ್ತಾನೆ",
-			"question": "What is the likely impact of this behavior on the workplace?",
-			"question_kan": "ಈ ನಡವಳಿಕೆಯು ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಯಾವ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ?",
+			"dialogue": "Aman: (heading out) Done! Back to work.\n(Colleague notices the sink full of dishes and the empty coffee pot left behind.)",
+			"dialogue_kan": "ಅಮನ್: (ಹೊರ ಹೋಗುತ್ತಾ) ಮುಗಿಯಿತು! ಕೆಲಸಕ್ಕೆ ಹಿಂತಿರುಗಿ.\n(ಸಹೋದ್ಯೋಗಿ ಸಿಂಕ್‌ನಲ್ಲಿ ತುಂಬಿರುವ ಕೊಳಕು ತಟ್ಟೆಗಳನ್ನು ಮತ್ತು ಬಿಟ್ಟು ಹೋದ ಖಾಲಿ ಕಾಫಿ ಪಾತ್ರೆಯನ್ನು ಗಮನಿಸುತ್ತಾರೆ.)",
+			"reaction_correct": "Colleague: (sighing, washing Aman's dishes) This happens every single day.\n(Small acts of inconsideration in shared spaces quietly chip away at team morale over time.)",
+			"reaction_correct_kan": "ಸಹೋದ್ಯೋಗಿ: (ನಿಟ್ಟುಸಿರು ಬಿಡುತ್ತಾ, ಅಮನ್‌ನ ತಟ್ಟೆ ತೊಳೆಯುತ್ತಾ) ಇದು ಪ್ರತಿದಿನ ಹೀಗೆ ಆಗುತ್ತದೆ.\n(ಸಾಮಾನ್ಯ ಸ್ಥಳಗಳಲ್ಲಿ ಸಣ್ಣ ಅಗೌರವದ ಕೃತ್ಯಗಳು ಕಾಲಕ್ರಮೇಣ ತಂಡದ ಮನೋಬಲವನ್ನು ಮೆಲ್ಲನೆ ಕಡಿಮೆ ಮಾಡುತ್ತವೆ.)",
+			"reaction_wrong": "Colleague: (cheerfully) Good lunch?\nAman: Always!\n(When discourtesy goes unchallenged long enough, it stops feeling like discourtesy at all.)",
+			"reaction_wrong_kan": "ಸಹೋದ್ಯೋಗಿ: (ಉತ್ಸಾಹದಿಂದ) ಊಟ ಚೆನ್ನಾಗಿತ್ತಾ?\nಅಮನ್: ಯಾವಾಗಲೂ ಚೆನ್ನಾಗಿರುತ್ತದೆ!\n(ಅಸಭ್ಯತೆಯನ್ನು ಸಾಕಷ್ಟು ಕಾಲ ಪ್ರಶ್ನಿಸದಿದ್ದಾಗ, ಅದು ಅಸಭ್ಯತೆಯಂತೆಯೇ ಅನಿಸುವುದನ್ನು ನಿಲ್ಲಿಸುತ್ತದೆ.)",
+			"title": "Courtesy in Shared Spaces",
+			"title_kan": "ಸಾಮಾನ್ಯ ಸ್ಥಳಗಳಲ್ಲಿ ಸೌಜನ್ಯ",
+			"description": "After lunch, Aman leaves his dirty dishes in the sink and finishes the last of the coffee without making a fresh pot. This happens every day, even as the rest of the team takes turns cleaning up.",
+			"description_kan": "ಊಟದ ನಂತರ, ಅಮನ್ ತನ್ನ ಕೊಳಕು ತಟ್ಟೆಗಳನ್ನು ಸಿಂಕ್‌ನಲ್ಲಿ ಬಿಟ್ಟು ಹೋಗುತ್ತಾನೆ ಮತ್ತು ಹೊಸ ಪಾತ್ರೆ ತಯಾರಿಸದೆ ಕೊನೆಯ ಕಾಫಿಯನ್ನು ಮುಗಿಸುತ್ತಾನೆ. ಉಳಿದ ತಂಡ ಸ್ವಚ್ಛ ಮಾಡಲು ಸರದಿಯಲ್ಲಿ ಪಾಲ್ಗೊಳ್ಳುತ್ತಿದ್ದರೂ ಇದು ಪ್ರತಿದಿನ ನಡೆಯುತ್ತದೆ.",
+			"question": "What is the likely impact of this behaviour on the team?",
+			"question_kan": "ತಂಡದ ಮೇಲೆ ಈ ನಡವಳಿಕೆಯ ಸಂಭಾವ್ಯ ಪರಿಣಾಮ ಏನು?",
 			"options": [
 				{
-					"text": "It will improve team morale.",
-					"text_kan": "ಇದು ತಂಡದ ನೈತಿಕತೆಯನ್ನು ಸುಧಾರಿಸುತ್ತದೆ",
-					"feedback": "Incorrect. Lack of basic courtesy and unwillingness to help others typically lowers morale, not improves it.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಮೂಲಭೂತ ಸೌಜನ್ಯದ ಕೊರತೆ ಮತ್ತು ಇತರರಿಗೆ ಸಹಾಯ ಮಾಡಲು ಇಷ್ಟವಿಲ್ಲದಿರುವುದು ಸಾಮಾನ್ಯವಾಗಿ ನೈತಿಕತೆಯನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ, ಅದನ್ನು ಸುಧಾರಿಸುವುದಿಲ್ಲ.",
+					"text": "The team will appreciate that he is focused on work rather than chores.",
+					"text_kan": "ಅವನು ಕೆಲಸದ ಮೇಲೆ ಗಮನ ಕೇಂದ್ರೀಕರಿಸುತ್ತಿದ್ದಾನೆ ಎಂದು ತಂಡ ಮೆಚ್ಚುಕೊಳ್ಳುತ್ತದೆ.",
+					"feedback": "Incorrect. Leaving shared spaces untidy shifts the burden onto others and is seen as a lack of consideration, not dedication to work.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಸಾಮಾನ್ಯ ಸ್ಥಳಗಳನ್ನು ಅಸ್ತವ್ಯಸ್ತವಾಗಿ ಬಿಡುವುದು ಹೊರೆಯನ್ನು ಇತರರಿಗೆ ವರ್ಗಾಯಿಸುತ್ತದೆ ಮತ್ತು ಕೆಲಸದ ಬದ್ಧತೆಯಾಗಿ ಅಲ್ಲ, ಅಗೌರವವಾಗಿ ಪರಿಗಣಿಸಲ್ಪಡುತ್ತದೆ.",
 					"workplacePoints": -1
 				},
 				{
-					"text": "It will reduce employee motivation and teamwork.",
-					"text_kan": "ಇದು ಉದ್ಯೋಗಿ ಪ್ರೇರಣೆ ಮತ್ತು ತಂಡದ ಕೆಲಸವನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ.",
-					"feedback": "Correct.",
-					"feedback_kan": "ಸರಿ.",
+					"text": "It will reduce employee motivation and create resentment over time.",
+					"text_kan": "ಇದು ಉದ್ಯೋಗಿ ಪ್ರೇರಣೆಯನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತದೆ ಮತ್ತು ಕ್ರಮೇಣ ಅಸಮಾಧಾನ ಉಂಟು ಮಾಡುತ್ತದೆ.",
+					"feedback": "Correct. Small everyday discourtesies in shared spaces accumulate over time, eroding trust and goodwill within the team.",
+					"feedback_kan": "ಸರಿ. ಸಾಮಾನ್ಯ ಸ್ಥಳಗಳಲ್ಲಿ ದೈನಂದಿನ ಸಣ್ಣ ಅಸಭ್ಯತೆಗಳು ಕಾಲಕ್ರಮೇಣ ತಂಡದೊಳಗಿನ ನಂಬಿಕೆ ಮತ್ತು ಸದ್ಭಾವನೆಯನ್ನು ಕಡಿಮೆ ಮಾಡುತ್ತವೆ.",
 					"workplacePoints": 1
 				},
 				{
-					"text": "It will have no effect.",
-					"text_kan": "ಇದು ಯಾವುದೇ ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ.",
-					"feedback": " Incorrect. It can lead to resentment, poor communication, and a decline in overall workplace atmosphere.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಇದು ಅಸಮಾಧಾನ, ಕಳಪೆ ಸಂವಹನ ಮತ್ತು ಒಟ್ಟಾರೆ ಕೆಲಸದ ವಾತಾವರಣದಲ್ಲಿ ಕುಸಿತಕ್ಕೆ ಕಾರಣವಾಗಬಹುದು.",
+					"text": "It will make the team more efficient since less time is spent on cleaning.",
+					"text_kan": "ಸ್ವಚ್ಛತೆಗೆ ಕಡಿಮೆ ಸಮಯ ವ್ಯಯವಾಗುವುದರಿಂದ ತಂಡ ಹೆಚ್ಚು ಪರಿಣಾಮಕಾರಿಯಾಗುತ್ತದೆ.",
+					"feedback": "Incorrect. It simply means others spend more time cleaning up after him, which is neither fair nor efficient for the team.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಇದರ ಅರ್ಥ ಇತರರು ಅವನ ನಂತರ ಸ್ವಚ್ಛ ಮಾಡಲು ಹೆಚ್ಚು ಸಮಯ ಕಳೆಯುತ್ತಾರೆ, ಇದು ತಂಡಕ್ಕೆ ನ್ಯಾಯಯುತವೂ ಅಲ್ಲ, ಪರಿಣಾಮಕಾರಿಯೂ ಅಲ್ಲ.",
 					"workplacePoints": -1
 				},
 				{
-					"text": "It will make everyone more productive.",
-					"text_kan": "ಇದು ಎಲ್ಲರನ್ನೂ ಹೆಚ್ಚು ಉತ್ಪಾದಕರನ್ನಾಗಿ ಮಾಡುತ್ತದೆ.",
-					"feedback": " Incorrect. Refusing to help and lacking politeness can cause delays, miscommunication, and decreased motivation, all of which harm productivity.",
-					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಸಹಾಯ ಮಾಡಲು ನಿರಾಕರಿಸುವುದು ಮತ್ತು ಸಭ್ಯತೆಯ ಕೊರತೆಯು ವಿಳಂಬ, ತಪ್ಪು ಸಂವಹನ ಮತ್ತು ಪ್ರೇರಣೆ ಕಡಿಮೆಯಾಗಲು ಕಾರಣವಾಗಬಹುದು, ಇವೆಲ್ಲವೂ ಉತ್ಪಾದಕತೆಗೆ ಹಾನಿ ಮಾಡುತ್ತದೆ.",
+					"text": "It will have no effect — the lunch area is an informal space.",
+					"text_kan": "ಇದು ಯಾವುದೇ ಪರಿಣಾಮ ಬೀರುವುದಿಲ್ಲ — ಊಟದ ಪ್ರದೇಶವು ಅನೌಪಚಾರಿಕ ಸ್ಥಳ.",
+					"feedback": "Incorrect. How people behave in shared spaces reflects their respect for colleagues. Even informal areas require basic courtesy.",
+					"feedback_kan": "ತಪ್ಪಾಗಿದೆ. ಜನರು ಸಾಮಾನ್ಯ ಸ್ಥಳಗಳಲ್ಲಿ ಹೇಗೆ ವರ್ತಿಸುತ್ತಾರೆ ಎಂಬುದು ಸಹೋದ್ಯೋಗಿಗಳ ಬಗ್ಗೆ ಅವರ ಗೌರವವನ್ನು ತೋರಿಸುತ್ತದೆ. ಅನೌಪಚಾರಿಕ ಸ್ಥಳಗಳಲ್ಲೂ ಮೂಲ ಸೌಜನ್ಯ ಅಗತ್ಯ.",
 					"workplacePoints": -1
 				}
 			]
