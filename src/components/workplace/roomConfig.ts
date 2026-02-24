@@ -146,8 +146,8 @@ export const ROOM_SEQUENCE: RoomConfig[] = [
 	},
 	{
 		id: 'manager-office-1',
-		name: 'Manager Office 1',
-		name_kan: 'ವ್ಯವಸ್ಥಾಪಕ ಕಚೇರಿ 1',
+		name: 'Manager Office',
+		name_kan: 'ವ್ಯವಸ್ಥಾಪಕ ಕಚೇರಿ',
 		questionId: 6,
 		sequenceIndex: 9,
 		gridX: 8,
