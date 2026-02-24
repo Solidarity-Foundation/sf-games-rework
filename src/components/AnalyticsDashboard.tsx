@@ -4,6 +4,7 @@ import { Home, ChevronDown, ChevronUp, Users, Trophy, BarChart3, Star } from 'lu
 import { queryAllGameStats, queryAnswerCounts, querySessions } from '@/lib/db';
 import type { GameStat, AnswerCount, SessionRecord } from '@/lib/db';
 import poshGameData from '@/components/posh/gamedata.json';
+import workplaceGameData from '@/components/workplace/gamedata.json';
 
 const GAMES = [
 	{ id: 'all', label: 'All Games' },
@@ -268,6 +269,7 @@ const AnalyticsDashboard = () => {
 											Game Type
 										</th>
 										<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Score</th>
+										<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Level</th>
 										<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Completed</th>
 									</tr>
 								</thead>
@@ -283,6 +285,15 @@ const AnalyticsDashboard = () => {
 												<span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold">
 													{session.score ?? '-'}
 												</span>
+											</td>
+											<td className="py-3 px-2">
+												{session.level ? (
+													<span className="inline-block px-2 py-1 rounded text-xs font-medium bg-orange-50 text-orange-700">
+														{session.level}
+													</span>
+												) : (
+													<span className="text-xs text-gray-400">—</span>
+												)}
 											</td>
 											<td className="py-3 px-2 text-sm text-gray-600">{formatTimestamp(session.played_at)}</td>
 										</tr>
@@ -409,8 +420,20 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 		return <p className="text-sm text-gray-400 italic">No answer data available.</p>;
 	}
 
-	// Get game data if available (currently only PoSH has data)
-	const gameQuestions = gameId === 'posh' ? poshGameData.questions : null;
+	// Get game data if available
+	const gameQuestions =
+		gameId === 'posh'
+			? poshGameData.questions
+			: gameId === 'workplace-etiquette'
+			? workplaceGameData.questions
+			: null;
+
+	const getCorrectIndex = (question: (typeof poshGameData.questions)[number] | (typeof workplaceGameData.questions)[number] | undefined): number => {
+		if (!question) return -1;
+		if ('poshPoints' in question.options[0]) return question.options.findIndex((opt) => (opt as any).poshPoints > 0);
+		if ('workplacePoints' in question.options[0]) return question.options.findIndex((opt) => (opt as any).workplacePoints > 0);
+		return -1;
+	};
 
 	const byQuestion: Record<number, Record<number, number>> = {};
 	answerCounts.forEach(({ question_id, answer_index, count }) => {
@@ -427,7 +450,7 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 			{questionIds.map((qId) => {
 				const counts = byQuestion[qId];
 				const question = gameQuestions?.find((q) => q.id === qId);
-				const correctAnswerIndex = question?.options.findIndex((opt) => opt.poshPoints > 0) ?? -1;
+				const correctAnswerIndex = getCorrectIndex(question);
 
 				return (
 					<div key={qId} className="bg-gray-50 rounded-xl p-3">
