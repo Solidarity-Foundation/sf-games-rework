@@ -1,7 +1,7 @@
-import ComingSoon from "@/components/ComingSoon";
+import WorkplaceIntroScreen from "@/components/workplace/WorkplaceIntroScreen";
 
 const WorkplaceEtiquette = () => {
-  return <ComingSoon title="Workplace Etiquette" color="bg-[#dce8f5]" />;
+  return <WorkplaceIntroScreen />;
 };
 
 export default WorkplaceEtiquette;
