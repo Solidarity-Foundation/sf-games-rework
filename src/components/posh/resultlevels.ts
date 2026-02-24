@@ -33,14 +33,14 @@ export function calculatePoshLevelWithConfig(total: number, config: PoshLevelCon
 			message_kan: 'ನೀವು ಚೆನ್ನಾಗಿದ್ದೀರಿ! PoSH ಜಾಗೃತಿ ಚಾಂಪಿಯನ್ ಆಗಲು ಕಲಿಯುತ್ತಿರಿ.',
 		},
 		learner: {
-			level: 'Posh Etiquette Learner',
+			level: 'PoSH Awareness Learner',
 			level_kan: 'ಲೈಂಗಿಕ ಕಿರುಕುಳ ತಡೆಗಟ್ಟುವಿಕೆ ಕಲಿಕಾರ',
 			message: 'You have a good start but need to polish your PoSH policies. Keep learning and growing.',
 			message_kan:
 				'ನೀವು ಉತ್ತಮ ಆರಂಭವನ್ನು ಹೊಂದಿದ್ದೀರಿ ಆದರೆ ನಿಮ್ಮ PoSH ನೀತಿಗಳನ್ನು ಮೆರುಗುಗೊಳಿಸಬೇಕಾಗಿದೆ. ಕಲಿಯುತ್ತಿರಲಿ ಮತ್ತು ಬೆಳೆಯುತ್ತಿರಲಿ.',
 		},
 		beginner: {
-			level: 'Posh Etiquette Beginner',
+			level: 'PoSH Awareness Beginner',
 			level_kan: 'ಲೈಂಗಿಕ ಕಿರುಕುಳ ತಡೆಗಟ್ಟುವಿಕೆ ಪ್ರಾರಂಭಿಕ',
 			message: "It's time to play again and learn more about PoSH policies.",
 			message_kan: 'ಮತ್ತೊಮ್ಮೆ ಆಡಲು ಮತ್ತು PoSH ನೀತಿಗಳ ಕುರಿತು ಇನ್ನಷ್ಟು ತಿಳಿದುಕೊಳ್ಳಲು ಇದು ಸಮಯ.',

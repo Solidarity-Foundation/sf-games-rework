@@ -5,6 +5,7 @@ import { queryAllGameStats, queryAnswerCounts, querySessions } from '@/lib/db';
 import type { GameStat, AnswerCount, SessionRecord } from '@/lib/db';
 import poshGameData from '@/components/posh/gamedata.json';
 import workplaceGameData from '@/components/workplace/gamedata.json';
+import { ROOM_SEQUENCE } from '@/components/workplace/roomConfig';
 
 const GAMES = [
 	{ id: 'all', label: 'All Games' },
@@ -441,20 +442,32 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 		byQuestion[question_id][answer_index] = count;
 	});
 
+	// For workplace, sort by room sequence order; otherwise sort by question ID
 	const questionIds = Object.keys(byQuestion)
 		.map(Number)
-		.sort((a, b) => a - b);
+		.sort((a, b) => {
+			if (gameId === 'workplace-etiquette') {
+				const seqA = ROOM_SEQUENCE.findIndex((r) => r.questionId === a);
+				const seqB = ROOM_SEQUENCE.findIndex((r) => r.questionId === b);
+				return seqA - seqB;
+			}
+			return a - b;
+		});
 
 	return (
 		<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-			{questionIds.map((qId) => {
+			{questionIds.map((qId, displayIdx) => {
 				const counts = byQuestion[qId];
 				const question = gameQuestions?.find((q) => q.id === qId);
 				const correctAnswerIndex = getCorrectIndex(question);
+				const room = gameId === 'workplace-etiquette' ? ROOM_SEQUENCE.find((r) => r.questionId === qId) : undefined;
+				const label = room ? `Room ${room.sequenceIndex + 1}` : `Q${displayIdx + 1}`;
+				const sublabel = room ? room.name : undefined;
 
 				return (
 					<div key={qId} className="bg-gray-50 rounded-xl p-3">
-						<p className="text-xs font-bold text-gray-500 mb-1 uppercase tracking-wide">Q{qId}</p>
+						<p className="text-xs font-bold text-gray-500 mb-0.5 uppercase tracking-wide">{label}</p>
+						{sublabel && <p className="text-xs font-semibold text-orange-600 mb-1">{sublabel}</p>}
 						{question && <p className="text-xs text-gray-600 mb-2 line-clamp-2">{question.title}</p>}
 						<div className="space-y-1.5">
 							{['A', 'B', 'C', 'D'].map((letter, i) => {
