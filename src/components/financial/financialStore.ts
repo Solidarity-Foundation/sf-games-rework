@@ -113,6 +113,23 @@ interface GameScenario {
 	choices: GameChoice[];
 }
 
+// ── state snapshot (for revert) ───────────────────────────────────────────────
+
+interface FinancialSnapshot {
+	savings: number;
+	monthlyIncome: number;
+	monthlyExpenses: number;
+	expenseBreakdown: ExpenseItem[];
+	assets: Asset[];
+	debts: Debt[];
+	age: number;
+	score: number;
+	houseGoalProgress: number;
+	educationGoalProgress: number;
+	houseGoalStatus: 'not-started' | 'in-progress' | 'at-risk' | 'achieved';
+	educationGoalStatus: 'not-started' | 'in-progress' | 'at-risk' | 'achieved';
+}
+
 // ── store state ───────────────────────────────────────────────────────────────
 
 interface FinancialState {
@@ -146,12 +163,16 @@ interface FinancialState {
 	// Language
 	language: 'en' | 'kan';
 
+	// Snapshots for revert
+	stateSnapshots: Record<number, FinancialSnapshot>;
+
 	// Actions
 	selectCharacter: (id: 'susheela' | 'imran') => void;
 	startGame: () => void;
 	resetGame: () => void;
 	setLanguage: (lang: 'en' | 'kan') => void;
 	makeChoice: (scenarioId: number, choiceIndex: number) => void;
+	revertLastChoice: () => void;
 }
 
 // ── starting state ────────────────────────────────────────────────────────────
@@ -204,15 +225,13 @@ function computeGoalProgress(
 	edu: number;
 	eduStatus: FinancialState['educationGoalStatus'];
 } {
-	// House goal: ₹20 lakh target — driven purely by land assets
-	// Progress rises when land is purchased, drops to 0 when land is sold
-	const landValue = assets.filter(a => a.type === 'land').reduce((s, a) => s + a.value, 0);
-	const houseProgress = Math.min(100, Math.round((landValue / 2000000) * 100));
+	// House goal: binary — 100% if Susheela owns any land, 0% otherwise
+	const hasLand = assets.some(a => a.type === 'land');
+	const houseProgress = hasLand ? 100 : 0;
 
 	let houseStatus: FinancialState['houseGoalStatus'] = 'not-started';
 	if (houseProgress >= 100) houseStatus = 'achieved';
-	else if (houseProgress > 0) houseStatus = 'in-progress';
-	if (scenarioId >= 9 && houseProgress < 30) houseStatus = 'at-risk';
+	if (scenarioId >= 9 && !hasLand) houseStatus = 'at-risk';
 
 	// Education goal: milestone-driven
 	let eduProgress = prevEduProgress;
@@ -250,6 +269,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 	gameStarted: false,
 	score: 0,
 	choiceHistory: {},
+	stateSnapshots: {},
 	...SUSHEELA_START,
 	language: 'en',
 
@@ -262,6 +282,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 			completedScenarios: [],
 			score: 0,
 			choiceHistory: {},
+			stateSnapshots: {},
 			...SUSHEELA_START,
 		}),
 
@@ -273,6 +294,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 			completedScenarios: [],
 			score: 0,
 			choiceHistory: {},
+			stateSnapshots: {},
 			...SUSHEELA_START,
 		}),
 
@@ -287,6 +309,22 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 
 		const choice = scenario.choices[choiceIndex];
 		if (!choice) return;
+
+		// Save snapshot of current state before applying this choice (used by revertLastChoice)
+		const snapshot: FinancialSnapshot = {
+			savings: state.savings,
+			monthlyIncome: state.monthlyIncome,
+			monthlyExpenses: state.monthlyExpenses,
+			expenseBreakdown: [...state.expenseBreakdown],
+			assets: [...state.assets],
+			debts: [...state.debts],
+			age: state.age,
+			score: state.score,
+			houseGoalProgress: state.houseGoalProgress,
+			educationGoalProgress: state.educationGoalProgress,
+			houseGoalStatus: state.houseGoalStatus,
+			educationGoalStatus: state.educationGoalStatus,
+		};
 
 		const fi = choice.financialImpact;
 		const choiceId = choice.id; // "A", "B", or "C"
@@ -412,6 +450,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 		set({
 			score: state.score + points,
 			choiceHistory: { ...state.choiceHistory, [scenarioId]: { choiceIndex, choiceId, points } },
+			stateSnapshots: { ...state.stateSnapshots, [scenarioId]: snapshot },
 			savings: clampedSavings,
 			monthlyIncome: newIncome,
 			monthlyExpenses: newExpenses,
@@ -425,6 +464,30 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 			educationGoalStatus: goals.eduStatus,
 			completedScenarios: [...state.completedScenarios, scenarioId],
 			currentScenario: scenarioId < 10 ? scenarioId + 1 : scenarioId,
+		});
+	},
+
+	revertLastChoice: () => {
+		const state = get();
+		const completed = state.completedScenarios;
+		if (completed.length === 0) return;
+
+		const lastScenarioId = completed[completed.length - 1];
+		const snapshot = state.stateSnapshots[lastScenarioId];
+		if (!snapshot) return;
+
+		const newChoiceHistory = { ...state.choiceHistory };
+		delete newChoiceHistory[lastScenarioId];
+
+		const newSnapshots = { ...state.stateSnapshots };
+		delete newSnapshots[lastScenarioId];
+
+		set({
+			...snapshot,
+			currentScenario: lastScenarioId,
+			completedScenarios: completed.slice(0, -1),
+			choiceHistory: newChoiceHistory,
+			stateSnapshots: newSnapshots,
 		});
 	},
 }));

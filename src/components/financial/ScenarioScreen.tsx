@@ -91,7 +91,7 @@ const ScenarioScreen = () => {
 		savings, monthlyIncome, monthlyExpenses, expenseBreakdown, assets, debts,
 		houseGoalProgress, educationGoalProgress,
 		houseGoalStatus, educationGoalStatus,
-		score, age, language, setLanguage, makeChoice,
+		score, age, language, setLanguage, makeChoice, revertLastChoice,
 	} = useFinancialStore();
 
 	const [selectedChoice, setSelectedChoice] = useState(0);
@@ -108,7 +108,14 @@ const ScenarioScreen = () => {
 
 	const baseChoices = scenario.choices as GameChoice[];
 	const monthlySurplus = monthlyIncome - monthlyExpenses;
-	const totalAssets = assets.reduce((sum, a) => sum + a.value, 0);
+
+	// Apply scenario-level assetValueUpdates for display only (e.g. land appreciation in S6)
+	// so the appreciated value is visible before the player makes a choice.
+	const displayAssets = assets.map(a => {
+		const upd = (scenario.assetValueUpdates ?? []).find(u => u.type === a.type);
+		return upd ? { ...a, value: upd.value } : a;
+	});
+	const totalAssets = displayAssets.reduce((sum, a) => sum + a.value, 0);
 	const totalDebt = debts.reduce((sum, d) => sum + d.remainingAmount, 0);
 	const accentColor = SCENARIO_ACCENT_COLORS[(currentScenario - 1) % SCENARIO_ACCENT_COLORS.length];
 
@@ -136,6 +143,30 @@ const ScenarioScreen = () => {
 			return {
 				en: `Susheela's business is doing well after expansion. She earns ${fmt(monthlyIncome)}/month and after expenses (${fmt(monthlyExpenses)}), she can save ${fmt(surplus)}/month. She has ${fmt(savings)} in savings. ${yearsToRetirement} years until planned retirement. She needs: a house (₹20 lakh in ${yearsToRetirement} years), medical corpus (₹5 lakh), and monthly income post-retirement.`,
 				kan: `ಸುಶೀಲಾ ${fmt(monthlyIncome)}/ತಿಂಗಳು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾಳೆ, ${fmt(surplus)}/ತಿಂಗಳು ಉಳಿಸಬಹುದು. ${fmt(savings)} ಉಳಿತಾಯವಿದೆ. ${yearsToRetirement} ವರ್ಷ ನಿವೃತ್ತಿಗೆ ಉಳಿದಿದೆ. ₹20 ಲಕ್ಷ ಮನೆ, ₹5 ಲಕ್ಷ ವೈದ್ಯಕೀಯ ನಿಧಿ ಬೇಕು.`,
+			};
+		}
+
+		// S10: fully dynamic — reflect actual financial state reached by the player
+		if (scenario.id === 10) {
+			const surplus = monthlyIncome - monthlyExpenses;
+			const totalAssetValue = assets.reduce((s, a) => s + a.value, 0);
+			const landAsset = assets.find(a => a.type === 'land');
+
+			// Financial health summary
+			const financialHealth = surplus >= 20000
+				? { en: 'Her finances are in strong shape', kan: 'ಅವಳ ಆರ್ಥಿಕ ಸ್ಥಿತಿ ಉತ್ತಮವಾಗಿದೆ' }
+				: surplus >= 5000
+				? { en: 'Her finances are stable but modest', kan: 'ಅವಳ ಆರ್ಥಿಕ ಸ್ಥಿತಿ ಸ್ಥಿರವಾಗಿದೆ' }
+				: { en: 'Her finances are tight', kan: 'ಅವಳ ಆರ್ಥಿಕ ಸ್ಥಿತಿ ಕಠಿಣವಾಗಿದೆ' };
+
+			// House / land comment
+			const houseComment = landAsset
+				? { en: `She owns land worth ${fmt(landAsset.value)} — a foundation for her retirement home.`, kan: `ಅವಳ ಬಳಿ ${fmt(landAsset.value)} ಮೌಲ್ಯದ ಭೂಮಿ ಇದೆ — ನಿವೃತ್ತಿ ಮನೆಗೆ ಆಧಾರ.` }
+				: { en: 'She has not yet secured land for her retirement home — that goal remains unmet.', kan: 'ನಿವೃತ್ತಿ ಮನೆಗೆ ಭೂಮಿ ಇನ್ನೂ ಖರೀದಿಸಿಲ್ಲ — ಆ ಗುರಿ ಇನ್ನೂ ಬಾಕಿ ಇದೆ.' };
+
+			return {
+				en: `${financialHealth.en} — she earns ${fmt(monthlyIncome)}/month, spends ${fmt(monthlyExpenses)}/month, and saves ${fmt(surplus)}/month. She has ${fmt(savings)} in savings and ${totalAssetValue > 0 ? fmt(totalAssetValue) + ' in assets' : 'no significant assets'}. ${houseComment.en} Priya is now graduating and starting her first job (₹35,000/month; contributing ₹20,000/month to the household). But Priya's adoption was never legally formalized — if something happens to Susheela, her biological family could legally claim everything.`,
+				kan: `${financialHealth.kan} — ${fmt(monthlyIncome)}/ತಿಂಗಳು ಸಂಪಾದನೆ, ${fmt(monthlyExpenses)}/ತಿಂಗಳು ಖರ್ಚು, ${fmt(surplus)}/ತಿಂಗಳು ಉಳಿತಾಯ. ${fmt(savings)} ಉಳಿತಾಯ, ${totalAssetValue > 0 ? fmt(totalAssetValue) + ' ಆಸ್ತಿ' : 'ಗಮನಾರ್ಹ ಆಸ್ತಿ ಇಲ್ಲ'}. ${houseComment.kan} ಪ್ರಿಯಾ ₹35,000/ತಿಂಗಳ ಉದ್ಯೋಗ ಪಡೆದಿದ್ದಾಳೆ (₹20,000 ಮನೆಗೆ). ಆದರೆ ದತ್ತು ಕಾನೂನಾತ್ಮಕಗೊಂಡಿಲ್ಲ — ಸುಶೀಲಾಗೆ ಏನಾದರೂ ಆದರೆ ಜೈವಿಕ ಕುಟುಂಬ ಎಲ್ಲವನ್ನೂ ಪಡೆಯಬಹುದು.`,
 			};
 		}
 
@@ -168,6 +199,7 @@ const ScenarioScreen = () => {
 
 	const choice = choices[selectedChoice];
 	const choiceLocked = (choice.minimumSavings ?? 0) > savings;
+	const allChoicesLocked = choices.every(c => (c.minimumSavings ?? 0) > savings);
 
 	const handleConfirm = () => {
 		makeChoice(scenario.id, selectedChoice);
@@ -306,7 +338,7 @@ const ScenarioScreen = () => {
 									</div>
 									{showAssets && (
 										<div className="mt-1.5 ml-1 space-y-1 border-l border-blue-400/25 pl-2">
-											{assets.map((asset, i) => (
+											{displayAssets.map((asset, i) => (
 												<div key={i} className="flex justify-between items-center">
 													<span className="text-xs text-white/45">{asset.label}</span>
 													<span className="text-xs text-blue-300/80">{fmt(asset.value)}</span>
@@ -434,6 +466,24 @@ const ScenarioScreen = () => {
 						))}
 					</div>
 
+				{/* All choices locked — go back banner */}
+				{allChoicesLocked && completedScenarios.length > 0 && (
+					<div className="bg-red-950/60 border border-red-500/50 rounded-xl p-4 text-center">
+						<p className="text-sm text-red-300 mb-3">
+							{t(
+								'You don\'t have enough savings for any choice. Go back and reconsider your previous decision.',
+								'ಯಾವ ಆಯ್ಕೆಗೂ ಸಾಕಷ್ಟು ಉಳಿತಾಯವಿಲ್ಲ. ಹಿಂದಿನ ನಿರ್ಧಾರ ಮರು-ಪರಿಶೀಲಿಸಿ.',
+							)}
+						</p>
+						<button
+							onClick={revertLastChoice}
+							className="px-6 py-2.5 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-400 transition-colors text-sm"
+						>
+							{t('← Go Back & Reconsider', '← ಹಿಂದೆ ಹೋಗಿ ಮರು-ಪರಿಶೀಲಿಸಿ')}
+						</button>
+					</div>
+				)}
+
 					{/* Confirm button */}
 					<button
 						onClick={handleConfirm}
@@ -447,6 +497,16 @@ const ScenarioScreen = () => {
 								`ಆಯ್ಕೆ ${choice.id} ದೃಢಪಡಿಸಿ`,
 							)}
 					</button>
+
+					{/* Always-available back link — lets player escape a dead end by going back multiple levels */}
+					{completedScenarios.length > 0 && !allChoicesLocked && (
+						<button
+							onClick={revertLastChoice}
+							className="w-full py-2 text-xs text-white/35 hover:text-white/60 transition-colors text-center"
+						>
+							{t('← Reconsider previous decision', '← ಹಿಂದಿನ ನಿರ್ಧಾರ ಮರು-ಪರಿಶೀಲಿಸಿ')}
+						</button>
+					)}
 				</div>
 			</div>
 		</div>

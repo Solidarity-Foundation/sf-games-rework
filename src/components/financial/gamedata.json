@@ -109,7 +109,7 @@
 					"label_kan": "ಲಂಚ ನೀಡಿ + ಅಂಗಡಿ ತೆರೆಯಿರಿ",
 					"description": "Pay ₹6,000 to police, use ₹10,000 for shop deposit, borrow ₹5,000 from moneylender at 24% interest — prioritize business growth despite costs.",
 					"description_kan": "ಪೊಲೀಸರಿಗೆ ₹6,000 ಪಾವತಿಸಿ, ಅಂಗಡಿ ಠೇವಣಿಗೆ ₹10,000 ಬಳಸಿ, ಬಡ್ಡಿದಾರರಿಂದ ₹5,000 ಸಾಲ ಪಡೆಯಿರಿ - ವೆಚ್ಚದ ಹೊರತಾಗಿಯೂ ವ್ಯವಹಾರ ಬೆಳವಣಿಗೆಗೆ ಆದ್ಯತೆ ನೀಡಿ.",
-					"points": 10,
+					"points": 30,
 					"financialImpact": {
 						"savingsChange": -22000,
 						"monthlyIncomeChange": 12000,
@@ -145,7 +145,7 @@
 					"label_kan": "ಪೊಲೀಸರಿಗೆ ನೀಡಿ, ಅಂಗಡಿ ಬೇಡ",
 					"description": "Pay ₹8,000 to police, keep remaining savings intact, skip shop opportunity for now — seek free legal aid for future protection.",
 					"description_kan": "ಪೊಲೀಸರಿಗೆ ₹8,000 ನೀಡಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ, ಈಗ ಅಂಗಡಿ ಅವಕಾಶ ಬಿಡಿ.",
-					"points": 30,
+					"points": 10,
 					"financialImpact": {
 						"savingsChange": -8000,
 						"monthlyIncomeChange": 0,
@@ -378,6 +378,7 @@
 					"description": "Invest ₹2 lakh in gold jewelry and ₹1 lakh in community building fund, keep the remaining — balance tradition, community, and security.",
 					"description_kan": "₹2 ಲಕ್ಷ ಚಿನ್ನಾಭರಣಗಳಲ್ಲಿ ಮತ್ತು ₹1 ಲಕ್ಷ ಸಮುದಾಯ ನಿರ್ಮಾಣ ನಿಧಿಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡಿ, ಉಳಿದ ಹಣವನ್ನು - ಸಂಪ್ರದಾಯ, ಸಮುದಾಯ ಮತ್ತು ಭದ್ರತೆಯನ್ನು ಸಮತೋಲನದಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಿ.",
 					"points": 10,
+					"minimumSavings": 300000,
 					"financialImpact": {
 						"savingsChange": -300000,
 						"monthlyIncomeChange": 0,
@@ -659,11 +660,10 @@
 			"id": 7,
 			"title": "Business Expansion vs. Stability",
 			"title_kan": "ವ್ಯಾಪಾರ ವಿಸ್ತರಣೆ ಮತ್ತು ಸ್ಥಿರತೆ",
-			"situation": "A shopping complex is offering shop space at ₹8 lakh (₹3 lakh down payment + ₹5 lakh loan at 11%). This could triple her business income to ₹65,000/month. But the down payment requires ₹3 lakh — more than she currently has.",
-			"situation_kan": "ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್ ₹8 ಲಕ್ಷಕ್ಕೆ ಅಂಗಡಿ ಜಾಗ ನೀಡುತ್ತಿದೆ (₹3L ಡೌನ್ + ₹5L ಸಾಲ 11%). ₹65,000/ತಿಂಗಳ ಆದಾಯ ಸಾಧ್ಯ.",
+			"situation": "A shopping complex is offering shop space at ₹8 lakh (₹3 lakh down payment + ₹5 lakh loan at 11%). This could increase her business income to ₹65,000/month.",
+			"situation_kan": "ಒಂದು ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್ ₹8 ಲಕ್ಷಕ್ಕೆ ಅಂಗಡಿ ಸ್ಥಳವನ್ನು ನೀಡುತ್ತಿದೆ (₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ + ₹11% ದರದಲ್ಲಿ ₹5 ಲಕ್ಷ ಸಾಲ). ಇದು ಅವರ ವ್ಯವಹಾರದ ಆದಾಯವನ್ನು ತಿಂಗಳಿಗೆ ₹65,000 ಕ್ಕೆ ಹೆಚ್ಚಿಸಬಹುದು.",
 			"question": "Should Susheela take the business risk for higher income or play it safe for retirement?",
 			"question_kan": "ಸುಶೀಲಾ ಹೆಚ್ಚಿನ ಆದಾಯಕ್ಕಾಗಿ ವ್ಯಾಪಾರ ಅಪಾಯ ತೆಗೆದುಕೊಳ್ಳಬೇಕೇ ಅಥವಾ ನಿವೃತ್ತಿಗಾಗಿ ಸುರಕ್ಷಿತವಾಗಿ ಇರಬೇಕೇ?",
-			"minimumSavings": 240000,
 			"choices": [
 				{
 					"id": "A",
@@ -727,6 +727,7 @@
 					"description": "Expand partially with ₹2 lakh investment in equipment at current location — moderate income growth to ₹50,000/month, no loan.",
 					"description_kan": "ಪ್ರಸ್ತುತ ಸ್ಥಳದಲ್ಲಿ ₹2 ಲಕ್ಷ ಉಪಕರಣ ಹೂಡಿಕೆ — ₹50,000/ತಿಂಗಳ ಆದಾಯ, ಸಾಲ ಇಲ್ಲ.",
 					"points": -20,
+					"minimumSavings": 200000,
 					"financialImpact": {
 						"savingsChange": -200000,
 						"monthlyIncomeChange": 10000,

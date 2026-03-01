@@ -230,7 +230,7 @@ Slower emergency fund building, vulnerable to major medical crisis
 ### Scenario 6:
 
 **Priya's Education and Future Planning**
-Age: 38 | Timeline: 9 years | Priya is now 16
+Age: 38 | Timeline: 10 years | Priya is now 17
 Priya has done well in school and wants to study engineering. College costs will be ₹5 lakh over 4 years (₹1.25 lakh/year).
 Susheela has:
 
