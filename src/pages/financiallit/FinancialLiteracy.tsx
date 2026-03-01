@@ -1,7 +1,5 @@
-import ComingSoon from "@/components/ComingSoon";
+import AvatarSelectionScreen from '@/components/financial/AvatarSelectionScreen';
 
-const FinancialLiteracy = () => {
-  return <ComingSoon title="Financial Literacy" color="bg-[#fde8c8]" />;
-};
+const FinancialLiteracy = () => <AvatarSelectionScreen />;
 
 export default FinancialLiteracy;

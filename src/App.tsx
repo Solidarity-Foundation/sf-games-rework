@@ -13,6 +13,11 @@ import PoshResults from "./pages/posh/PoshResults";
 import Analytics from "./pages/analytics/Analytics";
 import InclusionDiversity from "./pages/inclusiondiversity/InclusionDiversity";
 import FinancialLiteracy from "./pages/financiallit/FinancialLiteracy";
+import FinancialCharacter from "./pages/financiallit/FinancialCharacter";
+import FinancialScenario from "./pages/financiallit/FinancialScenario";
+import FinancialFeedback from "./pages/financiallit/FinancialFeedback";
+import FinancialResults from "./pages/financiallit/FinancialResults";
+import FinancialReview from "./pages/financiallit/FinancialReview";
 import WorkplaceEtiquette from "./pages/workplaceetiquette/WorkplaceEtiquette";
 import WorkplaceGame from "./pages/workplaceetiquette/WorkplaceGame";
 import WorkplaceQuestion from "./components/workplace/WorkplaceQuestion";
@@ -39,6 +44,11 @@ const App = () => (
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/inclusion-diversity" element={<InclusionDiversity />} />
           <Route path="/financial-literacy" element={<FinancialLiteracy />} />
+          <Route path="/financial-literacy/character" element={<FinancialCharacter />} />
+          <Route path="/financial-literacy/scenario" element={<FinancialScenario />} />
+          <Route path="/financial-literacy/feedback" element={<FinancialFeedback />} />
+          <Route path="/financial-literacy/results" element={<FinancialResults />} />
+          <Route path="/financial-literacy/review" element={<FinancialReview />} />
           <Route path="/workplace-etiquette" element={<WorkplaceEtiquette />} />
           <Route path="/workplace-etiquette/game" element={<WorkplaceGame />} />
           <Route path="/workplace-etiquette/question/:roomId" element={<WorkplaceQuestion />} />
