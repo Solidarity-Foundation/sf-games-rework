@@ -560,10 +560,10 @@ const ScenarioScreen = () => {
 				</div>
 
 				{/* ── Illustration (50%) + Right panel (50%) ── */}
-				<div className="flex gap-3">
+				<div className="flex flex-col md:flex-row gap-3">
 					{/* Scenario illustration — 50% */}
 					<div
-						className="w-1/2 rounded-xl flex flex-col items-center justify-center gap-3 p-4 text-white/95"
+						className="w-full md:w-1/2 rounded-xl flex flex-col items-center justify-center gap-3 p-4 text-white/95"
 						style={{ background: `${accentColor}33`, border: `1px solid ${accentColor}70` }}>
 						<div className="text-4xl">💰</div>
 						<div className="text-sm font-semibold text-center leading-snug text-white/90 px-1">
@@ -572,7 +572,7 @@ const ScenarioScreen = () => {
 					</div>
 
 					{/* Right panel — 50%: finances + goals */}
-					<div className="w-1/2 flex flex-col gap-2">
+					<div className="w-full md:w-1/2 flex flex-col gap-2">
 						{/* Financial stats — teal */}
 						<div className="flex-1 bg-[#0a2828] rounded-xl p-3 border border-teal-700/45">
 							<div className="text-[10px] text-teal-400/70 uppercase tracking-wide mb-2">
