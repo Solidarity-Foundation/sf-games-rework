@@ -11,6 +11,18 @@ import growthFundsIcon from '@/assets/financial/growth-funds-icon.png';
 import equipmentIcon from '@/assets/financial/equipment-icon.png';
 import communityBuildingIcon from '@/assets/financial/community-building-icon.png';
 import emiIcon from '@/assets/financial/emi-icon.png';
+import s1 from '@/assets/financial/s1.webp';
+import s2 from '@/assets/financial/s2.webp';
+import s3 from '@/assets/financial/s3.webp';
+import s4 from '@/assets/financial/s4.webp';
+import s5 from '@/assets/financial/s5.webp';
+import s6 from '@/assets/financial/s6.webp';
+import s7 from '@/assets/financial/s7.webp';
+import s8 from '@/assets/financial/s8.webp';
+import s9 from '@/assets/financial/s9.webp';
+import s10 from '@/assets/financial/s10.webp';
+
+const SCENARIO_IMAGES = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
 
 type GameScenario = (typeof gamedata.scenarios)[number];
 type GameChoice = GameScenario['choices'][number];
@@ -212,7 +224,7 @@ const ScenarioScreen = () => {
 				corpusAssets.length > 0 ? corpusAssets.map((a) => `${a.label} (${fmt(a.value)})`).join(', ') : 'her savings';
 			const corpusDescription_kan =
 				corpusAssets.length > 0
-					? corpusAssets.map((a) => `${(a as any).label_kan ?? a.label} (${fmt(a.value)})`).join(', ')
+					? corpusAssets.map((a) => `${(a as Asset).label_kan ?? a.label} (${fmt(a.value)})`).join(', ')
 					: 'ಅವಳ ಉಳಿತಾಯ';
 			return {
 				en: `Susheela collapses at work — severe diabetic complication. Hospital bill: ₹1,80,000 (₹30,000 immediate deposit needed). Her retirement corpus consists of: ${corpusDescription}. Some of these may be hard to liquidate quickly.`,
@@ -467,6 +479,7 @@ const ScenarioScreen = () => {
 								'Pay ₹1,00,000 from savings and take ₹80,000 loan at 12% interest (₹4,000 EMI/month) — cover the medical emergency with minimal asset impact.',
 							description_kan:
 								'₹1,00,000 ಉಳಿತಾಯದಿಂದ ಪಾವತಿಸಿ ₹80,000 @12% ಸಾಲ (₹4,000 EMI/ತಿಂ) — ಕನಿಷ್ಠ ಆಸ್ತಿ ಹಾನಿಯೊಂದಿಗೆ ಆರೊಗ್ಯ ತುರ್ತು ಭರಿಸಿ.',
+							minimumSavings: 100000,
 						} as GameChoice;
 					}
 
@@ -497,9 +510,10 @@ const ScenarioScreen = () => {
 		(choice as typeof choice & { minimumSurplus?: number }).minimumSurplus !== undefined
 			? monthlySurplus < ((choice as typeof choice & { minimumSurplus?: number }).minimumSurplus ?? 0)
 			: false;
-	const choiceLocked = (choice.minimumSavings ?? 0) > savings || surplusLocked;
+	const choiceLocked =
+		((choice as typeof choice & { minimumSavings?: number }).minimumSavings ?? 0) > savings || surplusLocked;
 	const allChoicesLocked = s9Choices.every((c) => {
-		const sLocked = (c.minimumSavings ?? 0) > savings;
+		const sLocked = ((c as typeof c & { minimumSavings?: number }).minimumSavings ?? 0) > savings;
 		const spLocked =
 			(c as typeof c & { minimumSurplus?: number }).minimumSurplus !== undefined
 				? monthlySurplus < ((c as typeof c & { minimumSurplus?: number }).minimumSurplus ?? 0)
@@ -551,9 +565,10 @@ const ScenarioScreen = () => {
 								const isActive = sNum === currentScenario;
 								return (
 									<div key={sNum} className="flex items-center">
-										<div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-[10px] ${
-											isActive ? 'bg-red-500 text-white' : 'bg-[#e8b84b] text-[#0e1e3f]'
-										}`}>
+										<div
+											className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-[10px] ${
+												isActive ? 'bg-red-500 text-white' : 'bg-[#e8b84b] text-[#0e1e3f]'
+											}`}>
 											S{sNum}
 										</div>
 										{sNum < 10 && <div className="w-4 h-0.5 bg-white/70" />}
@@ -570,7 +585,8 @@ const ScenarioScreen = () => {
 								{t('Scene', 'ಸನ್ನಿ')}
 							</div>
 							<div className="text-xl font-bold text-white leading-none">
-								{currentScenario}<span className="text-xs text-white/40">/10</span>
+								{currentScenario}
+								<span className="text-xs text-white/40">/10</span>
 							</div>
 						</div>
 						<div className="w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 flex flex-col items-center justify-center">
@@ -585,11 +601,9 @@ const ScenarioScreen = () => {
 				{/* ── Illustration (50%) + Right panel (50%) ── */}
 				<div className="flex flex-col md:flex-row gap-3">
 					{/* Scenario illustration — 50% */}
-					<div
-						className="w-full md:w-1/2 rounded-xl flex flex-col items-center justify-center gap-3 p-4 text-white/95"
-						style={{ background: `${accentColor}33`, border: `1px solid ${accentColor}70` }}>
-						<div className="text-4xl">💰</div>
-						<div className="text-sm font-semibold text-center leading-snug text-white/90 px-1">
+					<div className="w-full md:w-1/2 rounded-xl overflow-hidden flex flex-col bg-[#e8b84b]">
+						<img src={SCENARIO_IMAGES[currentScenario - 1]} alt={scenario.title} className="w-full object-cover" />
+						<div className="px-3 py-2 text-sm font-semibold text-center leading-snug text-[#0e1e3f]">
 							{t(scenario.title, (scenario as GameScenario & { title_kan?: string }).title_kan ?? scenario.title)}
 						</div>
 					</div>
@@ -673,9 +687,9 @@ const ScenarioScreen = () => {
 														</div>
 													);
 												})}
-										<div className="text-[10px] text-white/60 pt-0.5 italic">
-											{t('Rent & food rise 2%/yr', 'ಬಾಡಿಗೆ & ಆಹಾರ 2%/ವರ್ಷ ಹೆಚ್ಚುತ್ತದೆ')}
-										</div>
+											<div className="text-[10px] text-white/60 pt-0.5 italic">
+												{t('Rent & food rise 2%/yr', 'ಬಾಡಿಗೆ & ಆಹಾರ 2%/ವರ್ಷ ಹೆಚ್ಚುತ್ತದೆ')}
+											</div>
 										</div>
 									)}
 								</div>
@@ -752,14 +766,20 @@ const ScenarioScreen = () => {
 								<div className="flex-1 flex flex-col gap-2">
 									{/* Assets box */}
 									{assetIcons.length > 0 && (
-										<div className={`bg-[#690968] rounded-xl border border-purple-200/20 ${debts.length > 0 ? 'p-2' : 'p-3 flex-1'} flex flex-col`}>
+										<div
+											className={`bg-[#690968] rounded-xl border border-purple-200/20 ${debts.length > 0 ? 'p-2' : 'p-3 flex-1'} flex flex-col`}>
 											<div className="text-[10px] text-pink-300 uppercase tracking-wide mb-2 text-center font-sans">
 												{t('Assets', 'ಆಸ್ತಿ')}
 											</div>
-											<div className={`flex-1 flex flex-wrap ${debts.length > 0 ? 'gap-1' : 'gap-2'} items-center justify-center`}>
+											<div
+												className={`flex-1 flex flex-wrap ${debts.length > 0 ? 'gap-1' : 'gap-2'} items-center justify-center`}>
 												{assetIcons.map(({ src, key }) => (
 													<div key={key} className="rounded-xl p-[2px] border border-purple-200/30">
-														<img src={src} alt={key} className={`${debts.length > 0 ? 'w-8 h-8' : 'w-10 h-10'} object-contain`} />
+														<img
+															src={src}
+															alt={key}
+															className={`${debts.length > 0 ? 'w-8 h-8' : 'w-10 h-10'} object-contain`}
+														/>
 													</div>
 												))}
 											</div>
@@ -767,7 +787,8 @@ const ScenarioScreen = () => {
 									)}
 									{/* EMI box */}
 									{debts.length > 0 && (
-										<div className={`bg-[#5c1a1a] rounded-xl border border-red-500/40 ${assetIcons.length > 0 ? 'p-2' : 'p-3 flex-1'} flex flex-col`}>
+										<div
+											className={`bg-[#5c1a1a] rounded-xl border border-red-500/40 ${assetIcons.length > 0 ? 'p-2' : 'p-3 flex-1'} flex flex-col`}>
 											<div className="text-[10px] text-red-300 uppercase tracking-wide mb-2 text-center font-sans">
 												{t('EMI', 'EMI')}
 											</div>

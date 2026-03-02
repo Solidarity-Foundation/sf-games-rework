@@ -110,6 +110,7 @@
           "description": "Pay ₹6,000 to police, use ₹10,000 for shop deposit, borrow ₹5,000 from moneylender at 24% interest — prioritize business growth despite costs.",
           "description_kan": "ಪೊಲೀಸರಿಗೆ ₹6,000 ಪಾವತಿಸಿ, ಅಂಗಡಿ ಠೇವಣಿಗೆ ₹10,000 ಬಳಸಿ, ಬಡ್ಡಿದಾರರಿಂದ ₹5,000 ಸಾಲ ಪಡೆಯಿರಿ - ವೆಚ್ಚದ ಹೊರತಾಗಿಯೂ ವ್ಯವಹಾರ ಬೆಳವಣಿಗೆಗೆ ಆದ್ಯತೆ ನೀಡಿ.",
           "points": 30,
+          "minimumSavings": 16000,
           "financialImpact": {
             "savingsChange": -22000,
             "monthlyIncomeChange": 12000,
@@ -146,6 +147,7 @@
           "description": "Pay ₹8,000 to police, keep remaining savings intact, skip shop opportunity for now — seek free legal aid for future protection.",
           "description_kan": "ಪೊಲೀಸರಿಗೆ ₹8,000 ನೀಡಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ, ಈಗ ಅಂಗಡಿ ಅವಕಾಶ ಬಿಡಿ.",
           "points": 10,
+          "minimumSavings": 8000,
           "financialImpact": {
             "savingsChange": -8000,
             "monthlyIncomeChange": 0,
@@ -180,8 +182,8 @@
       "id": 3,
       "title": "Identity Documents and Banking Access",
       "title_kan": "ಗುರುತಿನ ದಾಖಲೆಗಳು ಮತ್ತು ಬ್ಯಾಂಕಿಂಗ್ ಪ್ರವೇಶ",
-      "situation": "Susheela wants to open a bank account for better financial management and formal credit access. Legal name change + gender marker correction costs ₹12,000. But Priya needs new school uniforms and books (₹5,000), and Susheela's mother is ill (needs ₹8,000 for treatment). Having proper documents would allow her to: open a bank account properly; access government schemes like the Mudra loan for small businesses; and rent better shop space (landlords want \"proper\" documents).",
-      "situation_kan": "ಸುಶೀಲಾ ಉತ್ತಮ ಆರ್ಥಿಕ ನಿರ್ವಹಣೆ ಮತ್ತು ಔಪಚಾರಿಕ ಸಾಲ ಪ್ರವೇಶಕ್ಕಾಗಿ ಬ್ಯಾಂಕ್ ಖಾತೆ ತೆರೆಯಲು ಬಯಸುತ್ತಾಳೆ. ಕಾನೂನು ಹೆಸರು ಬದಲಾವಣೆ ₹12,000 ವೆಚ್ಚ. ಆದರೆ ಪ್ರಿಯಾಗೆ ಶಾಲಾ ಸಮವಸ್ತ್ರ ಮತ್ತು ಪುಸ್ತಕಗಳು ಬೇಕು, ಮತ್ತು ತಾಯಿಗೆ ₹8,000 ಚಿಕಿತ್ಸೆ ಬೇಕು.",
+      "situation": "Susheela wants to open a bank account for better financial management and formal credit access. Legal name change + gender marker correction costs ₹12,000. But Priya needs new school uniforms and books (₹5,000), and Susheela's mother is ill (needs ₹6,000 for treatment). Having proper documents would allow her to: open a bank account properly; access government schemes like the Mudra loan for small businesses; and rent better shop space (landlords want \"proper\" documents).",
+      "situation_kan": "ಸುಶೀಲಾ ಉತ್ತಮ ಆರ್ಥಿಕ ನಿರ್ವಹಣೆ ಮತ್ತು ಔಪಚಾರಿಕ ಸಾಲ ಪ್ರವೇಶಕ್ಕಾಗಿ ಬ್ಯಾಂಕ್ ಖಾತೆ ತೆರೆಯಲು ಬಯಸುತ್ತಾಳೆ. ಕಾನೂನು ಹೆಸರು ಬದಲಾವಣೆ ₹12,000 ವೆಚ್ಚ. ಆದರೆ ಪ್ರಿಯಾಗೆ ಶಾಲಾ ಸಮವಸ್ತ್ರ ಮತ್ತು ಪುಸ್ತಕಗಳು ಬೇಕು, ಮತ್ತು ತಾಯಿಗೆ ₹6,000 ಚಿಕಿತ್ಸೆ ಬೇಕು.",
       "question": "Should Susheela prioritize identity documents for long-term financial access, or immediate family needs?",
       "question_kan": "ದೀರ್ಘಕಾಲೀನ ಆರ್ಥಿಕ ಪ್ರವೇಶಕ್ಕಾಗಿ ಗುರುತಿನ ದಾಖಲೆಗಳಿಗೆ ಆದ್ಯತೆ ನೀಡಬೇಕೇ ಅಥವಾ ತಕ್ಷಣದ ಕುಟುಂಬದ ಅಗತ್ಯಗಳಿಗೆ?",
       "choices": [
@@ -189,13 +191,13 @@
           "id": "A",
           "label": "Get documents, borrow for mother",
           "label_kan": "ದಾಖಲೆ ಪಡೆಯಿರಿ, ತಾಯಿಗಾಗಿ ಸಾಲ",
-          "description": "Use ₹12,000 for legal documents, borrow ₹8,000 from community lender at 15% for mother's treatment, adjust Priya's school expenses — invest in long-term financial access.",
-          "description_kan": "ಕಾನೂನು ದಾಖಲೆಗಳಿಗೆ ₹12,000 ಬಳಸಿ, ತಾಯಿಯ ಚಿಕಿತ್ಸೆಗೆ 15% ಬಡ್ಡಿಯಲ್ಲಿ ₹8,000 ಸಾಲ, ಪ್ರಿಯಾಳ ಶಾಲಾ ವೆಚ್ಚ ಸರಿಹೊಂದಿಸಿ.",
+          "description": "Use ₹12,000 for legal documents, borrow ₹6,000 from community lender at 15% for mother's treatment, raise Priya's school expenses to ₹3,000/month — invest in long-term financial access.",
+          "description_kan": "ಕಾನೂನು ದಾಖಲೆಗಳಿಗೆ ₹12,000 ಬಳಸಿ, ತಾಯಿಯ ಚಿಕಿತ್ಸೆಗೆ 15% ಬಡ್ಡಿಯಲ್ಲಿ ₹6,000 ಸಾಲ, ಪ್ರಿಯಾ ಶಾಲಾ ವೆಚ್ಚ ₹3,000/ತಿಂಗಳಿಗೆ ಹೆಚ್ಚಿಸಿ.",
           "points": 30,
           "financialImpact": {
-            "savingsChange": -20640,
+            "savingsChange": -18480,
             "monthlyIncomeChange": 0,
-            "monthlyExpensesChange": 3000,
+            "monthlyExpensesChange": 1000,
             "newAssets": [],
             "newDebts": [],
             "conditionalImpacts": [
@@ -209,12 +211,12 @@
                 "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
               }
             ],
-            "notes": "Docs ₹12K + community loan ₹8K @15% 12mo (total repay ₹8,640 folded in) = -₹20,640. Priya school ₹2K→₹5K/mo = +₹3K/mo expenses. Meena is now self-sufficient; guru dakshina and mother support restored.",
-            "notes_kan": "ದಾಖಲೆ ₹12K + ₹8K @15% 12 ತಿಂಗಳು (ಒಟ್ಟು ₹8,640 ಸೇರಿಸಲಾಗಿದೆ) = -₹20,640. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
+            "notes": "Docs ₹12K + community loan ₹6K @15% 12mo (total repay ₹6,480 folded in) = -₹18,480. Priya school ₹2K→₹3K/mo = +₹1K/mo expenses. Meena is now self-sufficient; guru dakshina and mother support restored.",
+            "notes_kan": "ದಾಖಲೆ ₹12K + ₹6K @15% 12 ತಿಂಗಳು (ಒಟ್ಟು ₹6,480 ಸೇರಿಸಲಾಗಿದೆ) = -₹18,480. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
             "expenseItemChanges": [
               {
                 "key": "priya",
-                "newAmount": 5000
+                "newAmount": 3000
               },
               {
                 "key": "meena",
@@ -237,11 +239,11 @@
           "id": "B",
           "label": "Skip documents, help family",
           "label_kan": "ದಾಖಲೆ ಬಿಟ್ಟು, ಕುಟುಂಬಕ್ಕೆ ಸಹಾಯ",
-          "description": "Skip document change, use ₹13,000 for mother and Priya, keep remaining savings — family's immediate needs come first.",
-          "description_kan": "ದಾಖಲೆ ಬದಲಾವಣೆ ಬಿಟ್ಟು, ತಾಯಿ ಮತ್ತು ಪ್ರಿಯಾಗೆ ₹13,000 ಬಳಸಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ.",
+          "description": "Skip document change, use ₹11,000 for mother and Priya, keep remaining savings — family's immediate needs come first.",
+          "description_kan": "ದಾಖಲೆ ಬದಲಾವಣೆ ಬಿಟ್ಟು, ತಾಯಿ ಮತ್ತು ಪ್ರಿಯಾಗೆ ₹11,000 ಬಳಸಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ.",
           "points": -20,
           "financialImpact": {
-            "savingsChange": -8000,
+            "savingsChange": -6000,
             "monthlyIncomeChange": 0,
             "monthlyExpensesChange": 3000,
             "newAssets": [],
@@ -257,8 +259,8 @@
                 "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
               }
             ],
-            "notes": "Mother ₹8K from savings. Priya expenses increase ₹3K/mo. Formal banking remains inaccessible. Meena is now self-sufficient; guru dakshina and mother support restored.",
-            "notes_kan": "ತಾಯಿಗೆ ₹8K. ಔಪಚಾರಿಕ ಬ್ಯಾಂಕಿಂಗ್ ಪ್ರವೇಶವಿಲ್ಲ. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
+            "notes": "Mother ₹6K from savings. Priya expenses increase ₹3K/mo. Formal banking remains inaccessible. Meena is now self-sufficient; guru dakshina and mother support restored.",
+            "notes_kan": "ತಾಯಿಗೆ ₹6K. ಔಪಚಾರಿಕ ಬ್ಯಾಂಕಿಂಗ್ ಪ್ರವೇಶವಿಲ್ಲ. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
             "expenseItemChanges": [
               {
                 "key": "priya",
@@ -285,11 +287,11 @@
           "id": "C",
           "label": "Documents + reduce Priya's expenses",
           "label_kan": "ದಾಖಲೆ + ಪ್ರಿಯಾ ವೆಚ್ಚ ಕಡಿಮೆ",
-          "description": "Get documents for ₹12,000, use ₹8,000 for mother, keep Priya's expenses at ₹2,000 using old uniforms and second-hand textbooks — balance all needs.",
-          "description_kan": "₹12,000ಗೆ ದಾಖಲೆ ಪಡೆಯಿರಿ, ತಾಯಿಗೆ ₹8,000 ಬಳಸಿ, ಹಳೆಯ ಸಮವಸ್ತ್ರ ಮತ್ತು ಪುರಾತನ ಪುಸ್ತಕಗಳಿಂದ ಪ್ರಿಯಾ ವೆಚ್ಚ ₹2,000ಕ್ಕೆ ಇರಿಸಿ.",
+          "description": "Get documents for ₹12,000, use ₹6,000 for mother, keep Priya's expenses at ₹2,000 using old uniforms and second-hand textbooks — balance all needs.",
+          "description_kan": "₹12,000ಗೆ ದಾಖಲೆ ಪಡೆಯಿರಿ, ತಾಯಿಗೆ ₹6,000 ಬಳಸಿ, ಹಳೆಯ ಸಮವಸ್ತ್ರ ಮತ್ತು ಪುರಾತನ ಪುಸ್ತಕಗಳಿಂದ ಪ್ರಿಯಾ ವೆಚ್ಚ ₹2,000ಕ್ಕೆ ಇರಿಸಿ.",
           "points": 10,
           "financialImpact": {
-            "savingsChange": -20000,
+            "savingsChange": -18000,
             "monthlyIncomeChange": 0,
             "monthlyExpensesChange": 0,
             "newAssets": [],
@@ -305,8 +307,8 @@
                 "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
               }
             ],
-            "notes": "Docs ₹12K + mother ₹8K = -₹20K. Priya stays at ₹2K/mo (old uniforms, second-hand books). No expense increase. Meena is now self-sufficient; guru dakshina and mother support restored.",
-            "notes_kan": "ದಾಖಲೆ ₹12K + ತಾಯಿ ₹8K = -₹20K. ಪ್ರಿಯಾ ₹2K/ತಿಂಗಳಿಗೆ ಉಳಿಯುತ್ತಾಳೆ. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
+            "notes": "Docs ₹12K + mother ₹6K = -₹18K. Priya stays at ₹2K/mo (old uniforms, second-hand books). No expense increase. Meena is now self-sufficient; guru dakshina and mother support restored.",
+            "notes_kan": "ದಾಖಲೆ ₹12K + ತಾಯಿ ₹6K = -₹18K. ಪ್ರಿಯಾ ₹2K/ತಿಂಗಳಿಗೆ ಉಳಿಯುತ್ತಾಳೆ. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
             "expenseItemChanges": [
               {
                 "key": "meena",

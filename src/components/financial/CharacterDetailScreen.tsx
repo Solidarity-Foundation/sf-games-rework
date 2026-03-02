@@ -1,7 +1,7 @@
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Home, ArrowLeft } from 'lucide-react';
 import { useFinancialStore } from './financialStore';
-import susheelaImg from '@/assets/financial/susheela.png';
+import susheelaImg from '@/assets/financial/susheela-profile.webp';
 
 const CharacterDetailScreen = () => {
 	const navigate = useNavigate();
@@ -128,7 +128,9 @@ const CharacterDetailScreen = () => {
 						<div className="flex items-start gap-3">
 							<span className="text-xl flex-shrink-0">🏠</span>
 							<div>
-								<p className="text-xs text-white/45 uppercase tracking-wide mb-0.5">{t('Living Situation', 'ವಾಸಸ್ಥಳ')}</p>
+								<p className="text-xs text-white/45 uppercase tracking-wide mb-0.5">
+									{t('Living Situation', 'ವಾಸಸ್ಥಳ')}
+								</p>
 								<p className="text-base text-white/85">
 									{t(
 										'Rents a small room in Malleswaram with two other trans women',
@@ -166,10 +168,7 @@ const CharacterDetailScreen = () => {
 							<div>
 								<p className="text-xs text-white/45 uppercase tracking-wide mb-0.5">{t('Health', 'ಆರೋಗ್ಯ')}</p>
 								<p className="text-base text-white/85">
-									{t(
-										'Diabetic; requires regular medication',
-										'ಮಧುಮೇಹ; ನಿಯಮಿತ ಔಷಧಿ ಅಗತ್ಯ',
-									)}
+									{t('Diabetic; requires regular medication', 'ಮಧುಮೇಹ; ನಿಯಮಿತ ಔಷಧಿ ಅಗತ್ಯ')}
 								</p>
 							</div>
 						</div>

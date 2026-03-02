@@ -1,6 +1,8 @@
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import { useFinancialStore } from './financialStore';
+import { getFinancialLevel } from './resultlevels';
+import { saveGameSession } from '@/lib/db';
 import gamedata from './gamedata.json';
 
 type GameScenario = (typeof gamedata.scenarios)[number];
@@ -23,6 +25,7 @@ const FeedbackScreen = () => {
 		debts,
 		score,
 		stateSnapshots,
+		houseGoalProgress,
 		language,
 		setLanguage,
 		resetGame,
@@ -498,7 +501,26 @@ const FeedbackScreen = () => {
 
 				{/* Continue */}
 				<button
-					onClick={() => (allDone ? navigate('/financial-literacy/results') : navigate('/financial-literacy/scenario'))}
+					onClick={() => {
+					if (allDone) {
+						const level = getFinancialLevel(score, houseGoalProgress === 100);
+						saveGameSession({
+							gameId: 'financial-literacy',
+							totalQuestions: 10,
+							questionsAnswered: completedScenarios.length,
+							score,
+							level: level.level,
+							answers: Object.entries(choiceHistory).map(([sId, record]) => ({
+								questionId: Number(sId),
+								answerIndex: record.choiceIndex,
+								pointsEarned: record.points,
+							})),
+						}).catch(() => {/* analytics failure is non-blocking */});
+						navigate('/financial-literacy/results');
+					} else {
+						navigate('/financial-literacy/scenario');
+					}
+				}}
 					className="w-full py-4 rounded-xl bg-[#e8b84b] text-[#0e1e3f] font-bold text-base hover:bg-[#f5c842] transition-colors">
 					{allDone
 						? t('See Final Results →', 'ಅಂತಿಮ ಫಲಿತಾಂಶ ನೋಡಿ →')

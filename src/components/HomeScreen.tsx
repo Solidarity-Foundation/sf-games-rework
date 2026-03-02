@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
-import poshImage from '@/assets/stop-sexual-harassment.jpg';
+import poshImage from '@/assets/posh-button.webp';
 import workplaceImage from '@/assets/tbf-logo.png';
+import financialImage from '@/assets/financial/susheela-button.webp';
 
 interface GameCard {
 	id: string;
@@ -25,7 +26,8 @@ const games: GameCard[] = [
 		title: 'Financial Literacy',
 		path: '/financial-literacy',
 		labelColor: 'bg-[#f5d9a8]',
-		imageBg: 'bg-gradient-to-br from-yellow-100 via-amber-100 to-green-200',
+		imageBg: 'bg-gradient-to-br from-amber-100 via-yellow-50 to-orange-200',
+		image: financialImage,
 	},
 	{
 		id: 'workplace-etiquette',

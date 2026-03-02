@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import { useFinancialStore } from './financialStore';
-import susheelaImg from '@/assets/financial/susheela.png';
+import susheelaImg from '@/assets/financial/susheela-profile.webp';
 
 const AvatarSelectionScreen = () => {
 	const navigate = useNavigate();
-	const selectCharacter = useFinancialStore(s => s.selectCharacter);
-	const language = useFinancialStore(s => s.language);
-	const setLanguage = useFinancialStore(s => s.setLanguage);
+	const selectCharacter = useFinancialStore((s) => s.selectCharacter);
+	const language = useFinancialStore((s) => s.language);
+	const setLanguage = useFinancialStore((s) => s.setLanguage);
 
 	const t = (en: string, kan: string) => (language === 'kan' ? kan : en);
 
@@ -45,8 +45,7 @@ const AvatarSelectionScreen = () => {
 				</button>
 				<button
 					onClick={() => setLanguage(language === 'en' ? 'kan' : 'en')}
-					className="text-sm px-4 py-1.5 rounded border border-white/35 hover:bg-white/15 transition-colors"
-				>
+					className="text-sm px-4 py-1.5 rounded border border-white/35 hover:bg-white/15 transition-colors">
 					{language === 'en' ? 'ಕನ್ನಡ' : 'English'}
 				</button>
 			</header>
@@ -71,20 +70,14 @@ const AvatarSelectionScreen = () => {
 
 				{/* Susheela card */}
 				<div className="w-full max-w-xl rounded-2xl border border-[#e8b84b]/60 bg-[#162d5c] overflow-hidden hover:border-[#e8b84b]/85 transition-colors">
-
 					{/* Mobile layout: name → image → bio → button */}
 					<div className="flex flex-col md:hidden p-5 gap-4">
 						<div className="text-xl font-bold tracking-wider text-[#e8b84b]">SUSHEELA</div>
-						<img
-							src={susheelaImg}
-							alt="Susheela"
-							className="w-full h-56 rounded-xl object-cover object-top"
-						/>
+						<img src={susheelaImg} alt="Susheela" className="w-full h-56 rounded-xl object-cover object-top" />
 						{bio}
 						<button
 							onClick={handleSelect}
-							className="w-full py-2.5 rounded-xl bg-[#e8b84b] text-[#0e1e3f] text-sm font-bold hover:bg-[#f5c842] transition-colors"
-						>
+							className="w-full py-2.5 rounded-xl bg-[#e8b84b] text-[#0e1e3f] text-sm font-bold hover:bg-[#f5c842] transition-colors">
 							{t('Start Game', 'ಆಟ ಪ್ರಾರಂಭಿಸಿ')}
 						</button>
 					</div>
@@ -96,20 +89,14 @@ const AvatarSelectionScreen = () => {
 							{bio}
 						</div>
 						<div className="flex flex-col items-center justify-between w-32 flex-shrink-0">
-							<img
-								src={susheelaImg}
-								alt="Susheela"
-								className="w-28 h-36 rounded-xl object-cover object-top"
-							/>
+							<img src={susheelaImg} alt="Susheela" className="w-28 h-36 rounded-xl object-cover object-top" />
 							<button
 								onClick={handleSelect}
-								className="mt-4 w-full py-2.5 rounded-xl bg-[#e8b84b] text-[#0e1e3f] text-sm font-bold hover:bg-[#f5c842] transition-colors"
-							>
+								className="mt-4 w-full py-2.5 rounded-xl bg-[#e8b84b] text-[#0e1e3f] text-sm font-bold hover:bg-[#f5c842] transition-colors">
 								{t('Start Game', 'ಆಟ ಪ್ರಾರಂಭಿಸಿ')}
 							</button>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>

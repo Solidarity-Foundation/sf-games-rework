@@ -22,7 +22,7 @@ const ResultsScreen = () => {
 
 	if (completedScenarios.length < 10) return <Navigate to="/financial-literacy/scenario" replace />;
 
-	const level = getFinancialLevel(score);
+	const level = getFinancialLevel(score, houseGoalProgress === 100);
 	const totalAssets = assets.reduce((sum, a) => sum + a.value, 0);
 	const totalDebt = debts.reduce((sum, d) => sum + d.remainingAmount, 0);
 	const monthlySurplus = monthlyIncome - monthlyExpenses;
@@ -69,6 +69,14 @@ const ResultsScreen = () => {
 					<div className="text-sm text-white/45 mt-2">
 						{t(`Out of 300 points · Susheela, age ${Math.round(age)}`, `300 ಅಂಕಗಳಲ್ಲಿ · ಸುಶೀಲಾ, ವಯಸ್ಸು ${Math.round(age)}`)}
 					</div>
+					{totalDebt === 0 && (
+						<div className="mt-3 inline-flex items-center gap-1.5 bg-green-900/40 border border-green-500/50 rounded-full px-3 py-1">
+							<span className="text-green-400 text-sm">★</span>
+							<span className="text-green-300 text-sm font-medium">
+								{t('Debt-Free Journey', 'ಸಾಲಮುಕ್ತ ಪ್ರಯಾಣ')}
+							</span>
+						</div>
+					)}
 				</div>
 
 				{/* Goals */}

@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 import gamedata from './gamedata.json';
 
 export interface Asset {
@@ -275,7 +276,7 @@ function computeGoalProgress(
 
 // ── store ─────────────────────────────────────────────────────────────────────
 
-export const useFinancialStore = create<FinancialState>((set, get) => ({
+export const useFinancialStore = create<FinancialState>()(persist((set, get) => ({
 	selectedCharacter: null,
 	currentScenario: 1,
 	completedScenarios: [],
@@ -734,4 +735,27 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 			stateSnapshots: newSnapshots,
 		});
 	},
+}), {
+	name: 'sf-financial-game',
+	partialize: (state) => ({
+		selectedCharacter: state.selectedCharacter,
+		currentScenario: state.currentScenario,
+		completedScenarios: state.completedScenarios,
+		gameStarted: state.gameStarted,
+		score: state.score,
+		choiceHistory: state.choiceHistory,
+		stateSnapshots: state.stateSnapshots,
+		savings: state.savings,
+		monthlyIncome: state.monthlyIncome,
+		monthlyExpenses: state.monthlyExpenses,
+		expenseBreakdown: state.expenseBreakdown,
+		assets: state.assets,
+		debts: state.debts,
+		age: state.age,
+		houseGoalProgress: state.houseGoalProgress,
+		houseGoalStatus: state.houseGoalStatus,
+		educationGoalProgress: state.educationGoalProgress,
+		educationGoalStatus: state.educationGoalStatus,
+		language: state.language,
+	}),
 }));
