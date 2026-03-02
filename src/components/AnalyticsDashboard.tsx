@@ -5,6 +5,7 @@ import { queryAllGameStats, queryAnswerCounts, querySessions } from '@/lib/db';
 import type { GameStat, AnswerCount, SessionRecord } from '@/lib/db';
 import poshGameData from '@/components/posh/gamedata.json';
 import workplaceGameData from '@/components/workplace/gamedata.json';
+import financialGameData from '@/components/financial/gamedata.json';
 import { ROOM_SEQUENCE } from '@/components/workplace/roomConfig';
 
 const GAMES = [
@@ -364,7 +365,7 @@ const GameCard = ({ stat, isExpanded, onToggle, answerCounts, levelCounts }: Gam
 							{Object.keys(levelCounts).length > 0 && (
 								<div className="hidden lg:flex items-center gap-1.5">
 									{Object.entries(levelCounts).map(([level, count]) => {
-										const shortLevel = level.split(' ').pop() || level;
+										const shortLevel = level.split(' — ')[0].split(' ').pop() || level;
 										return (
 											<span key={level} className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
 												{shortLevel}: {count}
@@ -388,7 +389,7 @@ const GameCard = ({ stat, isExpanded, onToggle, answerCounts, levelCounts }: Gam
 							{stat.attempts} attempt{stat.attempts !== 1 ? 's' : ''}
 						</span>
 						{Object.entries(levelCounts).map(([level, count]) => {
-							const shortLevel = level.split(' ').pop() || level;
+							const shortLevel = level.split(' — ')[0].split(' ').pop() || level;
 							return (
 								<span key={level} className="px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
 									{shortLevel}: {count}
@@ -421,6 +422,8 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 		return <p className="text-sm text-gray-400 italic">No answer data available.</p>;
 	}
 
+	const isFinancial = gameId === 'financial-literacy';
+
 	// Get game data if available
 	const gameQuestions =
 		gameId === 'posh'
@@ -428,6 +431,7 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 			: gameId === 'workplace-etiquette'
 			? workplaceGameData.questions
 			: null;
+	const financialScenarios = isFinancial ? financialGameData.scenarios : null;
 
 	const getCorrectIndex = (question: (typeof poshGameData.questions)[number] | (typeof workplaceGameData.questions)[number] | undefined): number => {
 		if (!question) return -1;
@@ -458,6 +462,40 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 		<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
 			{questionIds.map((qId, displayIdx) => {
 				const counts = byQuestion[qId];
+
+				if (isFinancial) {
+					const scenario = financialScenarios?.find((s) => s.id === qId);
+					const correctAnswerIndex = scenario
+						? scenario.choices.reduce((bestIdx, c, i) => (c.points > scenario.choices[bestIdx].points ? i : bestIdx), 0)
+						: -1;
+					const choiceLetters = ['A', 'B', 'C'];
+					return (
+						<div key={qId} className="bg-gray-50 rounded-xl p-3">
+							<p className="text-xs font-bold text-gray-500 mb-0.5 uppercase tracking-wide">S{qId}</p>
+							{scenario && <p className="text-xs text-gray-600 mb-2 line-clamp-2 font-medium">{scenario.title}</p>}
+							<div className="space-y-1.5">
+								{choiceLetters.map((letter, i) => {
+									const count = counts[i] ?? 0;
+									const isCorrect = i === correctAnswerIndex;
+									return (
+										<div key={i} className="flex items-center justify-between gap-1">
+											<span
+												className={`text-xs font-bold px-1.5 py-0.5 rounded ${
+													isCorrect ? 'bg-green-500 text-white' : 'text-gray-500'
+												}`}>
+												{letter}
+											</span>
+											<span className="text-xs font-bold px-1.5 py-0.5 rounded min-w-[20px] text-center bg-gray-100 text-gray-700">
+												{count}
+											</span>
+										</div>
+									);
+								})}
+							</div>
+						</div>
+					);
+				}
+
 				const question = gameQuestions?.find((q) => q.id === qId);
 				const correctAnswerIndex = getCorrectIndex(question);
 				const room = gameId === 'workplace-etiquette' ? ROOM_SEQUENCE.find((r) => r.questionId === qId) : undefined;
