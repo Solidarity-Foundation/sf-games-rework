@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Home, ChevronLeft, ChevronRight, ChevronDown, ArrowLeft } from 'lucide-react';
-import { useFinancialStore } from './financialStore';
+import { useFinancialStore, computeLoanTermMonths } from './financialStore';
 import gamedata from './gamedata.json';
 import houseIcon from '@/assets/financial/house-icon.png';
 import educationIcon from '@/assets/financial/education-icon.png';
@@ -307,6 +307,7 @@ const ScenarioScreen = () => {
 			description: 'Buy ₹12 lakh plot for retirement home — ₹8 lakh down payment from savings + ₹4 lakh loan at 12% (₹10,000 EMI/month). Fulfils your house goal.',
 			description_kan: '₹12 ಲಕ್ಷ ನಿವೇಶನ ಖರೀದಿ — ₹8 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ + ₹4 ಲಕ್ಷ 12% ಸಾಲ (₹10,000 EMI/ತಿಂಗಳು). ಮನೆ ಗುರಿ ಈಡೇರುತ್ತದೆ.',
 			minimumSavings: 800000,
+			minimumSurplus: 10000,
 		} as GameChoice;
 		if (i === 1 && hasLand) return { ...c,
 			label: 'Gold + Fixed Deposit',
@@ -396,8 +397,17 @@ const ScenarioScreen = () => {
 	}) as GameChoice[];
 
 	const choice = s9Choices[selectedChoice];
-	const choiceLocked = (choice.minimumSavings ?? 0) > savings;
-	const allChoicesLocked = s9Choices.every(c => (c.minimumSavings ?? 0) > savings);
+	const surplusLocked = (choice as typeof choice & { minimumSurplus?: number }).minimumSurplus !== undefined
+		? monthlySurplus < ((choice as typeof choice & { minimumSurplus?: number }).minimumSurplus ?? 0)
+		: false;
+	const choiceLocked = (choice.minimumSavings ?? 0) > savings || surplusLocked;
+	const allChoicesLocked = s9Choices.every(c => {
+		const sLocked = (c.minimumSavings ?? 0) > savings;
+		const spLocked = (c as typeof c & { minimumSurplus?: number }).minimumSurplus !== undefined
+			? monthlySurplus < ((c as typeof c & { minimumSurplus?: number }).minimumSurplus ?? 0)
+			: false;
+		return sLocked || spLocked;
+	});
 
 	const handleConfirm = () => {
 		makeChoice(scenario.id, selectedChoice);
@@ -501,14 +511,25 @@ const ScenarioScreen = () => {
 									</div>
 									{showExpenses && (
 										<div className="mt-1.5 ml-1 space-y-1 border-l border-red-400/25 pl-2">
-											{expenseBreakdown.filter(item => item.amount > 0).map(item => (
-												<div key={item.key} className="flex justify-between items-center">
-													<span className="text-xs text-white/45">
-														{t(item.label, item.label_kan)}
-													</span>
-													<span className="text-xs text-red-400/80">{fmt(item.amount)}</span>
-												</div>
-											))}
+											{expenseBreakdown.filter(item => item.amount > 0).map(item => {
+												const linkedDebt = debts.find(d => (d as typeof d & { expenseKey?: string }).expenseKey === item.key);
+												const clearScenario = linkedDebt
+													? linkedDebt.takenInScenario + Math.ceil(computeLoanTermMonths(linkedDebt.principal, linkedDebt.interestRate, linkedDebt.monthlyEmi) / 24) - 1
+													: null;
+												return (
+													<div key={item.key} className="flex justify-between items-center gap-1">
+														<span className="text-xs text-white/45 flex items-center gap-1">
+															{t(item.label, item.label_kan)}
+															{clearScenario !== null && (
+																clearScenario <= 10
+																	? <span className="text-[10px] text-orange-400/60 font-medium">clears S{clearScenario}</span>
+																	: <span className="text-[10px] text-yellow-400/60 font-medium">ongoing past game</span>
+															)}
+														</span>
+														<span className="text-xs text-red-400/80">{fmt(item.amount)}</span>
+													</div>
+												);
+											})}
 										</div>
 									)}
 								</div>
@@ -624,7 +645,9 @@ const ScenarioScreen = () => {
 								<span className="text-2xl font-bold text-[#e8b84b]">{choice.id}</span>
 								{choiceLocked && (
 									<span className="text-xs bg-red-600 text-white rounded px-2 py-0.5 shrink-0">
-										{t(`Needs ₹${(choice.minimumSavings ?? 0).toLocaleString('en-IN')}`, `₹${(choice.minimumSavings ?? 0).toLocaleString('en-IN')} ಬೇಕು`)}
+										{surplusLocked
+											? t(`Needs ₹${((choice as typeof choice & { minimumSurplus?: number }).minimumSurplus ?? 0).toLocaleString('en-IN')}/mo surplus`, `₹${((choice as typeof choice & { minimumSurplus?: number }).minimumSurplus ?? 0).toLocaleString('en-IN')}/ತಿಂ ಉಳಿಕೆ ಬೇಕು`)
+											: t(`Needs ₹${(choice.minimumSavings ?? 0).toLocaleString('en-IN')} savings`, `₹${(choice.minimumSavings ?? 0).toLocaleString('en-IN')} ಉಳಿತಾಯ ಬೇಕು`)}
 									</span>
 								)}
 							</div>
@@ -689,7 +712,9 @@ const ScenarioScreen = () => {
 						className={`w-full py-4 rounded-xl font-bold text-base transition-colors ${choiceLocked ? 'bg-white/10 text-white/30 cursor-not-allowed' : 'bg-[#e8b84b] text-[#0e1e3f] hover:bg-[#f5c842]'}`}
 					>
 						{choiceLocked
-							? t('Not enough savings for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಸಾಕಷ್ಟು ಉಳಿತಾಯವಿಲ್ಲ')
+							? (surplusLocked
+								? t('Need more monthly surplus for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಹೆಚ್ಚಿನ ಮಾಸಿಕ ಉಳಿಕೆ ಬೇಕು')
+								: t('Not enough savings for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಸಾಕಷ್ಟು ಉಳಿತಾಯವಿಲ್ಲ'))
 							: t(
 								`Confirm Choice ${choice.id}: ${choice.label}`,
 								`ಆಯ್ಕೆ ${choice.id} ದೃಢಪಡಿಸಿ`,

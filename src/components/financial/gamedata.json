@@ -1,1038 +1,1042 @@
 {
-	"scenarios": [
-		{
-			"id": 1,
-			"title": "The First Stable Income",
-			"title_kan": "ಮೊದಲ ಸ್ಥಿರ ಆದಾಯ",
-			"situation": "After years of unstable work, Susheela now earns ₹18,000/month — but every rupee is spoken for. Her monthly obligations: Rent ₹4,000 · Food & basics ₹5,000 · Diabetes medication ₹2,000 · Contribution to guru Lakshmi ₹3,000 · Secret support to her mother ₹1,500 · Priya's school & needs ₹2,000. Total: ₹17,500 — leaving just ₹500. Now her younger trans friend Meena, who just fled family violence, needs shelter and support (₹2,000/month). Guru Lakshmi reminds Susheela that community support is a sacred duty.",
-			"situation_kan": "ಅಸ್ಥಿರ ಕೆಲಸದ ವರ್ಷಗಳ ನಂತರ, ಸುಶೀಲಾ ₹18,000/ತಿಂಗಳು ಗಳಿಸುತ್ತಾಳೆ — ಆದರೆ ಪ್ರತಿ ರೂಪಾಯಿ ಖರ್ಚಾಗಿದೆ. ಮಾಸಿಕ ಬಾಧ್ಯತೆಗಳು: ಬಾಡಿಗೆ ₹4,000 · ಆಹಾರ ₹5,000 · ಮಧುಮೇಹ ಔಷಧ ₹2,000 · ಗುರು ಲಕ್ಷ್ಮಿಗೆ ₹3,000 · ತಾಯಿಗೆ ಗುಪ್ತ ಬೆಂಬಲ ₹1,500 · ಪ್ರಿಯಾ ಶಾಲೆ ₹2,000. ಒಟ್ಟು: ₹17,500 — ಕೇವಲ ₹500 ಉಳಿಯುತ್ತದೆ. ಈಗ ಕುಟುಂಬ ಹಿಂಸೆಯಿಂದ ಪಾರಾದ ಸ್ನೇಹಿತೆ ಮೀನಾಗೆ ಆಶ್ರಯ ಮತ್ತು ₹2,000/ತಿಂಗಳು ಬೆಂಬಲ ಬೇಕು. ಗುರು ಲಕ್ಷ್ಮಿ ಸಮುದಾಯ ಬೆಂಬಲವನ್ನು ಪವಿತ್ರ ಕರ್ತವ್ಯ ಎನ್ನುತ್ತಾರೆ.",
-			"question": "How should Susheela balance community obligations with building financial security for Priya's future?",
-			"question_kan": "ಸಮುದಾಯದ ಬಾಧ್ಯತೆಗಳನ್ನು ಮತ್ತು ಪ್ರಿಯಾಳ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಆರ್ಥಿಕ ಭದ್ರತೆ ನಿರ್ಮಿಸುವುದನ್ನು ಸುಶೀಲಾ ಹೇಗೆ ಸಮತೋಲನ ಮಾಡಬೇಕು?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Take extra work",
-					"label_kan": "ಹೆಚ್ಚುವರಿ ಕೆಲಸ ತೆಗೆದುಕೊಳ್ಳಿ",
-					"description": "Fulfill all obligations and take on extra sex work for ₹5,000 more per month to save — sacrifice health and safety for both community and savings.",
-					"description_kan": "ಎಲ್ಲಾ ಬಾಧ್ಯತೆಗಳನ್ನು ಪೂರೈಸಿ ₹5,000 ಹೆಚ್ಚುವರಿ ಆದಾಯಕ್ಕಾಗಿ ಹೆಚ್ಚುವರಿ ಕೆಲಸ ಮಾಡಿ — ಸಮುದಾಯ ಮತ್ತು ಉಳಿತಾಯ ಎರಡಕ್ಕೂ ಆರೋಗ್ಯ ಮತ್ತು ಸುರಕ್ಷತೆಯನ್ನು ತ್ಯಾಗ ಮಾಡಿ.",
-					"points": 10,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 5000,
-						"monthlyExpensesChange": 2000,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Extra sex work adds ₹5K income, but Susheela now supports Meena with ₹2K/month.",
-						"notes_kan": "ಹೆಚ್ಚುವರಿ ಕೆಲಸ ₹5K ಆದಾಯ ನೀಡುತ್ತದೆ, ಆದರೆ ಸುಶೀಲಾ ಈಗ ಮೀನಾಗೆ ₹2K/ತಿಂಗಳು ಬೆಂಬಲ ನೀಡುತ್ತಾಳೆ.",
-						"expenseItemChanges": [
-							{
-								"key": "meena",
-								"label": "Support for Meena",
-								"label_kan": "ಮೀನಾ ಬೆಂಬಲ",
-								"newAmount": 2000
-							}
-						]
-					}
-				},
-				{
-					"id": "B",
-					"label": "Renegotiate obligations",
-					"label_kan": "ಬಾಧ್ಯತೆಗಳನ್ನು ಮರು-ಮಾತುಕತೆ ಮಾಡಿ",
-					"description": "Reduce guru contribution to ₹1,500 from ₹3,000, give mother ₹1,000 instead of ₹1,500, support Meena with ₹1,000, save ₹1,500/month — negotiate obligations respectfully while starting savings.",
-					"description_kan": "ಗುರುವಿನ ಕೊಡುಗೆಯನ್ನು ₹3,000 ರಿಂದ ₹1,500 ಕ್ಕೆ ಇಳಿಸಿ, ತಾಯಿಗೆ ₹1,500 ರ ಬದಲು ₹1,000 ನೀಡಿ, ಮೀನಾಗೆ ₹1,000 ನೀಡಿ, ತಿಂಗಳಿಗೆ ₹1,500 ಉಳಿಸಿ — ಉಳಿತಾಯವನ್ನು ಪ್ರಾರಂಭಿಸುವಾಗ ಬಾಧ್ಯತೆಗಳನ್ನು ಗೌರವದಿಂದ ಮಾತುಕತೆ ಮಾಡಿ.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": -1000,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Renegotiates obligations, reducing monthly expenses by ₹1K net.",
-						"notes_kan": "ಬಾಧ್ಯತೆಗಳನ್ನು ಮರು-ಮಾತುಕತೆ ಮಾಡಿ ₹1K/ತಿಂಗಳು ನಿವ್ವಳ ವೆಚ್ಚ ಕಡಿಮೆ ಮಾಡಿ.",
-						"expenseItemChanges": [
-							{
-								"key": "guru",
-								"newAmount": 1500
-							},
-							{
-								"key": "mother",
-								"newAmount": 1000
-							},
-							{
-								"key": "meena",
-								"label": "Support for Meena",
-								"label_kan": "ಮೀನಾ ಬೆಂಬಲ",
-								"newAmount": 1000
-							}
-						]
-					}
-				},
-				{
-					"id": "C",
-					"label": "Community duty above all",
-					"label_kan": "ಸಮುದಾಯ ಕರ್ತವ್ಯ ಮೊದಲು",
-					"description": "Maintain all obligations, support Meena with remaining ₹500/month, save nothing — community duty above all.",
-					"description_kan": "ಎಲ್ಲಾ ಬಾಧ್ಯತೆಗಳನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಿ, ಮೀನಾಗೆ ₹500/ತಿಂಗಳು ಬೆಂಬಲ ನೀಡಿ, ಏನೂ ಉಳಿಸದಿರಿ.",
-					"points": -20,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 500,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Supports Meena with ₹500/month, no savings built.",
-						"notes_kan": "ಮೀನಾಗೆ ₹500/ತಿಂಗಳು ಬೆಂಬಲ, ಉಳಿತಾಯ ಶೂನ್ಯ.",
-						"expenseItemChanges": [
-							{
-								"key": "meena",
-								"label": "Support for Meena",
-								"label_kan": "ಮೀನಾ ಬೆಂಬಲ",
-								"newAmount": 500
-							}
-						]
-					}
-				}
-			]
-		},
-		{
-			"id": 2,
-			"title": "The Police Raid",
-			"title_kan": "ಪೊಲೀಸ್ ದಾಳಿ",
-			"situation": "Police raid Susheela's building, harassing trans women for 'solicitation' even though Susheela runs a legitimate beauty business. They threaten arrest unless she pays ₹8,000 'fine' (bribe). Simultaneously, she has an opportunity to rent a proper shop space (₹10,000 deposit + ₹6,000/month rent) which could significantly increase her income.",
-			"situation_kan": "ಪೊಲೀಸರು ಸುಶೀಲಾಳ ಕಟ್ಟಡದ ಮೇಲೆ ದಾಳಿ ಮಾಡಿ, ಸುಶೀಲಾ ಕಾನೂನುಬದ್ಧ ಸೌಂದರ್ಯ ವ್ಯವಹಾರ ನಡೆಸುತ್ತಿದ್ದರೂ ಸಹ, 'ಮನವಿ'ಗಾಗಿ ಟ್ರಾನ್ಸ್ ಮಹಿಳೆಯರನ್ನು ಕಿರುಕುಳ ನೀಡುತ್ತಾರೆ. ₹8,000 'ದಂಡ' (ಲಂಚ) ಪಾವತಿಸದಿದ್ದರೆ ಬಂಧಿಸುವುದಾಗಿ ಅವರು ಬೆದರಿಕೆ ಹಾಕುತ್ತಾರೆ. ಅದೇ ಸಮಯದಲ್ಲಿ, ಆಕೆಗೆ ಸರಿಯಾದ ಅಂಗಡಿ ಸ್ಥಳವನ್ನು ಬಾಡಿಗೆಗೆ ಪಡೆಯುವ ಅವಕಾಶವಿದೆ (₹10,000 ಠೇವಣಿ + ₹6,000/ತಿಂಗಳ ಬಾಡಿಗೆ) ಇದು ಆಕೆಯ ಆದಾಯವನ್ನು ಗಮನಾರ್ಹವಾಗಿ ಹೆಚ್ಚಿಸಬಹುದು.",
-			"question": "How should Susheela protect herself legally while pursuing business growth?",
-			"question_kan": "ವ್ಯಾಪಾರ ಬೆಳವಣಿಗೆ ಅನ್ವೇಷಿಸುವಾಗ ಸುಶೀಲಾ ತನ್ನನ್ನು ಕಾನೂನಾತ್ಮಕವಾಗಿ ಹೇಗೆ ರಕ್ಷಿಸಿಕೊಳ್ಳಬೇಕು?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Pay bribe + open shop",
-					"label_kan": "ಲಂಚ ನೀಡಿ + ಅಂಗಡಿ ತೆರೆಯಿರಿ",
-					"description": "Pay ₹6,000 to police, use ₹10,000 for shop deposit, borrow ₹5,000 from moneylender at 24% interest — prioritize business growth despite costs.",
-					"description_kan": "ಪೊಲೀಸರಿಗೆ ₹6,000 ಪಾವತಿಸಿ, ಅಂಗಡಿ ಠೇವಣಿಗೆ ₹10,000 ಬಳಸಿ, ಬಡ್ಡಿದಾರರಿಂದ ₹5,000 ಸಾಲ ಪಡೆಯಿರಿ - ವೆಚ್ಚದ ಹೊರತಾಗಿಯೂ ವ್ಯವಹಾರ ಬೆಳವಣಿಗೆಗೆ ಆದ್ಯತೆ ನೀಡಿ.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": -22000,
-						"monthlyIncomeChange": 12000,
-						"monthlyExpensesChange": 6000,
-						"newAssets": [],
-						"newDebts": [],
-						"conditionalImpacts": [
-							{
-								"condition": {
-									"scenarioId": 1,
-									"choiceId": "A"
-								},
-								"monthlyIncomeChange": -5000,
-								"notes": "Sex work income stops as beauty parlour becomes full-time.",
-								"notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ಪೂರ್ಣ ಸಮಯದ ಕೆಲಸವಾಗುವ ಕಾರಣ ಲೈಂಗಿಕ ಕೆಲಸದ ಆದಾಯ ನಿಲ್ಲುತ್ತದೆ."
-							}
-						],
-						"notes": "Bribe ₹6K + shop deposit ₹10K + moneylender ₹5K (total repayment ~₹6K folded in) = ₹22K deducted from savings. New income: +₹12K/mo from beauty shop. New expense: shop rent ₹6K/mo.",
-						"notes_kan": "ಲಂಚ ₹6K + ಅಂಗಡಿ ಠೇವಣಿ ₹10K + ಲೇವಾದೇವಿ ₹5K (ಒಟ್ಟು ಮರುಪಾವತಿ ~₹6K ಸೇರಿಸಲಾಗಿದೆ) = -₹22K.",
-						"expenseItemChanges": [
-							{
-								"key": "shop-rent",
-								"label": "Shop rent",
-								"label_kan": "ಅಂಗಡಿ ಬಾಡಿಗೆ",
-								"newAmount": 6000
-							}
-						]
-					}
-				},
-				{
-					"id": "B",
-					"label": "Pay police, skip shop",
-					"label_kan": "ಪೊಲೀಸರಿಗೆ ನೀಡಿ, ಅಂಗಡಿ ಬೇಡ",
-					"description": "Pay ₹8,000 to police, keep remaining savings intact, skip shop opportunity for now — seek free legal aid for future protection.",
-					"description_kan": "ಪೊಲೀಸರಿಗೆ ₹8,000 ನೀಡಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ, ಈಗ ಅಂಗಡಿ ಅವಕಾಶ ಬಿಡಿ.",
-					"points": 10,
-					"financialImpact": {
-						"savingsChange": -8000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Pay bribe only. No debt, no new income, savings -₹8K.",
-						"notes_kan": "ಲಂಚ ಮಾತ್ರ ನೀಡಿ. ಸಾಲ ಇಲ್ಲ, ಹೊಸ ಆದಾಯ ಇಲ್ಲ, ಉಳಿತಾಯ -₹8K."
-					}
-				},
-				{
-					"id": "C",
-					"label": "Fight with a lawyer",
-					"label_kan": "ವಕೀಲರೊಂದಿಗೆ ಹೋರಾಡಿ",
-					"description": "Refuse to pay police, use ₹15,000 savings for a lawyer to fight the case — principle over pragmatism.",
-					"description_kan": "ಪೊಲೀಸರಿಗೆ ನೀಡಲು ನಿರಾಕರಿಸಿ, ಪ್ರಕರಣ ಹೋರಾಡಲು ₹15,000 ಉಳಿತಾಯ ಬಳಸಿ.",
-					"points": -20,
-					"minimumSavings": 15000,
-					"financialImpact": {
-						"savingsChange": -15000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Lawyer -₹15K. Savings depleted, case drags on, shop opportunity lost.",
-						"notes_kan": "ವಕೀಲ -₹15K. ಉಳಿತಾಯ ಖಾಲಿ, ಪ್ರಕರಣ ಎಳೆಯುತ್ತದೆ, ಅಂಗಡಿ ಅವಕಾಶ ಕಳೆದುಕೊಂಡಿದೆ."
-					}
-				}
-			]
-		},
-		{
-			"id": 3,
-			"title": "Identity Documents and Banking Access",
-			"title_kan": "ಗುರುತಿನ ದಾಖಲೆಗಳು ಮತ್ತು ಬ್ಯಾಂಕಿಂಗ್ ಪ್ರವೇಶ",
-			"situation": "Susheela wants to open a bank account for better financial management and formal credit access. Legal name change + gender marker correction costs ₹12,000. But Priya needs new school uniforms and books (₹5,000), and Susheela's mother is ill (needs ₹8,000 for treatment). Having proper documents would allow her to: open a bank account properly; access government schemes like the Mudra loan for small businesses; and rent better shop space (landlords want \"proper\" documents).",
-			"situation_kan": "ಸುಶೀಲಾ ಉತ್ತಮ ಆರ್ಥಿಕ ನಿರ್ವಹಣೆ ಮತ್ತು ಔಪಚಾರಿಕ ಸಾಲ ಪ್ರವೇಶಕ್ಕಾಗಿ ಬ್ಯಾಂಕ್ ಖಾತೆ ತೆರೆಯಲು ಬಯಸುತ್ತಾಳೆ. ಕಾನೂನು ಹೆಸರು ಬದಲಾವಣೆ ₹12,000 ವೆಚ್ಚ. ಆದರೆ ಪ್ರಿಯಾಗೆ ಶಾಲಾ ಸಮವಸ್ತ್ರ ಮತ್ತು ಪುಸ್ತಕಗಳು ಬೇಕು, ಮತ್ತು ತಾಯಿಗೆ ₹8,000 ಚಿಕಿತ್ಸೆ ಬೇಕು.",
-			"question": "Should Susheela prioritize identity documents for long-term financial access, or immediate family needs?",
-			"question_kan": "ದೀರ್ಘಕಾಲೀನ ಆರ್ಥಿಕ ಪ್ರವೇಶಕ್ಕಾಗಿ ಗುರುತಿನ ದಾಖಲೆಗಳಿಗೆ ಆದ್ಯತೆ ನೀಡಬೇಕೇ ಅಥವಾ ತಕ್ಷಣದ ಕುಟುಂಬದ ಅಗತ್ಯಗಳಿಗೆ?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Get documents, borrow for mother",
-					"label_kan": "ದಾಖಲೆ ಪಡೆಯಿರಿ, ತಾಯಿಗಾಗಿ ಸಾಲ",
-					"description": "Use ₹12,000 for legal documents, borrow ₹8,000 from community lender at 15% for mother's treatment, adjust Priya's school expenses — invest in long-term financial access.",
-					"description_kan": "ಕಾನೂನು ದಾಖಲೆಗಳಿಗೆ ₹12,000 ಬಳಸಿ, ತಾಯಿಯ ಚಿಕಿತ್ಸೆಗೆ 15% ಬಡ್ಡಿಯಲ್ಲಿ ₹8,000 ಸಾಲ, ಪ್ರಿಯಾಳ ಶಾಲಾ ವೆಚ್ಚ ಸರಿಹೊಂದಿಸಿ.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": -20640,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 3000,
-						"newAssets": [],
-						"newDebts": [],
-						"conditionalImpacts": [
-							{
-								"condition": {
-									"scenarioId": 2,
-									"choiceId": "A"
-								},
-								"monthlyIncomeChange": 5000,
-								"notes": "Beauty parlour grows organically to ₹40,000/month income.",
-								"notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
-							}
-						],
-						"notes": "Docs ₹12K + community loan ₹8K @15% 12mo (total repay ₹8,640 folded in) = -₹20,640. Priya school ₹2K→₹5K/mo = +₹3K/mo expenses. Meena is now self-sufficient; guru dakshina and mother support restored.",
-						"notes_kan": "ದಾಖಲೆ ₹12K + ₹8K @15% 12 ತಿಂಗಳು (ಒಟ್ಟು ₹8,640 ಸೇರಿಸಲಾಗಿದೆ) = -₹20,640. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
-						"expenseItemChanges": [
-							{
-								"key": "priya",
-								"newAmount": 5000
-							},
-							{
-								"key": "meena",
-								"label": "Support for Meena",
-								"label_kan": "ಮೀನಾಗೆ ಬೆಂಬಲ",
-								"newAmount": 0
-							},
-							{
-								"key": "guru",
-								"newAmount": 3000
-							},
-							{
-								"key": "mother",
-								"newAmount": 1500
-							}
-						]
-					}
-				},
-				{
-					"id": "B",
-					"label": "Skip documents, help family",
-					"label_kan": "ದಾಖಲೆ ಬಿಟ್ಟು, ಕುಟುಂಬಕ್ಕೆ ಸಹಾಯ",
-					"description": "Skip document change, use ₹13,000 for mother and Priya, keep remaining savings — family's immediate needs come first.",
-					"description_kan": "ದಾಖಲೆ ಬದಲಾವಣೆ ಬಿಟ್ಟು, ತಾಯಿ ಮತ್ತು ಪ್ರಿಯಾಗೆ ₹13,000 ಬಳಸಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ.",
-					"points": -20,
-					"financialImpact": {
-						"savingsChange": -8000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 3000,
-						"newAssets": [],
-						"newDebts": [],
-						"conditionalImpacts": [
-							{
-								"condition": {
-									"scenarioId": 2,
-									"choiceId": "A"
-								},
-								"monthlyIncomeChange": 5000,
-								"notes": "Beauty parlour grows organically to ₹40,000/month income.",
-								"notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
-							}
-						],
-						"notes": "Mother ₹8K from savings. Priya expenses increase ₹3K/mo. Formal banking remains inaccessible. Meena is now self-sufficient; guru dakshina and mother support restored.",
-						"notes_kan": "ತಾಯಿಗೆ ₹8K. ಔಪಚಾರಿಕ ಬ್ಯಾಂಕಿಂಗ್ ಪ್ರವೇಶವಿಲ್ಲ. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
-						"expenseItemChanges": [
-							{
-								"key": "priya",
-								"newAmount": 5000
-							},
-							{
-								"key": "meena",
-								"label": "Support for Meena",
-								"label_kan": "ಮೀನಾಗೆ ಬೆಂಬಲ",
-								"newAmount": 0
-							},
-							{
-								"key": "guru",
-								"newAmount": 3000
-							},
-							{
-								"key": "mother",
-								"newAmount": 1500
-							}
-						]
-					}
-				},
-				{
-					"id": "C",
-					"label": "Documents + reduce Priya's expenses",
-					"label_kan": "ದಾಖಲೆ + ಪ್ರಿಯಾ ವೆಚ್ಚ ಕಡಿಮೆ",
-					"description": "Get documents for ₹12,000, use ₹8,000 for mother, keep Priya's expenses at ₹2,000 using old uniforms and second-hand textbooks — balance all needs.",
-					"description_kan": "₹12,000ಗೆ ದಾಖಲೆ ಪಡೆಯಿರಿ, ತಾಯಿಗೆ ₹8,000 ಬಳಸಿ, ಹಳೆಯ ಸಮವಸ್ತ್ರ ಮತ್ತು ಪುರಾತನ ಪುಸ್ತಕಗಳಿಂದ ಪ್ರಿಯಾ ವೆಚ್ಚ ₹2,000ಕ್ಕೆ ಇರಿಸಿ.",
-					"points": 10,
-					"financialImpact": {
-						"savingsChange": -20000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"conditionalImpacts": [
-							{
-								"condition": {
-									"scenarioId": 2,
-									"choiceId": "A"
-								},
-								"monthlyIncomeChange": 5000,
-								"notes": "Beauty parlour grows organically to ₹40,000/month income.",
-								"notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
-							}
-						],
-						"notes": "Docs ₹12K + mother ₹8K = -₹20K. Priya stays at ₹2K/mo (old uniforms, second-hand books). No expense increase. Meena is now self-sufficient; guru dakshina and mother support restored.",
-						"notes_kan": "ದಾಖಲೆ ₹12K + ತಾಯಿ ₹8K = -₹20K. ಪ್ರಿಯಾ ₹2K/ತಿಂಗಳಿಗೆ ಉಳಿಯುತ್ತಾಳೆ. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
-						"expenseItemChanges": [
-							{
-								"key": "meena",
-								"label": "Support for Meena",
-								"label_kan": "ಮೀನಾಗೆ ಬೆಂಬಲ",
-								"newAmount": 0
-							},
-							{
-								"key": "guru",
-								"newAmount": 3000
-							},
-							{
-								"key": "mother",
-								"newAmount": 1500
-							}
-						]
-					}
-				}
-			]
-		},
-		{
-			"id": 4,
-			"title": "Building Assets",
-			"title_kan": "ಆಸ್ತಿ ನಿರ್ಮಾಣ",
-			"situation": "Susheela now has proper documents and her beauty parlour is thriving (income ₹35,000/month). Priya is 13 and will need college funds soon. She has four investment options: buy land, invest in gold + community fund, or expand the business.",
-			"situation_kan": "ಸುಶೀಲಾ ಬಳಿ ಈಗ ಸರಿಯಾದ ದಾಖಲೆಗಳಿವೆ ಮತ್ತು ಅವರ ಬ್ಯೂಟಿ ಪಾರ್ಲರ್ ಅಭಿವೃದ್ಧಿ ಹೊಂದುತ್ತಿದೆ (ಆದಾಯ ₹35,000/ತಿಂಗಳು). ಪ್ರಿಯಾಗೆ 13 ವರ್ಷ ಮತ್ತು ಶೀಘ್ರದಲ್ಲೇ ಕಾಲೇಜು ನಿಧಿಯ ಅಗತ್ಯವಿರುತ್ತದೆ. ಅವರಿಗೆ ನಾಲ್ಕು ಹೂಡಿಕೆ ಆಯ್ಕೆಗಳಿವೆ: ಭೂಮಿ ಖರೀದಿಸುವುದು, ಚಿನ್ನ + ಸಮುದಾಯ ನಿಧಿಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡುವುದು ಅಥವಾ ವ್ಯವಹಾರವನ್ನು ವಿಸ್ತರಿಸುವುದು.",
-			"question": "How should Susheela choose between different investment types to secure both her retirement and Priya's education?",
-			"question_kan": "ನಿವೃತ್ತಿ ಮತ್ತು ಪ್ರಿಯಾಳ ಶಿಕ್ಷಣ ಎರಡನ್ನೂ ಭದ್ರಪಡಿಸಲು ಸುಶೀಲಾ ವಿಭಿನ್ನ ಹೂಡಿಕೆ ವಿಧಗಳ ನಡುವೆ ಹೇಗೆ ಆಯ್ಕೆ ಮಾಡಬೇಕು?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Buy land",
-					"label_kan": "ಭೂಮಿ ಖರೀದಿ",
-					"description": "Buy land for ₹3 lakh in the outskirts (toward retirement house goal), keep the remaning as savings — prioritize retirement goal.",
-					"description_kan": "ಹೊರವಲಯದಲ್ಲಿ ₹3 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಖರೀದಿಸಿ (ನಿವೃತ್ತಿ ವಸತಿ ಗುರಿಯತ್ತ), ಉಳಿದದ್ದನ್ನು ಉಳಿತಾಯವಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಿ - ನಿವೃತ್ತಿ ಗುರಿಗೆ ಆದ್ಯತೆ ನೀಡಿ.",
-					"points": 30,
-					"minimumSavings": 300000,
-					"financialImpact": {
-						"savingsChange": -300000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [
-							{
-								"type": "land",
-								"label": "Plot in Bengaluru outskirts",
-								"label_kan": "ಬೆಂಗಳೂರು ಹೊರವಲಯದಲ್ಲಿ ನಿವೇಶನ",
-								"value": 300000
-							}
-						],
-						"newDebts": [],
-						"conditionalImpacts": [
-							{
-								"condition": {
-									"scenarioId": 2,
-									"choiceId": "A"
-								},
-								"monthlyIncomeChange": 5000,
-								"notes": "Beauty parlour grows organically to ₹40,000/month income.",
-								"notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
-							}
-						],
-						"notes": "Land ₹3L purchased. {remaining} kept as savings.",
-						"notes_kan": "₹3 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಖರೀದಿಸಲಾಗಿದೆ. {remaining} ಉಳಿತಾಯವಾಗಿ ಇಡಲಾಗಿದೆ."
-					}
-				},
-				{
-					"id": "B",
-					"label": "Gold + community fund",
-					"label_kan": "ಚಿನ್ನ + ಸಮುದಾಯ ನಿಧಿ",
-					"description": "Invest ₹2 lakh in gold jewelry and ₹1 lakh in community building fund, keep the remaining — balance tradition, community, and security.",
-					"description_kan": "₹2 ಲಕ್ಷ ಚಿನ್ನಾಭರಣಗಳಲ್ಲಿ ಮತ್ತು ₹1 ಲಕ್ಷ ಸಮುದಾಯ ನಿರ್ಮಾಣ ನಿಧಿಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡಿ, ಉಳಿದ ಹಣವನ್ನು - ಸಂಪ್ರದಾಯ, ಸಮುದಾಯ ಮತ್ತು ಭದ್ರತೆಯನ್ನು ಸಮತೋಲನದಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಿ.",
-					"points": 10,
-					"minimumSavings": 300000,
-					"financialImpact": {
-						"savingsChange": -300000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [
-							{
-								"type": "gold",
-								"label": "Gold jewelry",
-								"label_kan": "ಚಿನ್ನದ ಆಭರಣ",
-								"value": 200000
-							},
-							{
-								"type": "community-stake",
-								"label": "Community building fund",
-								"label_kan": "ಸಮುದಾಯ ನಿರ್ಮಾಣ ನಿಧಿ",
-								"value": 100000
-							}
-						],
-						"newDebts": [],
-						"conditionalImpacts": [
-							{
-								"condition": {
-									"scenarioId": 2,
-									"choiceId": "A"
-								},
-								"monthlyIncomeChange": 5000,
-								"notes": "Beauty parlour grows organically to ₹40,000/month income.",
-								"notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
-							}
-						],
-						"notes": "Gold ₹2L + community stake ₹1L = ₹3L. ₹50K retained. Diversified but slower toward house goal.",
-						"notes_kan": "ಚಿನ್ನ ₹2L + ಸಮುದಾಯ ₹1L. ₹50K ಇರಿಸಿ."
-					}
-				},
-				{
-					"id": "C",
-					"label": "Expand the business",
-					"label_kan": "ವ್ಯಾಪಾರ ವಿಸ್ತರಿಸಿ",
-					"description": "Put ₹2 lakh in business equipment, ₹1 lakh in gold, ₹50,000 in community fund — maximize income growth.",
-					"description_kan": "₹2 ಲಕ್ಷ ವ್ಯಾಪಾರ ಉಪಕರಣ, ₹1 ಲಕ್ಷ ಚಿನ್ನ, ₹50,000 ಸಮುದಾಯ ನಿಧಿ — ಆದಾಯ ಬೆಳವಣಿಗೆ ಗರಿಷ್ಠಗೊಳಿಸಿ.",
-					"points": -20,
-					"minimumSavings": 350000,
-					"financialImpact": {
-						"savingsChange": -350000,
-						"monthlyIncomeChange": 5000,
-						"monthlyExpensesChange": 0,
-						"newAssets": [
-							{
-								"type": "business-equipment",
-								"label": "Business equipment",
-								"label_kan": "ವ್ಯಾಪಾರ ಉಪಕರಣ",
-								"value": 200000
-							},
-							{
-								"type": "gold",
-								"label": "Gold jewelry",
-								"label_kan": "ಚಿನ್ನದ ಆಭರಣ",
-								"value": 100000
-							},
-							{
-								"type": "community-stake",
-								"label": "Community building fund",
-								"label_kan": "ಸಮುದಾಯ ನಿರ್ಮಾಣ ನಿಧಿ",
-								"value": 50000
-							}
-						],
-						"newDebts": [],
-						"conditionalImpacts": [
-							{
-								"condition": {
-									"scenarioId": 2,
-									"choiceId": "A"
-								},
-								"monthlyIncomeChange": 5000,
-								"notes": "Beauty parlour grows organically to ₹40,000/month income.",
-								"notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
-							}
-						],
-						"notes": "Business equipment ₹2L + gold ₹1L + community ₹50K = ₹3.5L. Income +₹5K from equipment. Without buying land now, meeting the retirement house goal becomes much more challenging.",
-						"notes_kan": "ಉಪಕರಣ ₹2L + ಚಿನ್ನ ₹1L + ಸಮುದಾಯ ₹50K = ₹3.5L. ₹5K ಆದಾಯ ಹೆಚ್ಚಳ. ಈಗ ಭೂಮಿ ಖರೀದಿಸದೆ, ನಿವೃತ್ತಿ ಮನೆ ಗುರಿ ತಲುಪುವುದು ತುಂಬಾ ಕಷ್ಟವಾಗುತ್ತದೆ."
-					}
-				}
-			]
-		},
-		{
-			"id": 5,
-			"title": "Healthcare Crisis and Insurance Barriers",
-			"title_kan": "ಆರೋಗ್ಯ ಬಿಕ್ಕಟ್ಟು ಮತ್ತು ವಿಮೆ ಅಡೆತಡೆಗಳು",
-			"situation": "Susheela's diabetes worsens — she now needs ₹5,000/month for treatment, up from ₹2,000. Insurance companies reject her application due to pre-existing conditions and trans-exclusion clauses. Monthly expenses have risen due to increased medical costs and basics.",
-			"situation_kan": "ಸುಶೀಲಾಳ ಮಧುಮೇಹ ಹದಗೆಡುತ್ತಿದೆ — ₹2,000 ಬದಲು ₹5,000/ತಿಂಗಳು ಚಿಕಿತ್ಸೆ ಬೇಕು. ವಿಮಾ ಕಂಪನಿಗಳು ಅವಳ ಅರ್ಜಿ ತಿರಸ್ಕರಿಸಿವೆ. ಮಾಸಿಕ ವೆಚ್ಚ ಹೆಚ್ಚಾಗಿದೆ.",
-			"question": "How should Susheela manage ongoing healthcare costs without insurance access?",
-			"question_kan": "ವಿಮೆ ಪ್ರವೇಶವಿಲ್ಲದೆ ಸುಶೀಲಾ ನಿರಂತರ ಆರೋಗ್ಯ ವೆಚ್ಚಗಳನ್ನು ಹೇಗೆ ನಿರ್ವಹಿಸಬೇಕು?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Emergency fund + cooperative",
-					"label_kan": "ತುರ್ತು ನಿಧಿ + ಸಹಕಾರ",
-					"description": "Set aside ₹1 lakh as dedicated medical emergency fund, join community health cooperative (₹3,000/year), use government scheme for major procedures — hybrid approach.",
-					"description_kan": "₹1 ಲಕ್ಷ ವೈದ್ಯಕೀಯ ತುರ್ತು ನಿಧಿ, ₹3,000/ವರ್ಷ ಸಮುದಾಯ ಆರೋಗ್ಯ ಸಹಕಾರ, ಪ್ರಮುಖ ಚಿಕಿತ್ಸೆಗೆ ಸರ್ಕಾರಿ ಯೋಜನೆ.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": -100000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 6250,
-						"newAssets": [
-							{
-								"type": "emergency-fund",
-								"label": "Medical emergency fund",
-								"label_kan": "ವೈದ್ಯಕೀಯ ತುರ್ತು ನಿಧಿ",
-								"value": 100000
-							}
-						],
-						"newDebts": [],
-						"notes": "Emergency fund ₹1L from savings. Expenses +₹6K (diabetes ₹3K + basics ₹3K) +₹250/mo coop (₹3K/yr ÷ 12) = +₹6,250.",
-						"notes_kan": "₹1L ತುರ್ತು ನಿಧಿ. ₹6K ಮಾಸಿಕ ವೆಚ್ಚ + ₹250 ಸಹಕಾರ = +₹6,250.",
-						"expenseItemChanges": [
-							{
-								"key": "medication",
-								"newAmount": 5000
-							},
-							{
-								"key": "food",
-								"newAmount": 8000
-							},
-							{
-								"key": "health-coop",
-								"label": "Health cooperative",
-								"label_kan": "ಆರೋಗ್ಯ ಸಹಕಾರ",
-								"newAmount": 250
-							}
-						]
-					}
-				},
-				{
-					"id": "B",
-					"label": "Buy private insurance",
-					"label_kan": "ಖಾಸಗಿ ವಿಮೆ ಖರೀದಿ",
-					"description": "Try to buy private insurance despite exclusions (₹15,000/year) — formal protection matters even if coverage is partial.",
-					"description_kan": "ಹೊರಗಿಡುವಿಕೆಗಳ ಹೊರತಾಗಿಯೂ ₹15,000/ವರ್ಷ ಖಾಸಗಿ ವಿಮೆ ಖರೀದಿಸಲು ಪ್ರಯತ್ನಿಸಿ.",
-					"points": -20,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 7250,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Insurance ₹15K/yr = ₹1,250/mo. Base increase ₹6K + insurance ₹1,250 = +₹7,250. Expensive premiums, likely won't cover actual needs.",
-						"notes_kan": "ವಿಮೆ ₹1,250/ತಿಂಗಳು + ₹6K ಹೆಚ್ಚಳ = +₹7,250. ದುಬಾರಿ ಪ್ರೀಮಿಯಂ, ನಿಜ ಅಗತ್ಯ ಒಳಗೊಳ್ಳದ ಸಾಧ್ಯತೆ.",
-						"expenseItemChanges": [
-							{
-								"key": "medication",
-								"newAmount": 5000
-							},
-							{
-								"key": "food",
-								"newAmount": 8000
-							},
-							{
-								"key": "insurance",
-								"label": "Private insurance",
-								"label_kan": "ಖಾಸಗಿ ವಿಮೆ",
-								"newAmount": 1250
-							}
-						]
-					}
-				},
-				{
-					"id": "C",
-					"label": "Pay out of pocket",
-					"label_kan": "ನೇರ ಪಾವತಿ",
-					"description": "Continue paying out of pocket month to month — no lump sum locked away, but no dedicated buffer either. Vulnerable to any major health crisis.",
-					"description_kan": "ತಿಂಗಳಿಂದ ತಿಂಗಳಿಗೆ ನೇರ ಪಾವತಿ ಮುಂದುವರಿಸಿ — ಒಂದು ದಜ್ಜ ಆರೋಗ್ಯ ಬಿಕ್ಕಟ್ಟು ಬಂದರೆ ತೊಂದರೆ ನಿಶ್ಚಿತ.",
-					"points": 10,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 6000,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "No lump-sum lock. Base expense increase ₹6K only. Slower emergency fund building, vulnerable to major crisis.",
-						"notes_kan": "ಮೊತ್ತ ಲಾಕ್ ಇಲ್ಲ. ₹6K ಮಾಸಿಕ ಹೆಚ್ಚಳ. ತುರ್ತು ನಿಧಿ ನಿಧಾನ.",
-						"expenseItemChanges": [
-							{
-								"key": "medication",
-								"newAmount": 5000
-							},
-							{
-								"key": "food",
-								"newAmount": 8000
-							}
-						]
-					}
-				}
-			]
-		},
-		{
-			"id": 6,
-			"title": "Priya's Education and Future Planning",
-			"title_kan": "ಪ್ರಿಯಾಳ ಶಿಕ್ಷಣ ಮತ್ತು ಭವಿಷ್ಯ ಯೋಜನೆ",
-			"situation": "Priya wants to study engineering (₹5 lakh over 4 years). Susheela's land is now worth ₹5 lakh (bought at ₹3 lakh). But Priya is not legally Susheela's daughter, making education loans difficult.",
-			"situation_kan": "ಪ್ರಿಯಾ ಎಂಜಿನಿಯರಿಂಗ್ ಓದಲು ಬಯಸುತ್ತಾಳೆ (4 ವರ್ಷಗಳಲ್ಲಿ ₹5 ಲಕ್ಷ). ಸುಶೀಲಾಳ ಭೂಮಿ ಈಗ ₹5 ಲಕ್ಷ ಮೌಲ್ಯ. ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.",
-			"question": "Should Susheela sacrifice her retirement goal for Priya's education, or balance both?",
-			"question_kan": "ಸುಶೀಲಾ ಪ್ರಿಯಾಳ ಶಿಕ್ಷಣಕ್ಕಾಗಿ ನಿವೃತ್ತಿ ಗುರಿ ಬಿಡಬೇಕೇ, ಅಥವಾ ಎರಡನ್ನೂ ಸಮತೋಲನ ಮಾಡಬೇಕೇ?",
-			"assetValueUpdates": [
-				{
-					"type": "land",
-					"value": 500000
-				}
-			],
-			"choices": [
-				{
-					"id": "A",
-					"label": "Sell land for Priya's education",
-					"label_kan": "ಪ್ರಿಯಾ ಶಿಕ್ಷಣಕ್ಕೆ ಭೂಮಿ ಮಾರಿ",
-					"description": "Sell land for ₹5 lakh, use ₹3 lakh for Priya's first 2.5 years of education, save ₹10,000/month from the remaining amount for future costs — prioritize Priya while continuing to save.",
-					"description_kan": "₹5 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಮಾರಿ, ₹3 ಲಕ್ಷ ಪ್ರಿಯಾ ಮೊದಲ 2.5 ವರ್ಷ ಶಿಕ್ಷಣಕ್ಕೆ — ಉಳಿದ ₹2 ಲಕ್ಷ ಉಳಿತಾಯಕ್ಕೆ ಸೇರಿಸಲಾಗುತ್ತದೆ. ಪ್ರಿಯಾಗೆ ಆದ್ಯತೆ, ಮನೆ ಗುರಿ ಬಿಟ್ಟುಕೊಳ್ಳಬೇಕು.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": 200000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"assetRemovals": [
-							"land"
-						],
-						"notes": "Land sold ₹5L - education ₹3L = +₹2L net to savings. Land asset removed. Must restart saving for house.",
-						"notes_kan": "ಭೂಮಿ ₹5L - ₹3L ಶಿಕ್ಷಣ = +₹2L. ಭೂಮಿ ಆಸ್ತಿ ತೆಗೆಯಲಾಗಿದೆ."
-					}
-				},
-				{
-					"id": "B",
-					"label": "Keep land, take loan",
-					"label_kan": "ಭೂಮಿ ಇಟ್ಟು, ಸಾಲ ತೆಗೆಯಿರಿ",
-					"description": "Keep land, use all current savings, take personal loan of ₹3 lakh at 18% interest (₹7,500 EMI) — try to preserve both goals.",
-					"description_kan": "ಭೂಮಿ ಇಟ್ಟು, ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, 18% ಬಡ್ಡಿಯಲ್ಲಿ ₹3 ಲಕ್ಷ ವೈಯಕ್ತಿಕ ಸಾಲ (₹7,500 EMI).",
-					"points": 10,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 7500,
-						"spendAllSavings": true,
-						"newAssets": [],
-						"newDebts": [
-							{
-								"type": "personal-loan",
-								"label": "Education loan for Priya",
-								"label_kan": "ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಸಾಲ",
-								"principal": 300000,
-								"interestRate": 18,
-								"monthlyEmi": 7500
-							}
-						],
-						"notes": "All savings spent. Personal loan ₹3L @18%, EMI ₹7,500/mo. Land kept. High-interest debt, both goals at risk.",
-						"notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚು. ₹3L @18%, EMI ₹7,500.",
-						"expenseItemChanges": [
-							{
-								"key": "loan-emi-edu",
-								"label": "Education loan EMI",
-								"label_kan": "ಶಿಕ್ಷಣ ಸಾಲ EMI",
-								"newAmount": 7500
-							}
-						]
-					}
-				},
-				{
-					"id": "C",
-					"label": "Share burden with Priya",
-					"label_kan": "ಪ್ರಿಯಾಳೊಂದಿಗೆ ಹೊರೆ ಹಂಚಿ",
-					"description": "Use all current savings, ask Priya to work part-time and take a small education loan — share the burden, keep land.",
-					"description_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡಲು ಕೇಳಿ ಮತ್ತು ಸಣ್ಣ ಶಿಕ್ಷಣ ಸಾಲ ತೆಗೆಯಿರಿ.",
-					"points": -20,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"spendAllSavings": true,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "All savings spent. Priya works part-time — studies may suffer, she carries debt burden, relationships strained.",
-						"notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚು. ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ — ಅಧ್ಯಯನ ಹಾಳಾಗಬಹುದು."
-					}
-				}
-			]
-		},
-		{
-			"id": 7,
-			"title": "Business Expansion vs. Stability",
-			"title_kan": "ವ್ಯಾಪಾರ ವಿಸ್ತರಣೆ ಮತ್ತು ಸ್ಥಿರತೆ",
-			"situation": "A shopping complex is offering shop space at ₹8 lakh (₹3 lakh down payment + ₹5 lakh loan at 11%). This could increase her business income to ₹65,000/month.",
-			"situation_kan": "ಒಂದು ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್ ₹8 ಲಕ್ಷಕ್ಕೆ ಅಂಗಡಿ ಸ್ಥಳವನ್ನು ನೀಡುತ್ತಿದೆ (₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ + ₹11% ದರದಲ್ಲಿ ₹5 ಲಕ್ಷ ಸಾಲ). ಇದು ಅವರ ವ್ಯವಹಾರದ ಆದಾಯವನ್ನು ತಿಂಗಳಿಗೆ ₹65,000 ಕ್ಕೆ ಹೆಚ್ಚಿಸಬಹುದು.",
-			"question": "Should Susheela take the business risk for higher income or play it safe for retirement?",
-			"question_kan": "ಸುಶೀಲಾ ಹೆಚ್ಚಿನ ಆದಾಯಕ್ಕಾಗಿ ವ್ಯಾಪಾರ ಅಪಾಯ ತೆಗೆದುಕೊಳ್ಳಬೇಕೇ ಅಥವಾ ನಿವೃತ್ತಿಗಾಗಿ ಸುರಕ್ಷಿತವಾಗಿ ಇರಬೇಕೇ?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Expand to shopping complex",
-					"label_kan": "ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್‌ಗೆ ವಿಸ್ತರಿಸಿ",
-					"description": "Make ₹3 lakh down payment (borrow shortfall from community at 12% if needed), take ₹5 lakh loan at 11% — grow business aggressively. Income rises by ₹25,000/month.",
-					"description_kan": "₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ (ಅಗತ್ಯವಿದ್ದರೆ 12% ಸಮುದಾಯ ಸಾಲ), ₹5 ಲಕ್ಷ 11% ಸಾಲ — ಆದಾಯ ₹25,000/ತಿಂಗಳು ಹೆಚ್ಚಾಗುತ್ತದೆ.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": -300000,
-						"monthlyIncomeChange": 25000,
-						"monthlyExpensesChange": 11000,
-						"newAssets": [],
-						"newDebts": [
-							{
-								"type": "business-loan",
-								"label": "Shopping complex loan",
-								"label_kan": "ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್ ಸಾಲ",
-								"principal": 500000,
-								"interestRate": 11,
-								"monthlyEmi": 11000
-							}
-						],
-						"notes": "All savings used for down payment. Community shortfall loan at 12% covers the gap. Business loan ₹5L @11% (EMI ₹11K). Income +₹25K/mo from expansion.",
-						"notes_kan": "ಎಲ್ಲ ಉಳಿತಾಯ ಡೌನ್ ಪೇಮೆಂಟ್‌ಗೆ. ಕೊರತೆಗೆ 12% ಸಮುದಾಯ ಸಾಲ. ₹5L @11% ಸಾಲ (EMI ₹11K). ₹25K/ತಿಂ ಆದಾಯ ಹೆಚ್ಚಳ.",
-						"expenseItemChanges": [
-							{
-								"key": "shop-rent",
-								"newAmount": 0
-							},
-							{
-								"key": "loan-emi-biz",
-								"label": "Business loan EMI",
-								"label_kan": "ವ್ಯಾಪಾರ ಸಾಲ EMI",
-								"newAmount": 11000
-							}
-						]
-					}
-				},
-				{
-					"id": "B",
-					"label": "Stay put, save steadily",
-					"label_kan": "ಇರುವಲ್ಲೇ ಇರಿ, ನಿರಂತರ ಉಳಿಸಿ",
-					"description": "Don't expand, continue saving steadily for the next 10 years toward the house — safe, guaranteed but modest progress.",
-					"description_kan": "ವಿಸ್ತರಿಸದಿರಿ, ಮನೆ ಗುರಿಗೆ 10 ವರ್ಷ ನಿರಂತರ ಉಳಿಸಿ.",
-					"points": 10,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "No change. Slower wealth building, guaranteed but modest progress.",
-						"notes_kan": "ಯಾವ ಬದಲಾವಣೆ ಇಲ್ಲ. ನಿಧಾನ ಆದರೆ ಸ್ಥಿರ."
-					}
-				},
-				{
-					"id": "C",
-					"label": "Partial expansion",
-					"label_kan": "ಭಾಗಶಃ ವಿಸ್ತರಣೆ",
-					"description": "Expand partially with ₹2 lakh investment in equipment at current location — moderate income growth of +₹10,000/month, no loan.",
-					"description_kan": "ಪ್ರಸ್ತುತ ಸ್ಥಳದಲ್ಲಿ ₹2 ಲಕ್ಷ ಉಪಕರಣ ಹೂಡಿಕೆ — +₹10,000/ತಿಂಗಳ ಆದಾಯ ಹೆಚ್ಚಳ, ಸಾಲ ಇಲ್ಲ.",
-					"points": -20,
-					"minimumSavings": 200000,
-					"financialImpact": {
-						"savingsChange": -200000,
-						"monthlyIncomeChange": 10000,
-						"monthlyExpensesChange": 0,
-						"newAssets": [
-							{
-								"type": "business-equipment",
-								"label": "Business equipment",
-								"label_kan": "ವ್ಯಾಪಾರ ಉಪಕರಣ",
-								"value": 200000
-							}
-						],
-						"newDebts": [],
-						"notes": "Equipment ₹2L. Income +₹10K to ~₹50K. Moderate growth, misses bigger expansion opportunity.",
-						"notes_kan": "ಉಪಕರಣ ₹2L ಆಸ್ತಿ. ₹10K ಆದಾಯ ಹೆಚ್ಚಳ. ದೊಡ್ಡ ಅವಕಾಶ ತಪ್ಪಿಸಿಕೊಳ್ಳುತ್ತದೆ."
-					}
-				}
-			]
-		},
-		{
-			"id": 8,
-			"title": "Retirement Corpus Building Strategy",
-			"title_kan": "ನಿವೃತ್ತಿ ನಿಧಿ ನಿರ್ಮಾಣ ತಂತ್ರ",
-			"situation": "Susheela's business is doing well after expansion. She earns ₹65,000/month and after expenses + EMI (₹11,000), she can save ₹25,000/month. She has ₹2 lakh in savings. 8.4 years until planned retirement. She needs: a house (₹20 lakh in 8 years), medical corpus (₹5 lakh), and monthly income post-retirement.",
-			"situation_kan": "ಸುಶೀಲಾ ₹65,000/ತಿಂಗಳು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾಳೆ, ₹25,000/ತಿಂಗಳು ಉಳಿಸಬಹುದು. 8.4 ವರ್ಷ ನಿವೃತ್ತಿಗೆ ಉಳಿದಿದೆ.",
-			"question": "How should Susheela build her retirement corpus in the remaining 8 years?",
-			"question_kan": "ಉಳಿದ 8 ವರ್ಷಗಳಲ್ಲಿ ನಿವೃತ್ತಿ ನಿಧಿ ಹೇಗೆ ನಿರ್ಮಿಸಬೇಕು?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Diversified SIP + PPF + RD",
-					"label_kan": "ವೈವಿಧ್ಯಮಯ SIP + PPF + RD",
-					"description": "Invest ₹15,000/month in balanced mutual fund SIP, ₹5,000/month in Public Provident Fund, and ₹5,000/month in Recurring Deposit — diversified growth strategy.",
-					"description_kan": "₹15,000/ತಿಂಗಳು SIP, ₹5,000/ತಿಂಗಳು PPF, ₹5,000/ತಿಂಗಳು RD — ವೈವಿಧ್ಯಮಯ ಬೆಳವಣಿಗೆ.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 25000,
-						"newAssets": [
-							{
-								"type": "mutual-fund",
-								"label": "Balanced mutual fund SIP",
-								"label_kan": "ಸಮತೋಲಿತ ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ SIP",
-								"value": 388000
-							},
-							{
-								"type": "ppf",
-								"label": "Public Provident Fund",
-								"label_kan": "ಸಾರ್ವಜನಿಕ ಭವಿಷ್ಯ ನಿಧಿ",
-								"value": 130000
-							},
-							{
-								"type": "rd",
-								"label": "Recurring Deposit",
-								"label_kan": "ಆವರ್ತಕ ಠೇವಣಿ",
-								"value": 128000
-							}
-						],
-						"newDebts": [],
-						"notes": "Invests ₹25K/mo total; expensesChange +25K prevents double-count in savings accumulation. 2yr FVs: MF ₹15K/mo @8% → ₹3.88L; PPF ₹5K/mo @7.1% → ₹1.30L; RD ₹5K/mo @6.5% → ₹1.28L.",
-						"notes_kan": "₹25K/ತಿಂಗಳು ಹೂಡಿಕೆ. MF ₹3.88L + PPF ₹1.30L + RD ₹1.28L.",
-						"expenseItemChanges": [
-							{
-								"key": "invest-sip",
-								"label": "Mutual fund SIP",
-								"label_kan": "ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ SIP",
-								"newAmount": 15000
-							},
-							{
-								"key": "invest-ppf",
-								"label": "PPF contribution",
-								"label_kan": "PPF ಕೊಡುಗೆ",
-								"newAmount": 5000
-							},
-							{
-								"key": "invest-rd",
-								"label": "RD contribution",
-								"label_kan": "RD ಕೊಡುಗೆ",
-								"newAmount": 5000
-							}
-						]
-					}
-				},
-				{
-					"id": "B",
-					"label": "Land + gold + FD",
-					"label_kan": "ಭೂಮಿ + ಚಿನ್ನ + FD",
-					"description": "Buy land for ₹8 lakh, gold for ₹5 lakh, keep ₹12 lakh in Fixed Deposit — traditional working-class approach.",
-					"description_kan": "₹8 ಲಕ್ಷ ಭೂಮಿ, ₹5 ಲಕ್ಷ ಚಿನ್ನ, ₹12 ಲಕ್ಷ ಎಫ್‌ಡಿ.",
-					"points": 10,
-					"minimumSavings": 2500000,
-					"financialImpact": {
-						"savingsChange": -2500000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [
-							{
-								"type": "land",
-								"label": "Plot for retirement",
-								"label_kan": "ನಿವೃತ್ತಿ ನಿವೇಶನ",
-								"value": 800000
-							},
-							{
-								"type": "gold",
-								"label": "Gold investment",
-								"label_kan": "ಚಿನ್ನ ಹೂಡಿಕೆ",
-								"value": 500000
-							},
-							{
-								"type": "fd",
-								"label": "Fixed Deposit",
-								"label_kan": "ಸ್ಥಿರ ಠೇವಣಿ",
-								"value": 1200000
-							}
-						],
-						"newDebts": [],
-						"notes": "Land ₹8L + gold ₹5L + FD ₹12L = ₹25L. minimumSavings ₹25L required. Safe but lower returns.",
-						"notes_kan": "ಭೂಮಿ ₹8L + ಚಿನ್ನ ₹5L + FD ₹12L = ₹25L."
-					}
-				},
-				{
-					"id": "C",
-					"label": "All savings into RD",
-					"label_kan": "ಎಲ್ಲಾ ₹ RD ಯಲ್ಲಿ",
-					"description": "Put all current savings into Recurring Deposit at 7% interest and keep contributing whatever surplus remains each month — safest option but inflation erodes value over time.",
-					"description_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ 7% RD ಯಲ್ಲಿ ಹಾಕಿ, ಪ್ರತಿ ತಿಂಗಳು ಉಳಿಯುವ ಹೆಚ್ಚಿನ ಹಣ ಸೇರಿಸಿ ಮುಂದುವರಿಸಿ.",
-					"points": -20,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"spendAllSavings": true,
-						"rdConversion": {
-							"annualRate": 0.07,
-							"years": 2,
-							"monthlyContribution": 25000
-						},
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "All savings → RD at 7%. Store computes RD value dynamically using rdConversion. Approx ₹28L in 8yr but inflation erodes real value.",
-						"notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ 7% RD. ಸರಿಸುಮಾರು 8 ವರ್ಷದಲ್ಲಿ ₹28L ಆದರೆ ಹಣದುಬ್ಬರ ಮೌಲ್ಯ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ."
-					}
-				}
-			]
-		},
-		{
-			"id": 9,
-			"title": "Health Crisis and Emergency Fund Test",
-			"title_kan": "ಆರೋಗ್ಯ ಬಿಕ್ಕಟ್ಟು ಮತ್ತು ತುರ್ತು ನಿಧಿ ಪರೀಕ್ಷೆ",
-			"situation": "Susheela collapses at work — severe diabetic complication. Hospital bill: ₹1,80,000 (₹30,000 immediate deposit needed). Her retirement corpus is split across mutual funds, PPF, and RD. PPF cannot be broken easily. Mutual funds can be sold but may result in a loss.",
-			"situation_kan": "ಸುಶೀಲಾ ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಕುಸಿದಳು — ತೀವ್ರ ಮಧುಮೇಹ ತೊಡಕು. ಆಸ್ಪತ್ರೆ ಬಿಲ್: ₹1,80,000. ₹30,000 ತಕ್ಷಣ ಬೇಕು.",
-			"question": "How should Susheela handle this medical emergency without destroying her retirement corpus?",
-			"question_kan": "ನಿವೃತ್ತಿ ನಿಧಿ ನಾಶ ಮಾಡದೆ ಈ ವೈದ್ಯಕೀಯ ತುರ್ತು ಪರಿಸ್ಥಿತಿ ಹೇಗೆ ನಿರ್ವಹಿಸಬೇಕು?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Emergency fund + break RD",
-					"label_kan": "ತುರ್ತು ನಿಧಿ + RD ಮುರಿಯಿರಿ",
-					"description": "Use emergency fund (₹50,000 if S5=A), break RD (small penalty), cover remainder from monthly income — protect long-term investments.",
-					"description_kan": "ತುರ್ತು ನಿಧಿ (S5=A ಆದರೆ ₹50,000), RD ಮುರಿಯಿರಿ, ಉಳಿದದ್ದು ಮಾಸಿಕ ಆದಾಯದಿಂದ ಭರಿಸಿ.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": -84000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"assetRemovals": [
-							"emergency-fund",
-							"rd"
-						],
-						"notes": "Emergency fund + RD broken for total ₹1.8L hospital bill. savingsChange -₹84K = remainder after assets used. Emergency-fund and RD assets removed. PPF and MF intact.",
-						"notes_kan": "ತುರ್ತು ನಿಧಿ + RD ₹1.8L ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ. PPF ಮತ್ತು MF ಸುರಕ್ಷಿತ."
-					}
-				},
-				{
-					"id": "B",
-					"label": "Sell mutual funds",
-					"label_kan": "ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ಮಾರಿ",
-					"description": "Sell ₹1,80,000 worth of mutual funds at current market value — avoid debt, use investment.",
-					"description_kan": "ಪ್ರಸ್ತುತ ಮಾರುಕಟ್ಟೆ ಮೌಲ್ಯದಲ್ಲಿ ₹1,80,000 ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ಮಾರಿ.",
-					"points": 10,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"assetValueChanges": [
-							{
-								"type": "mutual-fund",
-								"change": -180000
-							}
-						],
-						"notes": "Mutual fund value reduced by ₹1.8L. Lost growth potential, significant setback to retirement goal.",
-						"notes_kan": "ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ₹1.8L ಕಡಿಮೆ. ಬೆಳವಣಿಗೆ ಸಾಮರ್ಥ್ಯ ಕಳೆದುಕೊಂಡಿದೆ."
-					}
-				},
-				{
-					"id": "C",
-					"label": "Take a personal loan",
-					"label_kan": "ವೈಯಕ್ತಿಕ ಸಾಲ ತೆಗೆಯಿರಿ",
-					"description": "Take personal loan of ₹1,50,000 at 16% interest (₹3,500 EMI), use emergency fund ₹30,000 for deposit — preserve all investments.",
-					"description_kan": "16% ₹1,50,000 ವೈಯಕ್ತಿಕ ಸಾಲ (₹3,500 EMI), ₹30,000 ತುರ್ತು ನಿಧಿ ಠೇವಣಿಗೆ.",
-					"points": -20,
-					"financialImpact": {
-						"savingsChange": -30000,
-						"monthlyIncomeChange": 0,
-						"monthlyExpensesChange": 3500,
-						"newAssets": [],
-						"newDebts": [
-							{
-								"type": "personal-loan",
-								"label": "Hospital emergency loan",
-								"label_kan": "ಆಸ್ಪತ್ರೆ ತುರ್ತು ಸಾಲ",
-								"principal": 150000,
-								"interestRate": 16,
-								"monthlyEmi": 3500
-							}
-						],
-						"notes": "Emergency fund -₹30K deposit. Loan ₹1.5L @16%, EMI ₹3,500. Investments intact but savings capacity reduced.",
-						"notes_kan": "ತುರ್ತು ನಿಧಿ -₹30K. ₹1.5L @16%, EMI ₹3,500. ಹೂಡಿಕೆ ಸುರಕ್ಷಿತ.",
-						"expenseItemChanges": [
-							{
-								"key": "loan-emi-hospital",
-								"label": "Hospital loan EMI",
-								"label_kan": "ಆಸ್ಪತ್ರೆ ಸಾಲ EMI",
-								"newAmount": 3500
-							}
-						]
-					}
-				}
-			]
-		},
-		{
-			"id": 10,
-			"title": "Estate Planning and Protecting Priya's Future",
-			"title_kan": "ಎಸ್ಟೇಟ್ ಯೋಜನೆ ಮತ್ತು ಪ್ರಿಯಾ ಭವಿಷ್ಯ ರಕ್ಷಣೆ",
-			"situation": "Susheela has recovered and rebuilt her finances. Priya is graduating and starting her first job (₹35,000/month; contributes ₹20,000/month to the household, keeps ₹15,000 for herself). But Priya's adoption was never legally formalized. If something happens to Susheela, her biological family could legally claim everything.",
-			"situation_kan": "ಸುಶೀಲಾ ಚೇತರಿಸಿಕೊಂಡಿದ್ದಾಳೆ. ಪ್ರಿಯಾ ₹35,000/ತಿಂಗಳ ಉದ್ಯೋಗ ಪಡೆದಿದ್ದಾಳೆ (₹20,000 ಮನೆ). ಆದರೆ ದತ್ತು ಕಾನೂನಾತ್ಮಕಗೊಂಡಿಲ್ಲ.",
-			"question": "How should Susheela legally protect Priya's inheritance?",
-			"question_kan": "ಸುಶೀಲಾ ಪ್ರಿಯಾಳ ಉತ್ತರಾಧಿಕಾರವನ್ನು ಕಾನೂನಾತ್ಮಕವಾಗಿ ಹೇಗೆ ರಕ್ಷಿಸಬೇಕು?",
-			"choices": [
-				{
-					"id": "A",
-					"label": "Formal adoption + Will",
-					"label_kan": "ಔಪಚಾರಿಕ ದತ್ತು + ವಿಲ್",
-					"description": "Formalize adoption (₹40,000) + create registered Will (₹5,000) + add nominations — comprehensive legal protection for Priya.",
-					"description_kan": "ದತ್ತು ₹40,000 + ₹5,000 ನೋಂದಾಯಿತ ವಿಲ್ + ನಾಮಿನೇಷನ್ — ಪ್ರಿಯಾಗೆ ಸಂಪೂರ್ಣ ಕಾನೂನು ರಕ್ಷಣೆ.",
-					"points": 30,
-					"financialImpact": {
-						"savingsChange": -45000,
-						"monthlyIncomeChange": 20000,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Adoption ₹40K + Will ₹5K = -₹45K. Priya contributes ₹20K/mo (keeps ₹15K). Strongest legal protection.",
-						"notes_kan": "₹40K + ₹5K = -₹45K. ₹20K/ತಿಂಗಳು ಪ್ರಿಯಾ ಕೊಡುಗೆ."
-					}
-				},
-				{
-					"id": "B",
-					"label": "Will + joint accounts",
-					"label_kan": "ವಿಲ್ + ಜಂಟಿ ಖಾತೆ",
-					"description": "Create registered Will (₹5,000) + add Priya as joint account holder + detailed nominations — strong protection without adoption costs.",
-					"description_kan": "₹5,000 ನೋಂದಾಯಿತ ವಿಲ್ + ಜಂಟಿ ಖಾತೆ + ನಾಮಿನೇಷನ್.",
-					"points": 10,
-					"financialImpact": {
-						"savingsChange": -5000,
-						"monthlyIncomeChange": 20000,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Will ₹5K only. Good protection but adoption gap remains — can be challenged by biological family.",
-						"notes_kan": "₹5K ವಿಲ್. ಉತ್ತಮ ರಕ್ಷಣೆ ಆದರೆ ದತ್ತು ಅಂತರ ಉಳಿಯುತ್ತದೆ."
-					}
-				},
-				{
-					"id": "C",
-					"label": "Just add nominations",
-					"label_kan": "ನಾಮಿನೇಷನ್ ಮಾತ್ರ",
-					"description": "Add nominations to all accounts — free and simple, but nominations can be legally challenged by blood relatives.",
-					"description_kan": "ಎಲ್ಲಾ ಖಾತೆಗಳಿಗೆ ನಾಮಿನೇಷನ್ ಸೇರಿಸಿ — ಉಚಿತ ಮತ್ತು ಸರಳ, ಆದರೆ ರಕ್ತ ಸಂಬಂಧಿಗಳು ಪ್ರಶ್ನಿಸಬಹುದು.",
-					"points": -20,
-					"financialImpact": {
-						"savingsChange": 0,
-						"monthlyIncomeChange": 20000,
-						"monthlyExpensesChange": 0,
-						"newAssets": [],
-						"newDebts": [],
-						"notes": "Free. Weakest protection — nominations can be challenged by biological family in court.",
-						"notes_kan": "ಉಚಿತ. ದುರ್ಬಲ ರಕ್ಷಣೆ — ರಕ್ತ ಸಂಬಂಧಿಗಳು ನ್ಯಾಯಾಲಯದಲ್ಲಿ ಪ್ರಶ್ನಿಸಬಹುದು."
-					}
-				}
-			]
-		}
-	]
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "The First Stable Income",
+      "title_kan": "ಮೊದಲ ಸ್ಥಿರ ಆದಾಯ",
+      "situation": "After years of unstable work, Susheela now earns ₹18,000/month — but every rupee is spoken for. Her monthly obligations: Rent ₹4,000 · Food & basics ₹5,000 · Diabetes medication ₹2,000 · Contribution to guru Lakshmi ₹3,000 · Secret support to her mother ₹1,500 · Priya's school & needs ₹2,000. Total: ₹17,500 — leaving just ₹500. Now her younger trans friend Meena, who just fled family violence, needs shelter and support (₹2,000/month). Guru Lakshmi reminds Susheela that community support is a sacred duty.",
+      "situation_kan": "ಅಸ್ಥಿರ ಕೆಲಸದ ವರ್ಷಗಳ ನಂತರ, ಸುಶೀಲಾ ₹18,000/ತಿಂಗಳು ಗಳಿಸುತ್ತಾಳೆ — ಆದರೆ ಪ್ರತಿ ರೂಪಾಯಿ ಖರ್ಚಾಗಿದೆ. ಮಾಸಿಕ ಬಾಧ್ಯತೆಗಳು: ಬಾಡಿಗೆ ₹4,000 · ಆಹಾರ ₹5,000 · ಮಧುಮೇಹ ಔಷಧ ₹2,000 · ಗುರು ಲಕ್ಷ್ಮಿಗೆ ₹3,000 · ತಾಯಿಗೆ ಗುಪ್ತ ಬೆಂಬಲ ₹1,500 · ಪ್ರಿಯಾ ಶಾಲೆ ₹2,000. ಒಟ್ಟು: ₹17,500 — ಕೇವಲ ₹500 ಉಳಿಯುತ್ತದೆ. ಈಗ ಕುಟುಂಬ ಹಿಂಸೆಯಿಂದ ಪಾರಾದ ಸ್ನೇಹಿತೆ ಮೀನಾಗೆ ಆಶ್ರಯ ಮತ್ತು ₹2,000/ತಿಂಗಳು ಬೆಂಬಲ ಬೇಕು. ಗುರು ಲಕ್ಷ್ಮಿ ಸಮುದಾಯ ಬೆಂಬಲವನ್ನು ಪವಿತ್ರ ಕರ್ತವ್ಯ ಎನ್ನುತ್ತಾರೆ.",
+      "question": "How should Susheela balance community obligations with building financial security for Priya's future?",
+      "question_kan": "ಸಮುದಾಯದ ಬಾಧ್ಯತೆಗಳನ್ನು ಮತ್ತು ಪ್ರಿಯಾಳ ಭವಿಷ್ಯಕ್ಕಾಗಿ ಆರ್ಥಿಕ ಭದ್ರತೆ ನಿರ್ಮಿಸುವುದನ್ನು ಸುಶೀಲಾ ಹೇಗೆ ಸಮತೋಲನ ಮಾಡಬೇಕು?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Take extra work",
+          "label_kan": "ಹೆಚ್ಚುವರಿ ಕೆಲಸ ತೆಗೆದುಕೊಳ್ಳಿ",
+          "description": "Fulfill all obligations and take on extra sex work for ₹5,000 more per month to save — sacrifice health and safety for both community and savings.",
+          "description_kan": "ಎಲ್ಲಾ ಬಾಧ್ಯತೆಗಳನ್ನು ಪೂರೈಸಿ ₹5,000 ಹೆಚ್ಚುವರಿ ಆದಾಯಕ್ಕಾಗಿ ಹೆಚ್ಚುವರಿ ಕೆಲಸ ಮಾಡಿ — ಸಮುದಾಯ ಮತ್ತು ಉಳಿತಾಯ ಎರಡಕ್ಕೂ ಆರೋಗ್ಯ ಮತ್ತು ಸುರಕ್ಷತೆಯನ್ನು ತ್ಯಾಗ ಮಾಡಿ.",
+          "points": 10,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 5000,
+            "monthlyExpensesChange": 2000,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Extra sex work adds ₹5K income, but Susheela now supports Meena with ₹2K/month.",
+            "notes_kan": "ಹೆಚ್ಚುವರಿ ಕೆಲಸ ₹5K ಆದಾಯ ನೀಡುತ್ತದೆ, ಆದರೆ ಸುಶೀಲಾ ಈಗ ಮೀನಾಗೆ ₹2K/ತಿಂಗಳು ಬೆಂಬಲ ನೀಡುತ್ತಾಳೆ.",
+            "expenseItemChanges": [
+              {
+                "key": "meena",
+                "label": "Support for Meena",
+                "label_kan": "ಮೀನಾ ಬೆಂಬಲ",
+                "newAmount": 2000
+              }
+            ]
+          }
+        },
+        {
+          "id": "B",
+          "label": "Renegotiate obligations",
+          "label_kan": "ಬಾಧ್ಯತೆಗಳನ್ನು ಮರು-ಮಾತುಕತೆ ಮಾಡಿ",
+          "description": "Reduce guru contribution to ₹1,500 from ₹3,000, give mother ₹1,000 instead of ₹1,500, support Meena with ₹1,000, save ₹1,500/month — negotiate obligations respectfully while starting savings.",
+          "description_kan": "ಗುರುವಿನ ಕೊಡುಗೆಯನ್ನು ₹3,000 ರಿಂದ ₹1,500 ಕ್ಕೆ ಇಳಿಸಿ, ತಾಯಿಗೆ ₹1,500 ರ ಬದಲು ₹1,000 ನೀಡಿ, ಮೀನಾಗೆ ₹1,000 ನೀಡಿ, ತಿಂಗಳಿಗೆ ₹1,500 ಉಳಿಸಿ — ಉಳಿತಾಯವನ್ನು ಪ್ರಾರಂಭಿಸುವಾಗ ಬಾಧ್ಯತೆಗಳನ್ನು ಗೌರವದಿಂದ ಮಾತುಕತೆ ಮಾಡಿ.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": -1000,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Renegotiates obligations, reducing monthly expenses by ₹1K net.",
+            "notes_kan": "ಬಾಧ್ಯತೆಗಳನ್ನು ಮರು-ಮಾತುಕತೆ ಮಾಡಿ ₹1K/ತಿಂಗಳು ನಿವ್ವಳ ವೆಚ್ಚ ಕಡಿಮೆ ಮಾಡಿ.",
+            "expenseItemChanges": [
+              {
+                "key": "guru",
+                "newAmount": 1500
+              },
+              {
+                "key": "mother",
+                "newAmount": 1000
+              },
+              {
+                "key": "meena",
+                "label": "Support for Meena",
+                "label_kan": "ಮೀನಾ ಬೆಂಬಲ",
+                "newAmount": 1000
+              }
+            ]
+          }
+        },
+        {
+          "id": "C",
+          "label": "Community duty above all",
+          "label_kan": "ಸಮುದಾಯ ಕರ್ತವ್ಯ ಮೊದಲು",
+          "description": "Maintain all obligations, support Meena with remaining ₹500/month, save nothing — community duty above all.",
+          "description_kan": "ಎಲ್ಲಾ ಬಾಧ್ಯತೆಗಳನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಿ, ಮೀನಾಗೆ ₹500/ತಿಂಗಳು ಬೆಂಬಲ ನೀಡಿ, ಏನೂ ಉಳಿಸದಿರಿ.",
+          "points": -20,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 500,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Supports Meena with ₹500/month, no savings built.",
+            "notes_kan": "ಮೀನಾಗೆ ₹500/ತಿಂಗಳು ಬೆಂಬಲ, ಉಳಿತಾಯ ಶೂನ್ಯ.",
+            "expenseItemChanges": [
+              {
+                "key": "meena",
+                "label": "Support for Meena",
+                "label_kan": "ಮೀನಾ ಬೆಂಬಲ",
+                "newAmount": 500
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "The Police Raid",
+      "title_kan": "ಪೊಲೀಸ್ ದಾಳಿ",
+      "situation": "Police raid Susheela's building, harassing trans women for 'solicitation' even though Susheela runs a legitimate beauty business. They threaten arrest unless she pays ₹8,000 'fine' (bribe). Simultaneously, she has an opportunity to rent a proper shop space (₹10,000 deposit + ₹6,000/month rent) which could significantly increase her income.",
+      "situation_kan": "ಪೊಲೀಸರು ಸುಶೀಲಾಳ ಕಟ್ಟಡದ ಮೇಲೆ ದಾಳಿ ಮಾಡಿ, ಸುಶೀಲಾ ಕಾನೂನುಬದ್ಧ ಸೌಂದರ್ಯ ವ್ಯವಹಾರ ನಡೆಸುತ್ತಿದ್ದರೂ ಸಹ, 'ಮನವಿ'ಗಾಗಿ ಟ್ರಾನ್ಸ್ ಮಹಿಳೆಯರನ್ನು ಕಿರುಕುಳ ನೀಡುತ್ತಾರೆ. ₹8,000 'ದಂಡ' (ಲಂಚ) ಪಾವತಿಸದಿದ್ದರೆ ಬಂಧಿಸುವುದಾಗಿ ಅವರು ಬೆದರಿಕೆ ಹಾಕುತ್ತಾರೆ. ಅದೇ ಸಮಯದಲ್ಲಿ, ಆಕೆಗೆ ಸರಿಯಾದ ಅಂಗಡಿ ಸ್ಥಳವನ್ನು ಬಾಡಿಗೆಗೆ ಪಡೆಯುವ ಅವಕಾಶವಿದೆ (₹10,000 ಠೇವಣಿ + ₹6,000/ತಿಂಗಳ ಬಾಡಿಗೆ) ಇದು ಆಕೆಯ ಆದಾಯವನ್ನು ಗಮನಾರ್ಹವಾಗಿ ಹೆಚ್ಚಿಸಬಹುದು.",
+      "question": "How should Susheela protect herself legally while pursuing business growth?",
+      "question_kan": "ವ್ಯಾಪಾರ ಬೆಳವಣಿಗೆ ಅನ್ವೇಷಿಸುವಾಗ ಸುಶೀಲಾ ತನ್ನನ್ನು ಕಾನೂನಾತ್ಮಕವಾಗಿ ಹೇಗೆ ರಕ್ಷಿಸಿಕೊಳ್ಳಬೇಕು?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Pay bribe + open shop",
+          "label_kan": "ಲಂಚ ನೀಡಿ + ಅಂಗಡಿ ತೆರೆಯಿರಿ",
+          "description": "Pay ₹6,000 to police, use ₹10,000 for shop deposit, borrow ₹5,000 from moneylender at 24% interest — prioritize business growth despite costs.",
+          "description_kan": "ಪೊಲೀಸರಿಗೆ ₹6,000 ಪಾವತಿಸಿ, ಅಂಗಡಿ ಠೇವಣಿಗೆ ₹10,000 ಬಳಸಿ, ಬಡ್ಡಿದಾರರಿಂದ ₹5,000 ಸಾಲ ಪಡೆಯಿರಿ - ವೆಚ್ಚದ ಹೊರತಾಗಿಯೂ ವ್ಯವಹಾರ ಬೆಳವಣಿಗೆಗೆ ಆದ್ಯತೆ ನೀಡಿ.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": -22000,
+            "monthlyIncomeChange": 12000,
+            "monthlyExpensesChange": 6000,
+            "newAssets": [],
+            "newDebts": [],
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 1,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": -5000,
+                "notes": "Sex work income stops as beauty parlour becomes full-time.",
+                "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ಪೂರ್ಣ ಸಮಯದ ಕೆಲಸವಾಗುವ ಕಾರಣ ಲೈಂಗಿಕ ಕೆಲಸದ ಆದಾಯ ನಿಲ್ಲುತ್ತದೆ."
+              }
+            ],
+            "notes": "Bribe ₹6K + shop deposit ₹10K + moneylender ₹5K (total repayment ~₹6K folded in) = ₹22K deducted from savings. New income: +₹12K/mo from beauty shop. New expense: shop rent ₹6K/mo.",
+            "notes_kan": "ಲಂಚ ₹6K + ಅಂಗಡಿ ಠೇವಣಿ ₹10K + ಲೇವಾದೇವಿ ₹5K (ಒಟ್ಟು ಮರುಪಾವತಿ ~₹6K ಸೇರಿಸಲಾಗಿದೆ) = -₹22K.",
+            "expenseItemChanges": [
+              {
+                "key": "shop-rent",
+                "label": "Shop rent",
+                "label_kan": "ಅಂಗಡಿ ಬಾಡಿಗೆ",
+                "newAmount": 6000
+              }
+            ]
+          }
+        },
+        {
+          "id": "B",
+          "label": "Pay police, skip shop",
+          "label_kan": "ಪೊಲೀಸರಿಗೆ ನೀಡಿ, ಅಂಗಡಿ ಬೇಡ",
+          "description": "Pay ₹8,000 to police, keep remaining savings intact, skip shop opportunity for now — seek free legal aid for future protection.",
+          "description_kan": "ಪೊಲೀಸರಿಗೆ ₹8,000 ನೀಡಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ, ಈಗ ಅಂಗಡಿ ಅವಕಾಶ ಬಿಡಿ.",
+          "points": 10,
+          "financialImpact": {
+            "savingsChange": -8000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Pay bribe only. No debt, no new income, savings -₹8K.",
+            "notes_kan": "ಲಂಚ ಮಾತ್ರ ನೀಡಿ. ಸಾಲ ಇಲ್ಲ, ಹೊಸ ಆದಾಯ ಇಲ್ಲ, ಉಳಿತಾಯ -₹8K."
+          }
+        },
+        {
+          "id": "C",
+          "label": "Fight with a lawyer",
+          "label_kan": "ವಕೀಲರೊಂದಿಗೆ ಹೋರಾಡಿ",
+          "description": "Refuse to pay police, use ₹15,000 savings for a lawyer to fight the case — principle over pragmatism.",
+          "description_kan": "ಪೊಲೀಸರಿಗೆ ನೀಡಲು ನಿರಾಕರಿಸಿ, ಪ್ರಕರಣ ಹೋರಾಡಲು ₹15,000 ಉಳಿತಾಯ ಬಳಸಿ.",
+          "points": -20,
+          "minimumSavings": 15000,
+          "financialImpact": {
+            "savingsChange": -15000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Lawyer -₹15K. Savings depleted, case drags on, shop opportunity lost.",
+            "notes_kan": "ವಕೀಲ -₹15K. ಉಳಿತಾಯ ಖಾಲಿ, ಪ್ರಕರಣ ಎಳೆಯುತ್ತದೆ, ಅಂಗಡಿ ಅವಕಾಶ ಕಳೆದುಕೊಂಡಿದೆ."
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Identity Documents and Banking Access",
+      "title_kan": "ಗುರುತಿನ ದಾಖಲೆಗಳು ಮತ್ತು ಬ್ಯಾಂಕಿಂಗ್ ಪ್ರವೇಶ",
+      "situation": "Susheela wants to open a bank account for better financial management and formal credit access. Legal name change + gender marker correction costs ₹12,000. But Priya needs new school uniforms and books (₹5,000), and Susheela's mother is ill (needs ₹8,000 for treatment). Having proper documents would allow her to: open a bank account properly; access government schemes like the Mudra loan for small businesses; and rent better shop space (landlords want \"proper\" documents).",
+      "situation_kan": "ಸುಶೀಲಾ ಉತ್ತಮ ಆರ್ಥಿಕ ನಿರ್ವಹಣೆ ಮತ್ತು ಔಪಚಾರಿಕ ಸಾಲ ಪ್ರವೇಶಕ್ಕಾಗಿ ಬ್ಯಾಂಕ್ ಖಾತೆ ತೆರೆಯಲು ಬಯಸುತ್ತಾಳೆ. ಕಾನೂನು ಹೆಸರು ಬದಲಾವಣೆ ₹12,000 ವೆಚ್ಚ. ಆದರೆ ಪ್ರಿಯಾಗೆ ಶಾಲಾ ಸಮವಸ್ತ್ರ ಮತ್ತು ಪುಸ್ತಕಗಳು ಬೇಕು, ಮತ್ತು ತಾಯಿಗೆ ₹8,000 ಚಿಕಿತ್ಸೆ ಬೇಕು.",
+      "question": "Should Susheela prioritize identity documents for long-term financial access, or immediate family needs?",
+      "question_kan": "ದೀರ್ಘಕಾಲೀನ ಆರ್ಥಿಕ ಪ್ರವೇಶಕ್ಕಾಗಿ ಗುರುತಿನ ದಾಖಲೆಗಳಿಗೆ ಆದ್ಯತೆ ನೀಡಬೇಕೇ ಅಥವಾ ತಕ್ಷಣದ ಕುಟುಂಬದ ಅಗತ್ಯಗಳಿಗೆ?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Get documents, borrow for mother",
+          "label_kan": "ದಾಖಲೆ ಪಡೆಯಿರಿ, ತಾಯಿಗಾಗಿ ಸಾಲ",
+          "description": "Use ₹12,000 for legal documents, borrow ₹8,000 from community lender at 15% for mother's treatment, adjust Priya's school expenses — invest in long-term financial access.",
+          "description_kan": "ಕಾನೂನು ದಾಖಲೆಗಳಿಗೆ ₹12,000 ಬಳಸಿ, ತಾಯಿಯ ಚಿಕಿತ್ಸೆಗೆ 15% ಬಡ್ಡಿಯಲ್ಲಿ ₹8,000 ಸಾಲ, ಪ್ರಿಯಾಳ ಶಾಲಾ ವೆಚ್ಚ ಸರಿಹೊಂದಿಸಿ.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": -20640,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 3000,
+            "newAssets": [],
+            "newDebts": [],
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 2,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 5000,
+                "notes": "Beauty parlour grows organically to ₹40,000/month income.",
+                "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
+              }
+            ],
+            "notes": "Docs ₹12K + community loan ₹8K @15% 12mo (total repay ₹8,640 folded in) = -₹20,640. Priya school ₹2K→₹5K/mo = +₹3K/mo expenses. Meena is now self-sufficient; guru dakshina and mother support restored.",
+            "notes_kan": "ದಾಖಲೆ ₹12K + ₹8K @15% 12 ತಿಂಗಳು (ಒಟ್ಟು ₹8,640 ಸೇರಿಸಲಾಗಿದೆ) = -₹20,640. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
+            "expenseItemChanges": [
+              {
+                "key": "priya",
+                "newAmount": 5000
+              },
+              {
+                "key": "meena",
+                "label": "Support for Meena",
+                "label_kan": "ಮೀನಾಗೆ ಬೆಂಬಲ",
+                "newAmount": 0
+              },
+              {
+                "key": "guru",
+                "newAmount": 3000
+              },
+              {
+                "key": "mother",
+                "newAmount": 1500
+              }
+            ]
+          }
+        },
+        {
+          "id": "B",
+          "label": "Skip documents, help family",
+          "label_kan": "ದಾಖಲೆ ಬಿಟ್ಟು, ಕುಟುಂಬಕ್ಕೆ ಸಹಾಯ",
+          "description": "Skip document change, use ₹13,000 for mother and Priya, keep remaining savings — family's immediate needs come first.",
+          "description_kan": "ದಾಖಲೆ ಬದಲಾವಣೆ ಬಿಟ್ಟು, ತಾಯಿ ಮತ್ತು ಪ್ರಿಯಾಗೆ ₹13,000 ಬಳಸಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ.",
+          "points": -20,
+          "financialImpact": {
+            "savingsChange": -8000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 3000,
+            "newAssets": [],
+            "newDebts": [],
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 2,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 5000,
+                "notes": "Beauty parlour grows organically to ₹40,000/month income.",
+                "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
+              }
+            ],
+            "notes": "Mother ₹8K from savings. Priya expenses increase ₹3K/mo. Formal banking remains inaccessible. Meena is now self-sufficient; guru dakshina and mother support restored.",
+            "notes_kan": "ತಾಯಿಗೆ ₹8K. ಔಪಚಾರಿಕ ಬ್ಯಾಂಕಿಂಗ್ ಪ್ರವೇಶವಿಲ್ಲ. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
+            "expenseItemChanges": [
+              {
+                "key": "priya",
+                "newAmount": 5000
+              },
+              {
+                "key": "meena",
+                "label": "Support for Meena",
+                "label_kan": "ಮೀನಾಗೆ ಬೆಂಬಲ",
+                "newAmount": 0
+              },
+              {
+                "key": "guru",
+                "newAmount": 3000
+              },
+              {
+                "key": "mother",
+                "newAmount": 1500
+              }
+            ]
+          }
+        },
+        {
+          "id": "C",
+          "label": "Documents + reduce Priya's expenses",
+          "label_kan": "ದಾಖಲೆ + ಪ್ರಿಯಾ ವೆಚ್ಚ ಕಡಿಮೆ",
+          "description": "Get documents for ₹12,000, use ₹8,000 for mother, keep Priya's expenses at ₹2,000 using old uniforms and second-hand textbooks — balance all needs.",
+          "description_kan": "₹12,000ಗೆ ದಾಖಲೆ ಪಡೆಯಿರಿ, ತಾಯಿಗೆ ₹8,000 ಬಳಸಿ, ಹಳೆಯ ಸಮವಸ್ತ್ರ ಮತ್ತು ಪುರಾತನ ಪುಸ್ತಕಗಳಿಂದ ಪ್ರಿಯಾ ವೆಚ್ಚ ₹2,000ಕ್ಕೆ ಇರಿಸಿ.",
+          "points": 10,
+          "financialImpact": {
+            "savingsChange": -20000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 2,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 5000,
+                "notes": "Beauty parlour grows organically to ₹40,000/month income.",
+                "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
+              }
+            ],
+            "notes": "Docs ₹12K + mother ₹8K = -₹20K. Priya stays at ₹2K/mo (old uniforms, second-hand books). No expense increase. Meena is now self-sufficient; guru dakshina and mother support restored.",
+            "notes_kan": "ದಾಖಲೆ ₹12K + ತಾಯಿ ₹8K = -₹20K. ಪ್ರಿಯಾ ₹2K/ತಿಂಗಳಿಗೆ ಉಳಿಯುತ್ತಾಳೆ. ಮೀನಾ ಈಗ ಸ್ವಾವಲಂಬಿ; ಗುರು ದಕ್ಷಿಣೆ ಮತ್ತು ತಾಯಿ ಬೆಂಬಲ ಮರುಸ್ಥಾಪನೆ.",
+            "expenseItemChanges": [
+              {
+                "key": "meena",
+                "label": "Support for Meena",
+                "label_kan": "ಮೀನಾಗೆ ಬೆಂಬಲ",
+                "newAmount": 0
+              },
+              {
+                "key": "guru",
+                "newAmount": 3000
+              },
+              {
+                "key": "mother",
+                "newAmount": 1500
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Building Assets",
+      "title_kan": "ಆಸ್ತಿ ನಿರ್ಮಾಣ",
+      "situation": "Susheela now has proper documents and her beauty parlour is thriving (income ₹35,000/month). Priya is 13 and will need college funds soon. She has four investment options: buy land, invest in gold + community fund, or expand the business.",
+      "situation_kan": "ಸುಶೀಲಾ ಬಳಿ ಈಗ ಸರಿಯಾದ ದಾಖಲೆಗಳಿವೆ ಮತ್ತು ಅವರ ಬ್ಯೂಟಿ ಪಾರ್ಲರ್ ಅಭಿವೃದ್ಧಿ ಹೊಂದುತ್ತಿದೆ (ಆದಾಯ ₹35,000/ತಿಂಗಳು). ಪ್ರಿಯಾಗೆ 13 ವರ್ಷ ಮತ್ತು ಶೀಘ್ರದಲ್ಲೇ ಕಾಲೇಜು ನಿಧಿಯ ಅಗತ್ಯವಿರುತ್ತದೆ. ಅವರಿಗೆ ನಾಲ್ಕು ಹೂಡಿಕೆ ಆಯ್ಕೆಗಳಿವೆ: ಭೂಮಿ ಖರೀದಿಸುವುದು, ಚಿನ್ನ + ಸಮುದಾಯ ನಿಧಿಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡುವುದು ಅಥವಾ ವ್ಯವಹಾರವನ್ನು ವಿಸ್ತರಿಸುವುದು.",
+      "question": "How should Susheela choose between different investment types to secure both her retirement and Priya's education?",
+      "question_kan": "ನಿವೃತ್ತಿ ಮತ್ತು ಪ್ರಿಯಾಳ ಶಿಕ್ಷಣ ಎರಡನ್ನೂ ಭದ್ರಪಡಿಸಲು ಸುಶೀಲಾ ವಿಭಿನ್ನ ಹೂಡಿಕೆ ವಿಧಗಳ ನಡುವೆ ಹೇಗೆ ಆಯ್ಕೆ ಮಾಡಬೇಕು?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Buy land",
+          "label_kan": "ಭೂಮಿ ಖರೀದಿ",
+          "description": "Buy land for ₹3 lakh in the outskirts (toward retirement house goal), keep the remaning as savings — prioritize retirement goal.",
+          "description_kan": "ಹೊರವಲಯದಲ್ಲಿ ₹3 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಖರೀದಿಸಿ (ನಿವೃತ್ತಿ ವಸತಿ ಗುರಿಯತ್ತ), ಉಳಿದದ್ದನ್ನು ಉಳಿತಾಯವಾಗಿ ಇಟ್ಟುಕೊಳ್ಳಿ - ನಿವೃತ್ತಿ ಗುರಿಗೆ ಆದ್ಯತೆ ನೀಡಿ.",
+          "points": 30,
+          "minimumSavings": 300000,
+          "financialImpact": {
+            "savingsChange": -300000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [
+              {
+                "type": "land",
+                "label": "Plot in Bengaluru outskirts",
+                "label_kan": "ಬೆಂಗಳೂರು ಹೊರವಲಯದಲ್ಲಿ ನಿವೇಶನ",
+                "value": 300000
+              }
+            ],
+            "newDebts": [],
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 2,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 5000,
+                "notes": "Beauty parlour grows organically to ₹40,000/month income.",
+                "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
+              }
+            ],
+            "notes": "Land ₹3L purchased. {remaining} kept as savings.",
+            "notes_kan": "₹3 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಖರೀದಿಸಲಾಗಿದೆ. {remaining} ಉಳಿತಾಯವಾಗಿ ಇಡಲಾಗಿದೆ."
+          }
+        },
+        {
+          "id": "B",
+          "label": "Gold + community fund",
+          "label_kan": "ಚಿನ್ನ + ಸಮುದಾಯ ನಿಧಿ",
+          "description": "Invest ₹2 lakh in gold jewelry and ₹1 lakh in community building fund, keep the remaining — balance tradition, community, and security.",
+          "description_kan": "₹2 ಲಕ್ಷ ಚಿನ್ನಾಭರಣಗಳಲ್ಲಿ ಮತ್ತು ₹1 ಲಕ್ಷ ಸಮುದಾಯ ನಿರ್ಮಾಣ ನಿಧಿಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡಿ, ಉಳಿದ ಹಣವನ್ನು - ಸಂಪ್ರದಾಯ, ಸಮುದಾಯ ಮತ್ತು ಭದ್ರತೆಯನ್ನು ಸಮತೋಲನದಲ್ಲಿ ಇಟ್ಟುಕೊಳ್ಳಿ.",
+          "points": 10,
+          "minimumSavings": 300000,
+          "financialImpact": {
+            "savingsChange": -300000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [
+              {
+                "type": "gold",
+                "label": "Gold jewelry",
+                "label_kan": "ಚಿನ್ನದ ಆಭರಣ",
+                "value": 200000
+              },
+              {
+                "type": "community-stake",
+                "label": "Community building fund",
+                "label_kan": "ಸಮುದಾಯ ನಿರ್ಮಾಣ ನಿಧಿ",
+                "value": 100000
+              }
+            ],
+            "newDebts": [],
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 2,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 5000,
+                "notes": "Beauty parlour grows organically to ₹40,000/month income.",
+                "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
+              }
+            ],
+            "notes": "Gold ₹2L + community stake ₹1L = ₹3L. ₹50K retained. Diversified but slower toward house goal.",
+            "notes_kan": "ಚಿನ್ನ ₹2L + ಸಮುದಾಯ ₹1L. ₹50K ಇರಿಸಿ."
+          }
+        },
+        {
+          "id": "C",
+          "label": "Expand the business",
+          "label_kan": "ವ್ಯಾಪಾರ ವಿಸ್ತರಿಸಿ",
+          "description": "Put ₹2 lakh in business equipment, ₹1 lakh in gold, ₹50,000 in community fund — maximize income growth.",
+          "description_kan": "₹2 ಲಕ್ಷ ವ್ಯಾಪಾರ ಉಪಕರಣ, ₹1 ಲಕ್ಷ ಚಿನ್ನ, ₹50,000 ಸಮುದಾಯ ನಿಧಿ — ಆದಾಯ ಬೆಳವಣಿಗೆ ಗರಿಷ್ಠಗೊಳಿಸಿ.",
+          "points": -20,
+          "minimumSavings": 350000,
+          "financialImpact": {
+            "savingsChange": -350000,
+            "monthlyIncomeChange": 5000,
+            "monthlyExpensesChange": 0,
+            "newAssets": [
+              {
+                "type": "business-equipment",
+                "label": "Business equipment",
+                "label_kan": "ವ್ಯಾಪಾರ ಉಪಕರಣ",
+                "value": 200000
+              },
+              {
+                "type": "gold",
+                "label": "Gold jewelry",
+                "label_kan": "ಚಿನ್ನದ ಆಭರಣ",
+                "value": 100000
+              },
+              {
+                "type": "community-stake",
+                "label": "Community building fund",
+                "label_kan": "ಸಮುದಾಯ ನಿರ್ಮಾಣ ನಿಧಿ",
+                "value": 50000
+              }
+            ],
+            "newDebts": [],
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 2,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 5000,
+                "notes": "Beauty parlour grows organically to ₹40,000/month income.",
+                "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
+              }
+            ],
+            "notes": "Business equipment ₹2L + gold ₹1L + community ₹50K = ₹3.5L. Income +₹5K from equipment. Without buying land now, meeting the retirement house goal becomes much more challenging.",
+            "notes_kan": "ಉಪಕರಣ ₹2L + ಚಿನ್ನ ₹1L + ಸಮುದಾಯ ₹50K = ₹3.5L. ₹5K ಆದಾಯ ಹೆಚ್ಚಳ. ಈಗ ಭೂಮಿ ಖರೀದಿಸದೆ, ನಿವೃತ್ತಿ ಮನೆ ಗುರಿ ತಲುಪುವುದು ತುಂಬಾ ಕಷ್ಟವಾಗುತ್ತದೆ."
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Healthcare Crisis and Insurance Barriers",
+      "title_kan": "ಆರೋಗ್ಯ ಬಿಕ್ಕಟ್ಟು ಮತ್ತು ವಿಮೆ ಅಡೆತಡೆಗಳು",
+      "situation": "Susheela's diabetes worsens — she now needs ₹5,000/month for treatment, up from ₹2,000. Insurance companies reject her application due to pre-existing conditions and trans-exclusion clauses. Monthly expenses have risen due to increased medical costs and basics.",
+      "situation_kan": "ಸುಶೀಲಾಳ ಮಧುಮೇಹ ಹದಗೆಡುತ್ತಿದೆ — ₹2,000 ಬದಲು ₹5,000/ತಿಂಗಳು ಚಿಕಿತ್ಸೆ ಬೇಕು. ವಿಮಾ ಕಂಪನಿಗಳು ಅವಳ ಅರ್ಜಿ ತಿರಸ್ಕರಿಸಿವೆ. ಮಾಸಿಕ ವೆಚ್ಚ ಹೆಚ್ಚಾಗಿದೆ.",
+      "question": "How should Susheela manage ongoing healthcare costs without insurance access?",
+      "question_kan": "ವಿಮೆ ಪ್ರವೇಶವಿಲ್ಲದೆ ಸುಶೀಲಾ ನಿರಂತರ ಆರೋಗ್ಯ ವೆಚ್ಚಗಳನ್ನು ಹೇಗೆ ನಿರ್ವಹಿಸಬೇಕು?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Emergency fund + cooperative",
+          "label_kan": "ತುರ್ತು ನಿಧಿ + ಸಹಕಾರ",
+          "description": "Set aside ₹1 lakh as dedicated medical emergency fund, join community health cooperative (₹3,000/year), use government scheme for major procedures — hybrid approach.",
+          "description_kan": "₹1 ಲಕ್ಷ ವೈದ್ಯಕೀಯ ತುರ್ತು ನಿಧಿ, ₹3,000/ವರ್ಷ ಸಮುದಾಯ ಆರೋಗ್ಯ ಸಹಕಾರ, ಪ್ರಮುಖ ಚಿಕಿತ್ಸೆಗೆ ಸರ್ಕಾರಿ ಯೋಜನೆ.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": -100000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 6250,
+            "newAssets": [
+              {
+                "type": "emergency-fund",
+                "label": "Medical emergency fund",
+                "label_kan": "ವೈದ್ಯಕೀಯ ತುರ್ತು ನಿಧಿ",
+                "value": 100000
+              }
+            ],
+            "newDebts": [],
+            "notes": "Emergency fund ₹1L from savings. Expenses +₹6K (diabetes ₹3K + basics ₹3K) +₹250/mo coop (₹3K/yr ÷ 12) = +₹6,250.",
+            "notes_kan": "₹1L ತುರ್ತು ನಿಧಿ. ₹6K ಮಾಸಿಕ ವೆಚ್ಚ + ₹250 ಸಹಕಾರ = +₹6,250.",
+            "expenseItemChanges": [
+              {
+                "key": "medication",
+                "newAmount": 5000
+              },
+              {
+                "key": "food",
+                "newAmount": 8000
+              },
+              {
+                "key": "health-coop",
+                "label": "Health cooperative",
+                "label_kan": "ಆರೋಗ್ಯ ಸಹಕಾರ",
+                "newAmount": 250
+              }
+            ]
+          }
+        },
+        {
+          "id": "B",
+          "label": "Buy private insurance",
+          "label_kan": "ಖಾಸಗಿ ವಿಮೆ ಖರೀದಿ",
+          "description": "Try to buy private insurance despite exclusions (₹15,000/year) — formal protection matters even if coverage is partial.",
+          "description_kan": "ಹೊರಗಿಡುವಿಕೆಗಳ ಹೊರತಾಗಿಯೂ ₹15,000/ವರ್ಷ ಖಾಸಗಿ ವಿಮೆ ಖರೀದಿಸಲು ಪ್ರಯತ್ನಿಸಿ.",
+          "points": -20,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 7250,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Insurance ₹15K/yr = ₹1,250/mo. Base increase ₹6K + insurance ₹1,250 = +₹7,250. Expensive premiums, likely won't cover actual needs.",
+            "notes_kan": "ವಿಮೆ ₹1,250/ತಿಂಗಳು + ₹6K ಹೆಚ್ಚಳ = +₹7,250. ದುಬಾರಿ ಪ್ರೀಮಿಯಂ, ನಿಜ ಅಗತ್ಯ ಒಳಗೊಳ್ಳದ ಸಾಧ್ಯತೆ.",
+            "expenseItemChanges": [
+              {
+                "key": "medication",
+                "newAmount": 5000
+              },
+              {
+                "key": "food",
+                "newAmount": 8000
+              },
+              {
+                "key": "insurance",
+                "label": "Private insurance",
+                "label_kan": "ಖಾಸಗಿ ವಿಮೆ",
+                "newAmount": 1250
+              }
+            ]
+          }
+        },
+        {
+          "id": "C",
+          "label": "Pay out of pocket",
+          "label_kan": "ನೇರ ಪಾವತಿ",
+          "description": "Continue paying out of pocket month to month — no lump sum locked away, but no dedicated buffer either. Vulnerable to any major health crisis.",
+          "description_kan": "ತಿಂಗಳಿಂದ ತಿಂಗಳಿಗೆ ನೇರ ಪಾವತಿ ಮುಂದುವರಿಸಿ — ಒಂದು ದಜ್ಜ ಆರೋಗ್ಯ ಬಿಕ್ಕಟ್ಟು ಬಂದರೆ ತೊಂದರೆ ನಿಶ್ಚಿತ.",
+          "points": 10,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 6000,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "No lump-sum lock. Base expense increase ₹6K only. Slower emergency fund building, vulnerable to major crisis.",
+            "notes_kan": "ಮೊತ್ತ ಲಾಕ್ ಇಲ್ಲ. ₹6K ಮಾಸಿಕ ಹೆಚ್ಚಳ. ತುರ್ತು ನಿಧಿ ನಿಧಾನ.",
+            "expenseItemChanges": [
+              {
+                "key": "medication",
+                "newAmount": 5000
+              },
+              {
+                "key": "food",
+                "newAmount": 8000
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Priya's Education and Future Planning",
+      "title_kan": "ಪ್ರಿಯಾಳ ಶಿಕ್ಷಣ ಮತ್ತು ಭವಿಷ್ಯ ಯೋಜನೆ",
+      "situation": "Priya wants to study engineering (₹5 lakh over 4 years). Susheela's land is now worth ₹5 lakh (bought at ₹3 lakh). But Priya is not legally Susheela's daughter, making education loans difficult.",
+      "situation_kan": "ಪ್ರಿಯಾ ಎಂಜಿನಿಯರಿಂಗ್ ಓದಲು ಬಯಸುತ್ತಾಳೆ (4 ವರ್ಷಗಳಲ್ಲಿ ₹5 ಲಕ್ಷ). ಸುಶೀಲಾಳ ಭೂಮಿ ಈಗ ₹5 ಲಕ್ಷ ಮೌಲ್ಯ. ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.",
+      "question": "Should Susheela sacrifice her retirement goal for Priya's education, or balance both?",
+      "question_kan": "ಸುಶೀಲಾ ಪ್ರಿಯಾಳ ಶಿಕ್ಷಣಕ್ಕಾಗಿ ನಿವೃತ್ತಿ ಗುರಿ ಬಿಡಬೇಕೇ, ಅಥವಾ ಎರಡನ್ನೂ ಸಮತೋಲನ ಮಾಡಬೇಕೇ?",
+      "assetValueUpdates": [
+        {
+          "type": "land",
+          "value": 500000
+        }
+      ],
+      "choices": [
+        {
+          "id": "A",
+          "label": "Sell land for Priya's education",
+          "label_kan": "ಪ್ರಿಯಾ ಶಿಕ್ಷಣಕ್ಕೆ ಭೂಮಿ ಮಾರಿ",
+          "description": "Sell land for ₹5 lakh, use ₹3 lakh for Priya's first 2.5 years of education, save ₹10,000/month from the remaining amount for future costs — prioritize Priya while continuing to save.",
+          "description_kan": "₹5 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಮಾರಿ, ₹3 ಲಕ್ಷ ಪ್ರಿಯಾ ಮೊದಲ 2.5 ವರ್ಷ ಶಿಕ್ಷಣಕ್ಕೆ — ಉಳಿದ ₹2 ಲಕ್ಷ ಉಳಿತಾಯಕ್ಕೆ ಸೇರಿಸಲಾಗುತ್ತದೆ. ಪ್ರಿಯಾಗೆ ಆದ್ಯತೆ, ಮನೆ ಗುರಿ ಬಿಟ್ಟುಕೊಳ್ಳಬೇಕು.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": 200000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "assetRemovals": [
+              "land"
+            ],
+            "notes": "Land sold ₹5L - education ₹3L = +₹2L net to savings. The ₹10,000/month for Priya's future education costs comes out of this ₹2L — not from monthly income. Land asset removed. Must restart saving for house.",
+            "notes_kan": "ಭೂಮಿ ₹5L - ₹3L ಶಿಕ್ಷಣ = +₹2L ಉಳಿತಾಯ. ಪ್ರಿಯಾ ಮುಂದಿನ ಶಿಕ್ಷಣಕ್ಕೆ ₹10,000/ತಿಂಗಳು ಈ ₹2L ನಿಂದ ಬರುತ್ತದೆ — ತಿಂಗಳ ಆದಾಯದಿಂದ ಅಲ್ಲ. ಭೂಮಿ ಆಸ್ತಿ ತೆಗೆಯಲಾಗಿದೆ."
+          }
+        },
+        {
+          "id": "B",
+          "label": "Keep land, take loan",
+          "label_kan": "ಭೂಮಿ ಇಟ್ಟು, ಸಾಲ ತೆಗೆಯಿರಿ",
+          "description": "Keep land, use all current savings, take personal loan of ₹3 lakh at 18% interest (₹7,500 EMI) — try to preserve both goals.",
+          "description_kan": "ಭೂಮಿ ಇಟ್ಟು, ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, 18% ಬಡ್ಡಿಯಲ್ಲಿ ₹3 ಲಕ್ಷ ವೈಯಕ್ತಿಕ ಸಾಲ (₹7,500 EMI).",
+          "points": 10,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 7500,
+            "spendAllSavings": true,
+            "newAssets": [],
+            "newDebts": [
+              {
+                "type": "personal-loan",
+                "label": "Education loan for Priya",
+                "label_kan": "ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಸಾಲ",
+                "principal": 300000,
+                "interestRate": 18,
+                "monthlyEmi": 7500,
+                "expenseKey": "loan-emi-edu"
+              }
+            ],
+            "notes": "All savings spent. Personal loan ₹3L @18%, EMI ₹7,500/mo. Land kept. High-interest debt, both goals at risk.",
+            "notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚು. ₹3L @18%, EMI ₹7,500.",
+            "expenseItemChanges": [
+              {
+                "key": "loan-emi-edu",
+                "label": "Education loan EMI",
+                "label_kan": "ಶಿಕ್ಷಣ ಸಾಲ EMI",
+                "newAmount": 7500
+              }
+            ]
+          }
+        },
+        {
+          "id": "C",
+          "label": "Share burden with Priya",
+          "label_kan": "ಪ್ರಿಯಾಳೊಂದಿಗೆ ಹೊರೆ ಹಂಚಿ",
+          "description": "Use all current savings, ask Priya to work part-time and take a small education loan — share the burden, keep land.",
+          "description_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡಲು ಕೇಳಿ ಮತ್ತು ಸಣ್ಣ ಶಿಕ್ಷಣ ಸಾಲ ತೆಗೆಯಿರಿ.",
+          "points": -20,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "spendAllSavings": true,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "All savings spent. Priya works part-time — studies may suffer, she carries debt burden, relationships strained.",
+            "notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚು. ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ — ಅಧ್ಯಯನ ಹಾಳಾಗಬಹುದು."
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Business Expansion vs. Stability",
+      "title_kan": "ವ್ಯಾಪಾರ ವಿಸ್ತರಣೆ ಮತ್ತು ಸ್ಥಿರತೆ",
+      "situation": "A shopping complex is offering shop space at ₹8 lakh (₹3 lakh down payment + ₹5 lakh loan at 11%). This could increase her business income to ₹65,000/month.",
+      "situation_kan": "ಒಂದು ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್ ₹8 ಲಕ್ಷಕ್ಕೆ ಅಂಗಡಿ ಸ್ಥಳವನ್ನು ನೀಡುತ್ತಿದೆ (₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ + ₹11% ದರದಲ್ಲಿ ₹5 ಲಕ್ಷ ಸಾಲ). ಇದು ಅವರ ವ್ಯವಹಾರದ ಆದಾಯವನ್ನು ತಿಂಗಳಿಗೆ ₹65,000 ಕ್ಕೆ ಹೆಚ್ಚಿಸಬಹುದು.",
+      "question": "Should Susheela take the business risk for higher income or play it safe for retirement?",
+      "question_kan": "ಸುಶೀಲಾ ಹೆಚ್ಚಿನ ಆದಾಯಕ್ಕಾಗಿ ವ್ಯಾಪಾರ ಅಪಾಯ ತೆಗೆದುಕೊಳ್ಳಬೇಕೇ ಅಥವಾ ನಿವೃತ್ತಿಗಾಗಿ ಸುರಕ್ಷಿತವಾಗಿ ಇರಬೇಕೇ?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Expand to shopping complex",
+          "label_kan": "ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್‌ಗೆ ವಿಸ್ತರಿಸಿ",
+          "description": "Make ₹3 lakh down payment (borrow shortfall from community at 12% if needed), take ₹5 lakh loan at 11% — grow business aggressively. Income rises by ₹25,000/month.",
+          "description_kan": "₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ (ಅಗತ್ಯವಿದ್ದರೆ 12% ಸಮುದಾಯ ಸಾಲ), ₹5 ಲಕ್ಷ 11% ಸಾಲ — ಆದಾಯ ₹25,000/ತಿಂಗಳು ಹೆಚ್ಚಾಗುತ್ತದೆ.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": -300000,
+            "monthlyIncomeChange": 25000,
+            "monthlyExpensesChange": 11000,
+            "newAssets": [],
+            "newDebts": [
+              {
+                "type": "business-loan",
+                "label": "Shopping complex loan",
+                "label_kan": "ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್ ಸಾಲ",
+                "principal": 500000,
+                "interestRate": 11,
+                "monthlyEmi": 11000,
+                "expenseKey": "loan-emi-biz"
+              }
+            ],
+            "notes": "All savings used for down payment. Community shortfall loan at 12% covers the gap. Business loan ₹5L @11% (EMI ₹11K). Income +₹25K/mo from expansion.",
+            "notes_kan": "ಎಲ್ಲ ಉಳಿತಾಯ ಡೌನ್ ಪೇಮೆಂಟ್‌ಗೆ. ಕೊರತೆಗೆ 12% ಸಮುದಾಯ ಸಾಲ. ₹5L @11% ಸಾಲ (EMI ₹11K). ₹25K/ತಿಂ ಆದಾಯ ಹೆಚ್ಚಳ.",
+            "expenseItemChanges": [
+              {
+                "key": "shop-rent",
+                "newAmount": 0
+              },
+              {
+                "key": "loan-emi-biz",
+                "label": "Business loan EMI",
+                "label_kan": "ವ್ಯಾಪಾರ ಸಾಲ EMI",
+                "newAmount": 11000
+              }
+            ]
+          }
+        },
+        {
+          "id": "B",
+          "label": "Stay put, save steadily",
+          "label_kan": "ಇರುವಲ್ಲೇ ಇರಿ, ನಿರಂತರ ಉಳಿಸಿ",
+          "description": "Don't expand, continue saving steadily for the next 10 years toward the house — safe, guaranteed but modest progress.",
+          "description_kan": "ವಿಸ್ತರಿಸದಿರಿ, ಮನೆ ಗುರಿಗೆ 10 ವರ್ಷ ನಿರಂತರ ಉಳಿಸಿ.",
+          "points": 10,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "No change. Slower wealth building, guaranteed but modest progress.",
+            "notes_kan": "ಯಾವ ಬದಲಾವಣೆ ಇಲ್ಲ. ನಿಧಾನ ಆದರೆ ಸ್ಥಿರ."
+          }
+        },
+        {
+          "id": "C",
+          "label": "Partial expansion",
+          "label_kan": "ಭಾಗಶಃ ವಿಸ್ತರಣೆ",
+          "description": "Expand partially with ₹2 lakh investment in equipment at current location — moderate income growth of +₹10,000/month, no loan.",
+          "description_kan": "ಪ್ರಸ್ತುತ ಸ್ಥಳದಲ್ಲಿ ₹2 ಲಕ್ಷ ಉಪಕರಣ ಹೂಡಿಕೆ — +₹10,000/ತಿಂಗಳ ಆದಾಯ ಹೆಚ್ಚಳ, ಸಾಲ ಇಲ್ಲ.",
+          "points": -20,
+          "minimumSavings": 200000,
+          "financialImpact": {
+            "savingsChange": -200000,
+            "monthlyIncomeChange": 10000,
+            "monthlyExpensesChange": 0,
+            "newAssets": [
+              {
+                "type": "business-equipment",
+                "label": "Business equipment",
+                "label_kan": "ವ್ಯಾಪಾರ ಉಪಕರಣ",
+                "value": 200000
+              }
+            ],
+            "newDebts": [],
+            "notes": "Equipment ₹2L. Income +₹10K to ~₹50K. Moderate growth, misses bigger expansion opportunity.",
+            "notes_kan": "ಉಪಕರಣ ₹2L ಆಸ್ತಿ. ₹10K ಆದಾಯ ಹೆಚ್ಚಳ. ದೊಡ್ಡ ಅವಕಾಶ ತಪ್ಪಿಸಿಕೊಳ್ಳುತ್ತದೆ."
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Retirement Corpus Building Strategy",
+      "title_kan": "ನಿವೃತ್ತಿ ನಿಧಿ ನಿರ್ಮಾಣ ತಂತ್ರ",
+      "situation": "Susheela's business is doing well after expansion. She earns ₹65,000/month and after expenses + EMI (₹11,000), she can save ₹25,000/month. She has ₹2 lakh in savings. 8.4 years until planned retirement. She needs: a house (₹20 lakh in 8 years), medical corpus (₹5 lakh), and monthly income post-retirement.",
+      "situation_kan": "ಸುಶೀಲಾ ₹65,000/ತಿಂಗಳು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾಳೆ, ₹25,000/ತಿಂಗಳು ಉಳಿಸಬಹುದು. 8.4 ವರ್ಷ ನಿವೃತ್ತಿಗೆ ಉಳಿದಿದೆ.",
+      "question": "How should Susheela build her retirement corpus in the remaining 8 years?",
+      "question_kan": "ಉಳಿದ 8 ವರ್ಷಗಳಲ್ಲಿ ನಿವೃತ್ತಿ ನಿಧಿ ಹೇಗೆ ನಿರ್ಮಿಸಬೇಕು?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Diversified SIP + PPF + RD",
+          "label_kan": "ವೈವಿಧ್ಯಮಯ SIP + PPF + RD",
+          "description": "Invest ₹15,000/month in balanced mutual fund SIP, ₹5,000/month in Public Provident Fund, and ₹5,000/month in Recurring Deposit — diversified growth strategy.",
+          "description_kan": "₹15,000/ತಿಂಗಳು SIP, ₹5,000/ತಿಂಗಳು PPF, ₹5,000/ತಿಂಗಳು RD — ವೈವಿಧ್ಯಮಯ ಬೆಳವಣಿಗೆ.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 25000,
+            "newAssets": [
+              {
+                "type": "mutual-fund",
+                "label": "Balanced mutual fund SIP",
+                "label_kan": "ಸಮತೋಲಿತ ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ SIP",
+                "value": 388000
+              },
+              {
+                "type": "ppf",
+                "label": "Public Provident Fund",
+                "label_kan": "ಸಾರ್ವಜನಿಕ ಭವಿಷ್ಯ ನಿಧಿ",
+                "value": 130000
+              },
+              {
+                "type": "rd",
+                "label": "Recurring Deposit",
+                "label_kan": "ಆವರ್ತಕ ಠೇವಣಿ",
+                "value": 128000
+              }
+            ],
+            "newDebts": [],
+            "notes": "Invests ₹25K/mo total; expensesChange +25K prevents double-count in savings accumulation. 2yr FVs: MF ₹15K/mo @8% → ₹3.88L; PPF ₹5K/mo @7.1% → ₹1.30L; RD ₹5K/mo @6.5% → ₹1.28L.",
+            "notes_kan": "₹25K/ತಿಂಗಳು ಹೂಡಿಕೆ. MF ₹3.88L + PPF ₹1.30L + RD ₹1.28L.",
+            "expenseItemChanges": [
+              {
+                "key": "invest-sip",
+                "label": "Mutual fund SIP",
+                "label_kan": "ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ SIP",
+                "newAmount": 15000
+              },
+              {
+                "key": "invest-ppf",
+                "label": "PPF contribution",
+                "label_kan": "PPF ಕೊಡುಗೆ",
+                "newAmount": 5000
+              },
+              {
+                "key": "invest-rd",
+                "label": "RD contribution",
+                "label_kan": "RD ಕೊಡುಗೆ",
+                "newAmount": 5000
+              }
+            ]
+          },
+          "minimumSurplus": 25000
+        },
+        {
+          "id": "B",
+          "label": "Land + gold + FD",
+          "label_kan": "ಭೂಮಿ + ಚಿನ್ನ + FD",
+          "description": "Buy land for ₹8 lakh, gold for ₹5 lakh, keep ₹12 lakh in Fixed Deposit — traditional working-class approach.",
+          "description_kan": "₹8 ಲಕ್ಷ ಭೂಮಿ, ₹5 ಲಕ್ಷ ಚಿನ್ನ, ₹12 ಲಕ್ಷ ಎಫ್‌ಡಿ.",
+          "points": 10,
+          "minimumSavings": 2500000,
+          "financialImpact": {
+            "savingsChange": -2500000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [
+              {
+                "type": "land",
+                "label": "Plot for retirement",
+                "label_kan": "ನಿವೃತ್ತಿ ನಿವೇಶನ",
+                "value": 800000
+              },
+              {
+                "type": "gold",
+                "label": "Gold investment",
+                "label_kan": "ಚಿನ್ನ ಹೂಡಿಕೆ",
+                "value": 500000
+              },
+              {
+                "type": "fd",
+                "label": "Fixed Deposit",
+                "label_kan": "ಸ್ಥಿರ ಠೇವಣಿ",
+                "value": 1200000
+              }
+            ],
+            "newDebts": [],
+            "notes": "Land ₹8L + gold ₹5L + FD ₹12L = ₹25L. minimumSavings ₹25L required. Safe but lower returns.",
+            "notes_kan": "ಭೂಮಿ ₹8L + ಚಿನ್ನ ₹5L + FD ₹12L = ₹25L."
+          }
+        },
+        {
+          "id": "C",
+          "label": "All savings into RD",
+          "label_kan": "ಎಲ್ಲಾ ₹ RD ಯಲ್ಲಿ",
+          "description": "Put all current savings into Recurring Deposit at 7% interest and keep contributing whatever surplus remains each month — safest option but inflation erodes value over time.",
+          "description_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ 7% RD ಯಲ್ಲಿ ಹಾಕಿ, ಪ್ರತಿ ತಿಂಗಳು ಉಳಿಯುವ ಹೆಚ್ಚಿನ ಹಣ ಸೇರಿಸಿ ಮುಂದುವರಿಸಿ.",
+          "points": -20,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "spendAllSavings": true,
+            "rdConversion": {
+              "annualRate": 0.07,
+              "years": 2,
+              "monthlyContribution": 25000
+            },
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "All savings → RD at 7%. Store computes RD value dynamically using rdConversion. Approx ₹28L in 8yr but inflation erodes real value.",
+            "notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ 7% RD. ಸರಿಸುಮಾರು 8 ವರ್ಷದಲ್ಲಿ ₹28L ಆದರೆ ಹಣದುಬ್ಬರ ಮೌಲ್ಯ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ."
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Health Crisis and Emergency Fund Test",
+      "title_kan": "ಆರೋಗ್ಯ ಬಿಕ್ಕಟ್ಟು ಮತ್ತು ತುರ್ತು ನಿಧಿ ಪರೀಕ್ಷೆ",
+      "situation": "Susheela collapses at work — severe diabetic complication. Hospital bill: ₹1,80,000 (₹30,000 immediate deposit needed). Her retirement corpus is split across mutual funds, PPF, and RD. PPF cannot be broken easily. Mutual funds can be sold but may result in a loss.",
+      "situation_kan": "ಸುಶೀಲಾ ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಕುಸಿದಳು — ತೀವ್ರ ಮಧುಮೇಹ ತೊಡಕು. ಆಸ್ಪತ್ರೆ ಬಿಲ್: ₹1,80,000. ₹30,000 ತಕ್ಷಣ ಬೇಕು.",
+      "question": "How should Susheela handle this medical emergency without destroying her retirement corpus?",
+      "question_kan": "ನಿವೃತ್ತಿ ನಿಧಿ ನಾಶ ಮಾಡದೆ ಈ ವೈದ್ಯಕೀಯ ತುರ್ತು ಪರಿಸ್ಥಿತಿ ಹೇಗೆ ನಿರ್ವಹಿಸಬೇಕು?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Emergency fund + break RD",
+          "label_kan": "ತುರ್ತು ನಿಧಿ + RD ಮುರಿಯಿರಿ",
+          "description": "Use emergency fund (₹50,000 if S5=A), break RD (small penalty), cover remainder from monthly income — protect long-term investments.",
+          "description_kan": "ತುರ್ತು ನಿಧಿ (S5=A ಆದರೆ ₹50,000), RD ಮುರಿಯಿರಿ, ಉಳಿದದ್ದು ಮಾಸಿಕ ಆದಾಯದಿಂದ ಭರಿಸಿ.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": -84000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "assetRemovals": [
+              "emergency-fund",
+              "rd"
+            ],
+            "notes": "Emergency fund + RD broken for total ₹1.8L hospital bill. savingsChange -₹84K = remainder after assets used. Emergency-fund and RD assets removed. PPF and MF intact.",
+            "notes_kan": "ತುರ್ತು ನಿಧಿ + RD ₹1.8L ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ. PPF ಮತ್ತು MF ಸುರಕ್ಷಿತ."
+          }
+        },
+        {
+          "id": "B",
+          "label": "Sell mutual funds",
+          "label_kan": "ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ಮಾರಿ",
+          "description": "Sell ₹1,80,000 worth of mutual funds at current market value — avoid debt, use investment.",
+          "description_kan": "ಪ್ರಸ್ತುತ ಮಾರುಕಟ್ಟೆ ಮೌಲ್ಯದಲ್ಲಿ ₹1,80,000 ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ಮಾರಿ.",
+          "points": 10,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "assetValueChanges": [
+              {
+                "type": "mutual-fund",
+                "change": -180000
+              }
+            ],
+            "notes": "Mutual fund value reduced by ₹1.8L. Lost growth potential, significant setback to retirement goal.",
+            "notes_kan": "ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ₹1.8L ಕಡಿಮೆ. ಬೆಳವಣಿಗೆ ಸಾಮರ್ಥ್ಯ ಕಳೆದುಕೊಂಡಿದೆ."
+          }
+        },
+        {
+          "id": "C",
+          "label": "Take a personal loan",
+          "label_kan": "ವೈಯಕ್ತಿಕ ಸಾಲ ತೆಗೆಯಿರಿ",
+          "description": "Take personal loan of ₹1,50,000 at 16% interest (₹3,500 EMI), use emergency fund ₹30,000 for deposit — preserve all investments.",
+          "description_kan": "16% ₹1,50,000 ವೈಯಕ್ತಿಕ ಸಾಲ (₹3,500 EMI), ₹30,000 ತುರ್ತು ನಿಧಿ ಠೇವಣಿಗೆ.",
+          "points": -20,
+          "financialImpact": {
+            "savingsChange": -30000,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 3500,
+            "newAssets": [],
+            "newDebts": [
+              {
+                "type": "personal-loan",
+                "label": "Hospital emergency loan",
+                "label_kan": "ಆಸ್ಪತ್ರೆ ತುರ್ತು ಸಾಲ",
+                "principal": 150000,
+                "interestRate": 16,
+                "monthlyEmi": 3500,
+                "expenseKey": "loan-emi-hospital"
+              }
+            ],
+            "notes": "Emergency fund -₹30K deposit. Loan ₹1.5L @16%, EMI ₹3,500. Investments intact but savings capacity reduced.",
+            "notes_kan": "ತುರ್ತು ನಿಧಿ -₹30K. ₹1.5L @16%, EMI ₹3,500. ಹೂಡಿಕೆ ಸುರಕ್ಷಿತ.",
+            "expenseItemChanges": [
+              {
+                "key": "loan-emi-hospital",
+                "label": "Hospital loan EMI",
+                "label_kan": "ಆಸ್ಪತ್ರೆ ಸಾಲ EMI",
+                "newAmount": 3500
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Estate Planning and Protecting Priya's Future",
+      "title_kan": "ಎಸ್ಟೇಟ್ ಯೋಜನೆ ಮತ್ತು ಪ್ರಿಯಾ ಭವಿಷ್ಯ ರಕ್ಷಣೆ",
+      "situation": "Susheela has recovered and rebuilt her finances. Priya is graduating and starting her first job (₹35,000/month; contributes ₹20,000/month to the household, keeps ₹15,000 for herself). But Priya's adoption was never legally formalized. If something happens to Susheela, her biological family could legally claim everything.",
+      "situation_kan": "ಸುಶೀಲಾ ಚೇತರಿಸಿಕೊಂಡಿದ್ದಾಳೆ. ಪ್ರಿಯಾ ₹35,000/ತಿಂಗಳ ಉದ್ಯೋಗ ಪಡೆದಿದ್ದಾಳೆ (₹20,000 ಮನೆ). ಆದರೆ ದತ್ತು ಕಾನೂನಾತ್ಮಕಗೊಂಡಿಲ್ಲ.",
+      "question": "How should Susheela legally protect Priya's inheritance?",
+      "question_kan": "ಸುಶೀಲಾ ಪ್ರಿಯಾಳ ಉತ್ತರಾಧಿಕಾರವನ್ನು ಕಾನೂನಾತ್ಮಕವಾಗಿ ಹೇಗೆ ರಕ್ಷಿಸಬೇಕು?",
+      "choices": [
+        {
+          "id": "A",
+          "label": "Formal adoption + Will",
+          "label_kan": "ಔಪಚಾರಿಕ ದತ್ತು + ವಿಲ್",
+          "description": "Formalize adoption (₹40,000) + create registered Will (₹5,000) + add nominations — comprehensive legal protection for Priya.",
+          "description_kan": "ದತ್ತು ₹40,000 + ₹5,000 ನೋಂದಾಯಿತ ವಿಲ್ + ನಾಮಿನೇಷನ್ — ಪ್ರಿಯಾಗೆ ಸಂಪೂರ್ಣ ಕಾನೂನು ರಕ್ಷಣೆ.",
+          "points": 30,
+          "financialImpact": {
+            "savingsChange": -45000,
+            "monthlyIncomeChange": 20000,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Adoption ₹40K + Will ₹5K = -₹45K. Priya contributes ₹20K/mo (keeps ₹15K). Strongest legal protection.",
+            "notes_kan": "₹40K + ₹5K = -₹45K. ₹20K/ತಿಂಗಳು ಪ್ರಿಯಾ ಕೊಡುಗೆ."
+          }
+        },
+        {
+          "id": "B",
+          "label": "Will + joint accounts",
+          "label_kan": "ವಿಲ್ + ಜಂಟಿ ಖಾತೆ",
+          "description": "Create registered Will (₹5,000) + add Priya as joint account holder + detailed nominations — strong protection without adoption costs.",
+          "description_kan": "₹5,000 ನೋಂದಾಯಿತ ವಿಲ್ + ಜಂಟಿ ಖಾತೆ + ನಾಮಿನೇಷನ್.",
+          "points": 10,
+          "financialImpact": {
+            "savingsChange": -5000,
+            "monthlyIncomeChange": 20000,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Will ₹5K only. Good protection but adoption gap remains — can be challenged by biological family.",
+            "notes_kan": "₹5K ವಿಲ್. ಉತ್ತಮ ರಕ್ಷಣೆ ಆದರೆ ದತ್ತು ಅಂತರ ಉಳಿಯುತ್ತದೆ."
+          }
+        },
+        {
+          "id": "C",
+          "label": "Just add nominations",
+          "label_kan": "ನಾಮಿನೇಷನ್ ಮಾತ್ರ",
+          "description": "Add nominations to all accounts — free and simple, but nominations can be legally challenged by blood relatives.",
+          "description_kan": "ಎಲ್ಲಾ ಖಾತೆಗಳಿಗೆ ನಾಮಿನೇಷನ್ ಸೇರಿಸಿ — ಉಚಿತ ಮತ್ತು ಸರಳ, ಆದರೆ ರಕ್ತ ಸಂಬಂಧಿಗಳು ಪ್ರಶ್ನಿಸಬಹುದು.",
+          "points": -20,
+          "financialImpact": {
+            "savingsChange": 0,
+            "monthlyIncomeChange": 20000,
+            "monthlyExpensesChange": 0,
+            "newAssets": [],
+            "newDebts": [],
+            "notes": "Free. Weakest protection — nominations can be challenged by biological family in court.",
+            "notes_kan": "ಉಚಿತ. ದುರ್ಬಲ ರಕ್ಷಣೆ — ರಕ್ತ ಸಂಬಂಧಿಗಳು ನ್ಯಾಯಾಲಯದಲ್ಲಿ ಪ್ರಶ್ನಿಸಬಹುದು."
+          }
+        }
+      ]
+    }
+  ]
 }

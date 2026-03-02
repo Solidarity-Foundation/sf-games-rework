@@ -23,6 +23,7 @@ export interface Debt {
 	monthlyEmi: number;
 	remainingAmount: number;
 	takenInScenario: number;
+	expenseKey?: string;
 }
 
 interface ChoiceRecord {
@@ -48,6 +49,7 @@ interface GameDataDebt {
 	principal: number;
 	interestRate: number;
 	monthlyEmi: number;
+	expenseKey?: string;
 }
 
 interface ExpenseItemChange {
@@ -100,6 +102,7 @@ interface GameChoice {
 	description: string;
 	points: number;
 	minimumSavings?: number;
+	minimumSurplus?: number;
 	financialImpact: FinancialImpact;
 }
 
@@ -212,6 +215,16 @@ function computeRdFutureValue(
 	const principalFV = principal * Math.pow(1 + r, months);
 	const contributionFV = monthlyContribution * ((Math.pow(1 + r, months) - 1) / r);
 	return Math.round(principalFV + contributionFV);
+}
+
+/** Total months to fully repay a loan (amortisation formula) */
+export function computeLoanTermMonths(principal: number, annualRate: number, monthlyEmi: number): number {
+	if (monthlyEmi <= 0) return Infinity;
+	const r = annualRate / 1200; // monthly rate
+	if (r === 0) return Math.ceil(principal / monthlyEmi);
+	const ratio = (principal * r) / monthlyEmi;
+	if (ratio >= 1) return Infinity; // EMI too small to cover interest
+	return Math.ceil(-Math.log(1 - ratio) / Math.log(1 + r));
 }
 
 function computeGoalProgress(
@@ -429,6 +442,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 						monthlyEmi: emi,
 						remainingAmount: loanPrincipal,
 						takenInScenario: scenarioId,
+						expenseKey: 'loan-emi-edu-priya',
 					});
 				}
 			}
@@ -495,6 +509,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 					monthlyEmi: 10000,
 					remainingAmount: 400000,
 					takenInScenario: scenarioId,
+					expenseKey: 'loan-emi-land-s8',
 				});
 			} else {
 				// Has land: step 7 overwrote existing land with ₹8L — restore original, keep gold+FD only
@@ -539,6 +554,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 					monthlyEmi: 4000,
 					remainingAmount: 80000,
 					takenInScenario: scenarioId,
+					expenseKey: 'loan-emi-hospital-s9b',
 				});
 			}
 		}
@@ -590,7 +606,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 
 		// 11. Add new debts (array initialised here; special cases in 8b/11b may have already pushed to it)
 		for (const d of fi.newDebts) {
-			newDebts.push({ ...d, remainingAmount: d.principal, takenInScenario: scenarioId });
+			newDebts.push({ ...d, remainingAmount: d.principal, takenInScenario: scenarioId, expenseKey: d.expenseKey });
 		}
 
 		// 11b. S7-A special case: if savings < ₹3L, add a community loan for the shortfall.
@@ -621,6 +637,7 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 				monthlyEmi: emi,
 				remainingAmount: shortfall,
 				takenInScenario: scenarioId,
+				expenseKey: 'community-loan-s7-emi',
 			});
 		}
 
@@ -631,6 +648,22 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 			const hospitalLoanIdx = newDebts.findIndex(d => d.takenInScenario === 9 && d.type === 'personal-loan');
 			if (hospitalLoanIdx >= 0) newDebts.splice(hospitalLoanIdx, 1);
 		}
+
+		// 12. Expire paid-off debts after this scenario's 24-month period.
+		//     At the end of makeChoice(N), a debt from scenario T has had (N−T+1)×24 months paid.
+		//     If that meets or exceeds the full amortisation term, remove the debt and its EMI item.
+		const paidOffExpenseKeys = new Set<string>();
+		const finalDebts = newDebts.filter(d => {
+			const monthsPaid = (scenarioId - d.takenInScenario + 1) * 24;
+			const term = computeLoanTermMonths(d.principal, d.interestRate, d.monthlyEmi);
+			if (monthsPaid >= term) {
+				if (d.expenseKey) paidOffExpenseKeys.add(d.expenseKey);
+				return false;
+			}
+			return true;
+		});
+		const finalBreakdown = workingBreakdown.filter(item => !paidOffExpenseKeys.has(item.key));
+		const finalExpenses = finalBreakdown.reduce((sum, item) => sum + item.amount, 0);
 
 		// 13. Advance age (2 years per scenario)
 		const newAge = state.age + 2;
@@ -650,10 +683,10 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 			stateSnapshots: { ...state.stateSnapshots, [scenarioId]: snapshot },
 			savings: clampedSavings,
 			monthlyIncome: newIncome,
-			monthlyExpenses: newExpenses,
-			expenseBreakdown: workingBreakdown,
+			monthlyExpenses: finalExpenses,
+			expenseBreakdown: finalBreakdown,
 			assets: workingAssets,
-			debts: newDebts,
+			debts: finalDebts,
 			age: newAge,
 			houseGoalProgress: goals.house,
 			houseGoalStatus: goals.houseStatus,
