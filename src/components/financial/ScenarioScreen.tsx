@@ -221,36 +221,116 @@ const ScenarioScreen = () => {
 	};
 	const situationText = getSituationText();
 
-	// Dynamic choice text for S6 when player has gold instead of land
-	const choices: GameChoice[] = !s6GoldPath
+	// Dynamic S6 choice text — handles both gold path (S4-B/C) and savings-sufficient cases
+	const s6HasEnoughForB = scenario.id === 6 && savings >= 200000;
+	const s6HasEnoughForC = scenario.id === 6 && savings >= 500000;
+
+	const choices: GameChoice[] = scenario.id !== 6
 		? baseChoices
 		: baseChoices.map((c, i) => {
-			if (i === 0) return { ...c,
-				label: 'Sell gold for education',
-				label_kan: 'ಶಿಕ್ಷಣಕ್ಕೆ ಚಿನ್ನ ಮಾರಿ',
-				description: `Sell gold jewelry for ${goldAmount}, use it for Priya's education — prioritize Priya's future.`,
-				description_kan: `${goldAmount_kan} ಚಿನ್ನ ಮಾರಿ, ಪ್ರಿಯಾ ಶಿಕ್ಷಣಕ್ಕೆ ಬಳಸಿ — ಪ್ರಿಯಾ ಭವಿಷ್ಯಕ್ಕೆ ಆದ್ಯತೆ.`,
-			};
-			if (i === 1) return { ...c,
-				label: 'Keep gold, take loan',
-				label_kan: 'ಚಿನ್ನ ಇಟ್ಟು, ಸಾಲ ತೆಗೆಯಿರಿ',
-				description: `Keep gold, use all current savings, take personal loan of ₹3 lakh at 18% interest (₹7,500 EMI) — try to preserve investments.`,
-				description_kan: `ಚಿನ್ನ ಇಟ್ಟು, ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, 18% ಬಡ್ಡಿಯಲ್ಲಿ ₹3 ಲಕ್ಷ ಸಾಲ (₹7,500 EMI).`,
-			};
-			if (i === 2) return { ...c,
-				description: "Use all current savings, ask Priya to work part-time and take a small education loan — share the burden, keep gold.",
-				description_kan: 'ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡಲು ಕೇಳಿ — ಚಿನ್ನ ಇಟ್ಟುಕೊಳ್ಳಿ.',
-			};
+			// Choice A: sell land or gold
+			if (i === 0 && s6GoldPath) {
+				const loanAmt = s4Choice === 'B' ? '₹3 lakh' : '₹4 lakh';
+				const loanAmt_kan = s4Choice === 'B' ? '₹3 ಲಕ್ಷ' : '₹4 ಲಕ್ಷ';
+				const emiAmt = s4Choice === 'B' ? '₹7,500' : '₹10,000';
+				return { ...c,
+					label: 'Sell gold for education',
+					label_kan: 'ಶಿಕ್ಷಣಕ್ಕೆ ಚಿನ್ನ ಮಾರಿ',
+					description: `Sell gold jewelry for ${goldAmount} towards Priya's education; take education loan of ${loanAmt} at 18% (EMI ${emiAmt}) for the remaining amount.`,
+					description_kan: `${goldAmount_kan} ಚಿನ್ನ ಮಾರಿ ಪ್ರಿಯಾ ಶಿಕ್ಷಣಕ್ಕೆ; ಉಳಿದ ${loanAmt_kan} @18% ಶಿಕ್ಷಣ ಸಾಲ (EMI ${emiAmt}).`,
+				};
+			}
+			// Choice B: keep investment + partial savings + loan
+			if (i === 1) {
+				const keepWhat    = s6GoldPath ? 'gold'        : 'land';
+				const keepWhat_kan = s6GoldPath ? 'ಚಿನ್ನ'      : 'ಭೂಮಿ';
+				const preserve    = s6GoldPath ? 'preserve investments' : 'preserve land';
+				const preserve_kan = s6GoldPath ? 'ಹೂಡಿಕೆ ರಕ್ಷಿಸಿ' : 'ಭೂಮಿ ರಕ್ಷಿಸಿ';
+				if (s6HasEnoughForB) return { ...c,
+					label: s6GoldPath ? 'Keep gold, take loan' : c.label,
+					label_kan: s6GoldPath ? 'ಚಿನ್ನ ಇಟ್ಟು, ಸಾಲ ತೆಗೆಯಿರಿ' : (c as typeof c & { label_kan?: string }).label_kan ?? c.label,
+					description: `Keep ${keepWhat}, use ₹2 lakh from savings, take personal loan of ₹3 lakh at 18% interest (₹7,500 EMI) — fully fund Priya's education, ${preserve}.`,
+					description_kan: `${keepWhat_kan} ಇಟ್ಟು, ₹2 ಲಕ್ಷ ಉಳಿತಾಯ ಬಳಸಿ, 18% ₹3 ಲಕ್ಷ ಸಾಲ (₹7,500 EMI) — ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಪೂರ್ಣ, ${preserve_kan}.`,
+				};
+				if (s6GoldPath) return { ...c,
+					label: 'Keep gold, take loan',
+					label_kan: 'ಚಿನ್ನ ಇಟ್ಟು, ಸಾಲ ತೆಗೆಯಿರಿ',
+					description: `Keep gold, use all current savings, take personal loan of ₹3 lakh at 18% interest (₹7,500 EMI) — try to preserve investments.`,
+					description_kan: `ಚಿನ್ನ ಇಟ್ಟು, ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, 18% ₹3 ಲಕ್ಷ ಸಾಲ (₹7,500 EMI).`,
+				};
+				return c; // land path, insufficient savings: keep original (all savings + loan)
+			}
+			// Choice C: burden sharing or full savings cover
+			if (i === 2) {
+				if (s6HasEnoughForC) return { ...c,
+					label: 'Cover education from savings',
+					label_kan: 'ಉಳಿತಾಯದಿಂದ ಶಿಕ್ಷಣ ಭರಿಸಿ',
+					description: s6GoldPath
+						? "Pay Priya's full education (₹5 lakh) from savings — keep all investments, no loan needed, no burden on Priya."
+						: "Pay Priya's full education (₹5 lakh) from savings — keep land, no loan needed, no burden on Priya.",
+					description_kan: s6GoldPath
+						? 'ಉಳಿತಾಯದಿಂದ ₹5 ಲಕ್ಷ ಪ್ರಿಯಾ ಶಿಕ್ಷಣ — ಎಲ್ಲ ಹೂಡಿಕೆ ಉಳಿಸಿ, ಸಾಲ ಬೇಡ, ಪ್ರಿಯಾ ಮೇಲೆ ಹೊರೆ ಇಲ್ಲ.'
+						: 'ಉಳಿತಾಯದಿಂದ ₹5 ಲಕ್ಷ ಪ್ರಿಯಾ ಶಿಕ್ಷಣ — ಭೂಮಿ ಉಳಿಸಿ, ಸಾಲ ಬೇಡ, ಪ್ರಿಯಾ ಮೇಲೆ ಹೊರೆ ಇಲ್ಲ.',
+				};
+				if (s6GoldPath) return { ...c,
+					description: "Use all current savings, ask Priya to work part-time and take a small education loan — share the burden, keep gold.",
+					description_kan: 'ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡಲು ಕೇಳಿ — ಚಿನ್ನ ಇಟ್ಟುಕೊಳ್ಳಿ.',
+				};
+				return c; // land path, insufficient savings: keep original
+			}
 			return c;
 		}) as GameChoice[];
 
 
+	// Dynamic S7-A description: drop "borrow shortfall" clause when savings are sufficient
+	const s7Choices: GameChoice[] = scenario.id !== 7 ? choices : choices.map((c, i) => {
+		if (i === 0) {
+			if (savings >= 300000) return { ...c,
+				description: "Make ₹3 lakh down payment from savings, take ₹5 lakh loan at 11% — grow business aggressively. Income rises by ₹25,000/month.",
+				description_kan: "₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ ಉಳಿತಾಯದಿಂದ, ₹5 ಲಕ್ಷ 11% ಸಾಲ — ₹25,000/ತಿಂ ಆದಾಯ ಹೆಚ್ಚಾಗುತ್ತದೆ.",
+			};
+			// savings < ₹3L: community loan is needed — update text to remove "if needed"
+			return { ...c,
+				description: "Make ₹3 lakh down payment (borrow shortfall from community at 12%), take ₹5 lakh loan at 11% — grow business aggressively. Income rises by ₹25,000/month.",
+				description_kan: "₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ (12% ಸಮುದಾಯ ಸಾಲದಿಂದ ಕೊರತೆ ತುಂಬಿ), ₹5 ಲಕ್ಷ 11% ಸಾಲ — ₹25,000/ತಿಂ ಆದಾಯ ಹೆಚ್ಚಾಗುತ್ತದೆ.",
+			};
+		}
+		return c;
+	}) as GameChoice[];
+
+	// Dynamic S8-B text: no-land → offer retirement plot; has-land → gold + FD only
+	const s8Choices: GameChoice[] = scenario.id !== 8 ? s7Choices : s7Choices.map((c, i) => {
+		const hasLand = assets.some(a => a.type === 'land');
+		if (i === 1 && !hasLand) return { ...c,
+			label: 'Buy land for retirement home',
+			label_kan: 'ನಿವೃತ್ತಿ ಮನೆಗೆ ಭೂಮಿ ಖರೀದಿ',
+			description: 'Buy ₹12 lakh plot for retirement home — ₹8 lakh down payment from savings + ₹4 lakh loan at 12% (₹10,000 EMI/month). Fulfils your house goal.',
+			description_kan: '₹12 ಲಕ್ಷ ನಿವೇಶನ ಖರೀದಿ — ₹8 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ + ₹4 ಲಕ್ಷ 12% ಸಾಲ (₹10,000 EMI/ತಿಂಗಳು). ಮನೆ ಗುರಿ ಈಡೇರುತ್ತದೆ.',
+			minimumSavings: 800000,
+		} as GameChoice;
+		if (i === 1 && hasLand) return { ...c,
+			label: 'Gold + Fixed Deposit',
+			label_kan: 'ಚಿನ್ನ + ಸ್ಥಿರ ಠೇವಣಿ',
+			description: 'Invest ₹5 lakh in gold and ₹12 lakh in Fixed Deposit — traditional wealth preservation alongside your existing land.',
+			description_kan: '₹5 ಲಕ್ಷ ಚಿನ್ನ ಮತ್ತು ₹12 ಲಕ್ಷ FD — ಹೊರತಿರುವ ಭೂಮಿಯ ಜೊತೆ ಸಾಂಪ್ರದಾಯಿಕ ಸಂಪತ್ತು ರಕ್ಷಣೆ.',
+			minimumSavings: 1700000,
+		} as GameChoice;
+		return c;
+	}) as GameChoice[];
+
 	// Dynamic choice text for S9 — descriptions depend on which assets the player actually has
-	const s9Choices: GameChoice[] = scenario.id !== 9 ? choices : choices.map((c, i) => {
+	const s9Choices: GameChoice[] = scenario.id !== 9 ? s8Choices : s8Choices.map((c, i) => {
 		const hasEmergencyFund = assets.some(a => a.type === 'emergency-fund');
 		const emergencyFund = assets.find(a => a.type === 'emergency-fund');
 		const hasRd = assets.some(a => a.type === 'rd');
 		const hasMutualFund = assets.some(a => a.type === 'mutual-fund');
+		const hasFd = assets.some(a => a.type === 'fd');
+		const hasGold = assets.some(a => a.type === 'gold');
+		const hasLand = assets.some(a => a.type === 'land');
+		const fdAsset = assets.find(a => a.type === 'fd');
+		const goldAsset = assets.find(a => a.type === 'gold');
+		const rdAsset = assets.find(a => a.type === 'rd');
+		const landAsset = assets.find(a => a.type === 'land');
 
 		if (i === 0) {
 			const parts: string[] = [];
@@ -263,18 +343,45 @@ const ScenarioScreen = () => {
 				parts.push('break RD (small penalty)');
 				parts_kan.push('RD ಮುರಿಯಿರಿ (ಸಣ್ಣ ದಂಡ)');
 			}
-			const fundsList = parts.length > 0 ? parts.join(' and ') : 'savings';
-			const fundsList_kan = parts_kan.length > 0 ? parts_kan.join(' ಮತ್ತು ') : 'ಉಳಿತಾಯ';
+			if (parts.length === 0) {
+				// No emergency fund, no RD — use savings
+				return { ...c,
+					label: 'Cover from savings',
+					label_kan: 'ಉಳಿತಾಯದಿಂದ ಭರಿಸಿ',
+					description: savings >= 180000
+						? 'Pay the full ₹1,80,000 hospital bill from savings — no need to touch investments.'
+						: 'Use savings to cover the hospital bill — supplement from monthly income if needed.',
+					description_kan: savings >= 180000
+						? '₹1,80,000 ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಉಳಿತಾಯದಿಂದ — ಹೂಡಿಕೆ ಮುಟ್ಟಬೇಕಿಲ್ಲ.'
+						: 'ಉಳಿತಾಯದಿಂದ ಆಸ್ಪತ್ರೆ ಬಿಲ್ — ಅಗತ್ಯವಿದ್ದಲ್ಲಿ ಮಾಸಿಕ ಆದಾಯದಿಂದ ಪೂರಕ.',
+				} as GameChoice;
+			}
+			const dynamicLabel = hasEmergencyFund && hasRd ? c.label : hasEmergencyFund ? 'Use emergency fund' : 'Break RD';
+			const dynamicLabel_kan = hasEmergencyFund && hasRd ? ((c as GameChoice & { label_kan?: string }).label_kan ?? c.label) : hasEmergencyFund ? 'ತುರ್ತು ನಿಧಿ ಬಳಸಿ' : 'RD ಮುರಿಯಿರಿ';
 			return { ...c,
-				description: `Use ${fundsList} to cover the hospital bill — protect long-term investments.`,
-				description_kan: `${fundsList_kan} ಬಳಸಿ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ — ದೀರ್ಘಕಾಲೀನ ಹೂಡಿಕೆ ರಕ್ಷಿಸಿ.`,
+				label: dynamicLabel,
+				label_kan: dynamicLabel_kan,
+				description: `Use ${parts.join(' and ')} to cover the hospital bill — protect long-term investments.`,
+				description_kan: `${parts_kan.join(' ಮತ್ತು ')} ಬಳಸಿ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ — ದೀರ್ಘಕಾಲೀನ ಹೂಡಿಕೆ ರಕ್ಷಿಸಿ.`,
 			};
 		}
+
 		if (i === 1 && !hasMutualFund) {
 			return { ...c,
-				description: 'Liquidate investments to cover the hospital bill — avoid new debt but reduces retirement corpus.',
-				description_kan: 'ಹೂಡಿಕೆ ನಗದು ಮಾಡಿ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ — ಹೊಸ ಸಾಲ ತಪ್ಪಿಸಿ ಆದರೆ ನಿವೃತ್ತಿ ನಿಧಿ ಕಡಿಮೆ.',
-			};
+				label: '₹1L savings + small loan',
+				label_kan: '₹1L ಉಳಿತಾಯ + ಸಣ್ಣ ಸಾಲ',
+				description: 'Pay ₹1,00,000 from savings and take ₹80,000 loan at 12% interest (₹4,000 EMI/month) — cover the medical emergency with minimal asset impact.',
+				description_kan: '₹1,00,000 ಉಳಿತಾಯದಿಂದ ಪಾವತಿಸಿ ₹80,000 @12% ಸಾಲ (₹4,000 EMI/ತಿಂ) — ಕನಿಷ್ಠ ಆಸ್ತಿ ಹಾನಿಯೊಂದಿಗೆ ಆರೊಗ್ಯ ತುರ್ತು ಭರಿಸಿ.',
+			} as GameChoice;
+		}
+
+		if (i === 2 && !hasMutualFund && hasLand) {
+			return { ...c,
+				label: 'Sell land',
+				label_kan: 'ಭೂಮಿ ಮಾರಿ',
+				description: `Sell land (${fmt(landAsset!.value)}) to cover the ₹1,80,000 hospital bill — no debt needed, but retirement home goal disrupted.`,
+				description_kan: `ಭೂಮಿ (${fmt(landAsset!.value)}) ಮಾರಿ ₹1,80,000 ಆಸ್ಪತ್ರೆ ಬಿಲ್ — ಸಾಲ ಬೇಡ, ನಿವೃತ್ತಿ ಮನೆ ಗುರಿ ಅಡ್ಡಿ.`,
+			} as GameChoice;
 		}
 		if (i === 2) {
 			const depositSource = hasEmergencyFund

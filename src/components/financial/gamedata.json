@@ -428,6 +428,12 @@
 						"monthlyExpensesChange": 0,
 						"newAssets": [
 							{
+								"type": "business-equipment",
+								"label": "Business equipment",
+								"label_kan": "ವ್ಯಾಪಾರ ಉಪಕರಣ",
+								"value": 200000
+							},
+							{
 								"type": "gold",
 								"label": "Gold jewelry",
 								"label_kan": "ಚಿನ್ನದ ಆಭರಣ",
@@ -452,8 +458,8 @@
 								"notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ₹40,000/ತಿಂಗಳಿಗೆ ಬೆಳೆಯುತ್ತದೆ."
 							}
 						],
-						"notes": "Business equipment ₹2L (not tracked as asset) + gold ₹1L + community ₹50K = ₹3.5L. Income +₹5K from equipment. Overinvested in business, delays house goal.",
-						"notes_kan": "ಉಪಕರಣ ₹2L + ಚಿನ್ನ ₹1L + ಸಮುದಾಯ ₹50K. ₹5K ಆದಾಯ ಹೆಚ್ಚಳ."
+						"notes": "Business equipment ₹2L + gold ₹1L + community ₹50K = ₹3.5L. Income +₹5K from equipment. Without buying land now, meeting the retirement house goal becomes much more challenging.",
+						"notes_kan": "ಉಪಕರಣ ₹2L + ಚಿನ್ನ ₹1L + ಸಮುದಾಯ ₹50K = ₹3.5L. ₹5K ಆದಾಯ ಹೆಚ್ಚಳ. ಈಗ ಭೂಮಿ ಖರೀದಿಸದೆ, ನಿವೃತ್ತಿ ಮನೆ ಗುರಿ ತಲುಪುವುದು ತುಂಬಾ ಕಷ್ಟವಾಗುತ್ತದೆ."
 					}
 				}
 			]
@@ -597,7 +603,9 @@
 						"monthlyExpensesChange": 0,
 						"newAssets": [],
 						"newDebts": [],
-						"assetRemovals": ["land"],
+						"assetRemovals": [
+							"land"
+						],
 						"notes": "Land sold ₹5L - education ₹3L = +₹2L net to savings. Land asset removed. Must restart saving for house.",
 						"notes_kan": "ಭೂಮಿ ₹5L - ₹3L ಶಿಕ್ಷಣ = +₹2L. ಭೂಮಿ ಆಸ್ತಿ ತೆಗೆಯಲಾಗಿದೆ."
 					}
@@ -688,8 +696,8 @@
 								"monthlyEmi": 11000
 							}
 						],
-						"notes": "Down payment -₹3L (community shortfall loan folded in if savings < ₹3L). Business loan ₹5L @11% EMI ₹11K. Income to ₹65K (+₹25K from ₹40K base).",
-						"notes_kan": "₹3L ಡೌನ್. ₹5L @11% EMI ₹11K. ₹65K ಆದಾಯ.",
+						"notes": "All savings used for down payment. Community shortfall loan at 12% covers the gap. Business loan ₹5L @11% (EMI ₹11K). Income +₹25K/mo from expansion.",
+						"notes_kan": "ಎಲ್ಲ ಉಳಿತಾಯ ಡೌನ್ ಪೇಮೆಂಟ್‌ಗೆ. ಕೊರತೆಗೆ 12% ಸಮುದಾಯ ಸಾಲ. ₹5L @11% ಸಾಲ (EMI ₹11K). ₹25K/ತಿಂ ಆದಾಯ ಹೆಚ್ಚಳ.",
 						"expenseItemChanges": [
 							{
 								"key": "shop-rent",
@@ -733,10 +741,17 @@
 						"savingsChange": -200000,
 						"monthlyIncomeChange": 10000,
 						"monthlyExpensesChange": 0,
-						"newAssets": [],
+						"newAssets": [
+							{
+								"type": "business-equipment",
+								"label": "Business equipment",
+								"label_kan": "ವ್ಯಾಪಾರ ಉಪಕರಣ",
+								"value": 200000
+							}
+						],
 						"newDebts": [],
-						"notes": "Equipment ₹2L (not tracked). Income +₹10K to ~₹50K. Moderate growth, misses bigger opportunity.",
-						"notes_kan": "ಉಪಕರಣ ₹2L. ₹10K ಆದಾಯ ಹೆಚ್ಚಳ. ದೊಡ್ಡ ಅವಕಾಶ ತಪ್ಪಿಸಿಕೊಳ್ಳುತ್ತದೆ."
+						"notes": "Equipment ₹2L. Income +₹10K to ~₹50K. Moderate growth, misses bigger expansion opportunity.",
+						"notes_kan": "ಉಪಕರಣ ₹2L ಆಸ್ತಿ. ₹10K ಆದಾಯ ಹೆಚ್ಚಳ. ದೊಡ್ಡ ಅವಕಾಶ ತಪ್ಪಿಸಿಕೊಳ್ಳುತ್ತದೆ."
 					}
 				}
 			]
@@ -890,7 +905,10 @@
 						"monthlyExpensesChange": 0,
 						"newAssets": [],
 						"newDebts": [],
-						"assetRemovals": ["emergency-fund", "rd"],
+						"assetRemovals": [
+							"emergency-fund",
+							"rd"
+						],
 						"notes": "Emergency fund + RD broken for total ₹1.8L hospital bill. savingsChange -₹84K = remainder after assets used. Emergency-fund and RD assets removed. PPF and MF intact.",
 						"notes_kan": "ತುರ್ತು ನಿಧಿ + RD ₹1.8L ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ. PPF ಮತ್ತು MF ಸುರಕ್ಷಿತ."
 					}
