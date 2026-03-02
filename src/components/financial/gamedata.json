@@ -98,8 +98,8 @@
 			"id": 2,
 			"title": "The Police Raid",
 			"title_kan": "ಪೊಲೀಸ್ ದಾಳಿ",
-			"situation": "Sushila has been saving regularly. Then police raid her building, harassing trans women for 'solicitation' even though Sushila runs legitimate beauty business. They threaten arrest unless she pays ₹8,000 'fine' (bribe). Simultaneously, she has an opportunity to rent a proper shop space (₹10,000 deposit + ₹6,000/month rent) which could increase her income to ₹30,000/month.",
-			"situation_kan": "ಸುಶೀಲಾ ನಿಯಮಿತವಾಗಿ ಉಳಿತಾಯ ಮಾಡುತ್ತಿದ್ದಾಳೆ. ನಂತರ ಪೊಲೀಸರು ಆಕೆಯ ಕಟ್ಟಡದ ಮೇಲೆ ದಾಳಿ ಮಾಡಿ, ಸುಶೀಲಾ ಕಾನೂನುಬದ್ಧ ಸೌಂದರ್ಯ ವ್ಯವಹಾರ ನಡೆಸುತ್ತಿದ್ದರೂ ಸಹ, 'ಮನವಿ'ಗಾಗಿ ಟ್ರಾನ್ಸ್ ಮಹಿಳೆಯರನ್ನು ಕಿರುಕುಳ ನೀಡುತ್ತಾರೆ. ₹8,000 'ದಂಡ' (ಲಂಚ) ಪಾವತಿಸದಿದ್ದರೆ ಬಂಧಿಸುವುದಾಗಿ ಅವರು ಬೆದರಿಕೆ ಹಾಕುತ್ತಾರೆ. ಅದೇ ಸಮಯದಲ್ಲಿ, ಆಕೆಗೆ ಸರಿಯಾದ ಅಂಗಡಿ ಸ್ಥಳವನ್ನು ಬಾಡಿಗೆಗೆ ಪಡೆಯುವ ಅವಕಾಶವಿದೆ (₹10,000 ಠೇವಣಿ + ₹6,000/ತಿಂಗಳ ಬಾಡಿಗೆ) ಇದು ಆಕೆಯ ಆದಾಯವನ್ನು ₹30,000/ತಿಂಗಳಿಗೆ ಹೆಚ್ಚಿಸಬಹುದು.",
+			"situation": "Police raid Susheela's building, harassing trans women for 'solicitation' even though Susheela runs a legitimate beauty business. They threaten arrest unless she pays ₹8,000 'fine' (bribe). Simultaneously, she has an opportunity to rent a proper shop space (₹10,000 deposit + ₹6,000/month rent) which could significantly increase her income.",
+			"situation_kan": "ಪೊಲೀಸರು ಸುಶೀಲಾಳ ಕಟ್ಟಡದ ಮೇಲೆ ದಾಳಿ ಮಾಡಿ, ಸುಶೀಲಾ ಕಾನೂನುಬದ್ಧ ಸೌಂದರ್ಯ ವ್ಯವಹಾರ ನಡೆಸುತ್ತಿದ್ದರೂ ಸಹ, 'ಮನವಿ'ಗಾಗಿ ಟ್ರಾನ್ಸ್ ಮಹಿಳೆಯರನ್ನು ಕಿರುಕುಳ ನೀಡುತ್ತಾರೆ. ₹8,000 'ದಂಡ' (ಲಂಚ) ಪಾವತಿಸದಿದ್ದರೆ ಬಂಧಿಸುವುದಾಗಿ ಅವರು ಬೆದರಿಕೆ ಹಾಕುತ್ತಾರೆ. ಅದೇ ಸಮಯದಲ್ಲಿ, ಆಕೆಗೆ ಸರಿಯಾದ ಅಂಗಡಿ ಸ್ಥಳವನ್ನು ಬಾಡಿಗೆಗೆ ಪಡೆಯುವ ಅವಕಾಶವಿದೆ (₹10,000 ಠೇವಣಿ + ₹6,000/ತಿಂಗಳ ಬಾಡಿಗೆ) ಇದು ಆಕೆಯ ಆದಾಯವನ್ನು ಗಮನಾರ್ಹವಾಗಿ ಹೆಚ್ಚಿಸಬಹುದು.",
 			"question": "How should Susheela protect herself legally while pursuing business growth?",
 			"question_kan": "ವ್ಯಾಪಾರ ಬೆಳವಣಿಗೆ ಅನ್ವೇಷಿಸುವಾಗ ಸುಶೀಲಾ ತನ್ನನ್ನು ಕಾನೂನಾತ್ಮಕವಾಗಿ ಹೇಗೆ ರಕ್ಷಿಸಿಕೊಳ್ಳಬೇಕು?",
 			"choices": [
@@ -163,6 +163,7 @@
 					"description": "Refuse to pay police, use ₹15,000 savings for a lawyer to fight the case — principle over pragmatism.",
 					"description_kan": "ಪೊಲೀಸರಿಗೆ ನೀಡಲು ನಿರಾಕರಿಸಿ, ಪ್ರಕರಣ ಹೋರಾಡಲು ₹15,000 ಉಳಿತಾಯ ಬಳಸಿ.",
 					"points": -20,
+					"minimumSavings": 15000,
 					"financialImpact": {
 						"savingsChange": -15000,
 						"monthlyIncomeChange": 0,
@@ -543,8 +544,8 @@
 					"id": "C",
 					"label": "Pay out of pocket",
 					"label_kan": "ನೇರ ಪಾವತಿ",
-					"description": "Continue paying out of pocket, save ₹5,000/month in a separate medical fund — simple self-insurance without locking up a lump sum.",
-					"description_kan": "ನೇರ ಪಾವತಿ ಮುಂದುವರಿಸಿ, ₹5,000/ತಿಂಗಳು ಪ್ರತ್ಯೇಕ ವೈದ್ಯಕೀಯ ನಿಧಿಯಲ್ಲಿ ಉಳಿಸಿ.",
+					"description": "Continue paying out of pocket month to month — no lump sum locked away, but no dedicated buffer either. Vulnerable to any major health crisis.",
+					"description_kan": "ತಿಂಗಳಿಂದ ತಿಂಗಳಿಗೆ ನೇರ ಪಾವತಿ ಮುಂದುವರಿಸಿ — ಒಂದು ದಜ್ಜ ಆರೋಗ್ಯ ಬಿಕ್ಕಟ್ಟು ಬಂದರೆ ತೊಂದರೆ ನಿಶ್ಚಿತ.",
 					"points": 10,
 					"financialImpact": {
 						"savingsChange": 0,
@@ -588,7 +589,7 @@
 					"label": "Sell land for Priya's education",
 					"label_kan": "ಪ್ರಿಯಾ ಶಿಕ್ಷಣಕ್ಕೆ ಭೂಮಿ ಮಾರಿ",
 					"description": "Sell land for ₹5 lakh, use ₹3 lakh for Priya's first 2.5 years of education, save ₹10,000/month from the remaining amount for future costs — prioritize Priya while continuing to save.",
-					"description_kan": "₹5 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಮಾರಿ, ₹3 ಲಕ್ಷ ಪ್ರಿಯಾ ಮೊದಲ 2.5 ವರ್ಷ ಶಿಕ್ಷಣಕ್ಕೆ, ₹10,000/ತಿಂಗಳು ಉಳಿಸಿ.",
+					"description_kan": "₹5 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಮಾರಿ, ₹3 ಲಕ್ಷ ಪ್ರಿಯಾ ಮೊದಲ 2.5 ವರ್ಷ ಶಿಕ್ಷಣಕ್ಕೆ — ಉಳಿದ ₹2 ಲಕ್ಷ ಉಳಿತಾಯಕ್ಕೆ ಸೇರಿಸಲಾಗುತ್ತದೆ. ಪ್ರಿಯಾಗೆ ಆದ್ಯತೆ, ಮನೆ ಗುರಿ ಬಿಟ್ಟುಕೊಳ್ಳಬೇಕು.",
 					"points": 30,
 					"financialImpact": {
 						"savingsChange": 200000,
@@ -669,8 +670,8 @@
 					"id": "A",
 					"label": "Expand to shopping complex",
 					"label_kan": "ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್‌ಗೆ ವಿಸ್ತರಿಸಿ",
-					"description": "Make ₹3 lakh down payment (borrow shortfall from community at 12% if needed), take ₹5 lakh loan at 11% — grow business aggressively. Income rises to ₹65,000/month.",
-					"description_kan": "₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ (ಅಗತ್ಯವಿದ್ದರೆ 12% ಸಮುದಾಯ ಸಾಲ), ₹5 ಲಕ್ಷ 11% ಸಾಲ — ಆದಾಯ ₹65,000/ತಿಂಗಳಿಗೆ.",
+					"description": "Make ₹3 lakh down payment (borrow shortfall from community at 12% if needed), take ₹5 lakh loan at 11% — grow business aggressively. Income rises by ₹25,000/month.",
+					"description_kan": "₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ (ಅಗತ್ಯವಿದ್ದರೆ 12% ಸಮುದಾಯ ಸಾಲ), ₹5 ಲಕ್ಷ 11% ಸಾಲ — ಆದಾಯ ₹25,000/ತಿಂಗಳು ಹೆಚ್ಚಾಗುತ್ತದೆ.",
 					"points": 30,
 					"financialImpact": {
 						"savingsChange": -300000,
@@ -724,8 +725,8 @@
 					"id": "C",
 					"label": "Partial expansion",
 					"label_kan": "ಭಾಗಶಃ ವಿಸ್ತರಣೆ",
-					"description": "Expand partially with ₹2 lakh investment in equipment at current location — moderate income growth to ₹50,000/month, no loan.",
-					"description_kan": "ಪ್ರಸ್ತುತ ಸ್ಥಳದಲ್ಲಿ ₹2 ಲಕ್ಷ ಉಪಕರಣ ಹೂಡಿಕೆ — ₹50,000/ತಿಂಗಳ ಆದಾಯ, ಸಾಲ ಇಲ್ಲ.",
+					"description": "Expand partially with ₹2 lakh investment in equipment at current location — moderate income growth of +₹10,000/month, no loan.",
+					"description_kan": "ಪ್ರಸ್ತುತ ಸ್ಥಳದಲ್ಲಿ ₹2 ಲಕ್ಷ ಉಪಕರಣ ಹೂಡಿಕೆ — +₹10,000/ತಿಂಗಳ ಆದಾಯ ಹೆಚ್ಚಳ, ಸಾಲ ಇಲ್ಲ.",
 					"points": -20,
 					"minimumSavings": 200000,
 					"financialImpact": {
@@ -846,8 +847,8 @@
 					"id": "C",
 					"label": "All savings into RD",
 					"label_kan": "ಎಲ್ಲಾ ₹ RD ಯಲ್ಲಿ",
-					"description": "Put all current savings into Recurring Deposit at 7% interest and continue adding ₹25,000/month — safest option but inflation erodes value.",
-					"description_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ 7% RD ಯಲ್ಲಿ, ₹25,000/ತಿಂಗಳು ಮುಂದುವರಿಸಿ.",
+					"description": "Put all current savings into Recurring Deposit at 7% interest and keep contributing whatever surplus remains each month — safest option but inflation erodes value over time.",
+					"description_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ 7% RD ಯಲ್ಲಿ ಹಾಕಿ, ಪ್ರತಿ ತಿಂಗಳು ಉಳಿಯುವ ಹೆಚ್ಚಿನ ಹಣ ಸೇರಿಸಿ ಮುಂದುವರಿಸಿ.",
 					"points": -20,
 					"financialImpact": {
 						"savingsChange": 0,

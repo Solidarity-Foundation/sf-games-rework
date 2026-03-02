@@ -135,6 +135,25 @@ const ScenarioScreen = () => {
 				kan: `ಪ್ರಿಯಾ ಎಂಜಿನಿಯರಿಂಗ್ ಓದಲು ಬಯಸುತ್ತಾಳೆ (4 ವರ್ಷಗಳಲ್ಲಿ ₹5 ಲಕ್ಷ). ಸುಶೀಲಾ ಬಳಿ ${goldAmount_kan} ಮೌಲ್ಯದ ಚಿನ್ನದ ಆಭರಣವಿದೆ. ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.`,
 			};
 		}
+		// S6: land path (S4-A) — show appreciated land value from assetValueUpdates
+		if (scenario.id === 6) {
+			const landUpdate = (scenario.assetValueUpdates ?? []).find(u => u.type === 'land');
+			const landOriginal = assets.find(a => a.type === 'land');
+			const landDisplayValue = landUpdate ? landUpdate.value : (landOriginal?.value ?? 0);
+			const landBoughtValue = landOriginal?.value ?? 300000;
+			return {
+				en: `Priya wants to study engineering (₹5 lakh over 4 years). Susheela's land is now worth ${fmt(landDisplayValue)} (bought at ${fmt(landBoughtValue)}). But Priya is not legally Susheela's daughter, making education loans difficult.`,
+				kan: `ಪ್ರಿಯಾ ಎಂಜಿನಿಯರಿಂಗ್ ಓದಲು ಬಯಸುತ್ತಾಳೆ (4 ವರ್ಷಗಳಲ್ಲಿ ₹5 ಲಕ್ಷ). ಸುಶೀಲಾಳ ಭೂಮಿ ಈಗ ${fmt(landDisplayValue)} ಮೌಲ್ಯ (${fmt(landBoughtValue)}ಕ್ಕೆ ಖರೀದಿಸಿದ). ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.`,
+			};
+		}
+
+		// S7: dynamic current income in situation text
+		if (scenario.id === 7) {
+			return {
+				en: `A shopping complex is offering shop space at ₹8 lakh (₹3 lakh down payment + ₹5 lakh loan at 11%). This could increase her business income by ₹25,000/month on top of her current ${fmt(monthlyIncome)}/month.`,
+				kan: `ಒಂದು ಶಾಪಿಂಗ್ ಕಾಂಪ್ಲೆಕ್ಸ್ ₹8 ಲಕ್ಷಕ್ಕೆ ಅಂಗಡಿ ಸ್ಥಳವನ್ನು ನೀಡುತ್ತಿದೆ (₹3 ಲಕ್ಷ ಡೌನ್ ಪೇಮೆಂಟ್ + ₹11% ದರದಲ್ಲಿ ₹5 ಲಕ್ಷ ಸಾಲ). ಇದು ಅವರ ಪ್ರಸ್ತುತ ${fmt(monthlyIncome)}/ತಿಂಗಳ ಆದಾಯಕ್ಕೆ ₹25,000/ತಿಂಗಳು ಹೆಚ್ಚಿಸಬಹುದು.`,
+			};
+		}
 
 		// S8: dynamic income, surplus, savings, and years-to-retirement
 		if (scenario.id === 8) {
@@ -143,6 +162,21 @@ const ScenarioScreen = () => {
 			return {
 				en: `Susheela's business is doing well after expansion. She earns ${fmt(monthlyIncome)}/month and after expenses (${fmt(monthlyExpenses)}), she can save ${fmt(surplus)}/month. She has ${fmt(savings)} in savings. ${yearsToRetirement} years until planned retirement. She needs: a house (₹20 lakh in ${yearsToRetirement} years), medical corpus (₹5 lakh), and monthly income post-retirement.`,
 				kan: `ಸುಶೀಲಾ ${fmt(monthlyIncome)}/ತಿಂಗಳು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾಳೆ, ${fmt(surplus)}/ತಿಂಗಳು ಉಳಿಸಬಹುದು. ${fmt(savings)} ಉಳಿತಾಯವಿದೆ. ${yearsToRetirement} ವರ್ಷ ನಿವೃತ್ತಿಗೆ ಉಳಿದಿದೆ. ₹20 ಲಕ್ಷ ಮನೆ, ₹5 ಲಕ್ಷ ವೈದ್ಯಕೀಯ ನಿಧಿ ಬೇಕು.`,
+			};
+		}
+
+		// S9: dynamic corpus description — actual assets depend on S8 choice
+		if (scenario.id === 9) {
+			const corpusAssets = assets.filter(a => ['mutual-fund', 'ppf', 'rd', 'fd', 'land', 'gold', 'emergency-fund'].includes(a.type));
+			const corpusDescription = corpusAssets.length > 0
+				? corpusAssets.map(a => `${a.label} (${fmt(a.value)})`).join(', ')
+				: 'her savings';
+			const corpusDescription_kan = corpusAssets.length > 0
+				? corpusAssets.map(a => `${(a as any).label_kan ?? a.label} (${fmt(a.value)})`).join(', ')
+				: 'ಅವಳ ಉಳಿತಾಯ';
+			return {
+				en: `Susheela collapses at work — severe diabetic complication. Hospital bill: ₹1,80,000 (₹30,000 immediate deposit needed). Her retirement corpus consists of: ${corpusDescription}. Some of these may be hard to liquidate quickly.`,
+				kan: `ಸುಶೀಲಾ ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಕುಸಿದಳು — ತೀವ್ರ ಮಧುಮೇಹ ತೊಡಕು. ಆಸ್ಪತ್ರೆ ಬಿಲ್: ₹1,80,000 (₹30,000 ತಕ್ಷಣ ಬೇಕು). ಅವಳ ನಿವೃತ್ತಿ ನಿಧಿ: ${corpusDescription_kan}. ಕೆಲವನ್ನು ತ್ವರಿತವಾಗಿ ನಗದು ಮಾಡಲು ಕಷ್ಟವಾಗಬಹುದು.`,
 			};
 		}
 
@@ -167,6 +201,19 @@ const ScenarioScreen = () => {
 			return {
 				en: `${financialHealth.en} — she earns ${fmt(monthlyIncome)}/month, spends ${fmt(monthlyExpenses)}/month, and saves ${fmt(surplus)}/month. She has ${fmt(savings)} in savings and ${totalAssetValue > 0 ? fmt(totalAssetValue) + ' in assets' : 'no significant assets'}. ${houseComment.en} Priya is now graduating and starting her first job (₹35,000/month; contributing ₹20,000/month to the household). But Priya's adoption was never legally formalized — if something happens to Susheela, her biological family could legally claim everything.`,
 				kan: `${financialHealth.kan} — ${fmt(monthlyIncome)}/ತಿಂಗಳು ಸಂಪಾದನೆ, ${fmt(monthlyExpenses)}/ತಿಂಗಳು ಖರ್ಚು, ${fmt(surplus)}/ತಿಂಗಳು ಉಳಿತಾಯ. ${fmt(savings)} ಉಳಿತಾಯ, ${totalAssetValue > 0 ? fmt(totalAssetValue) + ' ಆಸ್ತಿ' : 'ಗಮನಾರ್ಹ ಆಸ್ತಿ ಇಲ್ಲ'}. ${houseComment.kan} ಪ್ರಿಯಾ ₹35,000/ತಿಂಗಳ ಉದ್ಯೋಗ ಪಡೆದಿದ್ದಾಳೆ (₹20,000 ಮನೆಗೆ). ಆದರೆ ದತ್ತು ಕಾನೂನಾತ್ಮಕಗೊಂಡಿಲ್ಲ — ಸುಶೀಲಾಗೆ ಏನಾದರೂ ಆದರೆ ಜೈವಿಕ ಕುಟುಂಬ ಎಲ್ಲವನ್ನೂ ಪಡೆಯಬಹುದು.`,
+			};
+		}
+
+		// S4: dynamic income + document status depends on S3 choice
+		if (scenario.id === 4) {
+			const s3Choice = choiceHistory[3]?.choiceId;
+			const hasDocuments = s3Choice !== 'B'; // S3-B skips documents
+			const docClause = hasDocuments
+				? { en: 'Susheela now has proper documents and her', kan: 'ಸುಶೀಲಾ ಬಳಿ ಈಗ ಸರಿಯಾದ ದಾಖಲೆಗಳಿವೆ ಮತ್ತು ಅವರ' }
+				: { en: 'Without formal documents Susheela still runs her', kan: 'ಔಪಚಾರಿಕ ದಾಖಲೆಗಳಿಲ್ಲದಿದ್ದರೂ ಸುಶೀಲಾ ತನ್ನ' };
+			return {
+				en: `${docClause.en} beauty parlour is thriving (income ${fmt(monthlyIncome)}/month). Priya is 13 and will need college funds soon. She has four investment options: buy land, invest in gold + community fund, or expand the business.`,
+				kan: `${docClause.kan} ಬ್ಯೂಟಿ ಪಾರ್ಲರ್ ಅಭಿವೃದ್ಧಿ ಹೊಂದುತ್ತಿದೆ (ಆದಾಯ ${fmt(monthlyIncome)}/ತಿಂಗಳು). ಪ್ರಿಯಾಗೆ 13 ವರ್ಷ ಮತ್ತು ಶೀಘ್ರದಲ್ಲೇ ಕಾಲೇಜು ನಿಧಿಯ ಅಗತ್ಯವಿರುತ್ತದೆ. ಅವರಿಗೆ ನಾಲ್ಕು ಹೂಡಿಕೆ ಆಯ್ಕೆಗಳಿವೆ: ಭೂಮಿ ಖರೀದಿಸುವುದು, ಚಿನ್ನ + ಸಮುದಾಯ ನಿಧಿಯಲ್ಲಿ ಹೂಡಿಕೆ ಮಾಡುವುದು ಅಥವಾ ವ್ಯವಹಾರವನ್ನು ವಿಸ್ತರಿಸುವುದು.`,
 			};
 		}
 
@@ -197,9 +244,53 @@ const ScenarioScreen = () => {
 			return c;
 		}) as GameChoice[];
 
-	const choice = choices[selectedChoice];
+
+	// Dynamic choice text for S9 — descriptions depend on which assets the player actually has
+	const s9Choices: GameChoice[] = scenario.id !== 9 ? choices : choices.map((c, i) => {
+		const hasEmergencyFund = assets.some(a => a.type === 'emergency-fund');
+		const emergencyFund = assets.find(a => a.type === 'emergency-fund');
+		const hasRd = assets.some(a => a.type === 'rd');
+		const hasMutualFund = assets.some(a => a.type === 'mutual-fund');
+
+		if (i === 0) {
+			const parts: string[] = [];
+			const parts_kan: string[] = [];
+			if (hasEmergencyFund) {
+				parts.push(`emergency fund (${fmt(emergencyFund!.value)})`);
+				parts_kan.push(`ತುರ್ತು ನಿಧಿ (${fmt(emergencyFund!.value)})`);
+			}
+			if (hasRd) {
+				parts.push('break RD (small penalty)');
+				parts_kan.push('RD ಮುರಿಯಿರಿ (ಸಣ್ಣ ದಂಡ)');
+			}
+			const fundsList = parts.length > 0 ? parts.join(' and ') : 'savings';
+			const fundsList_kan = parts_kan.length > 0 ? parts_kan.join(' ಮತ್ತು ') : 'ಉಳಿತಾಯ';
+			return { ...c,
+				description: `Use ${fundsList} to cover the hospital bill — protect long-term investments.`,
+				description_kan: `${fundsList_kan} ಬಳಸಿ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ — ದೀರ್ಘಕಾಲೀನ ಹೂಡಿಕೆ ರಕ್ಷಿಸಿ.`,
+			};
+		}
+		if (i === 1 && !hasMutualFund) {
+			return { ...c,
+				description: 'Liquidate investments to cover the hospital bill — avoid new debt but reduces retirement corpus.',
+				description_kan: 'ಹೂಡಿಕೆ ನಗದು ಮಾಡಿ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ — ಹೊಸ ಸಾಲ ತಪ್ಪಿಸಿ ಆದರೆ ನಿವೃತ್ತಿ ನಿಧಿ ಕಡಿಮೆ.',
+			};
+		}
+		if (i === 2) {
+			const depositSource = hasEmergencyFund
+				? { en: 'use ₹30,000 from emergency fund for deposit', kan: 'ತುರ್ತು ನಿಧಿಯಿಂದ ₹30,000 ಠೇವಣಿಗೆ' }
+				: { en: 'use ₹30,000 from savings for deposit', kan: 'ಉಳಿತಾಯದಿಂದ ₹30,000 ಠೇವಣಿಗೆ' };
+			return { ...c,
+				description: `Take personal loan of ₹1,50,000 at 16% interest (₹3,500 EMI), ${depositSource.en} — preserve all investments.`,
+				description_kan: `16% ₹1,50,000 ವೈಯಕ್ತಿಕ ಸಾಲ (₹3,500 EMI), ${depositSource.kan} — ಎಲ್ಲಾ ಹೂಡಿಕೆ ರಕ್ಷಿಸಿ.`,
+			};
+		}
+		return c;
+	}) as GameChoice[];
+
+	const choice = s9Choices[selectedChoice];
 	const choiceLocked = (choice.minimumSavings ?? 0) > savings;
-	const allChoicesLocked = choices.every(c => (c.minimumSavings ?? 0) > savings);
+	const allChoicesLocked = s9Choices.every(c => (c.minimumSavings ?? 0) > savings);
 
 	const handleConfirm = () => {
 		makeChoice(scenario.id, selectedChoice);
@@ -414,7 +505,7 @@ const ScenarioScreen = () => {
 
 					<div className="flex items-stretch gap-3">
 						<button
-							onClick={() => setSelectedChoice((selectedChoice - 1 + choices.length) % choices.length)}
+							onClick={() => setSelectedChoice((selectedChoice - 1 + s9Choices.length) % s9Choices.length)}
 							className="p-3 rounded-xl bg-[#162d5c] border border-white/20 hover:bg-white/15 flex-shrink-0 self-center"
 							aria-label="Previous choice"
 						>
@@ -445,7 +536,7 @@ const ScenarioScreen = () => {
 						</div>
 
 						<button
-							onClick={() => setSelectedChoice((selectedChoice + 1) % choices.length)}
+							onClick={() => setSelectedChoice((selectedChoice + 1) % s9Choices.length)}
 							className="p-3 rounded-xl bg-[#162d5c] border border-white/20 hover:bg-white/15 flex-shrink-0 self-center"
 							aria-label="Next choice"
 						>
@@ -455,7 +546,7 @@ const ScenarioScreen = () => {
 
 					{/* Dot indicators */}
 					<div className="flex justify-center gap-2">
-						{choices.map((_, i) => (
+						{s9Choices.map((_, i) => (
 							<button
 								key={i}
 								onClick={() => setSelectedChoice(i)}

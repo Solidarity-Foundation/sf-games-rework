@@ -409,6 +409,20 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 			}
 		}
 
+		// 8c. S9-C special case: if emergency fund exists, the ₹30K deposit
+		//     comes from the fund, not general savings. Cancel the base
+		//     savingsChange: -30000 and deduct from the fund asset instead.
+		if (scenarioId === 9 && choiceId === 'C') {
+			const efIdx = workingAssets.findIndex(a => a.type === 'emergency-fund');
+			if (efIdx >= 0) {
+				newSavings += 30000; // cancel the -30000 from fi.savingsChange
+				workingAssets[efIdx] = {
+					...workingAssets[efIdx],
+					value: Math.max(0, workingAssets[efIdx].value - 30000),
+				};
+			}
+		}
+
 		// 9. Adjust individual asset values (e.g. partial MF sell in S9B)
 		for (const avc of fi.assetValueChanges ?? []) {
 			const i = workingAssets.findIndex(a => a.type === avc.type);
