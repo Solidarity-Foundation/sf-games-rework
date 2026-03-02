@@ -45,8 +45,8 @@ const GoalRing = ({
 	label: string;
 	status: string;
 }) => {
-	const size = 72;
-	const strokeWidth = 5;
+	const size = 92;
+	const strokeWidth = 7;
 	const radius = (size - strokeWidth) / 2;
 	const circumference = 2 * Math.PI * radius;
 	const filled = (progress / 100) * circumference;
@@ -89,7 +89,7 @@ const GoalRing = ({
 					/>
 				</svg>
 				<div className="absolute inset-0 flex items-center justify-center" style={{ padding: strokeWidth + 2 }}>
-					<img src={icon} alt={label} className="w-11 h-11 object-contain" style={{ opacity: 0.95 }} />
+					<img src={icon} alt={label} className="w-12 h-12 object-contain" style={{ opacity: 0.95 }} />
 				</div>
 			</div>
 			<div className="text-[10px] text-white/50 text-center leading-none">{label}</div>
@@ -147,8 +147,8 @@ const ScenarioScreen = () => {
 	const assetIcons: { src: string; key: string }[] = [];
 	if (displayAssets.some((a) => a.type === 'land')) assetIcons.push({ src: houseIcon, key: 'land' });
 	if (displayAssets.some((a) => a.type === 'gold')) assetIcons.push({ src: goldcoinsIcon, key: 'gold' });
-	if (displayAssets.some((a) => a.type === 'equipment')) assetIcons.push({ src: equipmentIcon, key: 'equip' });
-	if (displayAssets.some((a) => a.type === 'community-building'))
+	if (displayAssets.some((a) => a.type === 'business-equipment')) assetIcons.push({ src: equipmentIcon, key: 'equip' });
+	if (displayAssets.some((a) => a.type === 'community-stake'))
 		assetIcons.push({ src: communityBuildingIcon, key: 'cb' });
 	if (displayAssets.some((a) => a.type === 'emergency-fund')) assetIcons.push({ src: medicalIcon, key: 'ef' });
 	if (displayAssets.some((a) => ['mutual-fund', 'rd', 'fd'].includes(a.type)))
@@ -527,11 +527,12 @@ const ScenarioScreen = () => {
 			</header>
 
 			<div className="flex-1 flex flex-col p-4 gap-3 max-w-5xl mx-auto w-full">
-				{/* ── Score + Scenario squares — with intro button on left ── */}
-				<div className="flex items-center justify-between">
+				{/* ── Top bar: Restart | Scenario dots | Score ── */}
+				<div className="flex items-center justify-between gap-3">
+					{/* Restart button */}
 					<button
 						onClick={() => navigate('/financial-literacy')}
-						className="w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 hover:bg-white/15 transition-colors flex flex-col items-center justify-center gap-0.5">
+						className="w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 hover:bg-white/15 transition-colors flex flex-col items-center justify-center gap-0.5 flex-shrink-0">
 						<ArrowLeft size={16} className="text-white/70" />
 						<div className="text-[9px] text-white/70 uppercase tracking-wide leading-tight text-center font-sans">
 							{t('Restart', 'ಮರು')}
@@ -540,21 +541,42 @@ const ScenarioScreen = () => {
 							{t('Game', 'ಆಟ')}
 						</div>
 					</button>
-					<div className="flex gap-2">
+
+					{/* Scenario dot sequence */}
+					<div className="hidden md:flex flex-1 items-center justify-center">
+						<div className="flex items-center">
+							{Array.from({ length: 10 }, (_, i) => {
+								const sNum = i + 1;
+								const isActive = sNum === currentScenario;
+								return (
+									<div key={sNum} className="flex items-center">
+										<div className={`w-9 h-9 rounded-full flex items-center justify-center font-bold text-[10px] ${
+											isActive ? 'bg-red-500 text-white' : 'bg-[#e8b84b] text-[#0e1e3f]'
+										}`}>
+											S{sNum}
+										</div>
+										{sNum < 10 && <div className="w-4 h-0.5 bg-white/70" />}
+									</div>
+								);
+							})}
+						</div>
+					</div>
+
+					{/* Score + Scene (Scene only on mobile) */}
+					<div className="flex gap-2 flex-shrink-0">
+						<div className="md:hidden w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 flex flex-col items-center justify-center">
+							<div className="text-[10px] text-white/50 uppercase tracking-wide leading-none mb-1 font-sans">
+								{t('Scene', 'ಸನ್ನಿ')}
+							</div>
+							<div className="text-xl font-bold text-white leading-none">
+								{currentScenario}<span className="text-xs text-white/40">/10</span>
+							</div>
+						</div>
 						<div className="w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 flex flex-col items-center justify-center">
 							<div className="text-[10px] text-white/50 uppercase tracking-wide leading-none mb-1 font-sans">
 								{t('Score', 'ಅಂಕ')}
 							</div>
 							<div className="text-xl font-bold text-[#e8b84b] leading-none">{score}</div>
-						</div>
-						<div className="w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 flex flex-col items-center justify-center">
-							<div className="text-[10px] text-white/50 uppercase tracking-wide leading-none mb-1 font-sans">
-								{t('Scene', 'ಸನ್ನಿ')}
-							</div>
-							<div className="text-xl font-bold text-white leading-none">
-								{currentScenario}
-								<span className="text-xs text-white/40">/10</span>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -650,6 +672,9 @@ const ScenarioScreen = () => {
 														</div>
 													);
 												})}
+										<div className="text-[10px] text-white/60 pt-0.5 italic">
+											{t('Rent & food rise 2%/yr', 'ಬಾಡಿಗೆ & ಆಹಾರ 2%/ವರ್ಷ ಹೆಚ್ಚುತ್ತದೆ')}
+										</div>
 										</div>
 									)}
 								</div>
@@ -787,8 +812,8 @@ const ScenarioScreen = () => {
 													`₹${((choice as typeof choice & { minimumSurplus?: number }).minimumSurplus ?? 0).toLocaleString('en-IN')}/ತಿಂ ಉಳಿಕೆ ಬೇಕು`,
 												)
 											: t(
-													`Needs ₹${(choice.minimumSavings ?? 0).toLocaleString('en-IN')} savings`,
-													`₹${(choice.minimumSavings ?? 0).toLocaleString('en-IN')} ಉಳಿತಾಯ ಬೇಕು`,
+													`Needs ₹${((choice as typeof choice & { minimumSavings?: number }).minimumSavings ?? 0).toLocaleString('en-IN')} savings`,
+													`₹${((choice as typeof choice & { minimumSavings?: number }).minimumSavings ?? 0).toLocaleString('en-IN')} ಉಳಿತಾಯ ಬೇಕು`,
 												)}
 									</span>
 								)}

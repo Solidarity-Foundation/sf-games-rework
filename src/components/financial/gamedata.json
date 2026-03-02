@@ -483,7 +483,7 @@
           "financialImpact": {
             "savingsChange": -100000,
             "monthlyIncomeChange": 0,
-            "monthlyExpensesChange": 6250,
+            "monthlyExpensesChange": 3250,
             "newAssets": [
               {
                 "type": "emergency-fund",
@@ -493,16 +493,12 @@
               }
             ],
             "newDebts": [],
-            "notes": "Emergency fund ₹1L from savings. Expenses +₹6K (diabetes ₹3K + basics ₹3K) +₹250/mo coop (₹3K/yr ÷ 12) = +₹6,250.",
-            "notes_kan": "₹1L ತುರ್ತು ನಿಧಿ. ₹6K ಮಾಸಿಕ ವೆಚ್ಚ + ₹250 ಸಹಕಾರ = +₹6,250.",
+            "notes": "Emergency fund ₹1L from savings. Medication +₹3K (₹2K→₹5K) + coop ₹250/mo = +₹3,250.",
+            "notes_kan": "₹1L ತುರ್ತು ನಿಧಿ. ಔಷಧಿ +₹3K + ಸಹಕಾರ ₹250 = +₹3,250.",
             "expenseItemChanges": [
               {
                 "key": "medication",
                 "newAmount": 5000
-              },
-              {
-                "key": "food",
-                "newAmount": 8000
               },
               {
                 "key": "health-coop",
@@ -523,19 +519,15 @@
           "financialImpact": {
             "savingsChange": 0,
             "monthlyIncomeChange": 0,
-            "monthlyExpensesChange": 7250,
+            "monthlyExpensesChange": 4250,
             "newAssets": [],
             "newDebts": [],
-            "notes": "Insurance ₹15K/yr = ₹1,250/mo. Base increase ₹6K + insurance ₹1,250 = +₹7,250. Expensive premiums, likely won't cover actual needs.",
-            "notes_kan": "ವಿಮೆ ₹1,250/ತಿಂಗಳು + ₹6K ಹೆಚ್ಚಳ = +₹7,250. ದುಬಾರಿ ಪ್ರೀಮಿಯಂ, ನಿಜ ಅಗತ್ಯ ಒಳಗೊಳ್ಳದ ಸಾಧ್ಯತೆ.",
+            "notes": "Insurance ₹15K/yr = ₹1,250/mo. Medication +₹3K + insurance ₹1,250 = +₹4,250. Expensive premiums, likely won't cover actual needs.",
+            "notes_kan": "ವಿಮೆ ₹1,250/ತಿಂಗಳು + ಔಷಧಿ +₹3K = +₹4,250. ದುಬಾರಿ ಪ್ರೀಮಿಯಂ, ನಿಜ ಅಗತ್ಯ ಒಳಗೊಳ್ಳದ ಸಾಧ್ಯತೆ.",
             "expenseItemChanges": [
               {
                 "key": "medication",
                 "newAmount": 5000
-              },
-              {
-                "key": "food",
-                "newAmount": 8000
               },
               {
                 "key": "insurance",
@@ -556,19 +548,15 @@
           "financialImpact": {
             "savingsChange": 0,
             "monthlyIncomeChange": 0,
-            "monthlyExpensesChange": 6000,
+            "monthlyExpensesChange": 3000,
             "newAssets": [],
             "newDebts": [],
-            "notes": "No lump-sum lock. Base expense increase ₹6K only. Slower emergency fund building, vulnerable to major crisis.",
-            "notes_kan": "ಮೊತ್ತ ಲಾಕ್ ಇಲ್ಲ. ₹6K ಮಾಸಿಕ ಹೆಚ್ಚಳ. ತುರ್ತು ನಿಧಿ ನಿಧಾನ.",
+            "notes": "No lump-sum lock. Medication +₹3K only. Slower emergency fund building, vulnerable to major crisis.",
+            "notes_kan": "ಮೊತ್ತ ಲಾಕ್ ಇಲ್ಲ. ಔಷಧಿ +₹3K ಮಾತ್ರ. ತುರ್ತು ನಿಧಿ ನಿಧಾನ.",
             "expenseItemChanges": [
               {
                 "key": "medication",
                 "newAmount": 5000
-              },
-              {
-                "key": "food",
-                "newAmount": 8000
               }
             ]
           }

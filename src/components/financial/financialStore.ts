@@ -390,6 +390,20 @@ export const useFinancialStore = create<FinancialState>((set, get) => ({
 		// Reconcile: expense breakdown is the single source of truth
 		newExpenses = workingBreakdown.reduce((sum, item) => sum + item.amount, 0);
 
+		// 5c. Annual inflation: rent, shop-rent, and food increase by 2%/year.
+		//     Each scenario spans 2 years → multiply by 1.02² ≈ 1.0404 per scenario.
+		const INFLATION_KEYS = ['rent', 'shop-rent', 'food'];
+		for (const key of INFLATION_KEYS) {
+			const idx = workingBreakdown.findIndex(item => item.key === key);
+			if (idx >= 0 && workingBreakdown[idx].amount > 0) {
+				workingBreakdown[idx] = {
+					...workingBreakdown[idx],
+					amount: Math.round(workingBreakdown[idx].amount * Math.pow(1.02, 2)),
+				};
+			}
+		}
+		newExpenses = workingBreakdown.reduce((sum, item) => sum + item.amount, 0);
+
 		// 6. Auto-accumulate (income − expenses) × 24 months
 		//    Skipped when rdConversion is present (RD handles the full accumulation)
 		if (!fi.rdConversion) {
