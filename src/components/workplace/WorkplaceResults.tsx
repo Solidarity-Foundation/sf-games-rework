@@ -29,15 +29,15 @@ const TAKEAWAYS_KAN = [
 
 const WorkplaceResults = () => {
 	const navigate = useNavigate();
-	const { score, answers, completedRooms, language, resetGame } = useWorkplaceStore();
+	const { score, answers, completedRooms, language, resetGame, savedToDb, markSavedToDb } = useWorkplaceStore();
 
 	const lang = language;
 	const result = calculateWorkplaceLevel(score);
 
-	// Save to Appwrite once on mount — ref guards against StrictMode double-fire
+	// Save to Appwrite once — ref guards against StrictMode double-fire; savedToDb guards against refresh re-submission
 	const savedRef = useRef(false);
 	useEffect(() => {
-		if (savedRef.current) return;
+		if (savedRef.current || savedToDb) return;
 		savedRef.current = true;
 
 		const answersList = Object.entries(answers).map(([qId, answerIndex]) => {
@@ -57,6 +57,7 @@ const WorkplaceResults = () => {
 			level: result.level,
 			answers: answersList,
 		});
+		markSavedToDb();
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const isPerfect = score > 19;
