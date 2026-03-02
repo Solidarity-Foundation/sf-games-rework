@@ -10,6 +10,7 @@ import medicalIcon from '@/assets/financial/medical-icon.png';
 import growthFundsIcon from '@/assets/financial/growth-funds-icon.png';
 import equipmentIcon from '@/assets/financial/equipment-icon.png';
 import communityBuildingIcon from '@/assets/financial/community-building-icon.png';
+import emiIcon from '@/assets/financial/emi-icon.png';
 
 type GameScenario = (typeof gamedata.scenarios)[number];
 type GameChoice = GameScenario['choices'][number];
@@ -722,7 +723,7 @@ const ScenarioScreen = () => {
 							</div>
 						</div>
 
-						{/* Goals + Assets row */}
+						{/* Goals + Assets+EMI row */}
 						<div className="flex gap-2">
 							{/* Goal rings */}
 							<div className="flex-1 bg-[#411489] rounded-xl border border-purple-700/45 p-3">
@@ -746,18 +747,39 @@ const ScenarioScreen = () => {
 									/>
 								</div>
 							</div>
-							{assetIcons.length > 0 && (
-								<div className="flex-1 bg-[#690968] rounded-xl border border-purple-200/20 p-3 flex flex-col">
-									<div className="text-[10px] text-pink-300 uppercase tracking-wide mb-2 text-center font-sans">
-										{t('Assets', 'ಆಸ್ತಿ')}
-									</div>
-									<div className="flex-1 flex flex-wrap gap-2 items-center justify-center">
-										{assetIcons.map(({ src, key }) => (
-											<div className="rounded-xl p-[2px] border border-purple-200/30">
-												<img key={key} src={src} alt={key} className="w-10 h-10 object-contain" />
+							{/* Right column: Assets + EMI */}
+							{(assetIcons.length > 0 || debts.length > 0) && (
+								<div className="flex-1 flex flex-col gap-2">
+									{/* Assets box */}
+									{assetIcons.length > 0 && (
+										<div className={`bg-[#690968] rounded-xl border border-purple-200/20 ${debts.length > 0 ? 'p-2' : 'p-3 flex-1'} flex flex-col`}>
+											<div className="text-[10px] text-pink-300 uppercase tracking-wide mb-2 text-center font-sans">
+												{t('Assets', 'ಆಸ್ತಿ')}
 											</div>
-										))}
-									</div>
+											<div className={`flex-1 flex flex-wrap ${debts.length > 0 ? 'gap-1' : 'gap-2'} items-center justify-center`}>
+												{assetIcons.map(({ src, key }) => (
+													<div key={key} className="rounded-xl p-[2px] border border-purple-200/30">
+														<img src={src} alt={key} className={`${debts.length > 0 ? 'w-8 h-8' : 'w-10 h-10'} object-contain`} />
+													</div>
+												))}
+											</div>
+										</div>
+									)}
+									{/* EMI box */}
+									{debts.length > 0 && (
+										<div className={`bg-[#5c1a1a] rounded-xl border border-red-500/40 ${assetIcons.length > 0 ? 'p-2' : 'p-3 flex-1'} flex flex-col`}>
+											<div className="text-[10px] text-red-300 uppercase tracking-wide mb-2 text-center font-sans">
+												{t('EMI', 'EMI')}
+											</div>
+											<div className="flex flex-wrap gap-1 items-center justify-center">
+												{debts.map((_, i) => (
+													<div key={i} className="rounded-xl p-[2px] border border-red-500/30">
+														<img src={emiIcon} alt="EMI" className="w-8 h-8 object-contain" />
+													</div>
+												))}
+											</div>
+										</div>
+									)}
 								</div>
 							)}
 						</div>
