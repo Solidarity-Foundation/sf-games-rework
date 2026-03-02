@@ -532,23 +532,23 @@ const ScenarioScreen = () => {
 					<button
 						onClick={() => navigate('/financial-literacy')}
 						className="w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 hover:bg-white/15 transition-colors flex flex-col items-center justify-center gap-0.5">
-						<ArrowLeft size={16} className="text-white/60" />
-						<div className="text-[9px] text-white/50 uppercase tracking-wide leading-tight text-center">
+						<ArrowLeft size={16} className="text-white/70" />
+						<div className="text-[9px] text-white/70 uppercase tracking-wide leading-tight text-center font-sans">
 							{t('Restart', 'ಮರು')}
 						</div>
-						<div className="text-[9px] text-white/50 uppercase tracking-wide leading-tight text-center">
+						<div className="text-[9px] text-white/70 uppercase tracking-wide leading-tight text-center font-sans">
 							{t('Game', 'ಆಟ')}
 						</div>
 					</button>
 					<div className="flex gap-2">
 						<div className="w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 flex flex-col items-center justify-center">
-							<div className="text-[10px] text-white/50 uppercase tracking-wide leading-none mb-1">
+							<div className="text-[10px] text-white/50 uppercase tracking-wide leading-none mb-1 font-sans">
 								{t('Score', 'ಅಂಕ')}
 							</div>
 							<div className="text-xl font-bold text-[#e8b84b] leading-none">{score}</div>
 						</div>
 						<div className="w-16 h-16 bg-[#162d5c] rounded-xl border border-white/20 flex flex-col items-center justify-center">
-							<div className="text-[10px] text-white/50 uppercase tracking-wide leading-none mb-1">
+							<div className="text-[10px] text-white/50 uppercase tracking-wide leading-none mb-1 font-sans">
 								{t('Scene', 'ಸನ್ನಿ')}
 							</div>
 							<div className="text-xl font-bold text-white leading-none">
@@ -574,8 +574,8 @@ const ScenarioScreen = () => {
 					{/* Right panel — 50%: finances + goals */}
 					<div className="w-full md:w-1/2 flex flex-col gap-2">
 						{/* Financial stats — teal */}
-						<div className="flex-1 bg-[#0a2828] rounded-xl p-3 border border-teal-700/45">
-							<div className="text-[10px] text-teal-400/70 uppercase tracking-wide mb-2">
+						<div className="flex-1 bg-[#0b4e4e] rounded-xl p-3 border border-teal-700/45">
+							<div className="text-[11px] text-teal-300 uppercase tracking-wide mb-2 font-sans">
 								{(() => {
 									const yrs = (currentScenario - 1) * 2;
 									return (
@@ -583,7 +583,7 @@ const ScenarioScreen = () => {
 											{yrs === 0
 												? t('Current Finances', 'ಪ್ರಸ್ತುತ ಆರ್ಥಿಕ ಸ್ಥಿತಿ')
 												: t('Finances After', 'ನಂತರ ಆರ್ಥಿಕ ಸ್ಥಿತಿ')}
-											<span className="bg-red-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">
+											<span className="bg-red-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide">
 												{yrs === 0 ? 'YEAR 0' : `${yrs} YRS`}
 											</span>
 										</span>
@@ -592,21 +592,21 @@ const ScenarioScreen = () => {
 							</div>
 							<div className="space-y-1.5">
 								<div className="flex justify-between items-center">
-									<span className="text-sm text-white/65">{t('Income / mo', 'ಆದಾಯ / ತಿಂ')}</span>
+									<span className="text-sm text-white/75">{t('Income / mo', 'ಆದಾಯ / ತಿಂ')}</span>
 									<span className="text-sm font-semibold text-green-400">{fmt(monthlyIncome)}</span>
 								</div>
 								<div className="flex justify-between items-center">
-									<span className="text-sm text-white/65">{t('Savings', 'ಉಳಿತಾಯ')}</span>
+									<span className="text-sm text-white/75">{t('Savings', 'ಉಳಿತಾಯ')}</span>
 									<span className="text-sm font-semibold">{fmt(savings)}</span>
 								</div>
 								<div>
 									<div className="flex justify-between items-center">
-										<span className="text-sm text-white/65">{t('Expenses / mo', 'ವೆಚ್ಚ / ತಿಂ')}</span>
+										<span className="text-sm text-white/75">{t('Expenses / mo', 'ವೆಚ್ಚ / ತಿಂ')}</span>
 										<div className="flex items-center gap-1">
 											<span className="text-sm font-semibold text-red-400">{fmt(monthlyExpenses)}</span>
 											<button
 												onClick={() => setShowExpenses((v) => !v)}
-												className="text-white/40 hover:text-white/70 transition-colors"
+												className="text-white/60 hover:text-white/70 transition-colors"
 												aria-label="Toggle expense breakdown">
 												<ChevronDown size={14} className={`transition-transform ${showExpenses ? 'rotate-180' : ''}`} />
 											</button>
@@ -633,20 +633,20 @@ const ScenarioScreen = () => {
 														: null;
 													return (
 														<div key={item.key} className="flex justify-between items-center gap-1">
-															<span className="text-xs text-white/45 flex items-center gap-1">
+															<span className="text-xs text-white/55 flex items-center gap-1">
 																{t(item.label, item.label_kan)}
 																{clearScenario !== null &&
 																	(clearScenario <= 10 ? (
-																		<span className="text-[10px] text-orange-400/60 font-medium">
+																		<span className="text-[10px] text-orange-400/70 font-medium">
 																			clears S{clearScenario}
 																		</span>
 																	) : (
-																		<span className="text-[10px] text-yellow-400/60 font-medium">
+																		<span className="text-[10px] text-yellow-400/70 font-medium">
 																			ongoing past game
 																		</span>
 																	))}
 															</span>
-															<span className="text-xs text-red-400/80">{fmt(item.amount)}</span>
+															<span className="text-xs text-red-400/90">{fmt(item.amount)}</span>
 														</div>
 													);
 												})}
@@ -654,7 +654,7 @@ const ScenarioScreen = () => {
 									)}
 								</div>
 								<div className="flex justify-between items-center border-t border-teal-700/30 pt-1.5">
-									<span className="text-sm text-white/65">{t('Surplus / mo', 'ಉಳಿಕೆ / ತಿಂ')}</span>
+									<span className="text-sm text-white/75">{t('Surplus / mo', 'ಉಳಿಕೆ / ತಿಂ')}</span>
 									<span className={`text-sm font-semibold ${monthlySurplus >= 0 ? 'text-green-400' : 'text-red-400'}`}>
 										{monthlySurplus >= 0 ? '+' : ''}
 										{fmt(monthlySurplus)}
@@ -662,7 +662,7 @@ const ScenarioScreen = () => {
 								</div>
 								<div>
 									<div className="flex justify-between items-center">
-										<span className="text-sm text-white/65">{t('Assets', 'ಆಸ್ತಿ')}</span>
+										<span className="text-sm text-white/75">{t('Assets', 'ಆಸ್ತಿ')}</span>
 										<div className="flex items-center gap-1">
 											<span className="text-sm font-semibold text-blue-300">
 												{totalAssets > 0 ? fmt(totalAssets) : '—'}
@@ -670,7 +670,7 @@ const ScenarioScreen = () => {
 											{totalAssets > 0 && (
 												<button
 													onClick={() => setShowAssets((v) => !v)}
-													className="text-white/40 hover:text-white/70 transition-colors"
+													className="text-white/50 hover:text-white/70 transition-colors"
 													aria-label="Toggle asset breakdown">
 													<ChevronDown size={14} className={`transition-transform ${showAssets ? 'rotate-180' : ''}`} />
 												</button>
@@ -681,7 +681,7 @@ const ScenarioScreen = () => {
 										<div className="mt-1.5 ml-1 space-y-1 border-l border-blue-400/25 pl-2">
 											{displayAssets.map((asset, i) => (
 												<div key={i} className="flex justify-between items-center">
-													<span className="text-xs text-white/45">{asset.label}</span>
+													<span className="text-xs text-white/65">{asset.label}</span>
 													<span className="text-xs text-blue-300/80">{fmt(asset.value)}</span>
 												</div>
 											))}
@@ -689,8 +689,8 @@ const ScenarioScreen = () => {
 									)}
 								</div>
 								<div className="flex justify-between items-center">
-									<span className="text-sm text-white/65">{t('Debt', 'ಸಾಲ')}</span>
-									<span className={`text-sm font-semibold ${totalDebt > 0 ? 'text-orange-400' : 'text-white/30'}`}>
+									<span className="text-sm text-white/75">{t('Debt', 'ಸಾಲ')}</span>
+									<span className={`text-sm font-semibold ${totalDebt > 0 ? 'text-orange-400' : 'text-white/50'}`}>
 										{totalDebt > 0 ? fmt(totalDebt) : '—'}
 									</span>
 								</div>
@@ -701,7 +701,7 @@ const ScenarioScreen = () => {
 						<div className="flex gap-2">
 							{/* Goal rings */}
 							<div className="flex-1 bg-[#411489] rounded-xl border border-purple-700/45 p-3">
-								<div className="text-[10px] text-white uppercase tracking-wide mb-2 text-center">
+								<div className="text-[10px] text-purple-300 uppercase tracking-wide mb-2 text-center font-sans">
 									{t('Goals', 'ಗುರಿಗಳು')}
 								</div>
 								<div className="flex justify-around">
@@ -722,13 +722,15 @@ const ScenarioScreen = () => {
 								</div>
 							</div>
 							{assetIcons.length > 0 && (
-								<div className="flex-1 bg-[#09635a] rounded-xl border border-blue-300/20 p-3 flex flex-col">
-									<div className="text-[10px] text-white uppercase tracking-wide mb-2 text-center">
+								<div className="flex-1 bg-[#690968] rounded-xl border border-purple-200/20 p-3 flex flex-col">
+									<div className="text-[10px] text-pink-300 uppercase tracking-wide mb-2 text-center font-sans">
 										{t('Assets', 'ಆಸ್ತಿ')}
 									</div>
 									<div className="flex-1 flex flex-wrap gap-2 items-center justify-center">
 										{assetIcons.map(({ src, key }) => (
-											<img key={key} src={src} alt={key} className="w-10 h-10 object-contain" />
+											<div className="rounded-xl p-[2px] border border-purple-200/30">
+												<img key={key} src={src} alt={key} className="w-10 h-10 object-contain" />
+											</div>
 										))}
 									</div>
 								</div>
@@ -739,13 +741,15 @@ const ScenarioScreen = () => {
 
 				{/* ── Scenario description — navy ── */}
 				<div className="bg-[#0237a3] rounded-xl p-4 border border-blue-600/40">
-					<div className="text-xs text-blue-300/100 uppercase tracking-wide mb-2">{t('Scenario', 'ಸನ್ನಿವೇಶ')}</div>
+					<div className="text-xs text-blue-300/100 uppercase tracking-wide mb-2 font-sans">
+						{t('Scenario', 'ಸನ್ನಿವೇಶ')}
+					</div>
 					<p className="text-base leading-relaxed text-white/90">{t(situationText.en, situationText.kan)}</p>
 				</div>
 
 				{/* ── Dilemma — amber ── */}
 				<div className="bg-[#623100] rounded-xl p-4 border border-amber-600/50">
-					<div className="text-xs text-amber-400/75 uppercase tracking-wide mb-2">
+					<div className="text-xs text-amber-400/75 uppercase tracking-wide mb-2 font-sans">
 						{t('Your Dilemma', 'ನಿಮ್ಮ ಸಂದಿಗ್ಧ')}
 					</div>
 					<p className="text-base font-medium leading-relaxed text-white/95">
@@ -759,7 +763,7 @@ const ScenarioScreen = () => {
 				{/* ── Choice slider ── */}
 				<div className="flex flex-col gap-3">
 					<div className="flex items-center px-1">
-						<span className="text-sm text-white/75 uppercase tracking-wide">
+						<span className="text-sm text-white/75 uppercase tracking-wide text-center w-full font-sans">
 							{t('Make Your Choice', 'ನಿಮ್ಮ ಆಯ್ಕೆ ಮಾಡಿ')}
 						</span>
 					</div>
@@ -824,7 +828,7 @@ const ScenarioScreen = () => {
 					{/* All choices locked — go back banner */}
 					{allChoicesLocked && completedScenarios.length > 0 && (
 						<div className="bg-red-950/60 border border-red-500/50 rounded-xl p-4 text-center">
-							<p className="text-sm text-red-300 mb-3">
+							<p className="text-sm text-red-300 mb-3 font-sans">
 								{t(
 									"You don't have enough savings for any choice. Go back and reconsider your previous decision.",
 									'ಯಾವ ಆಯ್ಕೆಗೂ ಸಾಕಷ್ಟು ಉಳಿತಾಯವಿಲ್ಲ. ಹಿಂದಿನ ನಿರ್ಧಾರ ಮರು-ಪರಿಶೀಲಿಸಿ.',
@@ -832,7 +836,7 @@ const ScenarioScreen = () => {
 							</p>
 							<button
 								onClick={revertLastChoice}
-								className="px-6 py-2.5 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-400 transition-colors text-sm">
+								className="px-6 py-2.5 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-400 transition-colors text-sm font-sans">
 								{t('← Go Back & Reconsider', '← ಹಿಂದೆ ಹೋಗಿ ಮರು-ಪರಿಶೀಲಿಸಿ')}
 							</button>
 						</div>
@@ -854,7 +858,7 @@ const ScenarioScreen = () => {
 					{completedScenarios.length > 0 && !allChoicesLocked && (
 						<button
 							onClick={revertLastChoice}
-							className="w-full py-2 text-xs text-white/35 hover:text-white/60 transition-colors text-center">
+							className="w-full py-2 text-xs text-white/45 hover:text-white/60 transition-colors text-center font-sans">
 							{t('← Reconsider previous decision', '← ಹಿಂದಿನ ನಿರ್ಧಾರ ಮರು-ಪರಿಶೀಲಿಸಿ')}
 						</button>
 					)}
