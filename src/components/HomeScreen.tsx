@@ -3,6 +3,7 @@ import { Home } from 'lucide-react';
 import poshImage from '@/assets/posh-button.webp';
 import workplaceImage from '@/assets/tbf-logo.png';
 import financialImage from '@/assets/financial/susheela-button.webp';
+import analyticsImage from '@/assets/analytics-dashboard-button.webp';
 
 interface GameCard {
 	id: string;
@@ -84,13 +85,8 @@ const HomeScreen = () => {
 				<button
 					onClick={() => navigate('/analytics')}
 					className="w-full max-w-2xl mx-auto rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-200 text-left block">
-					<div className="w-full h-24 sm:h-32 bg-gradient-to-br from-teal-100 via-cyan-50 to-slate-200 flex items-center justify-center">
-						<div className="flex gap-2 sm:gap-3 opacity-60">
-							<div className="w-6 sm:w-8 h-12 sm:h-16 bg-teal-400 rounded-t" />
-							<div className="w-6 sm:w-8 h-8 sm:h-10 bg-cyan-400 rounded-t mt-4 sm:mt-6" />
-							<div className="w-6 sm:w-8 h-16 sm:h-20 bg-emerald-400 rounded-t" />
-							<div className="w-6 sm:w-8 h-10 sm:h-12 bg-teal-300 rounded-t mt-2 sm:mt-4" />
-						</div>
+					<div className="w-full h-24 sm:h-32 overflow-hidden">
+						<img src={analyticsImage} alt="Analytics Dashboard" className="w-full h-full object-cover" />
 					</div>
 					<div className="bg-[#c8d8c0] px-3 py-2 sm:px-4 sm:py-3">
 						<span className="text-gray-800 font-medium text-sm sm:text-base">Analytics Dashboard</span>
