@@ -224,7 +224,9 @@ const ScenarioScreen = () => {
 				corpusAssets.length > 0 ? corpusAssets.map((a) => `${a.label} (${fmt(a.value)})`).join(', ') : 'her savings';
 			const corpusDescription_kan =
 				corpusAssets.length > 0
-					? corpusAssets.map((a) => `${(a as Asset).label_kan ?? a.label} (${fmt(a.value)})`).join(', ')
+					? corpusAssets
+							.map((a) => `${(a as typeof a & { label_kan?: string }).label_kan ?? a.label} (${fmt(a.value)})`)
+							.join(', ')
 					: 'ಅವಳ ಉಳಿತಾಯ';
 			return {
 				en: `Susheela collapses at work — severe diabetic complication. Hospital bill: ₹1,80,000 (₹30,000 immediate deposit needed). Her retirement corpus consists of: ${corpusDescription}. Some of these may be hard to liquidate quickly.`,
