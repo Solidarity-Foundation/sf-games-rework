@@ -77,6 +77,36 @@ const CharacterDetailScreen = () => {
 					</p>
 				</div>
 
+				{/* 2-year interval callout */}
+				<div className="rounded-2xl p-5 border-2 border-[#e8b84b]/60 bg-[#e8b84b]/8">
+					<div className="flex items-center gap-2 mb-3">
+						<span className="text-xl">⏱</span>
+						<h3 className="text-sm font-bold uppercase tracking-widest text-[#e8b84b]">
+							{t('10 decisions · 20 years', '10 ನಿರ್ಧಾರ · 20 ವರ್ಷ')}
+						</h3>
+					</div>
+					<p className="text-sm text-white/80 leading-relaxed mb-5">
+						{t(
+							"Each decision jumps Susheela's life forward by 2 years. Your choices have long-term consequences — a bad call at Year 4 can haunt her at Year 18.",
+							'ಪ್ರತಿ ನಿರ್ಧಾರ ಸುಶೀಲಾಳ ಜೀವನವನ್ನು 2 ವರ್ಷ ಮುಂದಕ್ಕೆ ಒಯ್ಯುತ್ತದೆ. ನಿಮ್ಮ ಆಯ್ಕೆಗಳು ದೀರ್ಘಕಾಲೀನ ಪರಿಣಾಮ ಬೀರುತ್ತವೆ.',
+						)}
+					</p>
+					{/* Timeline strip */}
+					<div className="flex items-start">
+						{[0, 2, 4, 6, 8, 10, 12, 14, 16, 18].map((year, i) => (
+							<div key={year} className="flex items-center flex-1 min-w-0">
+								<div className="flex flex-col items-center flex-shrink-0">
+									<div className="w-6 h-6 rounded-full bg-[#e8b84b] flex items-center justify-center text-[9px] font-bold text-[#0e1e3f]">
+										{i + 1}
+									</div>
+									<span className="text-[11px] text-white/50 mt-1 whitespace-nowrap">Yr {year}</span>
+								</div>
+								{i < 9 && <div className="flex-1 h-0.5 bg-[#e8b84b]/35 mx-0.5 mb-3" />}
+							</div>
+						))}
+					</div>
+				</div>
+
 				{/* Background info */}
 				<div className="bg-[#162d5c] rounded-2xl p-5 border border-white/20">
 					<h3 className="text-sm font-semibold uppercase tracking-widest text-white/55 mb-4">
