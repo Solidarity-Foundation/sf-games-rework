@@ -46,7 +46,7 @@ const CharacterDetailScreen = () => {
 						<p className="text-sm text-[#e8b84b]/80 uppercase tracking-widest mb-1">
 							{t('Your character', 'ನಿಮ್ಮ ಪಾತ್ರ')}
 						</p>
-						<h1 className="text-4xl font-bold tracking-wide text-white leading-tight">SUSHEELA</h1>
+						<h1 className="text-4xl font-bold tracking-wide text-white leading-tight">{t('SUSHEELA', 'ಸುಶೀಲಾ')}</h1>
 						<p className="text-base text-white/65 mt-1">{t('Age 30 · Bengaluru', 'ವಯಸ್ಸು 30 · ಬೆಂಗಳೂರು')}</p>
 
 						{/* Starting finances */}
