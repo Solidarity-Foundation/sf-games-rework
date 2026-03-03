@@ -55,7 +55,7 @@ const CharacterDetailScreen = () => {
 								{t('Income: ', 'ಆದಾಯ: ')}₹18,000/{t('month', 'ತಿಂಗಳು')}
 							</span>
 							<span className="bg-white/12 border border-white/25 text-white/75 text-xs font-medium px-3 py-1 rounded-full">
-								{t('Savings: ', 'ಉಳಿತಾಯ: ')}₹0/{t('month', 'ತಿಂಗಳು')}
+								{t('Savings: ', 'ಉಳಿತಾಯ: ')}₹0
 							</span>
 						</div>
 					</div>
