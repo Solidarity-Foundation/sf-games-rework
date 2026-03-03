@@ -52,17 +52,21 @@ const HomeScreen = () => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="min-h-screen bg-[#b8f0d0] flex flex-col">
+		<div className="min-h-screen bg-[#34af69] flex flex-col">
 			{/* Header */}
 			<header className="sticky top-0 z-10 flex items-center px-4 py-3 bg-white shadow-sm">
 				<button onClick={() => navigate('/')} className="p-1 hover:bg-gray-100 rounded" aria-label="Home">
 					<Home size={22} className="text-gray-700" />
 				</button>
-				<h1 className="flex-1 text-center text-lg font-medium text-gray-800 -ml-6">SF Games</h1>
+				<h1 className="flex-1 text-center text-xl font-medium -ml-6">Educational Games from Solidarity Foundation</h1>
 			</header>
 
 			{/* Game grid */}
 			<main className="flex-1 px-6 py-8">
+				<p className="text-center mb-6 text-white text-lg w-full md:w-1/2 mx-auto">
+					Building games to facilitate awareness on Financial Literacy, PoSH, Workplace Etiquette and Diversity &
+					Inclusion.
+				</p>
 				<div className="grid grid-cols-2 gap-4 w-full max-w-2xl mx-auto mb-4">
 					{games.map((game) => (
 						<button
