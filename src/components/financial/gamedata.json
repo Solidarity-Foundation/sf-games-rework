@@ -715,7 +715,7 @@
           "label_kan": "ಇರುವಲ್ಲೇ ಇರಿ, ನಿರಂತರ ಉಳಿಸಿ",
           "description": "Don't expand, continue saving steadily for the next 10 years toward the house — safe, guaranteed but modest progress.",
           "description_kan": "ವಿಸ್ತರಿಸದಿರಿ, ಮನೆ ಗುರಿಗೆ 10 ವರ್ಷ ನಿರಂತರ ಉಳಿಸಿ.",
-          "points": 10,
+          "points": -20,
           "financialImpact": {
             "savingsChange": 0,
             "monthlyIncomeChange": 0,
@@ -732,7 +732,7 @@
           "label_kan": "ಭಾಗಶಃ ವಿಸ್ತರಣೆ",
           "description": "Expand partially with ₹2 lakh investment in equipment at current location — moderate income growth of +₹10,000/month, no loan.",
           "description_kan": "ಪ್ರಸ್ತುತ ಸ್ಥಳದಲ್ಲಿ ₹2 ಲಕ್ಷ ಉಪಕರಣ ಹೂಡಿಕೆ — +₹10,000/ತಿಂಗಳ ಆದಾಯ ಹೆಚ್ಚಳ, ಸಾಲ ಇಲ್ಲ.",
-          "points": -20,
+          "points": 10,
           "minimumSavings": 200000,
           "financialImpact": {
             "savingsChange": -200000,
