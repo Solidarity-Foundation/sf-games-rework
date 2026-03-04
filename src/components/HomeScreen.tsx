@@ -58,12 +58,12 @@ const HomeScreen = () => {
 				<button onClick={() => navigate('/')} className="p-1 hover:bg-gray-100 rounded" aria-label="Home">
 					<Home size={22} className="text-gray-700" />
 				</button>
-				<h1 className="flex-1 text-center text-xl font-medium -ml-6">Educational Games from Solidarity Foundation</h1>
+				<h1 className="flex-1 text-center text-md font-medium -ml-6">Educational Games from Solidarity Foundation</h1>
 			</header>
 
 			{/* Game grid */}
 			<main className="flex-1 px-6 py-8">
-				<p className="text-center mb-6 text-white text-lg w-full md:w-1/2 mx-auto">
+				<p className="text-center mb-6 text-white w-full md:w-1/2 lg:w-[40%] mx-auto font-sans">
 					Building games to facilitate awareness on Financial Literacy, PoSH, Workplace Etiquette and Diversity &
 					Inclusion.
 				</p>

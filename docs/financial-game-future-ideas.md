@@ -103,15 +103,155 @@ Add optional `easy` and `hard` override blocks to each scenario/choice in `gamed
 
 ---
 
+## 4. Raise Engineering Fees and Add Explicit Diploma Path (S6 Revision)
+
+### Concept
+Engineering college currently costs ₹5 lakh — exactly equal to the land value, making Choice A (sell land) a clean one-to-one swap that feels too tidy. Raising the fee to **₹10 lakh** over 4 years creates real tension: the land covers only half, forcing every choice to involve either debt or compromise. At the same time, introduce a **diploma path** as an explicit, honourable choice — Priya choosing a 3-year polytechnic diploma (₹2–3 lakh total) rather than a 4-year engineering degree. This replaces the current S6-C "share burden" choice, which is vague and whose consequences are only felt as a hidden downstream penalty.
+
+### Priya's Dream — Making the Goal Explicit
+The situation text in S6 must establish clearly that **engineering is Priya's dream**, not just a general desire to study further. The opening line should name it: *"Priya has dreamed of becoming an engineer since she was a child. She has received admission to an engineering college — the fees are ₹10 lakh over 4 years."* This ensures the player understands what is at stake before they choose. If Priya ends up with a diploma or drops out, the emotional weight of the compromise lands correctly because the original dream was made concrete.
+
+### Revised Scenario 6 Setup
+- Engineering fee: **₹10 lakh over 4 years** (₹2.5L/year)
+- Land is worth **₹5 lakh** at this point (bought at ₹3L in S4, now appreciated)
+- Diploma course: **₹2.5 lakh over 3 years** (polytechnic, full-time — no part-time work needed)
+- Priya is not legally Susheela's daughter, so formal bank education loans remain difficult
+
+### Revised Choices
+
+**Choice A — Sell land + cooperative/trust loan (excellent, +30)**
+Sell land for ₹5L. The land sale covers the first 2 years of engineering. Susheela joins a local women's credit cooperative and takes a ₹5L loan at 10% interest (₹8,000 EMI, 60 months) for the remaining 2 years. Priya completes a full engineering degree. Land asset removed; manageable debt added.
+
+- `savingsChange`: +₹0 (land proceeds go directly to fees)
+- `assetRemovals`: `["land"]`
+- `newDebts`: cooperative/trust loan ₹5L at 10%, EMI ₹8,000, clears by S9
+- Monthly expenses: +₹8,000 (EMI)
+- S10 outcome: Priya is a qualified engineer, earning ₹35,000/month, contributes ₹20,000/month to household
+
+**Choice B — Sell land, fund diploma track (moderate, +10)**
+Sell land for ₹5L. Rather than stretching into debt, Susheela and Priya agree that a polytechnic diploma (₹2.5L, 3 years) is a realistic, debt-free path. ₹2.5L goes to diploma fees; the remaining ₹2.5L stays in savings. Priya studies full-time, no part-time work, and completes her diploma. Land asset removed; no new debt.
+
+- `savingsChange`: +₹250,000 (land ₹5L − diploma ₹2.5L)
+- `assetRemovals`: `["land"]`
+- `newDebts`: none
+- Monthly expenses: unchanged
+- S10 outcome: Priya works as a junior engineer/technician earning ₹22,000/month, contributes ₹10,000/month to household
+
+**Choice C — Keep land, take high-interest loan, Priya works part-time (poor, −20)**
+Keep land. Use all current savings plus a personal loan of ₹5L at 18% interest (₹12,500 EMI) to fund the first half of engineering. Priya works part-time evenings to contribute. Studies suffer — she falls behind, misses exams, and by year 3 cannot keep up. She drops out without completing the degree.
+
+- `savingsChange`: 0 (`spendAllSavings: true`)
+- `spendAllSavings`: true
+- `newDebts`: personal loan ₹5L at 18%, EMI ₹12,500
+- Monthly expenses: +₹12,500 (EMI)
+- S10 outcome: Priya did not complete engineering, works in informal sector earning ₹15,000/month, contributes ₹10,000/month to household (keeps ₹5,000 for herself)
+
+### Three S10 Outcome Tracks
+This revision creates three clean, meaningfully different outcomes in S10:
+
+| S6 choice | Priya's qualification | S10 monthly contribution |
+|---|---|---|
+| A (engineering + loan) | B.E. engineer | ₹20,000/month (keeps ₹15,000) |
+| B (diploma, no debt) | Polytechnic diploma | ₹10,000/month (keeps ₹12,000) |
+| C (dropout) | No qualification | ₹10,000/month (keeps ₹5,000) |
+
+The S10 situation text should reflect the chosen track explicitly (via `conditionalImpacts` keyed to `S6=A`, `S6=B`, `S6=C`).
+
+### Education Goal Ring Progress
+The existing goals ring in ScenarioScreen tracks progress toward Susheela's goals. Priya's engineering should be registered as a named goal with a defined completion target. The ring progress should reflect the S6 outcome:
+
+| S6 choice | Goal ring state | Display |
+|---|---|---|
+| A (engineering completed) | 100% | Full ring, filled colour |
+| B (diploma — original goal was engineering) | 50% | Half ring |
+| C (dropout — goal failed) | 0% | Empty ring (or ring removed entirely) |
+
+The 50% state for the diploma path is intentional: Priya got *a* qualification, but the original goal — engineering — was not achieved. This communicates that even a "decent" outcome is a partial miss relative to what was hoped for.
+
+### Results Page Badge — Priya the Engineer
+On the ResultsScreen, add a special achievement badge for completing Priya's engineering degree (S6=A), similar to the existing badge for successfully buying land for the retirement home. Suggested display:
+
+- **Badge label:** "Priya the Engineer"
+- **Icon:** mortar board / graduation cap
+- **Condition:** `choiceHistory.S6 === 'A'`
+- **Badge description:** "You invested fully in Priya's dream. She graduated as a qualified engineer."
+
+If S6=B (diploma), show a softer note — not a badge, but a line in the results summary: *"Priya completed a diploma. Her dream of engineering was only partly fulfilled."*
+
+If S6=C (dropout), show: *"Priya was unable to complete her studies. The financial pressure was too great."*
+
+This mirrors how the land badge works: it rewards the player for making the harder, more forward-looking choice — and makes the cost of the easier choices visible at the end.
+
+### Relationship to Idea 1
+This revision **supersedes Idea 1** (Priya Cannot Finish Her Studies). The diploma path and the dropout path are now first-class explicit choices rather than a hidden downstream consequence of a vague "share burden" option. Idea 1 can be retired once this is implemented.
+
+### S10 Situation Text — Exact Changes Required
+
+S10's situation text is generated dynamically in `getSituationText()` inside `ScenarioScreen.tsx` (not stored in `gamedata.json`). The Priya sentence currently reads:
+
+> *"Priya is now graduating and starting her first job (₹35,000/month; contributing ₹20,000/month to the household)."*
+
+This must be replaced with a conditional block keyed to `choiceHistory[6]?.choiceId` (S6):
+
+**S6=A (engineering):**
+> *"Priya fulfilled her dream — she graduated as a B.E. engineer and has started her first job (₹35,000/month; contributing ₹20,000/month to the household, keeping ₹15,000 for herself)."*
+
+**S6=B (diploma):**
+> *"Priya completed a polytechnic diploma — not the engineering degree she dreamed of, but a real qualification. She works as a junior technician (₹22,000/month; contributing ₹10,000/month to the household, keeping ₹12,000 for herself)."*
+
+**S6=C (dropout):**
+> *"Priya was unable to complete her engineering degree — the financial pressure forced her to drop out. She works in the informal sector (₹15,000/month; contributing ₹10,000/month to the household, keeping ₹5,000 for herself)."*
+
+### S10 gamedata.json — monthlyIncomeChange Must Be Conditional
+
+All three S10 choices (A, B, C) currently hardcode `"monthlyIncomeChange": 20000`. This must become path-dependent:
+
+- Set base `"monthlyIncomeChange": 0` on all three choices
+- Add `conditionalImpacts` to each choice:
+  ```json
+  "conditionalImpacts": [
+    {
+      "condition": { "scenarioId": 6, "choiceId": "A" },
+      "monthlyIncomeChange": 20000,
+      "notes": "Priya graduated as B.E. engineer — contributes ₹20,000/month to household."
+    },
+    {
+      "condition": { "scenarioId": 6, "choiceId": "B" },
+      "monthlyIncomeChange": 10000,
+      "notes": "Priya completed polytechnic diploma — contributes ₹10,000/month to household."
+    },
+    {
+      "condition": { "scenarioId": 6, "choiceId": "C" },
+      "monthlyIncomeChange": 10000,
+      "notes": "Priya dropped out — earns ₹15,000/month in informal sector, contributes ₹10,000/month to household, keeps ₹5,000 for herself."
+    }
+  ]
+  ```
+
+### Implementation Notes
+- Update `situation` text in S6 to name Priya's dream explicitly and state the fee as ₹10 lakh
+- Update `assetValueUpdates` for land to ₹5L (no change — already correct)
+- Replace all three S6 choices in `gamedata.json`
+- Update S10 `getSituationText()` in `ScenarioScreen.tsx` with the three Priya clauses above
+- Update S10 choices in `gamedata.json`: set base `monthlyIncomeChange: 0`, add `conditionalImpacts` for S6=A and S6=B
+- Add a named goal `"priya-engineering"` to the goals list; its ring progress is driven by S6 outcome: 100% (A), 50% (B), 0% (C)
+- On ResultsScreen: add "Priya the Engineer" badge when `S6=A`; add outcome summary lines for `S6=B` and `S6=C`
+- No new store architecture needed — `conditionalImpacts` and `assetRemovals` already exist
+
+---
+
 ## Implementation Notes
 
-Ideas 1 and 2 use the existing `conditionalImpacts` and `minimumSavings` mechanisms — no new store architecture is needed.
+Idea 4 (S6 revision) supersedes Idea 1 and uses only existing store mechanics — it should be implemented first.
 
-For the S6-A land gate (unavailable if no land), a new `requiredAsset` field on a choice may need to be added to the store's gate-checking logic.
+Idea 2 (land cascade) uses the existing `conditionalImpacts` and `minimumSavings` mechanisms — no new store architecture is needed.
+
+For the S6-A land gate in Idea 2 (unavailable if no land), a new `requiredAsset` field on a choice may need to be added to the store's gate-checking logic.
 
 For difficulty levels (Idea 3), start with the multiplier approach — add a `difficulty` field to the Zustand store and apply it when evaluating `minimumSavings` gates and loan interest rates.
 
 **Priority order:**
-1. Difficulty levels — highest leverage, affects the whole game.
-2. Priya studies consequence — lighter lift, high emotional impact.
-3. Land cascade — more changes across S6, S8, S10, but uses existing mechanics.
+1. **S6 revision (Idea 4)** — raises fees to ₹10L, adds explicit diploma path, three clean S10 tracks. Implement this before anything else.
+2. Difficulty levels (Idea 3) — highest leverage after S6 is solid, affects the whole game.
+3. Priya studies consequence (Idea 1) — superseded by Idea 4; retire once Idea 4 is done.
+4. Land cascade (Idea 2) — more changes across S6, S8, S10, but uses existing mechanics.
