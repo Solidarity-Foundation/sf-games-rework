@@ -127,6 +127,8 @@ Sell land for ₹5L. The land sale covers the first 2 years of engineering. Sush
 - `newDebts`: cooperative/trust loan ₹5L at 10%, EMI ₹8,000, clears by S9
 - Monthly expenses: +₹8,000 (EMI)
 - S10 outcome: Priya is a qualified engineer, earning ₹35,000/month, contributes ₹20,000/month to household
+- **Gate — `requiredAsset: "land"`**: Choice A is unavailable if Susheela does not own land (nothing to sell).
+- **Gate — `minimumSurplus: 8000`**: Choice A is unavailable if current monthly surplus is below ₹8,000 — Susheela cannot afford the EMI after selling land.
 
 **Choice B — Sell land, fund diploma track (moderate, +10)**
 Sell land for ₹5L. Rather than stretching into debt, Susheela and Priya agree that a polytechnic diploma (₹2.5L, 3 years) is a realistic, debt-free path. ₹2.5L goes to diploma fees; the remaining ₹2.5L stays in savings. Priya studies full-time, no part-time work, and completes her diploma. Land asset removed; no new debt.
@@ -136,6 +138,7 @@ Sell land for ₹5L. Rather than stretching into debt, Susheela and Priya agree 
 - `newDebts`: none
 - Monthly expenses: unchanged
 - S10 outcome: Priya works as a junior engineer/technician earning ₹22,000/month, contributes ₹10,000/month to household
+- **Gate — `requiredAsset: "land"`**: Choice B is unavailable if Susheela does not own land — there is nothing to sell to fund the diploma.
 
 **Choice C — Keep land, take high-interest loan, Priya works part-time (poor, −20)**
 Keep land. Use all current savings plus a personal loan of ₹5L at 18% interest (₹12,500 EMI) to fund the first half of engineering. Priya works part-time evenings to contribute. Studies suffer — she falls behind, misses exams, and by year 3 cannot keep up. She drops out without completing the degree.
@@ -145,6 +148,7 @@ Keep land. Use all current savings plus a personal loan of ₹5L at 18% interest
 - `newDebts`: personal loan ₹5L at 18%, EMI ₹12,500
 - Monthly expenses: +₹12,500 (EMI)
 - S10 outcome: Priya did not complete engineering, works in informal sector earning ₹15,000/month, contributes ₹10,000/month to household (keeps ₹5,000 for herself)
+- **Gate — `minimumSurplus: 12500`**: Choice C is unavailable if current monthly surplus is below ₹12,500 — Susheela cannot sustain the high-interest EMI.
 
 ### Three S10 Outcome Tracks
 This revision creates three clean, meaningfully different outcomes in S10:
@@ -236,7 +240,8 @@ All three S10 choices (A, B, C) currently hardcode `"monthlyIncomeChange": 20000
 - Update S10 choices in `gamedata.json`: set base `monthlyIncomeChange: 0`, add `conditionalImpacts` for S6=A and S6=B
 - Add a named goal `"priya-engineering"` to the goals list; its ring progress is driven by S6 outcome: 100% (A), 50% (B), 0% (C)
 - On ResultsScreen: add "Priya the Engineer" badge when `S6=A`; add outcome summary lines for `S6=B` and `S6=C`
-- No new store architecture needed — `conditionalImpacts` and `assetRemovals` already exist
+- `minimumSurplus` gates on A and C use the existing gate mechanism (already supported by the store and ScenarioScreen)
+- `requiredAsset` gate on A and B is **new** — a `requiredAsset` field on a choice needs to be added to the store's gate-checking logic (similar to how `minimumSavings` works, but checks `assets.some(a => a.type === requiredAsset)` instead)
 
 ---
 
