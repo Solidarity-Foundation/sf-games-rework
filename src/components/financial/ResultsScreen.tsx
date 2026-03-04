@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from 'react-router-dom';
-import { Home, Trophy } from 'lucide-react';
+import { Home, Trophy, GraduationCap } from 'lucide-react';
 import { useFinancialStore } from './financialStore';
 import { getFinancialLevel } from './resultlevels';
 import houseIcon from '@/assets/financial/house-icon.png';
@@ -18,6 +18,7 @@ const ResultsScreen = () => {
 		age, language, setLanguage, resetGame, completedScenarios, choiceHistory,
 	} = useFinancialStore();
 
+	const s6EngineerPath = choiceHistory[6]?.choiceId === 'A';
 	const s6DiplomaPath = choiceHistory[6]?.choiceId === 'B';
 	const s6DropOutPath = choiceHistory[6]?.choiceId === 'C';
 
@@ -72,12 +73,24 @@ const ResultsScreen = () => {
 					<div className="text-sm text-white/45 mt-2">
 						{t(`Out of 300 points · Susheela, age ${Math.round(age)}`, `300 ಅಂಕಗಳಲ್ಲಿ · ಸುಶೀಲಾ, ವಯಸ್ಸು ${Math.round(age)}`)}
 					</div>
-					{totalDebt === 0 && (
-						<div className="mt-3 inline-flex items-center gap-1.5 bg-green-900/40 border border-green-500/50 rounded-full px-3 py-1">
-							<span className="text-green-400 text-sm">★</span>
-							<span className="text-green-300 text-sm font-medium">
-								{t('Debt-Free Journey', 'ಸಾಲಮುಕ್ತ ಪ್ರಯಾಣ')}
-							</span>
+					{(totalDebt === 0 || s6EngineerPath) && (
+						<div className="mt-3 flex flex-wrap justify-center gap-2">
+							{totalDebt === 0 && (
+								<div className="inline-flex items-center gap-1.5 bg-green-900/40 border border-green-500/50 rounded-full px-3 py-1">
+									<span className="text-green-400 text-sm">★</span>
+									<span className="text-green-300 text-sm font-medium">
+										{t('Debt-Free Journey', 'ಸಾಲಮುಕ್ತ ಪ್ರಯಾಣ')}
+									</span>
+								</div>
+							)}
+							{s6EngineerPath && (
+								<div className="inline-flex items-center gap-1.5 bg-blue-900/40 border border-blue-500/50 rounded-full px-3 py-1">
+									<GraduationCap size={14} className="text-blue-400" />
+									<span className="text-blue-300 text-sm font-medium">
+										{t('Priya the Engineer', 'ಎಂಜಿನಿಯರ್ ಪ್ರಿಯಾ')}
+									</span>
+								</div>
+							)}
 						</div>
 					)}
 				</div>

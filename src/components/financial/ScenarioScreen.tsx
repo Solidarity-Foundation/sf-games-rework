@@ -217,27 +217,29 @@ const ScenarioScreen = () => {
 			const surplus = monthlyIncome - monthlyExpenses;
 			const yearsToRetirement = Math.max(0, 50 - age);
 			return {
-				en: `Susheela's business is doing well after expansion. She earns ${fmt(monthlyIncome)}/month and after expenses (${fmt(monthlyExpenses)}), she can save ${fmt(surplus)}/month. She has ${fmt(savings)} in savings. ${yearsToRetirement} years until planned retirement. She needs: a house (₹20 lakh in ${yearsToRetirement} years), medical corpus (₹5 lakh), and monthly income post-retirement.`,
-				kan: `ಸುಶೀಲಾ ${fmt(monthlyIncome)}/ತಿಂಗಳು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾಳೆ, ${fmt(surplus)}/ತಿಂಗಳು ಉಳಿಸಬಹುದು. ${fmt(savings)} ಉಳಿತಾಯವಿದೆ. ${yearsToRetirement} ವರ್ಷ ನಿವೃತ್ತಿಗೆ ಉಳಿದಿದೆ. ₹20 ಲಕ್ಷ ಮನೆ, ₹5 ಲಕ್ಷ ವೈದ್ಯಕೀಯ ನಿಧಿ ಬೇಕು.`,
+				en: `Susheela's business is doing well. She earns ${fmt(monthlyIncome)}/month and can save ${fmt(surplus)}/month after expenses. She has ${fmt(savings)} in savings and ${yearsToRetirement} years until retirement. How she saves now matters: cash loses to inflation, land can't be quickly liquidated, gold earns nothing on its own. A mix of physical and financial assets gives her both stability and flexibility when it matters most.`,
+				kan: `ಸುಶೀಲಾ ${fmt(monthlyIncome)}/ತಿಂಗಳು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾಳೆ, ${fmt(surplus)}/ತಿಂಗಳು ಉಳಿಸಬಹುದು. ${fmt(savings)} ಉಳಿತಾಯವಿದೆ, ${yearsToRetirement} ವರ್ಷ ನಿವೃತ್ತಿಗೆ ಉಳಿದಿದೆ. ಈಗ ಹೇಗೆ ಉಳಿಸುತ್ತಾಳೆ ಎಂಬುದು ಮುಖ್ಯ: ನಗದು ಹಣದುಬ್ಬರಕ್ಕೆ ಸೋಲುತ್ತದೆ, ಭೂಮಿ ತುರ್ತಿನಲ್ಲಿ ಬೇಗ ಮಾರಲಾಗದು, ಚಿನ್ನ ಆದಾಯ ತರುವುದಿಲ್ಲ. ಭೌತಿಕ ಮತ್ತು ಆರ್ಥಿಕ ಆಸ್ತಿಗಳ ಮಿಶ್ರಣ ಸ್ಥಿರತೆ ಮತ್ತು ನಮ್ಯತೆ ಎರಡನ್ನೂ ನೀಡುತ್ತದೆ.`,
 			};
 		}
 
-		// S9: dynamic corpus description — actual assets depend on S8 choice
+
+		// S9: dynamic situation — list current assets and bill amount
 		if (scenario.id === 9) {
-			const corpusAssets = assets.filter((a) =>
-				['mutual-fund', 'ppf', 'rd', 'fd', 'land', 'gold', 'emergency-fund'].includes(a.type),
+			const nonLandAssets = assets.filter((a) =>
+				['mutual-fund', 'ppf', 'rd', 'fd', 'gold', 'emergency-fund', 'equipment', 'community-building'].includes(a.type),
 			);
-			const corpusDescription =
-				corpusAssets.length > 0 ? corpusAssets.map((a) => `${a.label} (${fmt(a.value)})`).join(', ') : 'her savings';
-			const corpusDescription_kan =
-				corpusAssets.length > 0
-					? corpusAssets
-							.map((a) => `${(a as typeof a & { label_kan?: string }).label_kan ?? a.label} (${fmt(a.value)})`)
-							.join(', ')
-					: 'ಅವಳ ಉಳಿತಾಯ';
+			const landAsset9 = assets.find((a) => a.type === 'land');
+			const assetSummary = [
+				...nonLandAssets.map((a) => `${a.label} (${fmt(a.value)})`),
+				...(landAsset9 ? [`land worth ${fmt(landAsset9.value)}`] : []),
+			].join(', ');
+			const assetSummary_kan = [
+				...nonLandAssets.map((a) => `${(a as typeof a & { label_kan?: string }).label_kan ?? a.label} (${fmt(a.value)})`),
+				...(landAsset9 ? [`ಭೂಮಿ ${fmt(landAsset9.value)}`] : []),
+			].join(', ');
 			return {
-				en: `Susheela collapses at work — severe diabetic complication. Hospital bill: ₹1,80,000 (₹30,000 immediate deposit needed). Her retirement corpus consists of: ${corpusDescription}. Some of these may be hard to liquidate quickly.`,
-				kan: `ಸುಶೀಲಾ ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಕುಸಿದಳು — ತೀವ್ರ ಮಧುಮೇಹ ತೊಡಕು. ಆಸ್ಪತ್ರೆ ಬಿಲ್: ₹1,80,000 (₹30,000 ತಕ್ಷಣ ಬೇಕು). ಅವಳ ನಿವೃತ್ತಿ ನಿಧಿ: ${corpusDescription_kan}. ಕೆಲವನ್ನು ತ್ವರಿತವಾಗಿ ನಗದು ಮಾಡಲು ಕಷ್ಟವಾಗಬಹುದು.`,
+				en: `Susheela collapses at work — severe diabetic complication. The hospital requires ₹5,00,000 immediately. She has ${fmt(savings)} in savings${assetSummary ? ` and holds: ${assetSummary}` : ''}.`,
+				kan: `ಸುಶೀಲಾ ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಕುಸಿದಳು — ತೀವ್ರ ಮಧುಮೇಹ ತೊಡಕು. ಆಸ್ಪತ್ರೆಗೆ ತಕ್ಷಣ ₹5,00,000 ಬೇಕು. ${fmt(savings)} ಉಳಿತಾಯವಿದೆ${assetSummary_kan ? ` ಮತ್ತು: ${assetSummary_kan}` : ''}.`,
 			};
 		}
 
@@ -408,101 +410,66 @@ const ScenarioScreen = () => {
 					return c;
 				}) as GameChoice[]);
 
-	// Dynamic choice text for S9 — descriptions depend on which assets the player actually has
+	// Dynamic choice text for S9 — descriptions depend on assets the player actually holds
 	const s9Choices: GameChoice[] =
 		scenario.id !== 9
 			? s8Choices
 			: (s8Choices.map((c, i) => {
-					const hasEmergencyFund = assets.some((a) => a.type === 'emergency-fund');
-					const emergencyFund = assets.find((a) => a.type === 'emergency-fund');
-					const hasRd = assets.some((a) => a.type === 'rd');
-					const hasMutualFund = assets.some((a) => a.type === 'mutual-fund');
-					const hasFd = assets.some((a) => a.type === 'fd');
-					const hasGold = assets.some((a) => a.type === 'gold');
-					const hasLand = assets.some((a) => a.type === 'land');
-					const fdAsset = assets.find((a) => a.type === 'fd');
-					const goldAsset = assets.find((a) => a.type === 'gold');
-					const rdAsset = assets.find((a) => a.type === 'rd');
-					const landAsset = assets.find((a) => a.type === 'land');
+					const landAsset9 = assets.find((a) => a.type === 'land');
+					const nonLandAssets9 = assets.filter((a) => !['land'].includes(a.type) && a.value > 0 &&
+						['mutual-fund', 'ppf', 'rd', 'fd', 'gold', 'emergency-fund', 'equipment', 'community-building'].includes(a.type));
+					const nonLandProceeds = nonLandAssets9.reduce((sum, a) => sum + a.value, 0);
+					const nonLandShortfall = Math.max(0, 500000 - nonLandProceeds);
+					const nlR = 0.20 / 12; const nlN = 60;
+					const nlEmi = nonLandShortfall > 0
+						? Math.round(nonLandShortfall * nlR * Math.pow(1 + nlR, nlN) / (Math.pow(1 + nlR, nlN) - 1))
+						: 0;
 
+					// Choice A: Pay from savings
 					if (i === 0) {
-						const parts: string[] = [];
-						const parts_kan: string[] = [];
-						if (hasEmergencyFund) {
-							parts.push(`emergency fund (${fmt(emergencyFund!.value)})`);
-							parts_kan.push(`ತುರ್ತು ನಿಧಿ (${fmt(emergencyFund!.value)})`);
-						}
-						if (hasRd) {
-							parts.push('break RD (small penalty)');
-							parts_kan.push('RD ಮುರಿಯಿರಿ (ಸಣ್ಣ ದಂಡ)');
-						}
-						if (parts.length === 0) {
-							// No emergency fund, no RD — use savings
+						return {
+							...c,
+							description: `Pay the full ₹5,00,000 hospital bill directly from savings. You currently have ${fmt(savings)} in savings.`,
+							description_kan: `₹5,00,000 ಆಸ್ಪತ್ರೆ ಬಿಲ್ ನೇರವಾಗಿ ಉಳಿತಾಯದಿಂದ ಪಾವತಿಸಿ. ಪ್ರಸ್ತುತ ಉಳಿತಾಯ: ${fmt(savings)}.`,
+						} as GameChoice;
+					}
+
+					// Choice B: Sell land
+					if (i === 1) {
+						if (landAsset9) {
+							const proceeds9 = landAsset9.value;
+							const leftover = proceeds9 - 500000;
 							return {
 								...c,
-								label: 'Cover from savings',
-								label_kan: 'ಉಳಿತಾಯದಿಂದ ಭರಿಸಿ',
-								description:
-									savings >= 180000
-										? 'Pay the full ₹1,80,000 hospital bill from savings — no need to touch investments.'
-										: 'Use savings to cover the hospital bill — supplement from monthly income if needed.',
-								description_kan:
-									savings >= 180000
-										? '₹1,80,000 ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಉಳಿತಾಯದಿಂದ — ಹೂಡಿಕೆ ಮುಟ್ಟಬೇಕಿಲ್ಲ.'
-										: 'ಉಳಿತಾಯದಿಂದ ಆಸ್ಪತ್ರೆ ಬಿಲ್ — ಅಗತ್ಯವಿದ್ದಲ್ಲಿ ಮಾಸಿಕ ಆದಾಯದಿಂದ ಪೂರಕ.',
+								description: leftover >= 0
+									? `Sell land (${fmt(proceeds9)}) to cover the ₹5 lakh bill. ${leftover > 0 ? fmt(leftover) + ' stays in savings.' : 'Proceeds cover the bill exactly.'}`
+									: `Sell land (${fmt(proceeds9)}) toward the ₹5 lakh bill — ${fmt(Math.abs(leftover))} short.`,
+								description_kan: leftover >= 0
+									? `ಭೂಮಿ (${fmt(proceeds9)}) ಮಾರಿ ₹5 ಲಕ್ಷ ಬಿಲ್ ಭರಿಸಿ. ${leftover > 0 ? fmt(leftover) + ' ಉಳಿತಾಯದಲ್ಲಿ ಉಳಿಯುತ್ತದೆ.' : 'ಮೊತ್ತ ಬಿಲ್ ಭರಿಸ್ತದೆ.'}`
+									: `ಭೂಮಿ (${fmt(proceeds9)}) ಮಾರಿ ₹5 ಲಕ್ಷ ಬಿಲ್ಗೆ — ${fmt(Math.abs(leftover))} ಕೊರತೆ.`,
 							} as GameChoice;
 						}
-						const dynamicLabel =
-							hasEmergencyFund && hasRd ? c.label : hasEmergencyFund ? 'Use emergency fund' : 'Break RD';
-						const dynamicLabel_kan =
-							hasEmergencyFund && hasRd
-								? ((c as GameChoice & { label_kan?: string }).label_kan ?? c.label)
-								: hasEmergencyFund
-									? 'ತುರ್ತು ನಿಧಿ ಬಳಸಿ'
-									: 'RD ಮುರಿಯಿರಿ';
-						return {
-							...c,
-							label: dynamicLabel,
-							label_kan: dynamicLabel_kan,
-							description: `Use ${parts.join(' and ')} to cover the hospital bill — protect long-term investments.`,
-							description_kan: `${parts_kan.join(' ಮತ್ತು ')} ಬಳಸಿ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ — ದೀರ್ಘಕಾಲೀನ ಹೂಡಿಕೆ ರಕ್ಷಿಸಿ.`,
-						};
+						// No land — choice will be locked, show static text
+						return c;
 					}
 
-					if (i === 1 && !hasMutualFund) {
-						return {
-							...c,
-							label: '₹1L savings + small loan',
-							label_kan: '₹1L ಉಳಿತಾಯ + ಸಣ್ಣ ಸಾಲ',
-							description:
-								'Pay ₹1,00,000 from savings and take ₹80,000 loan at 12% interest (₹4,000 EMI/month) — cover the medical emergency with minimal asset impact.',
-							description_kan:
-								'₹1,00,000 ಉಳಿತಾಯದಿಂದ ಪಾವತಿಸಿ ₹80,000 @12% ಸಾಲ (₹4,000 EMI/ತಿಂ) — ಕನಿಷ್ಠ ಆಸ್ತಿ ಹಾನಿಯೊಂದಿಗೆ ಆರೊಗ್ಯ ತುರ್ತು ಭರಿಸಿ.',
-							minimumSavings: 100000,
-						} as GameChoice;
-					}
-
-					if (i === 2 && !hasMutualFund && hasLand) {
-						return {
-							...c,
-							label: 'Sell land',
-							label_kan: 'ಭೂಮಿ ಮಾರಿ',
-							description: `Sell land (${fmt(landAsset!.value)}) to cover the ₹1,80,000 hospital bill — no debt needed, but retirement home goal disrupted.`,
-							description_kan: `ಭೂಮಿ (${fmt(landAsset!.value)}) ಮಾರಿ ₹1,80,000 ಆಸ್ಪತ್ರೆ ಬಿಲ್ — ಸಾಲ ಬೇಡ, ನಿವೃತ್ತಿ ಮನೆ ಗುರಿ ಅಡ್ಡಿ.`,
-						} as GameChoice;
-					}
+					// Choice C: Liquidate non-land assets + loan
 					if (i === 2) {
-						const depositSource = hasEmergencyFund
-							? { en: 'use ₹30,000 from emergency fund for deposit', kan: 'ತುರ್ತು ನಿಧಿಯಿಂದ ₹30,000 ಠೇವಣಿಗೆ' }
-							: { en: 'use ₹30,000 from savings for deposit', kan: 'ಉಳಿತಾಯದಿಂದ ₹30,000 ಠೇವಣಿಗೆ' };
-						return {
-							...c,
-							description: `Take personal loan of ₹1,50,000 at 16% interest (₹3,500 EMI), ${depositSource.en} — preserve all investments.`,
-							description_kan: `16% ₹1,50,000 ವೈಯಕ್ತಿಕ ಸಾಲ (₹3,500 EMI), ${depositSource.kan} — ಎಲ್ಲಾ ಹೂಡಿಕೆ ರಕ್ಷಿಸಿ.`,
-						};
+						if (nonLandAssets9.length > 0) {
+							const assetList = nonLandAssets9.map((a) => `${a.label} (${fmt(a.value)})`).join(', ');
+							return {
+								...c,
+								description: `Sell: ${assetList} (${fmt(nonLandProceeds)} total).${nonLandShortfall > 0 ? ` Remaining ${fmt(nonLandShortfall)} covered by loan @20% (EMI ${fmt(nlEmi)}/month, 5 years).` : ' Bill fully covered — no loan needed.'}`,
+								description_kan: `ಮಾರಿ: ${assetList} (${fmt(nonLandProceeds)} ಮೊತ್ತ).${nonLandShortfall > 0 ? ` ಉಳಿದ ${fmt(nonLandShortfall)} @20% ಸಾಲ (EMI ${fmt(nlEmi)}/ತಿಂ, 5 ವರ್ಷ).` : ' ಬಿಲ್ ಪೂರ್ಣ ಭರಿತದೆ — ಸಾಲ ಬೇಡ.'}`,
+							} as GameChoice;
+						}
+						// No non-land assets — choice will be locked, show static text
+						return c;
 					}
+
 					return c;
 				}) as GameChoice[]);
+
 
 	const choice = s9Choices[selectedChoice];
 	const surplusLocked =
@@ -513,10 +480,15 @@ const ScenarioScreen = () => {
 		(choice as typeof choice & { requiredAsset?: string }).requiredAsset !== undefined
 			? !assets.some((a) => a.type === (choice as typeof choice & { requiredAsset?: string }).requiredAsset)
 			: false;
+	const nonLandAssetLocked =
+		(choice as typeof choice & { requiredNonLandAsset?: boolean }).requiredNonLandAsset === true
+			? !assets.some((a) => a.type !== 'land' && a.value > 0)
+			: false;
 	const choiceLocked =
 		((choice as typeof choice & { minimumSavings?: number }).minimumSavings ?? 0) > savings ||
 		surplusLocked ||
-		assetLocked;
+		assetLocked ||
+		nonLandAssetLocked;
 	const allChoicesLocked = s9Choices.every((c) => {
 		const sLocked = ((c as typeof c & { minimumSavings?: number }).minimumSavings ?? 0) > savings;
 		const spLocked =
@@ -531,7 +503,7 @@ const ScenarioScreen = () => {
 	});
 
 	const handleConfirm = () => {
-		makeChoice(scenario.id, selectedChoice);
+		makeChoice(currentScenario, selectedChoice);
 		navigate('/financial-literacy/feedback');
 	};
 
@@ -858,7 +830,9 @@ const ScenarioScreen = () => {
 								<span className="text-2xl font-bold text-[#e8b84b]">{choice.id}</span>
 								{choiceLocked && (
 									<span className="text-xs bg-red-600 text-white rounded px-2 py-0.5 shrink-0">
-										{assetLocked
+										{nonLandAssetLocked
+											? t('No assets to sell for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಮಾರಲು ಆಸ್ತಿ ಇಲ್ಲ')
+											: assetLocked
 											? t('Land required for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಭೂಮಿ ಬೇಕು')
 											: surplusLocked
 											? t(
@@ -927,14 +901,15 @@ const ScenarioScreen = () => {
 						disabled={choiceLocked}
 						className={`w-full py-4 rounded-xl font-bold text-base transition-colors ${choiceLocked ? 'bg-white/10 text-white/30 cursor-not-allowed' : 'bg-[#e8b84b] text-[#0e1e3f] hover:bg-[#f5c842]'}`}>
 						{choiceLocked
-							? assetLocked
+							? nonLandAssetLocked
+								? t('No assets available to sell', 'ಮಾರಲು ಆಸ್ತಿ ಇಲ್ಲ')
+								: assetLocked
 								? t('Need land asset for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಭೂಮಿ ಆಸ್ತಿ ಬೇಕು')
 								: surplusLocked
 								? t('Need more monthly surplus for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಹೆಚ್ಚಿನ ಮಾಸಿಕ ಉಳಿಕೆ ಬೇಕು')
 								: t('Not enough savings for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಸಾಕಷ್ಟು ಉಳಿತಾಯವಿಲ್ಲ')
-							: t(`Confirm Choice ${choice.id}: ${choice.label}`, `ಆಯ್ಕೆ ${choice.id} ದೃಢಪಡಿಸಿ`)}
+							: t('Confirm Choice', 'ಆಯ್ಕೆ ದೃಢೀಕರಿಸಿ')}
 					</button>
-
 					{/* Always-available back link — lets player escape a dead end by going back multiple levels */}
 					{completedScenarios.length > 0 && !allChoicesLocked && (
 						<button

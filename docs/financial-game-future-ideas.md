@@ -103,10 +103,80 @@ Add optional `easy` and `hard` override blocks to each scenario/choice in `gamed
 
 ---
 
-## 4. Raise Engineering Fees and Add Explicit Diploma Path (S6 Revision)
+## 4. Raise Engineering Fees and Add Explicit Diploma Path (S6 Revision) ✅ IMPLEMENTED
 
 ### Concept
 Engineering college currently costs ₹5 lakh — exactly equal to the land value, making Choice A (sell land) a clean one-to-one swap that feels too tidy. Raising the fee to **₹10 lakh** over 4 years creates real tension: the land covers only half, forcing every choice to involve either debt or compromise. At the same time, introduce a **diploma path** as an explicit, honourable choice — Priya choosing a 3-year polytechnic diploma (₹2–3 lakh total) rather than a 4-year engineering degree. This replaces the current S6-C "share burden" choice, which is vague and whose consequences are only felt as a hidden downstream penalty.
+
+### Implementation Status (March 2026)
+
+**Fully implemented.** All three new S6 choices are live. S10 income is conditional on S6 outcome. ResultsScreen shows path-specific education card. Key deviations from the original spec are noted below.
+
+#### What was built
+
+**Scenario 6 — Three revised choices**
+
+The fee is now ₹10 lakh over 4 years. Priya's dream of engineering is named explicitly in the situation text. Land is worth ₹5L at this point (appreciated from ₹3L in S4). All three choices require either land or gold — no path is "free."
+
+**Choice A — Sell land + cooperative loan (`requiredAsset: "land"`, `minimumSurplus: 8000`, +30)**
+Sell land for ₹5L (covers first 2 years of engineering). Join a women's credit cooperative and take a ₹5L loan at 10% interest (EMI ₹8,000, 60 months) for the remaining 2 years. Priya completes a full B.E. engineering degree.
+- `savingsChange: 0` (land proceeds offset fees exactly)
+- `assetRemovals: ["land"]`
+- `newDebts`: cooperative loan ₹5L @10%, EMI ₹8,000, 60-month term, expenseKey `loan-emi-edu-coop`
+- Gate: unavailable if no land asset; unavailable if monthly surplus < ₹8,000
+
+> Note: spec proposed 6% / ₹5,551 EMI / 120 months. Implemented as 10% / ₹8,000 / 60 months — shorter term, higher rate, more realistic for a cooperative informal loan.
+
+**Choice B — Sell land, fund diploma (`requiredAsset: "land"`, +10)**
+Sell land for ₹5L. Pay ₹2.5L for a 3-year polytechnic diploma (full-time, debt-free). ₹2.5L remains in savings. No EMI.
+- `savingsChange: +₹2,50,000`
+- `assetRemovals: ["land"]`
+- No new debts, no monthly expense change
+- Gate: unavailable if no land asset (no surplus gate — no debt involved)
+
+**Choice C — Keep land, high-interest loan, Priya DROPS OUT (`minimumSurplus: 12500`, −20)**
+Two sub-paths based on what asset Susheela holds:
+
+*Land path (S4-A was chosen):* Keep land. Spend all current savings toward fees. Take a personal loan for the shortfall at 18% interest (EMI ₹12,500). Priya works part-time evenings; her studies suffer. She eventually **DROPS OUT**.
+- `spendAllSavings: true`; loan = max(0, ₹10L − current savings) @18%/120mo
+- EMI varies by savings at time of choice (typically ~₹12,500)
+
+*Gold path (S4-B or S4-C was chosen):* Susheela has gold but no land. Sell gold (₹2L from S4-B or ₹1L from S4-C) toward fees. Take a high-interest loan for the remaining ₹8L/₹9L at 18% over 10 years. Priya **DROPS OUT**.
+- Gold sold → asset removed; savings restored (undoes `spendAllSavings`)
+- Loan = ₹10L − gold value; EMI computed at 18%/120mo (~₹10,000–₹11,300)
+- Choice label shown to gold-path players: "Sell gold, high-interest loan"
+
+**Education goal ring — S6 outcome → ring state**
+
+| S6 choice | Ring progress | Display |
+|---|---|---|
+| A (engineering) | 70% after S6, builds to 100% by S10 | Green, full ring |
+| B (diploma) | Fixed at 50% from S6 to end of game | Amber bar, "Diploma — Partial Goal" |
+| C (dropout) | 0% from S6 onward | Red bar, "Dropped Out ⚠" |
+
+> Note: spec proposed 100% for A immediately at S6. Implemented as 70% at S6 building to 100% by S10 — more gradual, reflects that engineering takes time to fully bear fruit.
+
+**Scenario 10 — Conditional Priya income**
+
+All three S10 choices have `monthlyIncomeChange: 0` as base. `conditionalImpacts` keyed to S6 outcome add:
+- S6=A (engineer): +₹20,000/month
+- S6=B (diploma/technician): +₹10,000/month
+- S6=C (dropout): +₹10,000/month
+
+S10 situation text is generated dynamically in `ScenarioScreen.tsx → getSituationText()`. The Priya sentence changes based on `choiceHistory[6]?.choiceId`.
+
+**ResultsScreen — Education card**
+
+| S6 outcome | Progress bar | Label | Note |
+|---|---|---|---|
+| A (or not reached) | Green, `educationGoalProgress`% | Standard status | — |
+| B (diploma) | Amber, hardcoded 50% | "Diploma — Partial Goal" | "Priya achieved a Polytechnic Diploma — a real qualification, but not the engineering degree she dreamed of." |
+| C (dropout) | Red, 0% | "Dropped Out ⚠" | — |
+
+**All spec items implemented**, including:
+- "Priya the Engineer" badge on ResultsScreen for S6=A — blue rounded badge with `GraduationCap` icon and "Priya the Engineer" label, displayed alongside the "Debt-Free Journey" badge in the score card. Both badges sit in a `flex flex-wrap justify-center gap-2` row so they stack gracefully on small screens.
+
+---
 
 ### Priya's Dream — Making the Goal Explicit
 The situation text in S6 must establish clearly that **engineering is Priya's dream**, not just a general desire to study further. The opening line should name it: *"Priya has dreamed of becoming an engineer since she was a child. She has received admission to an engineering college — the fees are ₹10 lakh over 4 years."* This ensures the player understands what is at stake before they choose. If Priya ends up with a diploma or drops out, the emotional weight of the compromise lands correctly because the original dream was made concrete.
@@ -244,6 +314,84 @@ All three S10 choices (A, B, C) currently hardcode `"monthlyIncomeChange": 20000
 - `requiredAsset` gate on A and B is **new** — a `requiredAsset` field on a choice needs to be added to the store's gate-checking logic (similar to how `minimumSavings` works, but checks `assets.some(a => a.type === requiredAsset)` instead)
 
 ---
+---
+
+## 5. Harden S9 Health Crisis — Raise Hospital Bill to ₹5 Lakh
+
+### Concept
+
+The current S9 hospital bill is ₹1,80,000 — serious but manageable with most savings strategies. Raising it to **₹5 lakh** makes the health crisis feel genuinely catastrophic and forces a structural, asset-level decision rather than just drawing down savings. It creates a direct collision between the health emergency and everything Susheela has been building: the land, the investments, the gold. At ₹5L the three choices represent three meaningfully different responses — financial resilience, asset liquidation, or debt — with distinct consequences entering S10.
+
+### Current S9 State (before this change)
+- Hospital bill: ₹1,80,000 (₹30,000 immediate deposit)
+- Choice A: Emergency fund + break RD (savingsChange −₹84,000)
+- Choice B: Sell mutual funds (savingsChange 0)
+- Choice C: Personal loan ₹1,50,000 @16%, EMI ₹3,500
+
+### Land Value at S9
+Land value depends on when it was bought — no further appreciation is applied at S9:
+- **S4 land** (bought at ₹3L, updated to ₹5L at S6 via `assetValueUpdates`): still **₹5L** at S9
+- **S8 land** (bought at ₹12L as part of the retirement corpus, S8-B choice): **₹12L** at S9
+
+No `assetValueUpdates` block is needed at S9 — the store already holds the correct value from when it was last set.
+
+### Revised Choices
+
+**Choice A — Pay from savings (excellent, +30)**
+Susheela clears the full ₹5L hospital bill directly from savings. No assets lost, no new debt — but a significant savings hit.
+- `minimumSavings: 500000` — locked if savings < ₹5L
+- `savingsChange: −500000`
+- No asset removals, no new debts
+
+**Choice B — Sell land (`requiredAsset: "land"`, moderate, +10)**
+Sell land to cover the hospital bill. The proceeds depend on when the land was bought:
+- S4 land (₹5L): proceeds exactly cover the bill → `savingsChange: 0`
+- S8 land (₹12L): ₹7L left after the bill → `savingsChange: +700000`
+- Gate: `requiredAsset: "land"` — locked if Susheela does not own land
+- `assetRemovals: ["land"]`
+- `savingsChange`: dynamic = `landValue − 500000` (computed at runtime from `workingAssets`)
+- No new debts
+
+The S8-land path is significantly better (₹7L to savings), which rewards the player for having made the larger land investment in S8.
+
+**Choice C — Liquidate other assets + high-interest loan (poor, −20)**
+Sell all non-land assets (gold, mutual funds, equipment, emergency fund — whatever the player holds). Any shortfall after liquidation is covered by a high-interest personal loan at 20%.
+- Gate: **must hold at least one non-land asset** — locked if the only asset is land, or if no assets at all
+  - New gate: `requiredNonLandAsset: true`, checked as `assets.some(a => a.type !== 'land')`
+- All non-land assets liquidated; proceeds reduce the loan needed
+- Loan = max(0, ₹5L − proceeds) @20% interest, 60 months, expenseKey `loan-emi-hospital-hl`
+  - Example: player holds gold ₹2L + mutual fund ₹1L → proceeds ₹3L → loan ₹2L, EMI ~₹5,300/mo
+  - Example: player holds only emergency fund ₹50K → loan ₹4.5L, EMI ~₹11,900/mo
+- `assetRemovals`: all non-land asset types currently held
+- No `spendAllSavings` — savings are not touched; the loan covers any remaining gap
+
+### Implementation Notes
+
+**`gamedata.json`**
+- Replace S9 choices A, B, C with revised versions
+- No `assetValueUpdates` needed at S9 — land values are already correct in the store
+- Choice A: `minimumSavings: 500000`, `savingsChange: -500000`
+- Choice B: `requiredAsset: "land"`, `assetRemovals: ["land"]`, `savingsChange: 0` (store overrides this dynamically; see store note below)
+- Choice C: `requiredNonLandAsset: true` (new field), dynamic handling in store
+
+**`financialStore.ts → makeChoice()`**
+Two special-case steps:
+
+*S9-B (dynamic land proceeds):* After standard `savingsChange` application, compute actual proceeds:
+1. Find `workingAssets.find(a => a.type === 'land')?.value` → `landValue`
+2. Override: `newSavings += landValue − 500000` (replaces the static `savingsChange: 0`)
+
+*S9-C (dynamic asset liquidation + loan):*
+1. Find all non-land assets in `workingAssets` → sum their values as `proceeds`
+2. Remove them from `workingAssets`
+3. Shortfall = max(0, 500000 − proceeds)
+4. If shortfall > 0: compute EMI at 20%/60mo, add debt, push to `workingBreakdown`
+
+**`ScenarioScreen.tsx`**
+- Add `requiredNonLandAsset` gate check alongside existing gates; red lock badge: "Requires a non-land asset to sell"
+- For Choice B, show dynamic proceeds preview in the description: e.g. "Sell land (₹5L) → covers the full bill" or "Sell land (₹12L) → ₹7L added to savings after bill"
+- For Choice C, show which assets would be liquidated and estimated loan amount
+
 
 ## Implementation Notes
 
@@ -256,7 +404,7 @@ For the S6-A land gate in Idea 2 (unavailable if no land), a new `requiredAsset`
 For difficulty levels (Idea 3), start with the multiplier approach — add a `difficulty` field to the Zustand store and apply it when evaluating `minimumSavings` gates and loan interest rates.
 
 **Priority order:**
-1. **S6 revision (Idea 4)** — raises fees to ₹10L, adds explicit diploma path, three clean S10 tracks. Implement this before anything else.
-2. Difficulty levels (Idea 3) — highest leverage after S6 is solid, affects the whole game.
-3. Priya studies consequence (Idea 1) — superseded by Idea 4; retire once Idea 4 is done.
-4. Land cascade (Idea 2) — more changes across S6, S8, S10, but uses existing mechanics.
+1. ~~**S6 revision (Idea 4)**~~ — ✅ **DONE.** Fees raised to ₹10L, explicit diploma and dropout paths, three S10 income tracks, conditional ResultsScreen education card. One small item still open: "Priya the Engineer" badge on ResultsScreen for S6=A.
+2. **Difficulty levels (Idea 3)** — highest leverage, affects the whole game.
+3. ~~Priya studies consequence (Idea 1)~~ — **Superseded by Idea 4 (done).** Retired.
+4. **Land cascade (Idea 2)** — uses existing `conditionalImpacts` and `minimumSavings` mechanics; no new store architecture needed.

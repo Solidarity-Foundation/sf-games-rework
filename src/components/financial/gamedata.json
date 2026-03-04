@@ -757,10 +757,10 @@
       "id": 8,
       "title": "Retirement Corpus Building Strategy",
       "title_kan": "ನಿವೃತ್ತಿ ನಿಧಿ ನಿರ್ಮಾಣ ತಂತ್ರ",
-      "situation": "Susheela's business is doing well after expansion. She earns ₹65,000/month and after expenses + EMI (₹11,000), she can save ₹25,000/month. She has ₹2 lakh in savings. 8.4 years until planned retirement. She needs: a house (₹20 lakh in 8 years), medical corpus (₹5 lakh), and monthly income post-retirement.",
-      "situation_kan": "ಸುಶೀಲಾ ₹65,000/ತಿಂಗಳು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾಳೆ, ₹25,000/ತಿಂಗಳು ಉಳಿಸಬಹುದು. 8.4 ವರ್ಷ ನಿವೃತ್ತಿಗೆ ಉಳಿದಿದೆ.",
-      "question": "How should Susheela build her retirement corpus in the remaining 8 years?",
-      "question_kan": "ಉಳಿದ 8 ವರ್ಷಗಳಲ್ಲಿ ನಿವೃತ್ತಿ ನಿಧಿ ಹೇಗೆ ನಿರ್ಮಿಸಬೇಕು?",
+      "situation": "Susheela's business is doing well. She earns ₹65,000/month and can save ₹25,000/month after expenses. She has ₹2 lakh in savings and 8.4 years until retirement. How she saves now matters: cash loses to inflation, land can't be quickly liquidated, gold earns nothing on its own. A mix of physical and financial assets gives her both stability and flexibility when it matters most.",
+      "situation_kan": "ಸುಶೀಲಾ ₹65,000/ತಿಂಗಳು ಸಂಪಾದಿಸುತ್ತಿದ್ದಾಳೆ, ₹25,000/ತಿಂಗಳು ಉಳಿಸಬಹುದು. ₹2 ಲಕ್ಷ ಉಳಿತಾಯ ಇದೆ, 8.4 ವರ್ಷ ನಿವೃತ್ತಿಗೆ ಉಳಿದಿದೆ. ಈಗ ಹೇಗೆ ಉಳಿಸುತ್ತಾಳೆ ಎಂಬುದು ಮುಖ್ಯ: ನಗದು ಹಣದುಬ್ಬರಕ್ಕೆ ಸೋಲುತ್ತದೆ, ಭೂಮಿ ತುರ್ತಿನಲ್ಲಿ ಬೇಗ ಮಾರಲಾಗದು, ಚಿನ್ನ ಆದಾಯ ತರುವುದಿಲ್ಲ. ಭೌತಿಕ ಮತ್ತು ಆರ್ಥಿಕ ಆಸ್ತಿಗಳ ಮಿಶ್ರಣ ಸ್ಥಿರತೆ ಮತ್ತು ನಮ್ಯತೆ ಎರಡನ್ನೂ ನೀಡುತ್ತದೆ.",
+      "question": "How should Susheela build her retirement corpus in the remaining 6 years?",
+      "question_kan": "ಉಳಿದ 6 ವರ್ಷಗಳಲ್ಲಿ ನಿವೃತ್ತಿ ನಿಧಿ ಹೇಗೆ ನಿರ್ಮಿಸಬೇಕು?",
       "choices": [
         {
           "id": "A",
@@ -823,7 +823,7 @@
           "id": "B",
           "label": "Land + gold + FD",
           "label_kan": "ಭೂಮಿ + ಚಿನ್ನ + FD",
-          "description": "Buy land for ₹8 lakh, gold for ₹5 lakh, keep ₹12 lakh in Fixed Deposit — traditional working-class approach.",
+          "description": "Buy land for ₹12 lakh, gold for ₹5 lakh, keep ₹8 lakh in Fixed Deposit — traditional working-class approach.",
           "description_kan": "₹8 ಲಕ್ಷ ಭೂಮಿ, ₹5 ಲಕ್ಷ ಚಿನ್ನ, ₹12 ಲಕ್ಷ ಎಫ್‌ಡಿ.",
           "points": 10,
           "minimumSavings": 2500000,
@@ -836,7 +836,7 @@
                 "type": "land",
                 "label": "Plot for retirement",
                 "label_kan": "ನಿವೃತ್ತಿ ನಿವೇಶನ",
-                "value": 800000
+                "value": 1200000
               },
               {
                 "type": "gold",
@@ -848,7 +848,7 @@
                 "type": "fd",
                 "label": "Fixed Deposit",
                 "label_kan": "ಸ್ಥಿರ ಠೇವಣಿ",
-                "value": 1200000
+                "value": 800000
               }
             ],
             "newDebts": [],
@@ -885,88 +885,66 @@
       "id": 9,
       "title": "Health Crisis and Emergency Fund Test",
       "title_kan": "ಆರೋಗ್ಯ ಬಿಕ್ಕಟ್ಟು ಮತ್ತು ತುರ್ತು ನಿಧಿ ಪರೀಕ್ಷೆ",
-      "situation": "Susheela collapses at work — severe diabetic complication. Hospital bill: ₹1,80,000 (₹30,000 immediate deposit needed). Her retirement corpus is split across mutual funds, PPF, and RD. PPF cannot be broken easily. Mutual funds can be sold but may result in a loss.",
-      "situation_kan": "ಸುಶೀಲಾ ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಕುಸಿದಳು — ತೀವ್ರ ಮಧುಮೇಹ ತೊಡಕು. ಆಸ್ಪತ್ರೆ ಬಿಲ್: ₹1,80,000. ₹30,000 ತಕ್ಷಣ ಬೇಕು.",
-      "question": "How should Susheela handle this medical emergency without destroying her retirement corpus?",
-      "question_kan": "ನಿವೃತ್ತಿ ನಿಧಿ ನಾಶ ಮಾಡದೆ ಈ ವೈದ್ಯಕೀಯ ತುರ್ತು ಪರಿಸ್ಥಿತಿ ಹೇಗೆ ನಿರ್ವಹಿಸಬೇಕು?",
+      "situation": "Susheela collapses at work — severe diabetic complication. The hospital requires ₹5,00,000 immediately for treatment. There is no time to wait.",
+      "situation_kan": "ಸುಶೀಲಾ ಕೆಲಸದ ಸ್ಥಳದಲ್ಲಿ ಕುಸಿದಳು — ತೀವ್ರ ಮಧುಮೇಹ ತೊಡಕು. ಆಸ್ಪತ್ರೆಗೆ ₹5,00,000 ತಕ್ಷಣ ಬೇಕು.",
+      "question": "How should Susheela pay the ₹5 lakh hospital bill?",
+      "question_kan": "₹5 ಲಕ್ಷ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಹೇಗೆ ಪಾವತಿಸಬೇಕು?",
       "choices": [
         {
           "id": "A",
-          "label": "Emergency fund + break RD",
-          "label_kan": "ತುರ್ತು ನಿಧಿ + RD ಮುರಿಯಿರಿ",
-          "description": "Use emergency fund (₹50,000 if S5=A), break RD (small penalty), cover remainder from monthly income — protect long-term investments.",
-          "description_kan": "ತುರ್ತು ನಿಧಿ (S5=A ಆದರೆ ₹50,000), RD ಮುರಿಯಿರಿ, ಉಳಿದದ್ದು ಮಾಸಿಕ ಆದಾಯದಿಂದ ಭರಿಸಿ.",
+          "label": "Pay from savings",
+          "label_kan": "ಉಳಿತಾಯದಿಂದ ಪಾವತಿಸಿ",
+          "description": "Pay the full ₹5,00,000 hospital bill directly from savings. No assets lost, no new debt — but a significant hit.",
+          "description_kan": "₹5,00,000 ಆಸ್ಪತ್ರೆ ಬಿಲ್ ನೇರವಾಗಿ ಉಳಿತಾಯದಿಂದ ಪಾವತಿಸಿ. ಆಸ್ತಿ ಕಳೆದುಕೊಳ್ಳದೆ, ಸಾಲ ಇಲ್ಲದೆ — ಆದರೆ ಉಳಿತಾಯಕ್ಕೆ ದೊಡ್ಡ ಹೊಡೆತ.",
           "points": 30,
+          "minimumSavings": 500000,
           "financialImpact": {
-            "savingsChange": -84000,
+            "savingsChange": -500000,
             "monthlyIncomeChange": 0,
             "monthlyExpensesChange": 0,
             "newAssets": [],
             "newDebts": [],
-            "assetRemovals": [
-              "emergency-fund",
-              "rd"
-            ],
-            "notes": "Emergency fund and RD used together to cover the ₹1.8 lakh hospital bill — both assets gone. A small remainder came from savings. PPF and mutual fund investments remain intact.",
-            "notes_kan": "₹1.8 ಲಕ್ಷ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ತುರ್ತು ನಿಧಿ ಮತ್ತು RD ಒಟ್ಟಾಗಿ ಭರಿಸಿತು — ಎರಡೂ ಆಸ್ತಿ ಮುಗಿದವು. PPF ಮತ್ತು MF ಹೂಡಿಕೆ ಸುರಕ್ಷಿತ."
+            "notes": "Full ₹5L paid from savings. No debt, no asset loss.",
+            "notes_kan": "₹5L ಉಳಿತಾಯದಿಂದ ಪಾವತಿ. ಸಾಲ ಇಲ್ಲ, ಆಸ್ತಿ ನಷ್ಟ ಇಲ್ಲ."
           }
         },
         {
           "id": "B",
-          "label": "Sell mutual funds",
-          "label_kan": "ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ಮಾರಿ",
-          "description": "Sell ₹1,80,000 worth of mutual funds at current market value — avoid debt, use investment.",
-          "description_kan": "ಪ್ರಸ್ತುತ ಮಾರುಕಟ್ಟೆ ಮೌಲ್ಯದಲ್ಲಿ ₹1,80,000 ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ಮಾರಿ.",
+          "label": "Sell land",
+          "label_kan": "ಭೂಮಿ ಮಾರಿ",
+          "description": "Sell your land to cover the hospital bill. Any remaining proceeds after the ₹5 lakh bill stay in savings.",
+          "description_kan": "ಭೂಮಿ ಮಾರಿ ₹5 ಲಕ್ಷ ಬಿಲ್ ಭರಿಸಿ. ₹5 ಲಕ್ಷ ನಂತರ ಉಳಿದ ಮೊತ್ತ ಉಳಿತಾಯದಲ್ಲಿ ಉಳಿಯುತ್ತದೆ.",
           "points": 10,
+          "requiredAsset": "land",
           "financialImpact": {
             "savingsChange": 0,
             "monthlyIncomeChange": 0,
             "monthlyExpensesChange": 0,
             "newAssets": [],
             "newDebts": [],
-            "assetValueChanges": [
-              {
-                "type": "mutual-fund",
-                "change": -180000
-              }
+            "assetRemovals": [
+              "land"
             ],
-            "notes": "Mutual fund value reduced by ₹1.8L. Lost growth potential, significant setback to retirement goal.",
-            "notes_kan": "ಮ್ಯೂಚುಯಲ್ ಫಂಡ್ ₹1.8L ಕಡಿಮೆ. ಬೆಳವಣಿಗೆ ಸಾಮರ್ಥ್ಯ ಕಳೆದುಕೊಂಡಿದೆ."
+            "notes": "Land sold; proceeds minus ₹5L bill credited to savings (computed dynamically in store).",
+            "notes_kan": "ಭೂಮಿ ಮಾರಿ; ₹5L ಬಿಲ್ ತೆಗೆದ ನಂತರ ಉಳಿತಾಯಕ್ಕೆ ಜಮಾ."
           }
         },
         {
           "id": "C",
-          "label": "Take a personal loan",
-          "label_kan": "ವೈಯಕ್ತಿಕ ಸಾಲ ತೆಗೆಯಿರಿ",
-          "description": "Take personal loan of ₹1,50,000 at 16% interest (₹3,500 EMI), use emergency fund ₹30,000 for deposit — preserve all investments.",
-          "description_kan": "16% ₹1,50,000 ವೈಯಕ್ತಿಕ ಸಾಲ (₹3,500 EMI), ₹30,000 ತುರ್ತು ನಿಧಿ ಠೇವಣಿಗೆ.",
+          "label": "Liquidate assets + loan",
+          "label_kan": "ಆಸ್ತಿ ಮಾರಿ + ಸಾಲ",
+          "description": "Sell all non-land assets to cover as much of the bill as possible, then take a high-interest loan for the remainder.",
+          "description_kan": "ಭೂಮಿ ಹೊರತಾದ ಎಲ್ಲಾ ಆಸ್ತಿ ಮಾರಿ ಬಿಲ್ ಭರಿಸಿ, ಉಳಿದ ಮೊತ್ತಕ್ಕೆ ಅಧಿಕ ಬಡ್ಡಿ ಸಾಲ ತೆಗೆಯಿರಿ.",
           "points": -20,
+          "requiredNonLandAsset": true,
           "financialImpact": {
-            "savingsChange": -30000,
+            "savingsChange": 0,
             "monthlyIncomeChange": 0,
-            "monthlyExpensesChange": 3500,
+            "monthlyExpensesChange": 0,
             "newAssets": [],
-            "newDebts": [
-              {
-                "type": "personal-loan",
-                "label": "Hospital emergency loan",
-                "label_kan": "ಆಸ್ಪತ್ರೆ ತುರ್ತು ಸಾಲ",
-                "principal": 150000,
-                "interestRate": 16,
-                "monthlyEmi": 3500,
-                "expenseKey": "loan-emi-hospital"
-              }
-            ],
-            "notes": "Emergency fund -₹30K deposit. Loan ₹1.5L @16%, EMI ₹3,500. Investments intact but savings capacity reduced.",
-            "notes_kan": "ತುರ್ತು ನಿಧಿ -₹30K. ₹1.5L @16%, EMI ₹3,500. ಹೂಡಿಕೆ ಸುರಕ್ಷಿತ.",
-            "expenseItemChanges": [
-              {
-                "key": "loan-emi-hospital",
-                "label": "Hospital loan EMI",
-                "label_kan": "ಆಸ್ಪತ್ರೆ ಸಾಲ EMI",
-                "newAmount": 3500
-              }
-            ]
+            "newDebts": [],
+            "notes": "Non-land assets liquidated; shortfall covered by 20% personal loan (computed dynamically in store).",
+            "notes_kan": "ಭೂಮಿ ಹೊರತಾದ ಆಸ್ತಿ ಮಾರಿ; ಕೊರತೆಗೆ 20% ಸಾಲ."
           }
         }
       ]

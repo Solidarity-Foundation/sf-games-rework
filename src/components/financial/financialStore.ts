@@ -475,127 +475,50 @@ export const useFinancialStore = create<FinancialState>()(persist((set, get) => 
 			}
 		}
 
-		// 8c. S9-C special case: if emergency fund exists, the ₹30K deposit
-		//     comes from the fund, not general savings. Cancel the base
-		//     savingsChange: -30000 and deduct from the fund asset instead.
-		if (scenarioId === 9 && choiceId === 'C') {
-			const efIdx = workingAssets.findIndex(a => a.type === 'emergency-fund');
-			if (efIdx >= 0) {
-				newSavings += 30000; // cancel the -30000 from fi.savingsChange
-				workingAssets[efIdx] = {
-					...workingAssets[efIdx],
-					value: Math.max(0, workingAssets[efIdx].value - 30000),
-				};
-			}
-		}
-
-		// 8f. S8-B special case (no land): buy ₹12L retirement plot instead of land+gold+FD.
-		//     Step 7 already added land ₹8L, gold ₹5L, FD ₹12L — replace those with land ₹12L.
-		//     Base savingsChange was -₹25L; correct to -₹8L down + 24mo × ₹10K EMI.
-		if (scenarioId === 8 && choiceId === 'B') {
-			const hadLand = state.assets.some(a => a.type === 'land');
-			if (!hadLand) {
-				const originalGold = state.assets.find(a => a.type === 'gold');
-				// Remove assets added in step 7 for this choice (land ₹8L, gold ₹5L, FD ₹12L)
-				for (let i = workingAssets.length - 1; i >= 0; i--) {
-					if (workingAssets[i].acquiredInScenario === scenarioId) workingAssets.splice(i, 1);
-				}
-				// Restore any gold the player already owned before this choice
-				if (originalGold) workingAssets.push({ ...originalGold });
-				// Add land at ₹12L for retirement home
-				workingAssets.push({ type: 'land', label: 'Plot for retirement home', value: 1200000, acquiredInScenario: scenarioId });
-				// Correct savings: undo -₹25L base, apply -₹8L down, subtract 24mo of ₹10K EMI
-				newSavings += 2500000 - 800000 - 10000 * 24;
-				// Add EMI to expense breakdown and running total
-				workingBreakdown.push({
-					key: 'loan-emi-land-s8',
-					label: 'Land loan EMI',
-					label_kan: 'ಭೂಮಿ ಸಾಲ EMI',
-					amount: 10000,
-				});
-				newExpenses += 10000;
-				// Add debt
-				newDebts.push({
-					type: 'personal-loan',
-					label: 'Land loan (retirement plot)',
-					principal: 400000,
-					interestRate: 12,
-					monthlyEmi: 10000,
-					remainingAmount: 400000,
-					takenInScenario: scenarioId,
-					expenseKey: 'loan-emi-land-s8',
-				});
-			} else {
-				// Has land: step 7 overwrote existing land with ₹8L — restore original, keep gold+FD only
-				const originalLand = state.assets.find(a => a.type === 'land');
-				const s8LandIdx = workingAssets.findIndex(a => a.type === 'land' && a.acquiredInScenario === scenarioId);
-				if (s8LandIdx >= 0) workingAssets.splice(s8LandIdx, 1);
-				if (originalLand) workingAssets.push({ ...originalLand });
-				// Correct savings: undo -₹25L base, apply -₹17L (gold ₹5L + FD ₹12L)
-				newSavings += 2500000 - 1700000;
-			}
-		}
-
-		// 8g. S9-A special case: if no emergency fund AND no RD, full ₹1.8L comes from savings.
-		//     Base savingsChange -₹84K assumes fund + RD covered the rest; correct to -₹180K.
-		if (scenarioId === 9 && choiceId === 'A') {
-			const hadEf = state.assets.some(a => a.type === 'emergency-fund');
-			const hadRd = state.assets.some(a => a.type === 'rd');
-			if (!hadEf && !hadRd) {
-				newSavings -= (180000 - 84000); // correct total deduction from -84K to -180K
-			}
-		}
-
-		// 8h. S9-B special case: if no mutual fund, replace MF liquidation with
-		//     ₹1L from savings + ₹80K loan @12% (EMI ₹4K/mo).
+		// 8g. S9-B special case: dynamic land proceeds.
+		//     savingsChange in gamedata is 0; add landValue − ₹5L here.
 		if (scenarioId === 9 && choiceId === 'B') {
-			const hasMF = workingAssets.some(a => a.type === 'mutual-fund');
-			if (!hasMF) {
-				newSavings -= 100000; // ₹1L immediate payment
-				newSavings -= 4000 * 24; // correct 24-month accumulation (step 6 ran without this EMI)
+			const landAsset = state.assets.find(a => a.type === 'land');
+			if (landAsset) {
+				newSavings += landAsset.value - 500000;
+			}
+		}
+
+		// 8h. S9-C special case: liquidate all non-land assets, take high-interest
+		//     loan for any shortfall. savingsChange in gamedata is 0.
+		if (scenarioId === 9 && choiceId === 'C') {
+			const NON_LAND = ['mutual-fund', 'ppf', 'rd', 'fd', 'gold', 'emergency-fund', 'equipment', 'community-building'];
+			const nonLandAssets = workingAssets.filter(a => NON_LAND.includes(a.type));
+			const proceeds = nonLandAssets.reduce((sum, a) => sum + a.value, 0);
+			// Remove all non-land assets
+			for (let i = workingAssets.length - 1; i >= 0; i--) {
+				if (NON_LAND.includes(workingAssets[i].type)) workingAssets.splice(i, 1);
+			}
+			newSavings += proceeds; // add proceeds to savings
+			newSavings -= 500000;   // pay the hospital bill
+			const shortfall = Math.max(0, 500000 - proceeds);
+			if (shortfall > 0) {
+				const r = 0.20 / 12; const n = 60;
+				const emi = Math.round(shortfall * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
 				workingBreakdown.push({
-					key: 'loan-emi-hospital-s9b',
-					label: 'Hospital loan EMI',
-					label_kan: 'ಆಸ್ಪತ್ರೆ ಸಾಲ EMI',
-					amount: 4000,
+					key: 'loan-emi-hospital-hl',
+					label: 'Hospital emergency loan EMI',
+					label_kan: 'ಆಸ್ಪತ್ರೆ ತುರ್ತು ಸಾಲ EMI',
+					amount: emi,
 				});
-				newExpenses += 4000;
+				newExpenses += emi;
+				newSavings -= emi * 24; // correct 24-month accumulation (step 6 ran without this EMI)
 				newDebts.push({
 					type: 'personal-loan',
 					label: 'Hospital emergency loan',
-					principal: 80000,
-					interestRate: 12,
-					monthlyEmi: 4000,
-					remainingAmount: 80000,
+					principal: shortfall,
+					interestRate: 20,
+					monthlyEmi: emi,
+					remainingAmount: shortfall,
 					takenInScenario: scenarioId,
-					expenseKey: 'loan-emi-hospital-s9b',
+					expenseKey: 'loan-emi-hospital-hl',
 				});
 			}
-		}
-
-		// 8i. S9-C special case: if no MF and player has land, sell land to cover hospital bill.
-		//     Cancel the personal loan mechanics from gamedata; credit land proceeds − ₹1.8L.
-		if (scenarioId === 9 && choiceId === 'C'
-			&& !state.assets.some(a => a.type === 'mutual-fund')
-			&& state.assets.some(a => a.type === 'land')) {
-			const efExisted = state.assets.some(a => a.type === 'emergency-fund');
-			if (!efExisted) {
-				newSavings += 30000; // cancel -30K savingsChange (8c did not run)
-			} else {
-				// 8c ran and deducted 30K from EF — restore it
-				const efIdx = workingAssets.findIndex(a => a.type === 'emergency-fund');
-				if (efIdx >= 0) workingAssets[efIdx] = { ...workingAssets[efIdx], value: workingAssets[efIdx].value + 30000 };
-			}
-			// Remove EMI from breakdown + undo its accumulation effect
-			const emiIdx = workingBreakdown.findIndex(item => item.key === 'loan-emi-hospital');
-			if (emiIdx >= 0) workingBreakdown.splice(emiIdx, 1);
-			newExpenses -= 3500;
-			newSavings += 3500 * 24; // undo EMI accumulation from step 6
-			// Remove land asset and credit proceeds
-			const landToSell = state.assets.find(a => a.type === 'land')!;
-			const landWIdx = workingAssets.findIndex(a => a.type === 'land');
-			if (landWIdx >= 0) workingAssets.splice(landWIdx, 1);
-			newSavings += landToSell.value - 180000;
 		}
 
 		// 9. Adjust individual asset values (e.g. partial MF sell in S9B)
