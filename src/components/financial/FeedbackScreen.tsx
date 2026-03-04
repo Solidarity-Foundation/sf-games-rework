@@ -75,9 +75,10 @@ const FeedbackScreen = () => {
 				if (i === 2)
 					return {
 						...baseChoice,
-						description:
-							'Use all current savings, ask Priya to work part-time and take a small education loan — share the burden, keep gold.',
-						description_kan: 'ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡಲು ಕೇಳಿ — ಚಿನ್ನ ಇಟ್ಟುಕೊಳ್ಳಿ.',
+						label: 'Sell gold, high-interest loan',
+						label_kan: 'ಚಿನ್ನ ಮಾರಿ, ಹೆಚ್ಚು ಬಡ್ಡಿ ಸಾಲ',
+						description: `Sell gold jewelry (${goldAmount}) toward the ₹10 lakh engineering fees. The remaining ${s4Choice === 'B' ? '₹8 lakh' : '₹9 lakh'} was covered by a high-interest personal loan at 18% over 10 years. Priya worked part-time evenings — the financial pressure proved too much and she eventually DROPS OUT.`,
+						description_kan: `ಚಿನ್ನ (${goldAmount_kan}) ₹10 ಲಕ್ಷ ಶುಲ್ಕಕ್ಕೆ ಬಳಸಿ. ಉಳಿದ ${s4Choice === 'B' ? '₹8 ಲಕ್ಷ' : '₹9 ಲಕ್ಷ'} 18% ಹೆಚ್ಚು ಬಡ್ಡಿ ಸಾಲ (10 ವರ್ಷ). ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ — ಆರ್ಥಿಕ ಒತ್ತಡ ಹೆಚ್ಚಾಗಿ ಕೊನೆಗೆ ಓದು ಬಿಟ್ಟಳು (DROPS OUT).`,
 					};
 				return baseChoice;
 			})();
@@ -202,15 +203,8 @@ const FeedbackScreen = () => {
 
 	// S6-B/C savings-sufficient overrides — check pre-choice savings from snapshot
 	const preChoiceSavings = stateSnapshots[lastScenarioId]?.savings ?? 0;
-	const s6BEnough = lastScenarioId === 6 && lastChoice.choiceId === 'B' && preChoiceSavings >= 200000;
-	const s6CEnough = lastScenarioId === 6 && lastChoice.choiceId === 'C' && preChoiceSavings >= 500000;
-
-	const effectiveSpendAllSavings = !!fi.spendAllSavings && !s6BEnough && !s6CEnough;
-	const effectiveImmediateSpend = s6BEnough
-		? 200000
-		: s6CEnough
-			? 500000
-			: s9ANoFundNoRd
+	const effectiveSpendAllSavings = !!fi.spendAllSavings;
+	const effectiveImmediateSpend = s9ANoFundNoRd
 				? 180000
 				: s9BNoMF
 					? 100000
@@ -248,41 +242,45 @@ const FeedbackScreen = () => {
 				]
 			: (fi.newAssets ?? []);
 
-	// Override notes for savings-path-dependent scenarios
-	const s6AGoldPath = lastScenarioId === 6 && lastChoice.choiceId === 'A' && !!s6GoldPath;
+	// Override notes for path-dependent scenarios
 	const s7AEnough = lastScenarioId === 7 && lastChoice.choiceId === 'A' && preChoiceSavings >= 300000;
 
-	const notesOverride = s6BEnough
-		? s6GoldPath
-			? {
-					en: 'Gold kept. ₹2L from savings + ₹3L personal loan @18% (EMI ₹7,500/mo) = ₹5L education funded. High-interest debt, but investments preserved.',
-					kan: 'ಚಿನ್ನ ಉಳಿಸಿ. ₹2L ಉಳಿತಾಯ + ₹3L @18% ಸಾಲ (EMI ₹7,500) = ₹5L ಶಿಕ್ಷಣ. ಹೂಡಿಕೆ ಉಳಿದಿದೆ.',
-				}
-			: {
-					en: 'Land kept. ₹2L from savings + ₹3L personal loan @18% (EMI ₹7,500/mo) = ₹5L education funded. High-interest debt, but land preserved.',
-					kan: 'ಭೂಮಿ ಉಳಿಸಿ. ₹2L ಉಳಿತಾಯ + ₹3L @18% ಸಾಲ (EMI ₹7,500) = ₹5L ಶಿಕ್ಷಣ. ಭೂಮಿ ಉಳಿದಿದೆ.',
-				}
-		: s6CEnough
-			? s6GoldPath
-				? {
-						en: "Paid Priya's full education (₹5L) from savings. All investments kept. No loan, no burden on Priya. Savings depleted.",
-						kan: '₹5L ಉಳಿತಾಯದಿಂದ ಪ್ರಿಯಾ ಶಿಕ್ಷಣ. ಎಲ್ಲ ಹೂಡಿಕೆ ಉಳಿದಿದೆ. ಸಾಲ ಇಲ್ಲ, ಉಳಿತಾಯ ಖಾಲಿ.',
+	// S6-C: dynamic note — gold path (sell gold + loan for remainder) or land path (shortfall from savings)
+	const s6CNote =
+		lastScenarioId === 6 && lastChoice.choiceId === 'C'
+			? (() => {
+					if (s6GoldPath) {
+						const goldValue = s4Choice === 'B' ? 200_000 : 100_000;
+						const loanAmount = 1_000_000 - goldValue;
+						const r = 0.015; const n = 120;
+						const emi = Math.round((loanAmount * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
+						return {
+							en: `Gold jewelry (${goldAmount}) sold toward the ₹10 lakh fees. The remaining ${fmt(loanAmount)} was taken as a high-interest personal loan at 18% (EMI ${fmt(emi)}/month, 10-year term). The financial pressure proved too much — Priya eventually DROPS OUT.`,
+							kan: `ಚಿನ್ನ (${goldAmount_kan}) ₹10 ಲಕ್ಷ ಶುಲ್ಕಕ್ಕೆ ಬಳಸಲಾಯಿತು. ಉಳಿದ ${fmt(loanAmount)} 18% ಹೆಚ್ಚು ಬಡ್ಡಿ ಸಾಲ (EMI ${fmt(emi)}/ತಿ, 10 ವರ್ಷ). ಆರ್ಥಿಕ ಒತ್ತಡ ಹೆಚ್ಚಾಗಿ ಪ್ರಿಯಾ ಕೊನೆಗೆ ಓದು ಬಿಟ್ಟಳು.`,
+						};
 					}
-				: {
-						en: "Paid Priya's full education (₹5L) from savings. Land kept. No loan, no burden on Priya. Savings depleted.",
-						kan: '₹5L ಉಳಿತಾಯದಿಂದ ಪ್ರಿಯಾ ಶಿಕ್ಷಣ. ಭೂಮಿ ಉಳಿದಿದೆ. ಸಾಲ ಇಲ್ಲ, ಉಳಿತಾಯ ಖಾಲಿ.',
-					}
-			: s6AGoldPath
-				? s4Choice === 'B'
-					? {
-							en: 'Gold sold ₹2L. Education loan ₹3L @18% (EMI ₹7,500/mo). Gold asset removed.',
-							kan: 'ಚಿನ್ನ ₹2L ಮಾರಿ. ₹3L @18% ಶಿಕ್ಷಣ ಸಾಲ (EMI ₹7,500/ತಿಂ). ಚಿನ್ನ ಆಸ್ತಿ ತೆಗೆದಿದೆ.',
+					const shortfall = Math.max(0, 1_000_000 - preChoiceSavings);
+					const r = 0.015;
+					const n = 120;
+					const emi =
+						shortfall > 0
+							? Math.round((shortfall * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1))
+							: 0;
+					return shortfall > 0
+						? {
+							en: `All savings spent toward the ₹10 lakh fees. A high-interest personal loan of ${fmt(shortfall)} at 18% (EMI ${fmt(emi)}/month, 10-year term) covered the shortfall. The financial pressure proved too much — Priya eventually DROPS OUT.`,
+							kan: `₹10 ಲಕ್ಷ ಶುಲ್ಕಕ್ಕೆ ಎಲ್ಲ ಉಳಿತಾಯ ಖರ್ಚಾಯಿತು. ${fmt(shortfall)} @18% ಹೆಚ್ಚು ಬಡ್ಡಿ ಸಾಲ (EMI ${fmt(emi)}/ತಿ, 10 ವರ್ಷ) ಕೊರತೆ ಭರಿಸಿತು. ಆರ್ಥಿಕ ಒತ್ತಡದಿಂದ ಪ್ರಿಯಾ ಕೊನೆಗೆ ಓದು ಬಿಟ್ಟಳು.`,
 						}
-					: {
-							en: 'Gold sold ₹1L. Education loan ₹4L @18% (EMI ₹10,000/mo). Gold asset removed.',
-							kan: 'ಚಿನ್ನ ₹1L ಮಾರಿ. ₹4L @18% ಶಿಕ್ಷಣ ಸಾಲ (EMI ₹10,000/ತಿಂ). ಚಿನ್ನ ಆಸ್ತಿ ತೆಗೆದಿದೆ.',
-						}
-				: s7AEnough
+						: {
+							en: `All savings (₹10 lakh) used to cover the full engineering fees — no loan needed. Despite the sacrifice, the financial pressure proved too much and Priya eventually DROPS OUT.`,
+							kan: `₹10 ಲಕ್ಷ ಎಂಜಿನಿಯರಿಂಗ್ ಶುಲ್ಕ ಸಂಪೂರ್ಣ ಉಳಿತಾಯದಿಂದ ಭರಿಸಲಾಯಿತು — ಸಾಲ ಬೇಡ. ತ್ಯಾಗದ ನಂತರವೂ, ಆರ್ಥಿಕ ಒತ್ತಡ ಹೆಚ್ಚಾಗಿ ಪ್ರಿಯಾ ಕೊನೆಗೆ ಓದು ಬಿಟ್ಟಳು.`,
+						};
+				})()
+			: null;
+
+	const notesOverride = s6CNote
+		? { en: s6CNote.en, kan: s6CNote.kan }
+		: s7AEnough
 					? {
 							en: 'Down payment ₹3L from savings. Business loan ₹5L @11% (EMI ₹11K). Income +₹25K/mo from expansion.',
 							kan: '₹3L ಡೌನ್ ಪೇಮೆಂಟ್ ಉಳಿತಾಯದಿಂದ. ₹5L @11% ಸಾಲ (EMI ₹11K). ₹25K/ತಿಂ ಆದಾಯ ಹೆಚ್ಚಳ.',
@@ -471,8 +469,12 @@ const FeedbackScreen = () => {
 								)}
 								{effectiveSpendAllSavings && (
 									<div className="flex items-center justify-between">
-										<span className="text-sm text-white/70">{t('All savings spent', 'ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚಾಯ್ತು')}</span>
-										<span className="text-sm font-semibold text-orange-400">{t('Savings wiped', 'ಉಳಿತಾಯ ಶೂನ್ಯ')}</span>
+										<span className="text-sm text-white/70">{t('All savings spent toward fees', 'ಶುಲ್ಕಕ್ಕೆ ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚಾಯ್ತು')}</span>
+										<span className="text-sm font-semibold text-orange-400">
+											{monthlySurplus < 0
+												? t('Monthly deficit drawing from savings', 'ಮಾಸಿಕ ಕೊರತೆ ಉಳಿತಾಯದಿಂದ ತೆಗೆಯಲಾಗುತ್ತೆ')
+												: t('₹0 remaining', 'ಉಳಿತಾಯ ₹0')}
+										</span>
 									</div>
 								)}
 								{effectiveNewDebtItems.map((d, i) => (

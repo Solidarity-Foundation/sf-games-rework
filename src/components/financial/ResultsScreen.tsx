@@ -15,8 +15,11 @@ const ResultsScreen = () => {
 	const {
 		score, savings, monthlyIncome, monthlyExpenses, assets, debts,
 		houseGoalProgress, educationGoalProgress, houseGoalStatus, educationGoalStatus,
-		age, language, setLanguage, resetGame, completedScenarios,
+		age, language, setLanguage, resetGame, completedScenarios, choiceHistory,
 	} = useFinancialStore();
+
+	const s6DiplomaPath = choiceHistory[6]?.choiceId === 'B';
+	const s6DropOutPath = choiceHistory[6]?.choiceId === 'C';
 
 	const t = (en: string, kan: string) => (language === 'kan' ? kan : en);
 
@@ -103,16 +106,28 @@ const ResultsScreen = () => {
 							<img src={educationIcon} alt="Education" className="w-6 h-6 object-contain" />
 							<span className="text-sm text-white/55 uppercase tracking-wide">{t('Education Goal', 'ಶಿಕ್ಷಣ ಗುರಿ')}</span>
 						</div>
-						<div className="text-2xl font-bold text-white mb-2">{educationGoalProgress}%</div>
+						<div className="text-2xl font-bold text-white mb-2">{s6DiplomaPath ? 50 : educationGoalProgress}%</div>
 						<div className="w-full bg-white/15 rounded-full h-1.5 mb-2">
 							<div
-								className="h-1.5 rounded-full bg-green-400"
-								style={{ width: `${educationGoalProgress}%` }}
+								className={`h-1.5 rounded-full ${s6DiplomaPath ? 'bg-amber-400' : s6DropOutPath ? 'bg-red-500' : 'bg-green-400'}`}
+								style={{ width: `${s6DiplomaPath ? 50 : educationGoalProgress}%` }}
 							/>
 						</div>
-						<div className={`text-sm font-medium ${statusColor(educationGoalStatus)}`}>
-							{statusLabel(educationGoalStatus)}
+						<div className={`text-sm font-medium ${s6DiplomaPath ? 'text-amber-400' : s6DropOutPath ? 'text-red-400' : statusColor(educationGoalStatus)}`}>
+							{s6DiplomaPath
+								? t('Diploma — Partial Goal', 'ಡಿಪ್ಲೋಮಾ — ಆಂಶಿಕ ಗುರಿ')
+								: s6DropOutPath
+								? t('Dropped Out ⚠', 'ಬಿಟ್ಟುಬಿಡ್ಡರು ⚠')
+								: statusLabel(educationGoalStatus)}
 						</div>
+						{s6DiplomaPath && (
+							<p className="text-xs text-amber-300/70 mt-2">
+								{t(
+								'Priya achieved a Polytechnic Diploma — a real qualification, but not the engineering degree she dreamed of.',
+								'ಪ್ರಿಯಾ ಪಾಲಿಟೆಕ್ನಿಕ್ ಡಿಪ್ಲೋಮಾ ಪಡೆದಳು — ನಿಜವಾದ ಅರ್ಹತೆ, ಆದರೆ ಅವಳು ಕನಸಿನ ಎಂಜಿನಿಯರಿಂಗ್ ಪದವಿಯಲ್ಲ.'
+								)}
+							</p>
+						)}
 					</div>
 				</div>
 

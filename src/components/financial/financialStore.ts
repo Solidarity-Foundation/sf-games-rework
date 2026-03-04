@@ -104,6 +104,7 @@ interface GameChoice {
 	points: number;
 	minimumSavings?: number;
 	minimumSurplus?: number;
+	requiredAsset?: string;
 	financialImpact: FinancialImpact;
 }
 
@@ -177,6 +178,7 @@ interface FinancialState {
 	setLanguage: (lang: 'en' | 'kan') => void;
 	makeChoice: (scenarioId: number, choiceIndex: number) => void;
 	revertLastChoice: () => void;
+	sellAssets: (sales: { type: string; amount: number }[]) => void;
 }
 
 // ── starting state ────────────────────────────────────────────────────────────
@@ -233,6 +235,7 @@ function computeGoalProgress(
 	scenarioId: number,
 	choiceId: string,
 	prevEduProgress: number,
+	choiceHistory: Record<number, { choiceId: string }>,
 ): {
 	house: number;
 	houseStatus: FinancialState['houseGoalStatus'];
@@ -248,6 +251,12 @@ function computeGoalProgress(
 	if (scenarioId >= 9 && !hasLand) houseStatus = 'at-risk';
 
 	// Education goal: milestone-driven
+	// S6-B diploma path: progress is capped at 50 for the rest of the game
+	const s6DiplomaPath = scenarioId >= 6 && (
+		(scenarioId === 6 && choiceId === 'B') ||
+		(scenarioId > 6 && choiceHistory[6]?.choiceId === 'B')
+	);
+
 	let eduProgress = prevEduProgress;
 	if (scenarioId === 1) eduProgress = choiceId === 'C' ? 5 : 15;
 	if (scenarioId === 2) eduProgress = prevEduProgress + (choiceId === 'C' ? 0 : 5);
@@ -256,13 +265,16 @@ function computeGoalProgress(
 	if (scenarioId === 5) eduProgress = prevEduProgress + 5;
 	if (scenarioId === 6) {
 		if (choiceId === 'A') eduProgress = 70;
-		else if (choiceId === 'B') eduProgress = 55;
-		else eduProgress = 45;
+		else if (choiceId === 'B') eduProgress = 50; // diploma: capped at 50 permanently
+		else eduProgress = 0; // S6-C: Priya DROPS OUT
 	}
-	if (scenarioId === 7) eduProgress = Math.min(90, prevEduProgress + 10);
-	if (scenarioId === 8) eduProgress = Math.min(90, prevEduProgress + 5);
-	if (scenarioId === 9) eduProgress = Math.min(95, prevEduProgress + 5);
-	if (scenarioId === 10) eduProgress = 100;
+	if (!s6DiplomaPath) {
+		if (scenarioId === 7) eduProgress = Math.min(90, prevEduProgress + 10);
+		if (scenarioId === 8) eduProgress = Math.min(90, prevEduProgress + 5);
+		if (scenarioId === 9) eduProgress = Math.min(95, prevEduProgress + 5);
+		if (scenarioId === 10) eduProgress = 100;
+	}
+	// diploma path: S7-S10 leave prevEduProgress unchanged (stays at 50)
 
 	eduProgress = Math.min(100, eduProgress);
 
@@ -477,19 +489,6 @@ export const useFinancialStore = create<FinancialState>()(persist((set, get) => 
 			}
 		}
 
-		// 8d. S6-B special case: if savings ≥ ₹2L, deduct exactly ₹2L instead of all savings.
-		//     ₹3L loan + ₹2L savings = ₹5L education cost. spendAllSavings already zeroed
-		//     newSavings; add back the unspent portion.
-		if (scenarioId === 6 && choiceId === 'B' && state.savings >= 200000) {
-			newSavings += state.savings - 200000;
-		}
-
-		// 8e. S6-C special case: if savings ≥ ₹5L, Susheela can fully fund Priya's education
-		//     from savings with no loan and no burden on Priya. Deduct exactly ₹5L.
-		if (scenarioId === 6 && choiceId === 'C' && state.savings >= 500000) {
-			newSavings += state.savings - 500000;
-		}
-
 		// 8f. S8-B special case (no land): buy ₹12L retirement plot instead of land+gold+FD.
 		//     Step 7 already added land ₹8L, gold ₹5L, FD ₹12L — replace those with land ₹12L.
 		//     Base savingsChange was -₹25L; correct to -₹8L down + 24mo × ₹10K EMI.
@@ -656,7 +655,69 @@ export const useFinancialStore = create<FinancialState>()(persist((set, get) => 
 			});
 		}
 
-		// 11c. S9-C land sell path: remove hospital personal loan added in step 11.
+		// 11c. S6-C special case:
+		//   Gold path: sell gold → restore savings (undo spendAllSavings), take loan for (₹10L − goldValue).
+		//   Land path: spend all savings, add a high-interest personal loan for the shortfall.
+		if (scenarioId === 6 && choiceId === 'C') {
+			const goldIdx = workingAssets.findIndex(a => a.type === 'gold');
+			if (goldIdx >= 0) {
+				// Gold path: sell gold, undo spendAllSavings, take loan for remainder
+				const goldValue = workingAssets[goldIdx].value;
+				workingAssets.splice(goldIdx, 1);
+				newSavings += state.savings; // restore savings zeroed by spendAllSavings in step 2
+				const loanAmount = Math.max(0, 1_000_000 - goldValue);
+				if (loanAmount > 0) {
+					const r = 0.18 / 12;
+					const n = 120;
+					const emi = Math.round(loanAmount * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
+					workingBreakdown.push({
+						key: 'loan-emi-edu-hl',
+						label: 'High-interest education loan EMI',
+						label_kan: 'ಹೆಚ್ಚು ಬಡ್ಡಿ ಶಿಕ್ಷಣ ಸಾಲ EMI',
+						amount: emi,
+					});
+					newExpenses += emi;
+					newSavings -= emi * 24; // correct 24-month accumulation (step 6 ran without this EMI)
+					newDebts.push({
+						type: 'personal-loan',
+						label: 'High-interest education loan',
+						principal: loanAmount,
+						interestRate: 18,
+						monthlyEmi: emi,
+						remainingAmount: loanAmount,
+						takenInScenario: scenarioId,
+						expenseKey: 'loan-emi-edu-hl',
+					});
+				}
+			} else {
+				// Land path: spend all savings, take loan for shortfall
+				const shortfall = Math.max(0, 1_000_000 - state.savings);
+				if (shortfall > 0) {
+					const r = 0.18 / 12;
+					const n = 120;
+					const emi = Math.round(shortfall * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1));
+					workingBreakdown.push({
+						key: 'loan-emi-edu-hl',
+						label: 'High-interest education loan EMI',
+						label_kan: 'ಹೆಚ್ಚು ಬಡ್ಡಿ ಶಿಕ್ಷಣ ಸಾಲ EMI',
+						amount: emi,
+					});
+					newExpenses += emi;
+					newDebts.push({
+						type: 'personal-loan',
+						label: 'High-interest education loan',
+						principal: shortfall,
+						interestRate: 18,
+						monthlyEmi: emi,
+						remainingAmount: shortfall,
+						takenInScenario: scenarioId,
+						expenseKey: 'loan-emi-edu-hl',
+					});
+				}
+			}
+		}
+
+		// 11d. S9-C land sell path: remove hospital personal loan added in step 11.
 		if (scenarioId === 9 && choiceId === 'C'
 			&& !state.assets.some(a => a.type === 'mutual-fund')
 			&& state.assets.some(a => a.type === 'land')) {
@@ -690,6 +751,7 @@ export const useFinancialStore = create<FinancialState>()(persist((set, get) => 
 			scenarioId,
 			choiceId,
 			state.educationGoalProgress,
+			{ ...state.choiceHistory, [scenarioId]: { choiceId } },
 		);
 
 		set({
@@ -733,6 +795,16 @@ export const useFinancialStore = create<FinancialState>()(persist((set, get) => 
 			completedScenarios: completed.slice(0, -1),
 			choiceHistory: newChoiceHistory,
 			stateSnapshots: newSnapshots,
+		});
+	},
+
+	sellAssets: (sales: { type: string; amount: number }[]) => {
+		const state = get();
+		const soldTypes = new Set(sales.map(s => s.type));
+		const proceeds = sales.reduce((sum, s) => sum + s.amount, 0);
+		set({
+			assets: state.assets.filter(a => !soldTypes.has(a.type)),
+			savings: state.savings + proceeds,
 		});
 	},
 }), {

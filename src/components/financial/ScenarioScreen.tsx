@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Home, ChevronLeft, ChevronRight, ChevronDown, ArrowLeft } from 'lucide-react';
 import { useFinancialStore, computeLoanTermMonths } from './financialStore';
+import CrisisScreen from './CrisisScreen';
 import gamedata from './gamedata.json';
 import houseIcon from '@/assets/financial/house-icon.png';
 import educationIcon from '@/assets/financial/education-icon.png';
@@ -157,6 +158,12 @@ const ScenarioScreen = () => {
 		return upd ? { ...a, value: upd.value } : a;
 	});
 	const totalAssets = displayAssets.reduce((sum, a) => sum + a.value, 0);
+
+	// Hard gate: if monthly expenses exceed income AND savings can't cover the 24-month shortfall,
+	// the player must sell an asset or go back before proceeding.
+	if (monthlySurplus < 0 && savings + monthlySurplus * 24 < 0) {
+		return <CrisisScreen displayAssets={displayAssets} />;
+	}
 	const assetIcons: { src: string; key: string }[] = [];
 	if (displayAssets.some((a) => a.type === 'land')) assetIcons.push({ src: houseIcon, key: 'land' });
 	if (displayAssets.some((a) => a.type === 'gold')) assetIcons.push({ src: goldcoinsIcon, key: 'gold' });
@@ -181,8 +188,8 @@ const ScenarioScreen = () => {
 		// S6: dynamic asset reference based on S4 choice
 		if (s6GoldPath) {
 			return {
-				en: `Priya wants to study engineering (₹5 lakh over 4 years). Susheela has gold jewelry worth ${goldAmount}. But Priya is not legally Susheela's daughter, making education loans difficult.`,
-				kan: `ಪ್ರಿಯಾ ಎಂಜಿನಿಯರಿಂಗ್ ಓದಲು ಬಯಸುತ್ತಾಳೆ (4 ವರ್ಷಗಳಲ್ಲಿ ₹5 ಲಕ್ಷ). ಸುಶೀಲಾ ಬಳಿ ${goldAmount_kan} ಮೌಲ್ಯದ ಚಿನ್ನದ ಆಭರಣವಿದೆ. ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.`,
+				en: `Priya has dreamed of becoming an engineer since she was a child. She has received admission to an engineering college — the fees are ₹10 lakh over 4 years. Susheela has gold jewelry worth ${goldAmount}. But Priya is not legally Susheela's daughter, making education loans difficult.`,
+				kan: `ಪ್ರಿಯಾ ಚಿಕ್ಕಂದಿನಿಂದಲೂ ಎಂಜಿನಿಯರ್ ಆಗಬೇಕೆಂದು ಕನಸು ಕಾಣುತ್ತಿದ್ದಾಳೆ. ಅವಳು ಎಂಜಿನಿಯರಿಂಗ್ ಕಾಲೇಜಿಗೆ ಪ್ರವೇಶ ಪಡೆದಿದ್ದಾಳೆ — 4 ವರ್ಷಗಳಲ್ಲಿ ₹10 ಲಕ್ಷ ಶುಲ್ಕ. ಸುಶೀಲಾ ಬಳಿ ${goldAmount_kan} ಮೌಲ್ಯದ ಚಿನ್ನದ ಆಭರಣವಿದೆ. ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.`,
 			};
 		}
 		// S6: land path (S4-A) — show appreciated land value from assetValueUpdates
@@ -192,8 +199,8 @@ const ScenarioScreen = () => {
 			const landDisplayValue = landUpdate ? landUpdate.value : (landOriginal?.value ?? 0);
 			const landBoughtValue = landOriginal?.value ?? 300000;
 			return {
-				en: `Priya wants to study engineering (₹5 lakh over 4 years). Susheela's land is now worth ${fmt(landDisplayValue)} (bought at ${fmt(landBoughtValue)}). But Priya is not legally Susheela's daughter, making education loans difficult.`,
-				kan: `ಪ್ರಿಯಾ ಎಂಜಿನಿಯರಿಂಗ್ ಓದಲು ಬಯಸುತ್ತಾಳೆ (4 ವರ್ಷಗಳಲ್ಲಿ ₹5 ಲಕ್ಷ). ಸುಶೀಲಾಳ ಭೂಮಿ ಈಗ ${fmt(landDisplayValue)} ಮೌಲ್ಯ (${fmt(landBoughtValue)}ಕ್ಕೆ ಖರೀದಿಸಿದ). ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.`,
+				en: `Priya has dreamed of becoming an engineer since she was a child. She has received admission to an engineering college — the fees are ₹10 lakh over 4 years. Susheela's land is now worth ${fmt(landDisplayValue)} (bought at ${fmt(landBoughtValue)}). But Priya is not legally Susheela's daughter, making education loans difficult.`,
+				kan: `ಪ್ರಿಯಾ ಚಿಕ್ಕಂದಿನಿಂದಲೂ ಎಂಜಿನಿಯರ್ ಆಗಬೇಕೆಂದು ಕನಸು ಕಾಣುತ್ತಿದ್ದಾಳೆ. ಅವಳು ಎಂಜಿನಿಯರಿಂಗ್ ಕಾಲೇಜಿಗೆ ಪ್ರವೇಶ ಪಡೆದಿದ್ದಾಳೆ — 4 ವರ್ಷಗಳಲ್ಲಿ ₹10 ಲಕ್ಷ ಶುಲ್ಕ. ಸುಶೀಲಾಳ ಭೂಮಿ ಈಗ ${fmt(landDisplayValue)} ಮೌಲ್ಯ (${fmt(landBoughtValue)}ಕ್ಕೆ ಖರೀದಿಸಿದ). ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.`,
 			};
 		}
 
@@ -259,9 +266,27 @@ const ScenarioScreen = () => {
 						kan: 'ನಿವೃತ್ತಿ ಮನೆಗೆ ಭೂಮಿ ಇನ್ನೂ ಖರೀದಿಸಿಲ್ಲ — ಆ ಗುರಿ ಇನ್ನೂ ಬಾಕಿ ಇದೆ.',
 					};
 
+			// Priya's outcome depends on S6 choice
+			const s6Choice = choiceHistory[6]?.choiceId;
+			const priyaClause =
+				s6Choice === 'A'
+					? {
+							en: `Priya fulfilled her dream — she graduated as a B.E. engineer and has started her first job (₹35,000/month; contributing ₹20,000/month to the household, keeping ₹15,000 for herself).`,
+							kan: `ಪ್ರಿಯಾ ತನ್ನ ಕನಸು ಈಡೇರಿಸಿಕೊಂಡಳು — ಅವಳು B.E. ಎಂಜಿನಿಯರ್ ಆಗಿ ಪದವಿ ಪಡೆದಿದ್ದಾಳೆ ಮತ್ತು ಮೊದಲ ಉದ್ಯೋಗ ಪ್ರಾರಂಭಿಸಿದ್ದಾಳೆ (₹35,000/ತಿಂಗಳು; ₹20,000 ಮನೆಗೆ, ₹15,000 ತನಗೆ).`,
+						}
+					: s6Choice === 'B'
+					? {
+							en: `Priya completed a polytechnic diploma — not the engineering degree she dreamed of, but a real qualification. She works as a junior technician (₹22,000/month; contributing ₹10,000/month to the household, keeping ₹12,000 for herself).`,
+							kan: `ಪ್ರಿಯಾ ಪಾಲಿಟೆಕ್ನಿಕ್ ಡಿಪ್ಲೊಮಾ ಮುಗಿಸಿದ್ದಾಳೆ — ಅವಳ ಕನಸಿನ ಎಂಜಿನಿಯರಿಂಗ್ ಪದವಿಯಲ್ಲ, ಆದರೆ ನಿಜವಾದ ಅರ್ಹತೆ. ಅವಳು ಜೂನಿಯರ್ ತಂತ್ರಜ್ಞೆಯಾಗಿ ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದಾಳೆ (₹22,000/ತಿಂಗಳು; ₹10,000 ಮನೆಗೆ, ₹12,000 ತನಗೆ).`,
+						}
+					: {
+							en: `Priya was unable to complete her engineering degree — the financial pressure forced her to drop out. She works in the informal sector (₹15,000/month; contributing ₹10,000/month to the household, keeping ₹5,000 for herself).`,
+							kan: `ಪ್ರಿಯಾ ಎಂಜಿನಿಯರಿಂಗ್ ಪದವಿ ಮುಗಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ — ಆರ್ಥಿಕ ಒತ್ತಡ ಅವಳನ್ನು ಬಿಡಲು ಒತ್ತಾಯಿಸಿತು. ಅವಳು ಅನೌಪಚಾರಿಕ ವಲಯದಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದಾಳೆ (₹15,000/ತಿಂಗಳು; ₹10,000 ಮನೆಗೆ, ₹5,000 ತನಗೆ).`,
+						};
+
 			return {
-				en: `${financialHealth.en} — she earns ${fmt(monthlyIncome)}/month, spends ${fmt(monthlyExpenses)}/month, and saves ${fmt(surplus)}/month. She has ${fmt(savings)} in savings and ${totalAssetValue > 0 ? fmt(totalAssetValue) + ' in assets' : 'no significant assets'}. ${houseComment.en} Priya is now graduating and starting her first job (₹35,000/month; contributing ₹20,000/month to the household). But Priya's adoption was never legally formalized — if something happens to Susheela, her biological family could legally claim everything.`,
-				kan: `${financialHealth.kan} — ${fmt(monthlyIncome)}/ತಿಂಗಳು ಸಂಪಾದನೆ, ${fmt(monthlyExpenses)}/ತಿಂಗಳು ಖರ್ಚು, ${fmt(surplus)}/ತಿಂಗಳು ಉಳಿತಾಯ. ${fmt(savings)} ಉಳಿತಾಯ, ${totalAssetValue > 0 ? fmt(totalAssetValue) + ' ಆಸ್ತಿ' : 'ಗಮನಾರ್ಹ ಆಸ್ತಿ ಇಲ್ಲ'}. ${houseComment.kan} ಪ್ರಿಯಾ ₹35,000/ತಿಂಗಳ ಉದ್ಯೋಗ ಪಡೆದಿದ್ದಾಳೆ (₹20,000 ಮನೆಗೆ). ಆದರೆ ದತ್ತು ಕಾನೂನಾತ್ಮಕಗೊಂಡಿಲ್ಲ — ಸುಶೀಲಾಗೆ ಏನಾದರೂ ಆದರೆ ಜೈವಿಕ ಕುಟುಂಬ ಎಲ್ಲವನ್ನೂ ಪಡೆಯಬಹುದು.`,
+				en: `${financialHealth.en} — she earns ${fmt(monthlyIncome)}/month, spends ${fmt(monthlyExpenses)}/month, and saves ${fmt(surplus)}/month. She has ${fmt(savings)} in savings and ${totalAssetValue > 0 ? fmt(totalAssetValue) + ' in assets' : 'no significant assets'}. ${houseComment.en} ${priyaClause.en} But Priya's adoption was never legally formalized — if something happens to Susheela, her biological family could legally claim everything.`,
+				kan: `${financialHealth.kan} — ${fmt(monthlyIncome)}/ತಿಂಗಳು ಸಂಪಾದನೆ, ${fmt(monthlyExpenses)}/ತಿಂಗಳು ಖರ್ಚು, ${fmt(surplus)}/ತಿಂಗಳು ಉಳಿತಾಯ. ${fmt(savings)} ಉಳಿತಾಯ, ${totalAssetValue > 0 ? fmt(totalAssetValue) + ' ಆಸ್ತಿ' : 'ಗಮನಾರ್ಹ ಆಸ್ತಿ ಇಲ್ಲ'}. ${houseComment.kan} ${priyaClause.kan} ಆದರೆ ದತ್ತು ಕಾನೂನಾತ್ಮಕಗೊಂಡಿಲ್ಲ — ಸುಶೀಲಾಗೆ ಏನಾದರೂ ಆದರೆ ಜೈವಿಕ ಕುಟುಂಬ ಎಲ್ಲವನ್ನೂ ಪಡೆಯಬಹುದು.`,
 			};
 		}
 
@@ -282,75 +307,47 @@ const ScenarioScreen = () => {
 	};
 	const situationText = getSituationText();
 
-	// Dynamic S6 choice text — handles both gold path (S4-B/C) and savings-sufficient cases
-	const s6HasEnoughForB = scenario.id === 6 && savings >= 200000;
-	const s6HasEnoughForC = scenario.id === 6 && savings >= 500000;
+	// S6 dynamic choices: A and B use gamedata.json text directly; only C needs overrides
+	// Dynamic EMI for S6 Choice C land path: 18% over 120 months on shortfall after spending all savings
+	const s6DynamicEmiC = (() => {
+		if (scenario.id !== 6) return 0;
+		const shortfall = Math.max(0, 1_000_000 - savings);
+		if (shortfall <= 0) return 0;
+		const r = 0.015;
+		const n = 120;
+		return Math.round((shortfall * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
+	})();
+	// Gold path variables for S6 Choice C: sell gold → loan for remainder
+	const s6GoldValue = s6GoldPath ? (s4Choice === 'B' ? 200_000 : 100_000) : 0;
+	const s6GoldLoanAmt = s6GoldPath ? 1_000_000 - s6GoldValue : 0;
+	const s6GoldEmi = s6GoldLoanAmt > 0 ? (() => {
+		const r = 0.015; const n = 120;
+		return Math.round((s6GoldLoanAmt * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1));
+	})() : 0;
 
 	const choices: GameChoice[] =
 		scenario.id !== 6
 			? baseChoices
 			: (baseChoices.map((c, i) => {
-					// Choice A: sell land or gold
-					if (i === 0 && s6GoldPath) {
-						const loanAmt = s4Choice === 'B' ? '₹3 lakh' : '₹4 lakh';
-						const loanAmt_kan = s4Choice === 'B' ? '₹3 ಲಕ್ಷ' : '₹4 ಲಕ್ಷ';
-						const emiAmt = s4Choice === 'B' ? '₹7,500' : '₹10,000';
-						return {
-							...c,
-							label: 'Sell gold for education',
-							label_kan: 'ಶಿಕ್ಷಣಕ್ಕೆ ಚಿನ್ನ ಮಾರಿ',
-							description: `Sell gold jewelry for ${goldAmount} towards Priya's education; take education loan of ${loanAmt} at 18% (EMI ${emiAmt}) for the remaining amount.`,
-							description_kan: `${goldAmount_kan} ಚಿನ್ನ ಮಾರಿ ಪ್ರಿಯಾ ಶಿಕ್ಷಣಕ್ಕೆ; ಉಳಿದ ${loanAmt_kan} @18% ಶಿಕ್ಷಣ ಸಾಲ (EMI ${emiAmt}).`,
-						};
-					}
-					// Choice B: keep investment + partial savings + loan
-					if (i === 1) {
-						const keepWhat = s6GoldPath ? 'gold' : 'land';
-						const keepWhat_kan = s6GoldPath ? 'ಚಿನ್ನ' : 'ಭೂಮಿ';
-						const preserve = s6GoldPath ? 'preserve investments' : 'preserve land';
-						const preserve_kan = s6GoldPath ? 'ಹೂಡಿಕೆ ರಕ್ಷಿಸಿ' : 'ಭೂಮಿ ರಕ್ಷಿಸಿ';
-						if (s6HasEnoughForB)
-							return {
-								...c,
-								label: s6GoldPath ? 'Keep gold, take loan' : c.label,
-								label_kan: s6GoldPath
-									? 'ಚಿನ್ನ ಇಟ್ಟು, ಸಾಲ ತೆಗೆಯಿರಿ'
-									: ((c as typeof c & { label_kan?: string }).label_kan ?? c.label),
-								description: `Keep ${keepWhat}, use ₹2 lakh from savings, take personal loan of ₹3 lakh at 18% interest (₹7,500 EMI) — fully fund Priya's education, ${preserve}.`,
-								description_kan: `${keepWhat_kan} ಇಟ್ಟು, ₹2 ಲಕ್ಷ ಉಳಿತಾಯ ಬಳಸಿ, 18% ₹3 ಲಕ್ಷ ಸಾಲ (₹7,500 EMI) — ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಪೂರ್ಣ, ${preserve_kan}.`,
-							};
-						if (s6GoldPath)
-							return {
-								...c,
-								label: 'Keep gold, take loan',
-								label_kan: 'ಚಿನ್ನ ಇಟ್ಟು, ಸಾಲ ತೆಗೆಯಿರಿ',
-								description: `Keep gold, use all current savings, take personal loan of ₹3 lakh at 18% interest (₹7,500 EMI) — try to preserve investments.`,
-								description_kan: `ಚಿನ್ನ ಇಟ್ಟು, ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, 18% ₹3 ಲಕ್ಷ ಸಾಲ (₹7,500 EMI).`,
-							};
-						return c; // land path, insufficient savings: keep original (all savings + loan)
-					}
-					// Choice C: burden sharing or full savings cover
+					// Choice C: gold path → sell gold + loan for remainder; land path → spend all savings + shortfall loan
 					if (i === 2) {
-						if (s6HasEnoughForC)
-							return {
-								...c,
-								label: 'Cover education from savings',
-								label_kan: 'ಉಳಿತಾಯದಿಂದ ಶಿಕ್ಷಣ ಭರಿಸಿ',
-								description: s6GoldPath
-									? "Pay Priya's full education (₹5 lakh) from savings — keep all investments, no loan needed, no burden on Priya."
-									: "Pay Priya's full education (₹5 lakh) from savings — keep land, no loan needed, no burden on Priya.",
-								description_kan: s6GoldPath
-									? 'ಉಳಿತಾಯದಿಂದ ₹5 ಲಕ್ಷ ಪ್ರಿಯಾ ಶಿಕ್ಷಣ — ಎಲ್ಲ ಹೂಡಿಕೆ ಉಳಿಸಿ, ಸಾಲ ಬೇಡ, ಪ್ರಿಯಾ ಮೇಲೆ ಹೊರೆ ಇಲ್ಲ.'
-									: 'ಉಳಿತಾಯದಿಂದ ₹5 ಲಕ್ಷ ಪ್ರಿಯಾ ಶಿಕ್ಷಣ — ಭೂಮಿ ಉಳಿಸಿ, ಸಾಲ ಬೇಡ, ಪ್ರಿಯಾ ಮೇಲೆ ಹೊರೆ ಇಲ್ಲ.',
-							};
 						if (s6GoldPath)
 							return {
 								...c,
-								description:
-									'Use all current savings, ask Priya to work part-time and take a small education loan — share the burden, keep gold.',
-								description_kan: 'ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡಲು ಕೇಳಿ — ಚಿನ್ನ ಇಟ್ಟುಕೊಳ್ಳಿ.',
+								label: 'Sell gold, high-interest loan',
+								label_kan: 'ಚಿನ್ನ ಮಾರಿ, ಹೆಚ್ಚು ಬಡ್ಡಿ ಸಾಲ',
+								description: `Sell gold (${goldAmount}), use proceeds toward the ₹10 lakh engineering fees. Take a high-interest personal loan of ${fmt(s6GoldLoanAmt)} at 18% over 10 years (EMI ${fmt(s6GoldEmi)}/month) for the remainder. Priya works part-time evenings to contribute and her studies suffer as a result. She eventually falls behind and DROPS OUT.`,
+								description_kan: `ಚಿನ್ನ (${goldAmount_kan}) ಮಾರಿ ₹10 ಲಕ್ಷ ಶುಲ್ಕಕ್ಕೆ ಬಳಸಿ. ಉಳಿದ ${fmt(s6GoldLoanAmt)} ಕ್ಕೆ 18% ಹೆಚ್ಚು ಬಡ್ಡಿ ಸಾಲ (EMI ${fmt(s6GoldEmi)}/ತಿ, 10 ವರ್ಷ). ಪ್ರಿಯಾ ಸಂಜೆ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡುತ್ತಾಳೆ ಮತ್ತು ಅಧ್ಯಯನ ಹಾಳಾಗುತ್ತದೆ. ಅಂತಿಮವಾಗಿ ಓದು ಬಿಟ್ಟಳು (DROPS OUT).`,
+								minimumSurplus: s6GoldEmi,
 							};
-						return c; // land path, insufficient savings: keep original
+						return {
+						...c,
+						description:
+							s6DynamicEmiC > 0
+								? `Keep land. Spend all savings toward the ₹10 lakh engineering fees — the remaining shortfall is covered by a high-interest personal loan at 18% over 10 years (EMI ${fmt(s6DynamicEmiC)}/month). Priya works part-time evenings to contribute and her studies suffer as a result. She eventually falls behind and DROPS OUT.`
+								: c.description,
+						...(s6DynamicEmiC > 0 && { minimumSurplus: s6DynamicEmiC }),
+					}; // land path: dynamic EMI injected into description
 					}
 					return c;
 				}) as GameChoice[]);
@@ -512,15 +509,25 @@ const ScenarioScreen = () => {
 		(choice as typeof choice & { minimumSurplus?: number }).minimumSurplus !== undefined
 			? monthlySurplus < ((choice as typeof choice & { minimumSurplus?: number }).minimumSurplus ?? 0)
 			: false;
+	const assetLocked =
+		(choice as typeof choice & { requiredAsset?: string }).requiredAsset !== undefined
+			? !assets.some((a) => a.type === (choice as typeof choice & { requiredAsset?: string }).requiredAsset)
+			: false;
 	const choiceLocked =
-		((choice as typeof choice & { minimumSavings?: number }).minimumSavings ?? 0) > savings || surplusLocked;
+		((choice as typeof choice & { minimumSavings?: number }).minimumSavings ?? 0) > savings ||
+		surplusLocked ||
+		assetLocked;
 	const allChoicesLocked = s9Choices.every((c) => {
 		const sLocked = ((c as typeof c & { minimumSavings?: number }).minimumSavings ?? 0) > savings;
 		const spLocked =
 			(c as typeof c & { minimumSurplus?: number }).minimumSurplus !== undefined
 				? monthlySurplus < ((c as typeof c & { minimumSurplus?: number }).minimumSurplus ?? 0)
 				: false;
-		return sLocked || spLocked;
+		const aLocked =
+			(c as typeof c & { requiredAsset?: string }).requiredAsset !== undefined
+				? !assets.some((a) => a.type === (c as typeof c & { requiredAsset?: string }).requiredAsset)
+				: false;
+		return sLocked || spLocked || aLocked;
 	});
 
 	const handleConfirm = () => {
@@ -851,7 +858,9 @@ const ScenarioScreen = () => {
 								<span className="text-2xl font-bold text-[#e8b84b]">{choice.id}</span>
 								{choiceLocked && (
 									<span className="text-xs bg-red-600 text-white rounded px-2 py-0.5 shrink-0">
-										{surplusLocked
+										{assetLocked
+											? t('Land required for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಭೂಮಿ ಬೇಕು')
+											: surplusLocked
 											? t(
 													`Needs ₹${((choice as typeof choice & { minimumSurplus?: number }).minimumSurplus ?? 0).toLocaleString('en-IN')}/mo surplus`,
 													`₹${((choice as typeof choice & { minimumSurplus?: number }).minimumSurplus ?? 0).toLocaleString('en-IN')}/ತಿಂ ಉಳಿಕೆ ಬೇಕು`,
@@ -918,7 +927,9 @@ const ScenarioScreen = () => {
 						disabled={choiceLocked}
 						className={`w-full py-4 rounded-xl font-bold text-base transition-colors ${choiceLocked ? 'bg-white/10 text-white/30 cursor-not-allowed' : 'bg-[#e8b84b] text-[#0e1e3f] hover:bg-[#f5c842]'}`}>
 						{choiceLocked
-							? surplusLocked
+							? assetLocked
+								? t('Need land asset for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಭೂಮಿ ಆಸ್ತಿ ಬೇಕು')
+								: surplusLocked
 								? t('Need more monthly surplus for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಹೆಚ್ಚಿನ ಮಾಸಿಕ ಉಳಿಕೆ ಬೇಕು')
 								: t('Not enough savings for this choice', 'ಈ ಆಯ್ಕೆಗೆ ಸಾಕಷ್ಟು ಉಳಿತಾಯವಿಲ್ಲ')
 							: t(`Confirm Choice ${choice.id}: ${choice.label}`, `ಆಯ್ಕೆ ${choice.id} ದೃಢಪಡಿಸಿ`)}

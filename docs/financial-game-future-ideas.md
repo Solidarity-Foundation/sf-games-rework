@@ -120,15 +120,15 @@ The situation text in S6 must establish clearly that **engineering is Priya's dr
 ### Revised Choices
 
 **Choice A — Sell land + cooperative/trust loan (excellent, +30)**
-Sell land for ₹5L. The land sale covers the first 2 years of engineering. Susheela joins a local women's credit cooperative and takes a ₹5L loan at 10% interest (₹8,000 EMI, 60 months) for the remaining 2 years. Priya completes a full engineering degree. Land asset removed; manageable debt added.
+Sell land for ₹5L. The land sale covers the first 2 years of engineering. Susheela joins a local women's credit cooperative and takes a ₹5L loan at 6% interest (₹5,551 EMI, 120 months) for the remaining 2 years. Priya completes a full engineering degree. Land asset removed; manageable debt added.
 
 - `savingsChange`: +₹0 (land proceeds go directly to fees)
 - `assetRemovals`: `["land"]`
-- `newDebts`: cooperative/trust loan ₹5L at 10%, EMI ₹8,000, clears by S9
-- Monthly expenses: +₹8,000 (EMI)
+- `newDebts`: cooperative/trust loan ₹5L at 6%, EMI ₹5,551, 120-month term (clears at end of S10)
+- Monthly expenses: +₹5,551 (EMI)
 - S10 outcome: Priya is a qualified engineer, earning ₹35,000/month, contributes ₹20,000/month to household
 - **Gate — `requiredAsset: "land"`**: Choice A is unavailable if Susheela does not own land (nothing to sell).
-- **Gate — `minimumSurplus: 8000`**: Choice A is unavailable if current monthly surplus is below ₹8,000 — Susheela cannot afford the EMI after selling land.
+- **Gate — `minimumSurplus: 5551`**: Choice A is unavailable if current monthly surplus is below ₹5,551 — Susheela cannot afford the EMI after selling land.
 
 **Choice B — Sell land, fund diploma track (moderate, +10)**
 Sell land for ₹5L. Rather than stretching into debt, Susheela and Priya agree that a polytechnic diploma (₹2.5L, 3 years) is a realistic, debt-free path. ₹2.5L goes to diploma fees; the remaining ₹2.5L stays in savings. Priya studies full-time, no part-time work, and completes her diploma. Land asset removed; no new debt.
@@ -141,7 +141,7 @@ Sell land for ₹5L. Rather than stretching into debt, Susheela and Priya agree 
 - **Gate — `requiredAsset: "land"`**: Choice B is unavailable if Susheela does not own land — there is nothing to sell to fund the diploma.
 
 **Choice C — Keep land, take high-interest loan, Priya works part-time (poor, −20)**
-Keep land. Use all current savings plus a personal loan of ₹5L at 18% interest (₹12,500 EMI) to fund the first half of engineering. Priya works part-time evenings to contribute. Studies suffer — she falls behind, misses exams, and by year 3 cannot keep up. She drops out without completing the degree.
+Keep land. Spend all savings toward the ₹10 lakh engineering fees — the remaining shortfall is covered by a high-interest personal loan at 18%. Priya works part-time evenings to contribute and her studies suffer as a result. She eventually falls behind and drops out without completing the degree.
 
 - `savingsChange`: 0 (`spendAllSavings: true`)
 - `spendAllSavings`: true

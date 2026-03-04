@@ -107,12 +107,12 @@
           "id": "A",
           "label": "Pay bribe + open shop",
           "label_kan": "ಲಂಚ ನೀಡಿ + ಅಂಗಡಿ ತೆರೆಯಿರಿ",
-          "description": "Pay ₹6,000 to police, use ₹10,000 for shop deposit, borrow ₹5,000 from moneylender at 24% interest — prioritize business growth despite costs.",
-          "description_kan": "ಪೊಲೀಸರಿಗೆ ₹6,000 ಪಾವತಿಸಿ, ಅಂಗಡಿ ಠೇವಣಿಗೆ ₹10,000 ಬಳಸಿ, ಬಡ್ಡಿದಾರರಿಂದ ₹5,000 ಸಾಲ ಪಡೆಯಿರಿ - ವೆಚ್ಚದ ಹೊರತಾಗಿಯೂ ವ್ಯವಹಾರ ಬೆಳವಣಿಗೆಗೆ ಆದ್ಯತೆ ನೀಡಿ.",
+          "description": "Pay ₹8,000 to police, use ₹10,000 for shop deposit, borrow ₹5,000 from moneylender at 24% interest — prioritize business growth despite costs.",
+          "description_kan": "ಪೊಲೀಸರಿಗೆ ₹8,000 ಪಾವತಿಸಿ, ಅಂಗಡಿ ਠೇವಣಿಗೆ ₹10,000 ಬಳಸಿ, ಬಡ್ಡಿದಾರರಿಂದ ₹5,000 ಸಾಲ ಪಡೆಯಿರಿ - ವೆಚ್ಚದ ಹೊರತಾಗಿಯೂ ವ್ಯವಹಾರ ಬೆಳವಣಿಗೆಗೆ ಆದ್ಯತೆ ನೀಡಿ.",
           "points": 30,
           "minimumSavings": 16000,
           "financialImpact": {
-            "savingsChange": -22000,
+            "savingsChange": -24000,
             "monthlyIncomeChange": 12000,
             "monthlyExpensesChange": 6000,
             "newAssets": [],
@@ -128,8 +128,8 @@
                 "notes_kan": "ಸೌಂದರ್ಯ ಪಾರ್ಲರ್ ಪೂರ್ಣ ಸಮಯದ ಕೆಲಸವಾಗುವ ಕಾರಣ ಲೈಂಗಿಕ ಕೆಲಸದ ಆದಾಯ ನಿಲ್ಲುತ್ತದೆ."
               }
             ],
-            "notes": "Bribe ₹6K + shop deposit ₹10K + moneylender ₹5K (total repayment ~₹6K folded in) = ₹22K deducted from savings. New income: +₹12K/mo from beauty shop. New expense: shop rent ₹6K/mo.",
-            "notes_kan": "ಲಂಚ ₹6K + ಅಂಗಡಿ ಠೇವಣಿ ₹10K + ಲೇವಾದೇವಿ ₹5K (ಒಟ್ಟು ಮರುಪಾವತಿ ~₹6K ಸೇರಿಸಲಾಗಿದೆ) = -₹22K.",
+            "notes": "Bribe ₹8K + shop deposit ₹10K + moneylender ₹5K (total repayment ~₹6K folded in) = ₹24K deducted from savings. New income: +₹12K/mo from beauty shop. New expense: shop rent ₹6K/mo.",
+            "notes_kan": "ಲಂಚ ₹8K + ಅಂಗಡಿ ਠೇವಣಿ ₹10K + ಲೇವಾದೇವಿ ₹5K (ಒಟ್ಟು ಮರುಪಾವತಿ ~₹6K ಸೇರಿಸಲಾಗಿದೆ) = -₹24K.",
             "expenseItemChanges": [
               {
                 "key": "shop-rent",
@@ -189,9 +189,9 @@
       "choices": [
         {
           "id": "A",
-          "label": "Get documents, borrow for mother",
-          "label_kan": "ದಾಖಲೆ ಪಡೆಯಿರಿ, ತಾಯಿಗಾಗಿ ಸಾಲ",
-          "description": "Use ₹12,000 for legal documents, borrow ₹6,000 from community lender at 15% for mother's treatment, raise Priya's school expenses to ₹3,000/month — invest in long-term financial access.",
+          "label": "Get documents, loan, Priya ₹3K/mo",
+          "label_kan": "ದಾಖಲೆ, ಸಾಲ, ಪ್ರಿಯಾ ₹3K/ತಿಂ",
+          "description": "Use ₹12,000 for legal documents, borrow ₹6,000 from community lender at 15% for mother's treatment. Priya's school expenses rise to ₹3,000/month (kept down by using second-hand books and old uniforms) — invest in long-term financial access.",
           "description_kan": "ಕಾನೂನು ದಾಖಲೆಗಳಿಗೆ ₹12,000 ಬಳಸಿ, ತಾಯಿಯ ಚಿಕಿತ್ಸೆಗೆ 15% ಬಡ್ಡಿಯಲ್ಲಿ ₹6,000 ಸಾಲ, ಪ್ರಿಯಾ ಶಾಲಾ ವೆಚ್ಚ ₹3,000/ತಿಂಗಳಿಗೆ ಹೆಚ್ಚಿಸಿ.",
           "points": 30,
           "financialImpact": {
@@ -239,8 +239,8 @@
           "id": "B",
           "label": "Skip documents, help family",
           "label_kan": "ದಾಖಲೆ ಬಿಟ್ಟು, ಕುಟುಂಬಕ್ಕೆ ಸಹಾಯ",
-          "description": "Skip document change, use ₹11,000 for mother and Priya, keep remaining savings — family's immediate needs come first.",
-          "description_kan": "ದಾಖಲೆ ಬದಲಾವಣೆ ಬಿಟ್ಟು, ತಾಯಿ ಮತ್ತು ಪ್ರಿಯಾಗೆ ₹11,000 ಬಳಸಿ, ಉಳಿದ ಉಳಿತಾಯ ಕಾಪಾಡಿ.",
+          "description": "Skip document change. Pay ₹6,000 from savings for mother's treatment. Priya's school expenses rise from ₹2,000 to ₹5,000/month — without identity documents, formal banking remains out of reach.",
+          "description_kan": "ದಾಖಲೆ ಬದಲಾವಣೆ ಬಿಟ್ಟು. ತಾಯಿ ಚಿಕಿತ್ಸೆಗೆ ₹6,000 ಉಳಿತಾಯದಿಂದ. ಪ್ರಿಯಾ ಶಾಲೆ ವೆಚ್ಚ ₹2,000 ರಿಂದ ₹5,000/ತಿಂಗಳಿಗೆ ಏರುತ್ತದೆ — ಗುರುತಿನ ದಾಖಲೆ ಇಲ್ಲದೆ ಔಪಚಾರಿಕ ಬ್ಯಾಂಕಿಂಗ್ ಅಸಾಧ್ಯ.",
           "points": -20,
           "financialImpact": {
             "savingsChange": -6000,
@@ -569,8 +569,8 @@
       "id": 6,
       "title": "Priya's Education and Future Planning",
       "title_kan": "ಪ್ರಿಯಾಳ ಶಿಕ್ಷಣ ಮತ್ತು ಭವಿಷ್ಯ ಯೋಜನೆ",
-      "situation": "Priya wants to study engineering (₹5 lakh over 4 years). Susheela's land is now worth ₹5 lakh (bought at ₹3 lakh). But Priya is not legally Susheela's daughter, making education loans difficult.",
-      "situation_kan": "ಪ್ರಿಯಾ ಎಂಜಿನಿಯರಿಂಗ್ ಓದಲು ಬಯಸುತ್ತಾಳೆ (4 ವರ್ಷಗಳಲ್ಲಿ ₹5 ಲಕ್ಷ). ಸುಶೀಲಾಳ ಭೂಮಿ ಈಗ ₹5 ಲಕ್ಷ ಮೌಲ್ಯ. ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.",
+      "situation": "Priya has dreamed of becoming an engineer since she was a child. She has received admission to an engineering college — the fees are ₹10 lakh over 4 years. Susheela's land is now worth ₹5 lakh (bought at ₹3 lakh). But Priya is not legally Susheela's daughter, making education loans difficult.",
+      "situation_kan": "ಪ್ರಿಯಾ ಚಿಕ್ಕಂದಿನಿಂದಲೂ ಎಂಜಿನಿಯರ್ ಆಗಬೇಕೆಂದು ಕನಸು ಕಾಣುತ್ತಿದ್ದಾಳೆ. ಅವಳು ಎಂಜಿನಿಯರಿಂಗ್ ಕಾಲೇಜಿಗೆ ಪ್ರವೇಶ ಪಡೆದಿದ್ದಾಳೆ — 4 ವರ್ಷಗಳಲ್ಲಿ ₹10 ಲಕ್ಷ ಶುಲ್ಕ. ಸುಶೀಲಾಳ ಭೂಮಿ ಈಗ ₹5 ಲಕ್ಷ ಮೌಲ್ಯ (₹3 ಲಕ್ಷಕ್ಕೆ ಖರೀದಿಸಿದ). ಪ್ರಿಯಾ ಕಾನೂನಾತ್ಮಕವಾಗಿ ಸುಶೀಲಾಳ ಮಗಳಲ್ಲ, ಶಿಕ್ಷಣ ಸಾಲ ಕಷ್ಟ.",
       "question": "Should Susheela sacrifice her retirement goal for Priya's education, or balance both?",
       "question_kan": "ಸುಶೀಲಾ ಪ್ರಿಯಾಳ ಶಿಕ್ಷಣಕ್ಕಾಗಿ ನಿವೃತ್ತಿ ಗುರಿ ಬಿಡಬೇಕೇ, ಅಥವಾ ಎರಡನ್ನೂ ಸಮತೋಲನ ಮಾಡಬೇಕೇ?",
       "assetValueUpdates": [
@@ -582,13 +582,54 @@
       "choices": [
         {
           "id": "A",
-          "label": "Sell land for Priya's education",
-          "label_kan": "ಪ್ರಿಯಾ ಶಿಕ್ಷಣಕ್ಕೆ ಭೂಮಿ ಮಾರಿ",
-          "description": "Sell land for ₹5 lakh, use ₹3 lakh for Priya's first 2.5 years of education, save ₹10,000/month from the remaining amount for future costs — prioritize Priya while continuing to save.",
-          "description_kan": "₹5 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಮಾರಿ, ₹3 ಲಕ್ಷ ಪ್ರಿಯಾ ಮೊದಲ 2.5 ವರ್ಷ ಶಿಕ್ಷಣಕ್ಕೆ — ಉಳಿದ ₹2 ಲಕ್ಷ ಉಳಿತಾಯಕ್ಕೆ ಸೇರಿಸಲಾಗುತ್ತದೆ. ಪ್ರಿಯಾಗೆ ಆದ್ಯತೆ, ಮನೆ ಗುರಿ ಬಿಟ್ಟುಕೊಳ್ಳಬೇಕು.",
+          "label": "Sell land + cooperative loan",
+          "label_kan": "ಭೂಮಿ ಮಾರಿ + ಸಹಕಾರ ಸಾಲ",
+          "description": "Sell land for ₹5 lakh — covers the first 2 years of engineering fees. Join a women's credit cooperative and take ₹5 lakh at 6% interest (₹5,551 EMI, 120 months) to cover the remaining 2 years. Priya completes her full B.E. degree.",
+          "description_kan": "₹5 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಮಾರಿ — ಮೊದಲ 2 ವರ್ಷದ ಶುಲ್ಕ ಭರಿಸಲಾಗುತ್ತದೆ. ಮಹಿಳಾ ಸಾಲ ಸಹಕಾರ ಸಂಘ ಸೇರಿ, ₹5 ಲಕ್ಷ 6% ಬಡ್ಡಿಯಲ್ಲಿ (₹5,551 EMI, 120 ತಿಂಗಳು) ತೆಗೆದು ಉಳಿದ 2 ವರ್ಷ ಭರಿಸಿ. ಪ್ರಿಯಾ ಪೂರ್ಣ B.E. ಪದವಿ ಪಡೆಯುತ್ತಾಳೆ.",
           "points": 30,
+          "minimumSurplus": 5551,
+          "requiredAsset": "land",
           "financialImpact": {
-            "savingsChange": 200000,
+            "savingsChange": 0,
+            "monthlyIncomeChange": 0,
+            "monthlyExpensesChange": 8000,
+            "newAssets": [],
+            "newDebts": [
+              {
+                "type": "community-loan",
+                "label": "Cooperative education loan for Priya",
+                "label_kan": "ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಸಹಕಾರ ಸಾಲ",
+                "principal": 500000,
+                "interestRate": 6,
+                "monthlyEmi": 5551,
+                "expenseKey": "loan-emi-edu-coop"
+              }
+            ],
+            "assetRemovals": [
+              "land"
+            ],
+            "notes": "Land sold for ₹5 lakh covers the first two years of engineering fees. A ₹5 lakh cooperative loan at 6% (EMI ₹5,551/month, 10-year term) funds the remaining two years. Priya will graduate as a B.E. engineer.",
+            "notes_kan": "ಭೂಮಿ ₹5 ಲಕ್ಷ ಮಾರಿ ಮೊದಲ ಎರಡು ವರ್ಷದ ಶುಲ್ಕ ಭರಿಸಲಾಯಿತು. ₹5L @6% ಸಹಕಾರ ಸಾಲ (EMI ₹5,551/ತಿ, 10 ವರ್ಷ). ಪ್ರಿಯಾ B.E. ಎಂಜಿನಿಯರ್ ಆಗುತ್ತಾಳೆ.",
+            "expenseItemChanges": [
+              {
+                "key": "loan-emi-edu-coop",
+                "label": "Cooperative education loan EMI",
+                "label_kan": "ಶಿಕ್ಷಣ ಸಹಕಾರ ಸಾಲ EMI",
+                "newAmount": 5551
+              }
+            ]
+          }
+        },
+        {
+          "id": "B",
+          "label": "Sell land, fund diploma",
+          "label_kan": "ಭೂಮಿ ಮಾರಿ, ಡಿಪ್ಲೊಮಾ ಓದಿಸಿ",
+          "description": "Sell land for ₹5 lakh. Pay ₹2.5 lakh for a 3-year polytechnic diploma — a real qualification, completely debt-free. Remaining ₹2.5 lakh stays in savings. Priya studies full-time.",
+          "description_kan": "₹5 ಲಕ್ಷಕ್ಕೆ ಭೂಮಿ ಮಾರಿ. 3 ವರ್ಷದ ಪಾಲಿಟೆಕ್ನಿಕ್ ಡಿಪ್ಲೊಮಾಕ್ಕೆ ₹2.5 ಲಕ್ಷ ನೀಡಿ — ನಿಜವಾದ ಅರ್ಹತೆ, ಸಾಲ ಇಲ್ಲ. ಉಳಿದ ₹2.5 ಲಕ್ಷ ಉಳಿತಾಯದಲ್ಲಿ ಉಳಿಯುತ್ತದೆ.",
+          "points": 10,
+          "requiredAsset": "land",
+          "financialImpact": {
+            "savingsChange": 250000,
             "monthlyIncomeChange": 0,
             "monthlyExpensesChange": 0,
             "newAssets": [],
@@ -596,52 +637,16 @@
             "assetRemovals": [
               "land"
             ],
-            "notes": "Land sold ₹5L - education ₹3L = +₹2L net to savings. The ₹10,000/month for Priya's future education costs comes out of this ₹2L — not from monthly income. Land asset removed. Must restart saving for house.",
-            "notes_kan": "ಭೂಮಿ ₹5L - ₹3L ಶಿಕ್ಷಣ = +₹2L ಉಳಿತಾಯ. ಪ್ರಿಯಾ ಮುಂದಿನ ಶಿಕ್ಷಣಕ್ಕೆ ₹10,000/ತಿಂಗಳು ಈ ₹2L ನಿಂದ ಬರುತ್ತದೆ — ತಿಂಗಳ ಆದಾಯದಿಂದ ಅಲ್ಲ. ಭೂಮಿ ಆಸ್ತಿ ತೆಗೆಯಲಾಗಿದೆ."
-          }
-        },
-        {
-          "id": "B",
-          "label": "Keep land, take loan",
-          "label_kan": "ಭೂಮಿ ಇಟ್ಟು, ಸಾಲ ತೆಗೆಯಿರಿ",
-          "description": "Keep land, use all current savings, take personal loan of ₹3 lakh at 18% interest (₹7,500 EMI) — try to preserve both goals.",
-          "description_kan": "ಭೂಮಿ ಇಟ್ಟು, ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, 18% ಬಡ್ಡಿಯಲ್ಲಿ ₹3 ಲಕ್ಷ ವೈಯಕ್ತಿಕ ಸಾಲ (₹7,500 EMI).",
-          "points": 10,
-          "financialImpact": {
-            "savingsChange": 0,
-            "monthlyIncomeChange": 0,
-            "monthlyExpensesChange": 7500,
-            "spendAllSavings": true,
-            "newAssets": [],
-            "newDebts": [
-              {
-                "type": "personal-loan",
-                "label": "Education loan for Priya",
-                "label_kan": "ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಸಾಲ",
-                "principal": 300000,
-                "interestRate": 18,
-                "monthlyEmi": 7500,
-                "expenseKey": "loan-emi-edu"
-              }
-            ],
-            "notes": "All savings spent. Personal loan ₹3L @18%, EMI ₹7,500/mo. Land kept. High-interest debt, both goals at risk.",
-            "notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚು. ₹3L @18%, EMI ₹7,500.",
-            "expenseItemChanges": [
-              {
-                "key": "loan-emi-edu",
-                "label": "Education loan EMI",
-                "label_kan": "ಶಿಕ್ಷಣ ಸಾಲ EMI",
-                "newAmount": 7500
-              }
-            ]
+            "notes": "Land ₹5L - diploma ₹2.5L = +₹2.5L net to savings. No new debt. Priya gets a diploma, not an engineering degree.",
+            "notes_kan": "ಭೂಮಿ ₹5L - ₹2.5L ಡಿಪ್ಲೊಮಾ = +₹2.5L ಉಳಿತಾಯ. ಸಾಲ ಇಲ್ಲ."
           }
         },
         {
           "id": "C",
-          "label": "Share burden with Priya",
-          "label_kan": "ಪ್ರಿಯಾಳೊಂದಿಗೆ ಹೊರೆ ಹಂಚಿ",
-          "description": "Use all current savings, ask Priya to work part-time and take a small education loan — share the burden, keep land.",
-          "description_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಬಳಸಿ, ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡಲು ಕೇಳಿ ಮತ್ತು ಸಣ್ಣ ಶಿಕ್ಷಣ ಸಾಲ ತೆಗೆಯಿರಿ.",
+          "label": "Keep land, take personal loan (DROPS OUT)",
+          "label_kan": "ಭೂಮಿ ಇಟ್ಟು, ಹೆಚ್ಚು ಬಡ್ಡಿ ಸಾಲ ತೆಗೆಯಿರಿ",
+          "description": "Keep land. Spend all savings toward the ₹10 lakh engineering fees — the remaining shortfall is covered by a high-interest personal loan at 18% over 10 years. Priya works part-time evenings to contribute and her studies suffer as a result. She eventually falls behind and DROPS OUT.",
+          "description_kan": "ಭೂಮಿ ಇಟ್ಟುಕೊಳ್ಳಿ. ₹10 ಲಕ್ಷ ಶುಲ್ಕಕ್ಕಾಗಿ ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚು ಮಾಡಿ — ಉಳಿದ ಮೊತ್ತ 18% ಹೆಚ್ಚು ಬಡ್ಡಿ ವೈಯಕ್ತಿಕ ಸಾಲದಿಂದ ಭರಿಸಲಾಗುತ್ತದೆ. ಪ್ರಿಯಾ ಸಂಜೆ ಅರೆಕಾಲಿಕ ಕೆಲಸ ಮಾಡುತ್ತಾಳೆ ಮತ್ತು ಅದರಿಂದ ಅವಳ ಅಧ್ಯಯನ ಹಾಳಾಗುತ್ತದೆ. ಅಂತಿಮವಾಗಿ ಅವಳು ಬಿಟ್ಟುಬಿಡುತ್ತಾಳೆ.",
           "points": -20,
           "financialImpact": {
             "savingsChange": 0,
@@ -650,8 +655,8 @@
             "spendAllSavings": true,
             "newAssets": [],
             "newDebts": [],
-            "notes": "All savings spent. Priya works part-time — studies may suffer, she carries debt burden, relationships strained.",
-            "notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ ಖರ್ಚು. ಪ್ರಿಯಾ ಅರೆಕಾಲಿಕ ಕೆಲಸ — ಅಧ್ಯಯನ ಹಾಳಾಗಬಹುದು."
+            "notes": "All savings spent toward the ₹10 lakh fees. If savings fell short, a high-interest personal loan at 18% over 10 years covered the gap. The financial pressure proved too much — Priya eventually had to drop out.",
+            "notes_kan": "₹10 ಲಕ್ಷ ಶುಲ್ಕಕ್ಕೆ ಎಲ್ಲ ಉಳಿತಾಯ ಖರ್ಚಾಯಿತು. ಕೊರತೆ ಇದ್ದರೆ 18% ಹೆಚ್ಚು ಬಡ್ಡಿ ಸಾಲ (10 ವರ್ಷ) ಭರಿಸಿತು. ಆರ್ಥಿಕ ಒತ್ತಡ ಹೆಚ್ಚಾಗಿ ಪ್ರಿಯಾ ಕೊನೆಗೆ ಓದು ಬಿಟ್ಟಳು."
           }
         }
       ]
@@ -789,8 +794,8 @@
               }
             ],
             "newDebts": [],
-            "notes": "Invests ₹25K/mo total; expensesChange +25K prevents double-count in savings accumulation. 2yr FVs: MF ₹15K/mo @8% → ₹3.88L; PPF ₹5K/mo @7.1% → ₹1.30L; RD ₹5K/mo @6.5% → ₹1.28L.",
-            "notes_kan": "₹25K/ತಿಂಗಳು ಹೂಡಿಕೆ. MF ₹3.88L + PPF ₹1.30L + RD ₹1.28L.",
+            "notes": "A diversified investment plan: ₹15K/month in mutual funds, ₹5K/month in PPF, and ₹5K/month in a Recurring Deposit — ₹25K/month total. Balanced risk with strong long-term growth potential.",
+            "notes_kan": "ವೈವಿಧ್ಯಮಯ ಹೂಡಿಕೆ: ₹15K/ತಿಂ MF, ₹5K/ತಿಂ PPF, ₹5K/ತಿಂ RD — ಒಟ್ಟು ₹25K/ತಿಂ. ಸಮತೋಲಿತ ಅಪಾಯ ಮತ್ತು ಉತ್ತಮ ದೀರ್ಘಕಾಲೀನ ಲಾಭ.",
             "expenseItemChanges": [
               {
                 "key": "invest-sip",
@@ -847,8 +852,8 @@
               }
             ],
             "newDebts": [],
-            "notes": "Land ₹8L + gold ₹5L + FD ₹12L = ₹25L. minimumSavings ₹25L required. Safe but lower returns.",
-            "notes_kan": "ಭೂಮಿ ₹8L + ಚಿನ್ನ ₹5L + FD ₹12L = ₹25L."
+            "notes": "Land for ₹8L, gold worth ₹5L, and ₹12L in a Fixed Deposit — ₹25L in tangible assets. Safe and stable, but lower long-term returns than market investments.",
+            "notes_kan": "ಭೂಮಿ ₹8L, ಚಿನ್ನ ₹5L, ₹12L ಸ್ಥಿರ ಠೇವಣಿ — ₹25L ಸ್ಥಿರ ಆಸ್ತಿಗಳಲ್ಲಿ. ಸುರಕ್ಷಿತ ಆದರೆ ಮಾರುಕಟ್ಟೆ ಹೂಡಿಕೆಗಿಂತ ಕಡಿಮೆ ಲಾಭ."
           }
         },
         {
@@ -870,8 +875,8 @@
             },
             "newAssets": [],
             "newDebts": [],
-            "notes": "All savings → RD at 7%. Store computes RD value dynamically using rdConversion. Approx ₹28L in 8yr but inflation erodes real value.",
-            "notes_kan": "ಎಲ್ಲಾ ಉಳಿತಾಯ 7% RD. ಸರಿಸುಮಾರು 8 ವರ್ಷದಲ್ಲಿ ₹28L ಆದರೆ ಹಣದುಬ್ಬರ ಮೌಲ್ಯ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ."
+            "notes": "All savings placed in a Recurring Deposit at 7%, growing to approximately ₹28 lakh over 8 years. Completely safe, but inflation gradually erodes the real purchasing power of those returns.",
+            "notes_kan": "ಎಲ್ಲ ಉಳಿತಾಯ 7% ಆವರ್ತಕ ಠೇವಣಿ — 8 ವರ್ಷದಲ್ಲಿ ಸರಿಸುಮಾರು ₹28 ಲಕ್ಷ. ಸಂಪೂರ್ಣ ಸುರಕ್ಷಿತ, ಆದರೆ ಹಣದುಬ್ಬರ ನಿಜ ಮೌಲ್ಯ ಕ್ರಮೇಣ ಕಡಿಮೆ ಮಾಡುತ್ತದೆ."
           }
         }
       ]
@@ -902,8 +907,8 @@
               "emergency-fund",
               "rd"
             ],
-            "notes": "Emergency fund + RD broken for total ₹1.8L hospital bill. savingsChange -₹84K = remainder after assets used. Emergency-fund and RD assets removed. PPF and MF intact.",
-            "notes_kan": "ತುರ್ತು ನಿಧಿ + RD ₹1.8L ಆಸ್ಪತ್ರೆ ಬಿಲ್ ಪಾವತಿ. PPF ಮತ್ತು MF ಸುರಕ್ಷಿತ."
+            "notes": "Emergency fund and RD used together to cover the ₹1.8 lakh hospital bill — both assets gone. A small remainder came from savings. PPF and mutual fund investments remain intact.",
+            "notes_kan": "₹1.8 ಲಕ್ಷ ಆಸ್ಪತ್ರೆ ಬಿಲ್ ತುರ್ತು ನಿಧಿ ಮತ್ತು RD ಒಟ್ಟಾಗಿ ಭರಿಸಿತು — ಎರಡೂ ಆಸ್ತಿ ಮುಗಿದವು. PPF ಮತ್ತು MF ಹೂಡಿಕೆ ಸುರಕ್ಷಿತ."
           }
         },
         {
@@ -984,12 +989,38 @@
           "points": 30,
           "financialImpact": {
             "savingsChange": -45000,
-            "monthlyIncomeChange": 20000,
+            "monthlyIncomeChange": 0,
             "monthlyExpensesChange": 0,
             "newAssets": [],
             "newDebts": [],
-            "notes": "Adoption ₹40K + Will ₹5K = -₹45K. Priya contributes ₹20K/mo (keeps ₹15K). Strongest legal protection.",
-            "notes_kan": "₹40K + ₹5K = -₹45K. ₹20K/ತಿಂಗಳು ಪ್ರಿಯಾ ಕೊಡುಗೆ."
+            "notes": "Formal adoption (₹40K) and a legal will (₹5K) = ₹45K spent. The strongest possible legal protection for Priya. Priya's contribution to the household depends on her education path.",
+            "notes_kan": "ದತ್ತು (₹40K) + ಉಯಿಲ (₹5K) = ₹45K ಖರ್ಚು. ಅತ್ಯಂತ ಬಲಿಷ್ಠ ಕಾನೂನು ರಕ್ಷಣೆ. ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಮಾರ್ಗದ ಆಧಾರದ ಮೇಲೆ ಮನೆಗೆ ಕೊಡುಗೆ.",
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 20000,
+                "notes": "Priya graduated as B.E. engineer — contributes ₹20,000/month to household."
+              },
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "B"
+                },
+                "monthlyIncomeChange": 10000,
+                "notes": "Priya completed polytechnic diploma — contributes ₹10,000/month to household."
+              },
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "C"
+                },
+                "monthlyIncomeChange": 10000,
+                "notes": "Priya dropped out, works informally — contributes ₹10,000/month to household, keeps ₹5,000 for herself."
+              }
+            ]
           }
         },
         {
@@ -1001,12 +1032,38 @@
           "points": 10,
           "financialImpact": {
             "savingsChange": -5000,
-            "monthlyIncomeChange": 20000,
+            "monthlyIncomeChange": 0,
             "monthlyExpensesChange": 0,
             "newAssets": [],
             "newDebts": [],
-            "notes": "Will ₹5K only. Good protection but adoption gap remains — can be challenged by biological family.",
-            "notes_kan": "₹5K ವಿಲ್. ಉತ್ತಮ ರಕ್ಷಣೆ ಆದರೆ ದತ್ತು ಅಂತರ ಉಳಿಯುತ್ತದೆ."
+            "notes": "Legal will (₹5K). Strong protection, but without formal adoption, biological family may still challenge it in court. Priya's contribution to the household depends on her education path.",
+            "notes_kan": "ಕಾನೂನು ಉಯಿಲ (₹5K). ಉತ್ತಮ ರಕ್ಷಣೆ, ಆದರೆ ದತ್ತು ಇಲ್ಲದೆ ರಕ್ತ ಸಂಬಂಧಿಗಳು ಪ್ರಶ್ನಿಸಬಹುದು. ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಮಾರ್ಗದ ಆಧಾರದ ಮೇಲೆ ಕೊಡುಗೆ.",
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 20000,
+                "notes": "Priya graduated as B.E. engineer — contributes ₹20,000/month to household."
+              },
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "B"
+                },
+                "monthlyIncomeChange": 10000,
+                "notes": "Priya completed polytechnic diploma — contributes ₹10,000/month to household."
+              },
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "C"
+                },
+                "monthlyIncomeChange": 10000,
+                "notes": "Priya dropped out, works informally — contributes ₹10,000/month to household, keeps ₹5,000 for herself."
+              }
+            ]
           }
         },
         {
@@ -1018,12 +1075,38 @@
           "points": -20,
           "financialImpact": {
             "savingsChange": 0,
-            "monthlyIncomeChange": 20000,
+            "monthlyIncomeChange": 0,
             "monthlyExpensesChange": 0,
             "newAssets": [],
             "newDebts": [],
-            "notes": "Free. Weakest protection — nominations can be challenged by biological family in court.",
-            "notes_kan": "ಉಚಿತ. ದುರ್ಬಲ ರಕ್ಷಣೆ — ರಕ್ತ ಸಂಬಂಧಿಗಳು ನ್ಯಾಯಾಲಯದಲ್ಲಿ ಪ್ರಶ್ನಿಸಬಹುದು."
+            "notes": "Free, but the weakest protection — nominations can be challenged in court by biological family. Priya's contribution to the household depends on her education path.",
+            "notes_kan": "ಉಚಿತ, ಆದರೆ ಅತ್ಯಂತ ದುರ್ಬಲ ರಕ್ಷಣೆ — ನ್ಯಾಮಿನೇಶನ್ ರಕ್ತ ಸಂಬಂಧಿಗಳು ನ್ಯಾಯಾಲಯದಲ್ಲಿ ಪ್ರಶ್ನಿಸಬಹುದು. ಪ್ರಿಯಾ ಶಿಕ್ಷಣ ಮಾರ್ಗದ ಆಧಾರದ ಮೇಲೆ ಕೊಡುಗೆ.",
+            "conditionalImpacts": [
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "A"
+                },
+                "monthlyIncomeChange": 20000,
+                "notes": "Priya graduated as B.E. engineer — contributes ₹20,000/month to household."
+              },
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "B"
+                },
+                "monthlyIncomeChange": 10000,
+                "notes": "Priya completed polytechnic diploma — contributes ₹10,000/month to household."
+              },
+              {
+                "condition": {
+                  "scenarioId": 6,
+                  "choiceId": "C"
+                },
+                "monthlyIncomeChange": 10000,
+                "notes": "Priya dropped out, works informally — contributes ₹10,000/month to household, keeps ₹5,000 for herself."
+              }
+            ]
           }
         }
       ]
