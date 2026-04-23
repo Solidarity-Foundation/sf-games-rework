@@ -126,7 +126,7 @@ export default function InclusionDiversityGame() {
             <Home size={20} />
           </button>
           <span className="text-sm font-medium text-gray-700">
-            Inclusion and Diversity Quiz
+            Inclusion and Diversity Game
           </span>
           <div className="w-5" />
         </div>
@@ -300,7 +300,7 @@ function IntroScreen({ onStart }: { onStart: () => void }) {
     <div className="rounded-2xl shadow-lg overflow-hidden">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#5046e5] to-[#6b7ff0] px-6 py-5">
-        <h1 className="text-2xl font-bold text-white">Inclusion &amp; Diversity Quiz</h1>
+        <h1 className="text-2xl font-bold text-white">Inclusion &amp; Diversity Game</h1>
         <p className="text-blue-100 mt-1">Become an LGBTIAQ+ inclusive HR Personnel</p>
       </div>
 
@@ -403,7 +403,7 @@ function ResultsScreen({
     <div className="rounded-2xl shadow-lg overflow-hidden">
       {/* Header */}
       <div className="bg-gradient-to-r from-[#5046e5] to-[#6b7ff0] px-6 py-5">
-        <h1 className="text-2xl font-bold text-white">Quiz Results</h1>
+        <h1 className="text-2xl font-bold text-white">Game Results</h1>
       </div>
 
       <div className="bg-white px-6 py-6 space-y-6">
