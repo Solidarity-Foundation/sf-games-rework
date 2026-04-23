@@ -6,6 +6,7 @@ import type { GameStat, AnswerCount, SessionRecord } from '@/lib/db';
 import poshGameData from '@/components/posh/gamedata.json';
 import workplaceGameData from '@/components/workplace/gamedata.json';
 import financialGameData from '@/components/financial/gamedata.json';
+import inclusionGameData from '@/components/inclusiondiversity/gamedata.json';
 import { ROOM_SEQUENCE } from '@/components/workplace/roomConfig';
 
 const GAMES = [
@@ -56,6 +57,8 @@ const AnalyticsDashboard = () => {
 	const [answerCounts, setAnswerCounts] = useState<Record<string, AnswerCount[]>>({});
 	const [sessions, setSessions] = useState<SessionRecord[]>([]);
 	const [recentSessions, setRecentSessions] = useState<SessionRecord[]>([]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const PAGE_SIZE = 10;
 	const [levelCounts, setLevelCounts] = useState<Record<string, Record<string, number>>>({});
 
 	// Get today's date in YYYY-MM-DD format for max date restriction
@@ -94,7 +97,8 @@ const AnalyticsDashboard = () => {
 
 					setGameStats(stats);
 					setSessions(dateFilteredSessions);
-					setRecentSessions(dateFilteredRecent.slice(-10).reverse());
+					setRecentSessions([...dateFilteredRecent].reverse());
+					setCurrentPage(1);
 
 					// Count levels per game
 					const levelsByGame: Record<string, Record<string, number>> = {};
@@ -257,54 +261,90 @@ const AnalyticsDashboard = () => {
 				)}
 
 				{/* Recent sessions table */}
-				{recentSessions.length > 0 && (
-					<div className="mt-8 bg-white rounded-2xl shadow-sm p-5">
-						<h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-							<span className="text-2xl">📋</span>
-							Recent Completed Sessions
-						</h2>
-						<div className="overflow-x-auto">
-							<table className="w-full">
-								<thead>
-									<tr className="border-b border-gray-200">
-										<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">
-											Game Type
-										</th>
-										<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Score</th>
-										<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Level</th>
-										<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Completed</th>
-									</tr>
-								</thead>
-								<tbody>
-									{recentSessions.map((session, idx) => (
-										<tr key={idx} className="border-b border-gray-100 last:border-0">
-											<td className="py-3 px-2">
-												<span className="inline-block px-2 py-1 rounded text-xs font-medium bg-blue-50 text-blue-700">
-													{GAME_LABELS[session.game_id] ?? session.game_id}
-												</span>
-											</td>
-											<td className="py-3 px-2">
-												<span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold">
-													{session.score ?? '-'}
-												</span>
-											</td>
-											<td className="py-3 px-2">
-												{session.level ? (
-													<span className="inline-block px-2 py-1 rounded text-xs font-medium bg-orange-50 text-orange-700">
-														{session.level}
-													</span>
-												) : (
-													<span className="text-xs text-gray-400">—</span>
-												)}
-											</td>
-											<td className="py-3 px-2 text-sm text-gray-600">{formatTimestamp(session.played_at)}</td>
+				{recentSessions.length > 0 && (() => {
+					const totalPages = Math.ceil(recentSessions.length / PAGE_SIZE);
+					const pageSessions = recentSessions.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+					return (
+						<div className="mt-8 bg-white rounded-2xl shadow-sm p-5">
+							<h2 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+								<span className="text-2xl">📋</span>
+								Recent Completed Sessions
+							</h2>
+							<div className="overflow-x-auto">
+								<table className="w-full">
+									<thead>
+										<tr className="border-b border-gray-200">
+											<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">
+												Game Type
+											</th>
+											<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Score</th>
+											<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Level</th>
+											<th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wide py-3 px-2">Completed</th>
 										</tr>
-									))}
-								</tbody>
-							</table>
+									</thead>
+									<tbody>
+										{pageSessions.map((session, idx) => (
+											<tr key={idx} className="border-b border-gray-100 last:border-0">
+												<td className="py-3 px-2">
+													<span className="inline-block px-2 py-1 rounded text-xs font-medium bg-blue-50 text-blue-700">
+														{GAME_LABELS[session.game_id] ?? session.game_id}
+													</span>
+												</td>
+												<td className="py-3 px-2">
+													<span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold">
+														{session.score ?? '-'}
+													</span>
+												</td>
+												<td className="py-3 px-2">
+													{session.level ? (
+														<span className="inline-block px-2 py-1 rounded text-xs font-medium bg-orange-50 text-orange-700">
+															{session.level}
+														</span>
+													) : (
+														<span className="text-xs text-gray-400">—</span>
+													)}
+												</td>
+												<td className="py-3 px-2 text-sm text-gray-600">{formatTimestamp(session.played_at)}</td>
+											</tr>
+										))}
+									</tbody>
+								</table>
+							</div>
+							{totalPages > 1 && (
+								<div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+									<span className="text-xs text-gray-500">
+										{(currentPage - 1) * PAGE_SIZE + 1}–{Math.min(currentPage * PAGE_SIZE, recentSessions.length)} of {recentSessions.length}
+									</span>
+									<div className="flex items-center gap-1">
+										<button
+											onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+											disabled={currentPage === 1}
+											className="px-3 py-1.5 text-sm rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+										>
+											Previous
+										</button>
+										{Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+											<button
+												key={page}
+												onClick={() => setCurrentPage(page)}
+												className={`w-8 h-8 text-sm rounded-lg border transition-colors ${page === currentPage ? 'bg-teal-600 border-teal-600 text-white' : 'border-gray-200 text-gray-600 hover:bg-gray-50'}`}
+											>
+												{page}
+											</button>
+										))}
+										<button
+											onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+											disabled={currentPage === totalPages}
+											className="px-3 py-1.5 text-sm rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+										>
+											Next
+										</button>
+									</div>
+								</div>
+							)}
 						</div>
-					</div>
-				)}
+					);
+				})()}
 			</main>
 		</div>
 	);
@@ -423,6 +463,7 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 	}
 
 	const isFinancial = gameId === 'financial-literacy';
+	const isInclusion = gameId === 'inclusion-diversity';
 
 	// Get game data if available
 	const gameQuestions =
@@ -432,6 +473,7 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 			? workplaceGameData.questions
 			: null;
 	const financialScenarios = isFinancial ? financialGameData.scenarios : null;
+	const inclusionScenarios = isInclusion ? inclusionGameData.scenarios : null;
 
 	const getCorrectIndex = (question: (typeof poshGameData.questions)[number] | (typeof workplaceGameData.questions)[number] | undefined): number => {
 		if (!question) return -1;
@@ -483,6 +525,36 @@ const QuestionBreakdown = ({ answerCounts, gameId }: { answerCounts: AnswerCount
 												className={`text-xs font-bold px-1.5 py-0.5 rounded ${
 													isCorrect ? 'bg-green-500 text-white' : 'text-gray-500'
 												}`}>
+												{letter}
+											</span>
+											<span className="text-xs font-bold px-1.5 py-0.5 rounded min-w-[20px] text-center bg-gray-100 text-gray-700">
+												{count}
+											</span>
+										</div>
+									);
+								})}
+							</div>
+						</div>
+					);
+				}
+
+				if (isInclusion) {
+					const scenario = inclusionScenarios?.find((s) => s.id === qId);
+					const correctAnswerIndex = scenario
+						? scenario.options.reduce((bestIdx, c, i) =>
+								(c.inclusionPoints + c.diversityPoints > scenario.options[bestIdx].inclusionPoints + scenario.options[bestIdx].diversityPoints ? i : bestIdx), 0)
+						: -1;
+					return (
+						<div key={qId} className="bg-gray-50 rounded-xl p-3">
+							<p className="text-xs font-bold text-gray-500 mb-0.5 uppercase tracking-wide">S{qId}</p>
+							{scenario && <p className="text-xs text-gray-600 mb-2 line-clamp-2 font-medium">{scenario.title}</p>}
+							<div className="space-y-1.5">
+								{['A', 'B', 'C'].map((letter, i) => {
+									const count = counts[i] ?? 0;
+									const isCorrect = i === correctAnswerIndex;
+									return (
+										<div key={i} className="flex items-center justify-between gap-1">
+											<span className={`text-xs font-bold px-1.5 py-0.5 rounded ${isCorrect ? 'bg-green-500 text-white' : 'text-gray-500'}`}>
 												{letter}
 											</span>
 											<span className="text-xs font-bold px-1.5 py-0.5 rounded min-w-[20px] text-center bg-gray-100 text-gray-700">
