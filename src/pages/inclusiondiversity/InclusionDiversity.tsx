@@ -1,7 +1,5 @@
-import ComingSoon from "@/components/ComingSoon";
+import InclusionDiversityGame from "@/components/inclusiondiversity/InclusionDiversityGame";
 
-const InclusionDiversity = () => {
-  return <ComingSoon title="Inclusion & Diversity" color="bg-[#e8dcf5]" />;
-};
+const InclusionDiversity = () => <InclusionDiversityGame />;
 
 export default InclusionDiversity;

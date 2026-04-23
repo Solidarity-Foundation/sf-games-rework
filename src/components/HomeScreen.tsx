@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import poshImage from '@/assets/posh-button.webp';
+import inclusionImage from '@/assets/inclusion-button.webp';
 import workplaceImage from '@/assets/tbf-logo.png';
 import financialImage from '@/assets/financial/susheela-button.webp';
 import analyticsImage from '@/assets/analytics-dashboard-button.webp';
@@ -21,6 +22,7 @@ const games: GameCard[] = [
 		path: '/inclusion-diversity',
 		labelColor: 'bg-[#d4bfee]',
 		imageBg: 'bg-gradient-to-br from-purple-200 via-violet-100 to-indigo-200',
+		image: inclusionImage,
 	},
 	{
 		id: 'financial-literacy',

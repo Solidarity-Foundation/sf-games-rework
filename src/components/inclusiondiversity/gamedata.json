@@ -1,0 +1,297 @@
+{
+	"scenarios": [
+		{
+			"id": 1,
+			"title": "Interview Time!",
+			"description": "You are interviewing Arvind for the Admin Manager position. Arvind is wearing a bindi but also has facial hair and is wearing a shirt and pants. Their name does not indicate their gender identity.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Ask about their education and start the conversation.",
+					"feedback": "This is a safe approach but might seem like you are avoiding the topic of gender identity. A more inclusive way is to lead by example—introduce yourself with your name and pronouns.",
+					"inclusionPoints": 0,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Introduce yourself with your name and pronouns (e.g., \"Hi, I'm Ramu, and I use he/him pronouns\").",
+					"feedback": "Excellent choice! By sharing your pronouns, you create a safe space for Arvind to share theirs if they choose to.",
+					"inclusionPoints": 1,
+					"diversityPoints": 1
+				},
+				{
+					"text": "Ask if they use she/her pronouns.",
+					"feedback": "It's good that you want to be respectful, but asking directly can feel invasive. It's better to lead by example by sharing your own pronouns first.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		},
+		{
+			"id": 2,
+			"title": "Washroom Concerns",
+			"description": "Amala, a senior manager, questions why transgender women are allowed to use the women's washroom despite having a gender-inclusive washroom.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Explain to Amala that transgender women are women and deserve to be treated with respect and dignity.",
+					"feedback": "Great response! True inclusivity respects individuals' identities and ensures they are treated with dignity.",
+					"inclusionPoints": 2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Agree to disagree because you feel uncomfortable discussing it.",
+					"feedback": "Avoiding the conversation does not resolve the issue. It's important to address concerns with empathy and accurate information.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Sternly tell Amala that she needs to learn about transgender rights.",
+					"feedback": "While Amala might need more awareness, approaching the conversation with empathy fosters understanding and acceptance more effectively.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		},
+		{
+			"id": 3,
+			"title": "Out or About?",
+			"description": "You overhear Priya discussing the sexual orientation of another employee without their consent.",
+			"explainer": "Outing is revealing someone's LGBTQ+ identity without their consent, potentially impacting their safety, relationships, or professional life.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Approach Priya privately and explain the importance of respecting others' privacy.",
+					"feedback": "Excellent choice! This approach maintains confidentiality and educates Priya on respecting personal boundaries.",
+					"inclusionPoints": 2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Ignore the conversation since it wasn't meant maliciously.",
+					"feedback": "Ignoring the situation perpetuates a culture of gossip and invasion of privacy. It's crucial to address such matters respectfully.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Confront Priya in front of others to make a point about respect.",
+					"feedback": "While it's important to address the issue, public confrontation can lead to defensiveness. Private conversations are more effective for learning and growth.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		},
+		{
+			"id": 4,
+			"title": "Hire! Hire!",
+			"description": "Your team is hiring for a leadership role. One candidate, Tanvi, is from the LGBTIAQ+ community and another, Arjun, is a cisgender man. Both have equal qualifications.",
+			"explainer": "Cisgender refers to someone whose gender identity matches the sex they were assigned at birth.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Choose Tanvi to promote diversity.",
+					"feedback": "While promoting diversity is important, decisions should be based on qualifications, skills, and the value they bring to the team, rather than identity alone.",
+					"inclusionPoints": 0,
+					"diversityPoints": -2
+				},
+				{
+					"text": "Choose the candidate who best aligns with the team's needs, regardless of identity.",
+					"feedback": "Perfect! This approach ensures equal opportunity without bias. Diversity is about inclusivity, not tokenism.",
+					"inclusionPoints": 0,
+					"diversityPoints": 2
+				},
+				{
+					"text": "Seek feedback from the team about which candidate they feel comfortable working with.",
+					"feedback": "Choosing candidates based on comfort levels can lead to biases. Decisions should be made on merit and fit for the role.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		},
+		{
+			"id": 5,
+			"title": "Employee Resource Groups",
+			"description": "Your company is setting up an LGBTIAQ+ Employee Resource Group. Some employees express discomfort, stating they don't see the need for \"special groups.\"",
+			"explainer": "Employee Resource Groups are voluntary, employee-led groups that foster a diverse, inclusive workplace aligned with organisational goals. They promote inclusion, raise awareness about LGBTQ+ issues, and advocate for equitable policies.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Explain the importance of safe spaces and community support.",
+					"feedback": "Great response! ERGs provide a sense of belonging and support, improving workplace culture and productivity.",
+					"inclusionPoints": 2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Cancel the idea to avoid controversy.",
+					"feedback": "Avoiding initiatives due to discomfort undermines inclusion. It's important to educate and sensitise employees on the benefits of diversity.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Implement the ERG without addressing the concerns.",
+					"feedback": "While creating ERGs is positive, addressing concerns with empathy helps build acceptance and understanding.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		},
+		{
+			"id": 6,
+			"title": "Reporting Harassment Without Gender-Inclusive POSH Policy",
+			"description": "Sundar, an employee who identifies as non-binary, reports harassment at work. You realise that your company's POSH (Prevention of Sexual Harassment) policy only addresses gender harassment for women, not gender minorities.",
+			"explainer": "In India, anti-discrimination policies should cover all gender identities and sexual orientations to ensure a safe and respectful workplace. The POSH Act can be updated to include protections for LGBTIAQ+ employees and also be gender inclusive to include women, men, gender non-binary persons.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Assure Sundar of your support and investigate the complaint under existing POSH, even if it's not gender-inclusive.",
+					"feedback": "This is a good first step, but it's a temporary solution. POSH policies need to be gender-inclusive to protect all employees, regardless of identity.",
+					"inclusionPoints": 2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Tell Sundar that the policy doesn't cover non-binary identities but you will speak to the perpetrator informally.",
+					"feedback": "This undermines the seriousness of the issue and fails to protect Sundar. Gender-inclusive policies are crucial for formal resolution.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Immediately initiate an update to the POSH policy to be gender-inclusive and ensure Sundar feels safe at work.",
+					"feedback": "Excellent choice! This approach addresses the immediate issue while also taking a long-term step towards inclusion.",
+					"inclusionPoints": 1,
+					"diversityPoints": 1
+				}
+			]
+		},
+		{
+			"id": 7,
+			"title": "Chosen Name vs. Dead Name",
+			"description": "Samaira, who recently transitioned, requests to use her chosen name in all official records. However, some colleagues continue using her dead name, either out of habit or ignorance.",
+			"explainer": "Transition in gender is the process of aligning one's gender identity with their outward appearance, behaviour, and/or physical body. A dead name is a person's birth name that they no longer use after transitioning to their true identity. A chosen name is the name someone selects that aligns with their gender identity, replacing their birth or dead name.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Send out a general email reminding everyone to use correct names without specifically mentioning Samaira.",
+					"feedback": "A good start, but this might not effectively address the issue. It's important to sensitise and educate employees on the importance of respecting chosen names.",
+					"inclusionPoints": 2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Speak to the colleagues privately, explaining why using Samaira's chosen name is important for respect and inclusion.",
+					"feedback": "Perfect! Educating and sensitising individuals directly promotes understanding and respect for identity.",
+					"inclusionPoints": 1,
+					"diversityPoints": 1
+				},
+				{
+					"text": "Tell Samaira that it will take time for people to adjust, and she should be patient.",
+					"feedback": "This minimises Samaira's experience and places the burden on her. It's the responsibility of the workplace to enforce respectful practices.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		},
+		{
+			"id": 8,
+			"title": "Stereotyping Transgender Women as Aggressive",
+			"description": "Chitra, a transgender woman, is described as \"too assertive\" in her performance review, while similar behaviour is praised in her male colleagues.",
+			"explainer": "Stereotyping transgender women as aggressive stems from societal biases. Performance feedback should be objective and free of gender stereotypes.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Ask the reviewers to reassess the feedback, highlighting potential biases.",
+					"feedback": "Great choice! This encourages reflection on biases and promotes fair assessments.",
+					"inclusionPoints": 2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Tell Chitra to adapt her communication style to be more acceptable to the team.",
+					"feedback": "This reinforces stereotypes and places the responsibility on Chitra instead of addressing biases.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Ignore the feedback, assuming it's just office politics.",
+					"feedback": "Ignoring the issue allows biases to persist, impacting Chitra's career growth and workplace experience.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		},
+		{
+			"id": 9,
+			"title": "Lack of LGBTIAQ+ Policy Due to Low Representation",
+			"description": "Your company doesn't have an LGBTIAQ+ inclusion policy, arguing that only two employees identify as part of the community.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Advocate for an inclusive policy, explaining that representation should not determine the need for protection and inclusion.",
+					"feedback": "Excellent! Policies should be proactive and inclusive, ensuring safety and respect for all employees.",
+					"inclusionPoints": 0,
+					"diversityPoints": 2
+				},
+				{
+					"text": "Agree that the policy isn't necessary, given the low numbers.",
+					"feedback": "This approach ignores the importance of creating an inclusive workplace and discourages future employees from feeling safe to come out.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Inform the two employees privately that they can approach you if they face issues.",
+					"feedback": "This is supportive but insufficient. Formal policies provide institutional protection and establish clear guidelines.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		},
+		{
+			"id": 10,
+			"title": "Sensitisation on Engaging with Local Communities",
+			"description": "Your company wants to sensitise employees on interacting with local LGBTIAQ+ communities like Hijras and Kothis.",
+			"explainer": "Sensitisation involves understanding cultural contexts and challenging stereotypes. Authentic engagement promotes true inclusion.",
+			"question": "What do you do?",
+			"options": [
+				{
+					"text": "Organise a workshop led by community members, ensuring an authentic perspective and respectful engagement.",
+					"feedback": "Perfect! Hearing directly from community members promotes empathy and understanding.",
+					"inclusionPoints": 0,
+					"diversityPoints": 2
+				},
+				{
+					"text": "Circulate an email with guidelines on how to behave around Hijras and Kothis.",
+					"feedback": "This risks stereotyping and may come across as condescending. Sensitisation requires interaction and dialogue, not just instructions.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				},
+				{
+					"text": "Skip the sensitisation as most employees don't interact with these communities daily.",
+					"feedback": "This approach ignores the importance of building an inclusive mindset, regardless of frequency of interaction.",
+					"inclusionPoints": -2,
+					"diversityPoints": 0
+				}
+			]
+		}
+	],
+	"resultLevels": [
+		{
+			"level": "DE&I Champion",
+			"minScore": 44,
+			"message": "Congratulations! You have a deep understanding of inclusion and diversity."
+		},
+		{
+			"level": "DE&I Leader",
+			"minScore": 33,
+			"message": "You're doing well! Keep learning to become a DE&I Champion."
+		},
+		{
+			"level": "DE&I Learner",
+			"minScore": 22,
+			"message": "You have a good start but need to polish your DE&I skills. Keep learning and growing."
+		},
+		{
+			"level": "DE&I Beginner",
+			"minScore": 0,
+			"message": "It's time to play again and learn more about inclusive practices."
+		}
+	],
+	"initialPoints": {
+		"inclusionPoints": 10,
+		"diversityPoints": 10
+	}
+}
